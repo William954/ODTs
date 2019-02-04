@@ -388,7 +388,7 @@ class OdtMedios(models.Model):
 	med_icepresidencia = fields.Char(string='Vicepresidencia', track_visibility=True)
 
 	#Solicitud TVSA
-	tvsa_tipo_camp = fields.Selection([('1','TEASER'),('2','LANZAMIENTO'),('3','REGULAR')],string='Timpo de Campaña', track_visibility=True)
+	tvsa_tipo_camp = fields.Selection([('1','TEASER'),('2','LANZAMIENTO'),('3','REGULAR')],string='Tipo de Campaña', track_visibility=True)
 	tvsa_otro = fields.Char(string='Otro: (Especificar)')
 	tvsa_catego_televisa = fields.Selection([('1','02SG-Algodon/Cotonetes'),('2','00AE-Alimentos en lata e instanta'),('3','00AI-Alimentos infantiles'),
                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
@@ -408,7 +408,7 @@ class OdtMedios(models.Model):
                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
-	tvsa_nse = fields.Selection([('1','ABC+ Alto + Medio alto'),('2','c Medio'),('3','D+ Medio Bajo'),('4','DE Bajo')], string="NSE", track_visibility=True)
+	tvsa_nse = fields.Selection([('1','ABC+ Alto + Medio alto'),('2','C Medio'),('3','D+ Medio Bajo'),('4','DE Bajo')], string="NSE", track_visibility=True)
 
 	tvsa_grupo_edad_1 = fields.Boolean(string='4 - 12', track_visibility=True)
 	tvsa_grupo_edad_2 = fields.Boolean(string='13 - 18', track_visibility=True)
@@ -427,8 +427,8 @@ class OdtMedios(models.Model):
 	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
 
 	duracion_spot = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
-	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO'),('6','SPOTEO COMPRA LIBRE')],string='Opciones de Compra', track_visibility=True)
-	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar promoción', track_visibility=True)
+	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO')],string='Opciones de Compra', track_visibility=True)
+	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar proporción', track_visibility=True)
 	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
 	target_especial = fields.Char(string='En caso de ser Target de compra Especial, Especificar', track_visibility=True)
 
@@ -437,11 +437,12 @@ class OdtMedios(models.Model):
 	a_favor = fields.Selection([('1','SI'),('2','NO')],string='A favor de lo mejor', track_visibility=True)
 	kids_policy = fields.Selection([('1','SI'),('2','NO')],string='Kids Policy', track_visibility=True)
 	sptv_periodo_camp1 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
+	cpr_modulos = fields.Selection([('1','SI'),('2','NO')],string='CPR', track_visibility=True)
 	canal_1 = fields.Boolean(string='2', track_visibility=True)
 	canal_2 =  fields.Boolean(string='5', track_visibility=True)
 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
-	tvsa_abierta = fields.Integer(string='Monto Máximo inversión TV abierta nacional (Costo clienten)', track_visibility=True)
-	tv_abierta_duracion_spot = fields.Datetime(string='Duración del Spot', track_visibility=True)
+	tvsa_abierta = fields.Integer(string='Monto Máximo Inversión TV Abierta Nacional (Costo Cliente)', track_visibility=True)
+	tv_abierta_duracion_spot = fields.Char(string='Duración del Spot', track_visibility=True)
 
 	canal_local = fields.Boolean(string='Canal Local', track_visibility=True)
 	bloqueos = fields.Boolean(string='Bloqueos', track_visibility=True)

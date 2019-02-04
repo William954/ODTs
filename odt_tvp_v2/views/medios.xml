@@ -319,11 +319,12 @@
                               <field name="a_favor"/>
                               <field name="kids_policy"/>
                               <field name="sptv_periodo_camp1"/>
-                            <h3>Canales Módulos o Franjas siempore serán 2, 5 y3</h3>
-                              <field name="canal_1"/>
-                              <field name="canal_2"/>
-                              <field name="canal_3"/>
-                              <field name="tvsa_abierta"/>
+                              <field name="cpr_modulos"/> 
+                              <h3 attrs="{'invisible':[('cpr_modulos','!=','1')]}">Canales Módulos o Franjas siempre serán 2, 5 y 9</h3>
+                                <field name="canal_1" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
+                                <field name="canal_2" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
+                                <field name="canal_3" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
+                                <field name="tvsa_abierta"/>
                             <h3>Tv Abierta Local</h3>
                               <field name="tv_abierta_duracion_spot"/>
                               <field name="canal_local"/>
@@ -581,8 +582,6 @@
                               <field name="r_target_interes"/>
                               <field name="r_periodo_campana"/>
                               <field name="r_monto_inversion"/>
-                              <field name="r_tamano_insercion"/>
-                              <field name="r_tipo_creatividad"/>
                             </group>
                           </group>
                           <group>
