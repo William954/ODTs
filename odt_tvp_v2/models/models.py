@@ -350,7 +350,7 @@ class OdtMedios(models.Model):
 
 
 	presupuesto_cliente = fields.Float(string='Presupuesto del Cliente', track_visibility=True)
-	# seccion para odt medios
+	# sección para odt medios
 	med_spot_tv_abierta = fields.Boolean(string='Spot TV Abierta TVSA', track_visibility=True)
 	med_aaee_tv = fields.Boolean(string='AAEE TV TVSA', track_visibility=True)
 	med_brief_aaee = fields.Boolean(string='Brief AAEE', track_visibility=True)
@@ -362,7 +362,7 @@ class OdtMedios(models.Model):
 	med_prensa = fields.Boolean(string='Prensa', track_visibility=True)
 	med_ooh = fields.Boolean(string='OOH', track_visibility=True)
 	med_digital = fields.Boolean(string='Digital', track_visibility=True)
-	med_analisis = fields.Boolean(string='Analisis', track_visibility=True)
+	med_analisis = fields.Boolean(string='Análisis', track_visibility=True)
 
 	#	Medios
 	med_folio = fields.Char(string='Folio', track_visibility=True)
@@ -380,7 +380,7 @@ class OdtMedios(models.Model):
 	# Plan de medios
 	med_objetivo_comunicacion = fields.Char(string='Objetivo de comunicación', track_visibility=True)
 	med_presupuesto_cliente = fields.Char(string='Presupuesto Global Cliente', track_visibility=True)
-	med_periodo_camap = fields.Char(string='Periodo camapaña y/o promoción', track_visibility=True)
+	med_periodo_camap = fields.Char(string='Periodo campaña y/o promoción', track_visibility=True)
 	med_tipo_analisis = fields.Selection([('1','Inversión Publicitaria (Competencia)'),('2','Audiencia (Ratings)'),('3','Hábitos de Consumo (BIMSA)')],string='Tipo de Análisis', track_visibility=True)
 	med_oberv_generales = fields.Text(string='Observaciones Generales', track_visibility=True)
 	med_solicita = fields.Char(string='Nombre de quien solicita', track_visibility=True)
@@ -399,15 +399,15 @@ class OdtMedios(models.Model):
                     ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
-                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
-                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/línea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamental')
                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
-                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
-                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
-                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
-                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
-                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construcción'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acné'),('110','07SB-Productos ortopédicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas eléctricas/general')
+                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajería/paquetería'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de televisión paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
+                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
 	tvsa_nse = fields.Selection([('1','ABC+ Alto + Medio alto'),('2','c Medio'),('3','D+ Medio Bajo'),('4','DE Bajo')], string="NSE", track_visibility=True)
 
@@ -433,7 +433,7 @@ class OdtMedios(models.Model):
 	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
 	target_especial = fields.Char(string='En caso de ser Target de compra Especial, Especificar', track_visibility=True)
 
-	#regualcion
+	#regulación
 	cofepris = fields.Selection([('1','SI'),('2','NO')],string='COFEPRIS', track_visibility=True)
 	a_favor = fields.Selection([('1','SI'),('2','NO')],string='A favor de lo mejor', track_visibility=True)
 	kids_policy = fields.Selection([('1','SI'),('2','NO')],string='Kids Policy', track_visibility=True)
@@ -441,15 +441,15 @@ class OdtMedios(models.Model):
 	canal_1 = fields.Boolean(string='2', track_visibility=True)
 	canal_2 =  fields.Boolean(string='5', track_visibility=True)
 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
-	tvsa_abierta = fields.Integer(string='Monto Máximo inversion TV abierta nacional (Costo clienten)', track_visibility=True)
-	tv_abierta_duracion_spot = fields.Datetime(string='Duracion del Spot', track_visibility=True)
+	tvsa_abierta = fields.Integer(string='Monto Máximo inversión TV abierta nacional (Costo clienten)', track_visibility=True)
+	tv_abierta_duracion_spot = fields.Datetime(string='Duración del Spot', track_visibility=True)
 
 	canal_local = fields.Boolean(string='Canal Local', track_visibility=True)
 	bloqueos = fields.Boolean(string='Bloqueos', track_visibility=True)
 	sptv_periodo_camp2 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	foro_tv = fields.Boolean(string='Foro TV', track_visibility=True)
 	foro_tv_descrip = fields.Text(string='Box', track_visibility=True)
-	monto_inverison_tvabierta = fields.Float(string='Monto Maximo inversion TV Abierta Local (Costo Cliente)', track_visibility=True)
+	monto_inverison_tvabierta = fields.Float(string='Monto Máximo inversión TV Abierta Local (Costo Cliente)', track_visibility=True)
 	tvsa_abierta_observaciones = fields.Text(string='Observaciones generales o condiciones especiales', track_visibility=True)
 
 	# AAEETV
@@ -457,27 +457,27 @@ class OdtMedios(models.Model):
                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
-                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
-                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotónicas'),
+                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plásticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frías'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
-                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
-                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/línea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamental')
                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
-                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
-                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
-                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
-                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
-                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construcción'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acné'),('110','07SB-Productos ortopédicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas eléctricas/general')
+                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajería/paquetería'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de televisión paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
+                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
 
 	target_primario = fields.Char(string='Target Primario', track_visibility=True)
-	tarjet_secudario = fields.Char(string='Target Secunndario', track_visibility=True)
+	tarjet_secudario = fields.Char(string='Target Secundario', track_visibility=True)
 
 	aaeetv_periodo_camp = fields.Char(string='Periodo de la Campaña', track_visibility=True)
-	aaee_monto_maximo = fields.Float(string='Monto Máximon Propuesta (Costo Cliente)', track_visibility=True)
-	aaee_monto_minimo = fields.Float(string='Monto Minimo Propuesta (Costo Cliente)', track_visibility=True)
+	aaee_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costo Cliente)', track_visibility=True)
+	aaee_monto_minimo = fields.Float(string='Monto Mínimo Propuesta (Costo Cliente)', track_visibility=True)
 	aaeetv_2 = fields.Boolean(string='2', track_visibility=True)
 	aaeetv_5 = fields.Boolean(string='5', track_visibility=True)
 	aaeetv_9 = fields.Boolean(string='9', track_visibility=True)
@@ -529,10 +529,10 @@ class OdtMedios(models.Model):
 								 ('7','Patrocinio de Programa'),('8','Patrocinio de sección'),('9','Resumen Informativo')],string='Noticieros', track_visibility=True)
 
 
-	aaeetv_abierta_local_periodo_camp = fields.Char(string='Periodo de la camapaña', track_visibility=True)
+	aaeetv_abierta_local_periodo_camp = fields.Char(string='Periodo de la campaña', track_visibility=True)
 	tabla_plaza = fields.One2many('odt.medios.plaza','plazas_id')
-	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Maximo Propuesta (Costo cliente)', track_visibility=True)
-	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Minimo Propuesta (Costo cliente)', track_visibility=True)
+	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costo cliente)', track_visibility=True)
+	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Mínimo Propuesta (Costo cliente)', track_visibility=True)
 	aaeee_observations = fields.Text(string='Observaciones', track_visibility=True)
 
 	# Brief aaee
@@ -540,17 +540,17 @@ class OdtMedios(models.Model):
 	tv_local_bool = fields.Boolean(string='TV Local', track_visibility=True)
 	Network_bool = fields.Boolean(string='Network', track_visibility=True)
 	area_comercial_selection = fields.Selection([('1','Gabriela Martínez'),('2','Maricarmen Lobo'),('3','Pamela Urrutia'),('4','Brenda Aguirre'),('5','Vanessa Fuentes'),('6','Alejandra Cárdenas')],string='Dirección Área Comercial', track_visibility=True)
-	brief_presupuesto_minimo = fields.Float(string='Presupuesto Estimado minimo (a costo cliente)', track_visibility=True)
-	brief_presupuesto_maximo = fields.Float(string='Presupuesto Estimado maximo (a costo cliente)', track_visibility=True)
+	brief_presupuesto_minimo = fields.Float(string='Presupuesto Estimado mínimo (a costo cliente)', track_visibility=True)
+	brief_presupuesto_maximo = fields.Float(string='Presupuesto Estimado máximo (a costo cliente)', track_visibility=True)
 	braa_elabora = fields.Char(string='Elabora', track_visibility=True)
 	braa_fecha = fields.Datetime(string='Fecha', track_visibility=True)
 	braa_periodo = fields.Char(string='Periodo', track_visibility=True)
 	braa_nombre_proyecto = fields.Char(string='Nombre o Tema del Proyecto', track_visibility=True)
-	braa_descripcion_personalidad = fields.Text(string='Descrpición y personalidad del producto', track_visibility=True)
+	braa_descripcion_personalidad = fields.Text(string='Descripción y personalidad del producto', track_visibility=True)
 	braa_objetivo = fields.Text(string='Objetivo', track_visibility=True)
 	braa_idea_comunicar = fields.Text(string='Idea a Comunicar', track_visibility=True)
 	braa_ambiente_contexto = fields.Text(string='Ambiente o contexto compatible', track_visibility=True)
-	braa_talento_personaje = fields.Text(string='En caso de requerirse talento, Caracteristicas de los personajes', track_visibility=True)
+	braa_talento_personaje = fields.Text(string='En caso de requerirse talento, Características de los personajes', track_visibility=True)
 	braa_propuesta_idea = fields.Text(string='Propuesta o idea creativa (si la hay)', track_visibility=True)
 
 	braa_opcion1 = fields.Boolean(string='Telenovela', track_visibility=True)
@@ -573,24 +573,24 @@ class OdtMedios(models.Model):
                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
-                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
-                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
-                    ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotónicas'),
+                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plásticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Cívicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frías'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+                    ('34','00AO-Cereales'),('35','01BB-Cerveza/bebid baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
-                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
-                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/línea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamental')
                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
-                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
-                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
-                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
-                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
-                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construcción'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acné'),('110','07SB-Productos ortopédicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas eléctricas/general')
+                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajería/paquetería'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de televisión paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
+                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
 	sc_target_primario = fields.Char(string='Target Primario')
 	sc_target_secundario = fields.Char(string='Target Secundario')
 	sc_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
-	sc_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+	sc_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	sc_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
 	sc_carriers = fields.Text(string='Carriers')
 	sc_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
@@ -603,38 +603,38 @@ class OdtMedios(models.Model):
                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
-                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
-                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
-                    ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+                    ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotónicas'),
+                    ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Cívicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frías'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+                    ('34','00AO-Cereales'),('35','01BB-Cerveza/bebid baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
-                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
-                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+                    ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/línea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+                    ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamental')
                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
-                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
-                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
-                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
-                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
-                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+                    ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construcción'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+                     ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acné'),('110','07SB-Productos ortopédicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas eléctricas/general')
+                    ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajería/paquetería'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de televisión paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+                    ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
+                    ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
 	nt_target_primario = fields.Char(string='Target Primario')
 	nt_target_secundario = fields.Char(string='Target Secundario')
 	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
-	nt_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+	nt_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	nt_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
 	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
-	nt_especifico = fields.Text(string='Especificos')
+	nt_especifico = fields.Text(string='Específicos')
 	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
 	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ')
-	nt_aaee_inversion = fields.Float(string='Monto Maximo inversión AAEE Networks Televisa (costo cliente)*')
+	nt_aaee_inversion = fields.Float(string='Monto Máximo inversión AAEE Networks Televisa (costo cliente)*')
 	nt_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	nt_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
-	nt_aaee_especificos1 = fields.Selection([('1','Bandamax'),('2','De Pelicula'),('3','De Pelicula HD'),('4','De Pelicula MPX'),('5','Distrito Comedia'),('6','Golden'),
+	nt_aaee_especificos1 = fields.Selection([('1','Bandamax'),('2','De Película'),('3','De Película HD'),('4','De Película MPX'),('5','Distrito Comedia'),('6','Golden'),
 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
-											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Especificos')
-	nt_aaee_especificos2 = fields.Selection([('1','Bandamax'),('2','De Pelicula'),('3','De Pelicula HD'),('4','De Pelicula MPX'),('5','Distrito Comedia'),('6','Golden'),
+											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Específicos')
+	nt_aaee_especificos2 = fields.Selection([('1','Bandamax'),('2','De Película'),('3','De Película HD'),('4','De Película MPX'),('5','Distrito Comedia'),('6','Golden'),
 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
-											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Especificos')
+											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Específicos')
 	nt_aaee_programas = fields.Char(string='Si conoces el(los) programa(s) indicar')
 	nt_aaee_deport = fields.Char(string='Deportivos')
 	nt_aaee_revista = fields.Char(string='De Revista')
@@ -647,14 +647,14 @@ class OdtMedios(models.Model):
 	ot_target_primario = fields.Char(string='Target Primario')
 	ot_target_secundario = fields.Char(string='Target Secundario')
 	ot_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo otros network*')
-	ot_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+	ot_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	ot_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
 	ot_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
 	ot_especifico = fields.Text(string='Especificos')
 	ot_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
 	ot_observaciones = fields.Text(string='Observaciones o restricciones spoteo otros Networks: ')
 	
-	ot_aaee_inversion = fields.Float(string='Monto Maximo inversión AAEE Networks (costo cliente)*')
+	ot_aaee_inversion = fields.Float(string='Monto Máximo inversión AAEE Networks (costo cliente)*')
 	ot_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	ot_aaee_especificos = fields.Char(string='Especificos')
 	ot_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
@@ -665,7 +665,7 @@ class OdtMedios(models.Model):
 	# Revista
 	r_marca = fields.Char(string='Marca o Producto*')
 	r_target_interes = fields.Char(string='Target de Interés*')
-	r_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+	r_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	r_monto_inversion = fields.Float(string='Inversión revistas(Costo Cliente)*')
 	r_tamano_insercion = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
 	r_tipo_creatividad = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo (Creatividades)')
@@ -675,7 +675,7 @@ class OdtMedios(models.Model):
 	#Radio
 	rad_marca = fields.Char(string='Marca o Producto*')
 	rad_target_interes = fields.Char(string='Target de Interés*')
-	rad_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+	rad_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	rad_monto_inversion = fields.Float(string='Inversión Radio (Costo Cliente)*')
 	rad_tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
 	rad_observaciones = fields.Text(string='Observaciones')	
@@ -684,18 +684,18 @@ class OdtMedios(models.Model):
 	#ooh
 	oh_marca = fields.Char(string='Marca o Producto*')
 	oh_target_interes = fields.Char(string='Target de Interés*')
-	oh_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+	oh_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)*')
 	oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
 										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
-						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Activadad')
+						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
 	oh_observaciones = fields.Text(string='Comentarios')
 	tabla_medios_ooh = fields.One2many('odt.medios.ooh','ooh_id')
 
 	#Prensa
 	p_marca = fields.Char(string='Marca o Producto*')
 	p_target_interes = fields.Char(string='Target de Interés*')
-	p_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+	p_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	p_monto_inversion = fields.Float(string='Inversión Prensa (Costo Cliente)*')
 	p_tamano = fields.Selection([('1','Plana'),('2','Robaplana'),('3','1/2 Plana Horizontal'),('4','1/2 Plana Vertical'),('5','1/4 Plana'),('6','1/8 Plana'),('7','Otro')],string='Tamaño*')
 	p_observaciones = fields.Text(string='Observaciones')		
@@ -703,22 +703,22 @@ class OdtMedios(models.Model):
 
 	# Digital
 	d_marca = fields.Char(string='Marca o Producto*')
-	d_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+	d_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	d_target_demo = fields.Char(string='Target Demográfico*')
 	d_target_perfil = fields.Char(string='Target perfil Psicográfico*')
-	d_objetivo_campana = fields.Text(string='Objetivo de la camapaña*')
+	d_objetivo_campana = fields.Text(string='Objetivo de la campaña*')
 	d_option1 = fields.Boolean(string='Branding')
 	d_option2 = fields.Boolean(string='Registros')
 	d_option3 = fields.Boolean(string='Redes Sociales')
 	d_option4 = fields.Boolean(string='Búsqueda')
 	d_landing = fields.Char(string='Landing Page (Sólo si aplica)')
-	d_description_campana = fields.Text(string='Descrpición de la Campaña*')
-	d_requerirlos = fields.Text(string='Enlistar los sitios especificos en caso de requerirlos:')
+	d_description_campana = fields.Text(string='Descripción de la Campaña*')
+	d_requerirlos = fields.Text(string='Enlistar los sitios específicos en caso de requerirlos:')
 	d_folio_proyecto = fields.Char(string='Folio proyecto digital (si ya lo tiene)')
 	d_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costos Cliente)*')
-	d_monto_minimo = fields.Float(string='Monto Minimo Propuesta (Costos Cliente)*')
+	d_monto_minimo = fields.Float(string='Monto Mínimo Propuesta (Costos Cliente)*')
 
-	# Analisis
+	# Análisis
 	an_inversion = fields.Boolean(string='Inversión Publicitaria')
 	an_habitos = fields.Boolean(string='Hábitos')
 	an_audiencia = fields.Boolean(string='Audiencias')
@@ -738,7 +738,404 @@ class OdtMedios(models.Model):
 	an_marca1 = fields.Char(string='Categoría o Marca/Producto de interés*')
 	an_target_interes1 = fields.Char(string='Target de interés*')
 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
-	an_tro_descripcion = fields.Text(string='Describir el tipo de análisisá y/o requerimientos de informacion.')
+	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
+
+# class OdtMedios(models.Model):
+# 	_name = 'odt.medios'
+# 	_description = 'Ventana kanban para la estructura de medios'
+# 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
+
+
+# 	presupuesto_cliente = fields.Float(string='Presupuesto del Cliente', track_visibility=True)
+# 	# seccion para odt medios
+# 	med_spot_tv_abierta = fields.Boolean(string='Spot TV Abierta TVSA', track_visibility=True)
+# 	med_aaee_tv = fields.Boolean(string='AAEE TV TVSA', track_visibility=True)
+# 	med_brief_aaee = fields.Boolean(string='Brief AAEE', track_visibility=True)
+# 	med_spoteo_carriers = fields.Boolean(string='Spoteo Carriers', track_visibility=True)
+# 	med_net_televisa = fields.Boolean(string='Networks Televisa', track_visibility=True)
+# 	med_otros_net = fields.Boolean(string='Otros Networks', track_visibility=True)
+# 	med_radio = fields.Boolean(string='Radio', track_visibility=True)
+# 	med_revista = fields.Boolean(string='Revista', track_visibility=True)
+# 	med_prensa = fields.Boolean(string='Prensa', track_visibility=True)
+# 	med_ooh = fields.Boolean(string='OOH', track_visibility=True)
+# 	med_digital = fields.Boolean(string='Digital', track_visibility=True)
+# 	med_analisis = fields.Boolean(string='Analisis', track_visibility=True)
+
+# 	#	Medios
+# 	med_folio = fields.Char(string='Folio', track_visibility=True)
+# 	med_fecha_soli = fields.Datetime(string='Fecha de solicitud', track_visibility=True)
+# 	med_hora_soli = fields.Datetime(string='Hora de Solicitud', track_visibility=True)
+# 	med_fecha_entrega = fields.Datetime(string='Fecha Estimada de Entrega', track_visibility=True)
+# 	med_fecha_real = fields.Datetime(string='Fecha Real de Entrega', track_visibility=True)
+# 	med_elabora = fields.Char(string='Elaborará este Plan', track_visibility=True)
+# 	med_nivel_complejidad = fields.Char(string='Nivel de complejidad', track_visibility=True)
+
+# 	# odt medios
+# 	med_odt_fecha_entrega = fields.Datetime(string='Fecha de entrega solicitada', track_visibility=True)
+# 	med_clave_proyecto = fields.Char(string='Clave de Proyecto', track_visibility=True)
+# 	med_tipo_trabajo = fields.Selection([('1','Revisión de Pauta'),('2','Análisis'),('3','Plan de Medios')], string='Tipo de Trabajo Requerido', track_visibility=True)
+# 	# Plan de medios
+# 	med_objetivo_comunicacion = fields.Char(string='Objetivo de comunicación', track_visibility=True)
+# 	med_presupuesto_cliente = fields.Char(string='Presupuesto Global Cliente', track_visibility=True)
+# 	med_periodo_camap = fields.Char(string='Periodo camapaña y/o promoción', track_visibility=True)
+# 	med_tipo_analisis = fields.Selection([('1','Inversión Publicitaria (Competencia)'),('2','Audiencia (Ratings)'),('3','Hábitos de Consumo (BIMSA)')],string='Tipo de Análisis', track_visibility=True)
+# 	med_oberv_generales = fields.Text(string='Observaciones Generales', track_visibility=True)
+# 	med_solicita = fields.Char(string='Nombre de quien solicita', track_visibility=True)
+# 	med_getente = fields.Char(string='Gerente Medios', track_visibility=True)
+# 	med_dirc_comercial = fields.Char(string='Dirección Comercial', track_visibility=True)
+# 	med_icepresidencia = fields.Char(string='Vicepresidencia', track_visibility=True)
+
+# 	#Solicitud TVSA
+# 	tvsa_tipo_camp = fields.Selection([('1','TEASER'),('2','LANZAMIENTO'),('3','REGULAR')],string='Timpo de Campaña', track_visibility=True)
+# 	tvsa_otro = fields.Char(string='Otro: (Especificar)')
+# 	tvsa_catego_televisa = fields.Selection([('1','02SG-Algodon/Cotonetes'),('2','00AE-Alimentos en lata e instanta'),('3','00AI-Alimentos infantiles'),
+#                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
+#                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
+#                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
+#                     ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
+#                     ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+#                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+#                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
+#                     ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+#                     ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+#                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
+#                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
+#                     ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+#                      ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
+#                     ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+#                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
+#                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+
+# 	tvsa_nse = fields.Selection([('1','ABC+ Alto + Medio alto'),('2','c Medio'),('3','D+ Medio Bajo'),('4','DE Bajo')], string="NSE", track_visibility=True)
+
+# 	tvsa_grupo_edad_1 = fields.Boolean(string='4 - 12', track_visibility=True)
+# 	tvsa_grupo_edad_2 = fields.Boolean(string='13 - 18', track_visibility=True)
+# 	tvsa_grupo_edad_3 = fields.Boolean(string='19 - 29', track_visibility=True)
+# 	tvsa_grupo_edad_4 = fields.Boolean(string='30 - 44', track_visibility=True)
+# 	tvsa_grupo_edad_5 = fields.Boolean(string='45 - 54', track_visibility=True)
+# 	tvsa_grupo_edad_6 = fields.Boolean(string='55+', track_visibility=True)
+# 	tvsa_grupo_edad_otro = fields.Char(string='Otro', track_visibility=True)
+# 	tvsa_sexo_p = fields.Boolean(string='Personas', track_visibility=True)
+# 	tvsa_sexo_m = fields.Boolean(string='Mujeres', track_visibility=True)
+# 	tvsa_sexo_h = fields.Boolean(string='Hombres', track_visibility=True)
+# 	tvsa_rol_family = fields.Selection([('1','Jefes de Familia'),('2','Amas de Casa'),('3','Responsables de niños')],string='Rol Familiar', track_visibility=True)
+# 	years_03 = fields.Boolean(string='0 a 3 años', track_visibility=True)
+# 	years_48 = fields.Boolean(string='4 a 8 años', track_visibility=True)
+# 	years_912 = fields.Boolean(string='9 a 12 años', track_visibility=True)
+# 	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
+
+# 	duracion_spot = fields.Char(string='Duración Spot', track_visibility=True)
+# 	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO'),('6','SPOTEO COMPRA LIBRE')],string='Opciones de Compra', track_visibility=True)
+# 	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar promoción', track_visibility=True)
+# 	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
+# 	target_especial = fields.Char(string='En caso de ser Target de compra Especial, Especificar', track_visibility=True)
+
+# 	#regualcion
+# 	cofepris = fields.Selection([('1','SI'),('2','NO')],string='COFEPRIS', track_visibility=True)
+# 	a_favor = fields.Selection([('1','SI'),('2','NO')],string='A favor de lo mejor', track_visibility=True)
+# 	kids_policy = fields.Selection([('1','SI'),('2','NO')],string='Kids Policy', track_visibility=True)
+# 	sptv_periodo_camp1 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
+# 	canal_1 = fields.Boolean(string='2', track_visibility=True)
+# 	canal_2 =  fields.Boolean(string='5', track_visibility=True)
+# 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
+# 	tvsa_abierta = fields.Integer(string='Monto Máximo inversion TV abierta nacional (Costo clienten)', track_visibility=True)
+# 	tv_abierta_duracion_spot = fields.Datetime(string='Duracion del Spot', track_visibility=True)
+
+# 	canal_local = fields.Boolean(string='Canal Local', track_visibility=True)
+# 	bloqueos = fields.Boolean(string='Bloqueos', track_visibility=True)
+# 	sptv_periodo_camp2 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
+# 	foro_tv = fields.Boolean(string='Foro TV', track_visibility=True)
+# 	foro_tv_descrip = fields.Text(string='Box', track_visibility=True)
+# 	monto_inverison_tvabierta = fields.Float(string='Monto Maximo inversion TV Abierta Local (Costo Cliente)', track_visibility=True)
+# 	tvsa_abierta_observaciones = fields.Text(string='Observaciones generales o condiciones especiales', track_visibility=True)
+
+# 	# AAEETV
+# 	aaee_categoria_televisa = fields.Selection([('1','02SG-Algodon/Cotonetes'),('2','00AE-Alimentos en lata e instanta'),('3','00AI-Alimentos infantiles'),
+#                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
+#                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
+#                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
+#                     ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
+#                     ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+#                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+#                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
+#                     ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+#                     ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+#                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
+#                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
+#                     ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+#                      ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
+#                     ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+#                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
+#                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+
+
+# 	target_primario = fields.Char(string='Target Primario', track_visibility=True)
+# 	tarjet_secudario = fields.Char(string='Target Secunndario', track_visibility=True)
+
+# 	aaeetv_periodo_camp = fields.Char(string='Periodo de la Campaña', track_visibility=True)
+# 	aaee_monto_maximo = fields.Float(string='Monto Máximon Propuesta (Costo Cliente)', track_visibility=True)
+# 	aaee_monto_minimo = fields.Float(string='Monto Minimo Propuesta (Costo Cliente)', track_visibility=True)
+# 	aaeetv_2 = fields.Boolean(string='2', track_visibility=True)
+# 	aaeetv_5 = fields.Boolean(string='5', track_visibility=True)
+# 	aaeetv_9 = fields.Boolean(string='9', track_visibility=True)
+# 	aaeetv_foro_tv = fields.Boolean(string='Foro TV', track_visibility=True)
+# 	conoce_programas = fields.Char(string='Si conoce el(los) programa(s) indicar', track_visibility=True)
+
+# 	box_bool = fields.Boolean(string='Box', track_visibility=True)
+# 	canal5_bool = fields.Boolean(string='Canal 5', track_visibility=True)
+# 	canal9_bool = fields.Boolean(string='Canal 9', track_visibility=True)
+# 	comedia_bool = fields.Boolean(string='Comedia', track_visibility=True)
+# 	revista_bool = fields.Boolean(string='De Revista', track_visibility=True)
+# 	deportivos_bool = fields.Boolean(string='Deportivos', track_visibility=True)
+# 	foro_tv_bool = fields.Boolean(string='Foro TV', track_visibility=True)
+# 	lucha_bool = fields.Boolean(string='Lucha Libre', track_visibility=True)
+# 	noticiero_bool = fields.Boolean(string='Noticieros', track_visibility=True)
+
+# 	box_text = fields.Text(string='Acciones', track_visibility=True)
+# 	canal5_text = fields.Text(string='Acciones', track_visibility=True)
+# 	canal9_text = fields.Text(string='Acciones', track_visibility=True)
+# 	comedia_text = fields.Text(string='Acciones', track_visibility=True)
+# 	revista_text = fields.Text(string='Acciones', track_visibility=True)
+# 	foro_tv_text = fields.Text(string='Acciones', track_visibility=True)
+# 	lucha_text = fields.Text(string='Acciones', track_visibility=True)
+# 	noticiero_text = fields.Text(string='Acciones', track_visibility=True)
+# 	deportivo_text = fields.Text(string='Acciones', track_visibility=True)
+# 	box_selection = fields.Selection([('1','Super'),('2','Banner'),('3','Mención 10"'),('4','Mención 20"'),('5','Cortinilla a corte'),('6','Patrocinio de Programa'),('7','Patrocinio de Sección')], string='Box', track_visibility=True)
+	
+# 	canal5_selection = fields.Selection([('1','Edición creativa'),('2','Cortinilla a corte'),('3','L en contenido'),('4','Patrocinio de programa'),('5','Promos Vea'),('6','Social TV'),('7','BUG (Logo)')], string='Canal 5', track_visibility=True)
+	
+# 	canal9_selection = fields.Selection([('1','Patrocinio de programa'),('2','Cortinilla a corte')],string='Canal 9', track_visibility=True)
+	
+# 	comedia_selection = fields.Selection([('1','Cortinilla a corte'),('2','Avance del Programa'),('3','Patrocinio de programa')],string='Comedia', track_visibility=True)
+	
+# 	revista_selection = fields.Selection([('1','Pleca'),('2','Super'),('3','Banner'),('4','Mención 30"'),('5','Mención 60"'),
+# 								('6','Mención 120"'),('7','Promos Vea'),('8','Patrocinio de Programa'),('9','Patrocinio de sección'),
+# 								('10','Entrevista 60"'),('11','Entrevista 120"'),('12','Bumper'),('13','Wiper')], string='De Revista', track_visibility=True)
+	
+# 	deportivos_selection = fields.Selection([('1','Pleca'),('2','Super'),('3','Banner'),('4','Cortinilla a corte'),
+# 											 ('5','Promos Vea'),('6','Mención 30"'),('7','Mención 60"'),('8','Patrocinio de sección'),('9','Patrocinio de sección con pie'),('10','Patrocinio de programa')], string='Deportivos', track_visibility=True)
+	
+# 	foro_tv_selection = fields.Selection([('1','Entrevista'),('2','Desarrollo de Tema'),('3','Mención 60"'),('4','INT Activa con Mención de Marca'),
+# 										  ('5','Integración Activa'),('6','Integración Ambiental"'),('7','Mención 60"'),('8','Patrocinio de sección (5" + 5")'),
+# 										  ('9','Patrocinio de sección (5" + 5")+LOGO'),('10','Patrocinio programa')], string='Foro Tv', track_visibility=True)
+	
+# 	lucha_libre_selection = fields.Selection([('1','Super'),('2','Banner'),('3','Mención 10"'),('4','Mención 30"'),('5','Mención 60"'),('6','Mención 120"'),('7','Cortinilla a corte'),
+# 									('8','Patrocinio de Programa'),('9','Patrocinio de Sección'),('10','Patrocinio de sección con pie')], string='Lucha Libre AAA', track_visibility=True)
+	
+# 	noticieros_selection = fields.Selection([('1','Pleca'),('2','Super'),('3','Banner'),('4','Cortinilla a corte'),('5','Promos Vea'),('6','Avance del Programa'),
+# 								 ('7','Patrocinio de Programa'),('8','Patrocinio de sección'),('9','Resumen Informativo')],string='Noticieros', track_visibility=True)
+
+
+# 	aaeetv_abierta_local_periodo_camp = fields.Char(string='Periodo de la camapaña', track_visibility=True)
+# 	tabla_plaza = fields.One2many('odt.medios.plaza','plazas_id')
+# 	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Maximo Propuesta (Costo cliente)', track_visibility=True)
+# 	aaeetv_abierta_monto_maximo = fields.Float(string='Monto Minimo Propuesta (Costo cliente)', track_visibility=True)
+# 	aaeee_observations = fields.Text(string='Observaciones', track_visibility=True)
+
+# 	# Brief aaee
+# 	tv_abierta_bool = fields.Boolean(string='TV Abierta', track_visibility=True)
+# 	tv_local_bool = fields.Boolean(string='TV Local', track_visibility=True)
+# 	Network_bool = fields.Boolean(string='Network', track_visibility=True)
+# 	area_comercial_selection = fields.Selection([('1','Gabriela Martínez'),('2','Maricarmen Lobo'),('3','Pamela Urrutia'),('4','Brenda Aguirre'),('5','Vanessa Fuentes'),('6','Alejandra Cárdenas')],string='Dirección Área Comercial', track_visibility=True)
+# 	brief_presupuesto_minimo = fields.Float(string='Presupuesto Estimado minimo (a costo cliente)', track_visibility=True)
+# 	brief_presupuesto_maximo = fields.Float(string='Presupuesto Estimado maximo (a costo cliente)', track_visibility=True)
+# 	braa_elabora = fields.Char(string='Elabora', track_visibility=True)
+# 	braa_fecha = fields.Datetime(string='Fecha', track_visibility=True)
+# 	braa_periodo = fields.Char(string='Periodo', track_visibility=True)
+# 	braa_nombre_proyecto = fields.Char(string='Nombre o Tema del Proyecto', track_visibility=True)
+# 	braa_descripcion_personalidad = fields.Text(string='Descrpición y personalidad del producto', track_visibility=True)
+# 	braa_objetivo = fields.Text(string='Objetivo', track_visibility=True)
+# 	braa_idea_comunicar = fields.Text(string='Idea a Comunicar', track_visibility=True)
+# 	braa_ambiente_contexto = fields.Text(string='Ambiente o contexto compatible', track_visibility=True)
+# 	braa_talento_personaje = fields.Text(string='En caso de requerirse talento, Caracteristicas de los personajes', track_visibility=True)
+# 	braa_propuesta_idea = fields.Text(string='Propuesta o idea creativa (si la hay)', track_visibility=True)
+
+# 	braa_opcion1 = fields.Boolean(string='Telenovela', track_visibility=True)
+# 	braa_opcion2 = fields.Boolean(string='Revista', track_visibility=True)
+# 	braa_opcion3 = fields.Boolean(string='Series', track_visibility=True)
+# 	braa_opcion4 = fields.Boolean(string='Infantiles', track_visibility=True)
+# 	braa_opcion5 = fields.Boolean(string='Repeticiones', track_visibility=True)
+# 	braa_opcion6 = fields.Boolean(string='Reality', track_visibility=True)
+# 	braa_opcion7 = fields.Boolean(string='Noticiero', track_visibility=True)
+# 	braa_opcion8 = fields.Boolean(string='Comedia', track_visibility=True)
+# 	braa_opcion9 = fields.Boolean(string='Deportivo', track_visibility=True)
+# 	braa_opcion10 = fields.Boolean(string='Foro TV', track_visibility=True)
+
+# 	braa_programa_especifico = fields.Text(string='Programa(s) Especifico(s) si ya se conoce(n)', track_visibility=True)
+# 	braa_acciones = fields.Text(string='Acciones o Necesidades, Explicar: ', track_visibility=True)
+
+# 	# Spoteo Carriers
+# 	sc_marca_producto = fields.Char(string='Marca o Producto*')
+# 	sc_catego_televisa = fields.Selection([('1','02SG-Algodon/Cotonetes'),('2','00AE-Alimentos en lata e instanta'),('3','00AI-Alimentos infantiles'),
+#                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
+#                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
+#                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
+#                     ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
+#                     ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+#                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+#                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
+#                     ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+#                     ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+#                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
+#                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
+#                     ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+#                      ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
+#                     ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+#                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
+#                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+
+# 	sc_target_primario = fields.Char(string='Target Primario')
+# 	sc_target_secundario = fields.Char(string='Target Secundario')
+# 	sc_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
+# 	sc_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+# 	sc_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
+# 	sc_carriers = fields.Text(string='Carriers')
+# 	sc_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
+# 	sc_canales_conocen = fields.Text(string='Especifico si ya se conocen')
+# 	sc_observaciones = fields.Text(string='Observaciones o restricciones')
+
+# 	# network Televisa
+# 	nt_marca = fields.Char(string='Marca o Producto*')
+# 	nt_catego_televisa = fields.Selection([('1','02SG-Algodon/Cotonetes'),('2','00AE-Alimentos en lata e instanta'),('3','00AI-Alimentos infantiles'),
+#                     ('4','00WB-Alimentos/art p animales'),('5','00CA-Almacen/mueble/Tdepartame'),('6','00JE-Anteojos/lentes de contacto '),
+#                     ('7','SG04-Antiacidos'),('8','04SG-Anticonceptivos/preservativos'),('9','SG09-Antigripal '),('10','00SH-Aparatos p la salud'),
+#                     ('11','00IA-Aparatos/acces de video'),('12','00IB-Aparatos/acces sonido'),('13','00LA-Art de limpieza en grl'),('14','00DA-Art deportivo/campamentos'),('15','00TA-Art/acces pcfumar /dejar de'),('16','00NA-Auromóviles/Automotores'),('17','00SG-Bandita/tela adhesiva/venda'),
+#                     ('18','01VA-Barnices/lacas/pinturas inter'),('19','01AO-Barras Alimenticias'),('20','00BB-Bebidas alcohólicas'),('21','02BA-Bebidas Isotonicas'),
+#                     ('22','00SC-Biberones/cosmet bebe'),('23','00RD-Blancos'),('24','00LD-Bolsas/plasticos desechables'),('25','00AC-Botanas'),('26','00AB-Cafes/tes/mod de leche'),('27','00RC-Calzado'),('28','00HA-Camp Civicas/org no guber'),('29','02VA-Candados/cerrad protección'),('30','00AH-Carnes frias'),('31','00AM-Carnes/prod animales'),('32','03CA-Centros comerciales'),('33','02LA-Ceras'),
+#                     ('34','00AO-Cereales'),('35','01BB-Cerveza/bedib baja graduación'),('36','00AK-Chocolates/dulces/caramelos'),('37','03HB-Clinicas de belleza/estetica'),('38','01EC-Colchones'),('39','00NH-Combustib/lubricant auto'),('40','00PA-Computación'),('41','01KD-Congresos/simpos/conferenc'),('42','01AN-Consomes'),('43','00VB-Construcción y Vialidad'),('44','09SH-ConsumoResposable Alcohol'),('45','00SE-Cosmetico/maquill/desmaq'),('46','00SJ-Cremas/protectores p piel'),
+#                     ('47','01DB-Ctro de enteten/zoo/bal'),('48','04HB-Cupones/vales de despensa'),('49','00EE-Decoración/adornos hogar'),('50','002SE-Depiladores'),('51','02DB-Deportivos/gimnasios'),('52','02SB-Desodorantes/antitranspirantes')
+#                     ,('53','03LA-Destapacanos/desasolvadores'),('54','00LC-Detergentes/jabon p ropa'),('55','00IC-Discos/cassettes/compactos'),('56','01EB-Economizad/Purificad agua'),('57','00AJ-Edulcorante'),('58','00EA-Electrodomest/linea blanca'),('59','00XA-Equipo p oficina o escuela'),('60','00VC-Equipos industriales'),('61','00KA-Escuelas/Institutos/Cursos'),('62','02KD-Espectaculos/Teatro/Circo')
+#                     ,('63','03SB-Esponjas limpiad p piel'),('64','06CA-Farmacias'),('65','05CA-Ferreterias'),('66','00SA-Fijadores/tratam p cabello'),('67','00ID-Fotografia'),('68','00SI-Fragancias'),('69','00AF-Frutas nat/legum/verduras'),('70','05AG-Funerarias,Velatorios'),('71','03KD-Galerias/expos/ferias/museos'),('72','01HA-Gobierno/camp gubernamenta')
+#                     ,('73','00AS-Harinas/Tortillas/tostadas'),('74','00VE-Herramientas'),('75','01AM-Hielo'),('76','00SF-Higiene intima femenina'),('77','00OA-Hoteles'),('78','00ED-Iluminacion/pilas/focos/velas'),('79','03VA-Impermeabilizantes'),('80','00VD-Inmobiliarias'),('81','00LB-Insecticidas'),('82','00JA-Instrumentos/acc musicales')
+#                     ,('83','04SB-Jabon toc/shampoos piel'),('84','EA15-Jabon Lavatrastes'),('85','00JB-Juegos/juguetes'),('86','03BA-Jugos/nectares'),('87','SG15-Laxantes'),('88','00AG-Leches'),('89','00KC-Libros/revistas/Med impresos'),('90','00UA-Loterias/juegos de azar'),('91','01JE-Maletas/bolsas/portafolios'),('92','01AG-Mantequillas/margarinas')
+#                     ,('93','00MA-Maquinas/refacciones'),('94','04VA-Materiales p construccion'),('95','03SG-Medicamentos en General'),('96','00NB-Motocicletas'),('97','08SB-Pañales desechables'),('98','01LD-Palillos'),('99','00AA-Panificacion'),('100','02LD-Papel aluminio/encerado'),('101','06SB-Papel/pañuelo/servill desech'),
+#                      ('102','02HA-Partidos politicos'),('103','05KD-Peliculas/cines'),('104','05VA-Pisos/losetas/azulejos'),('105','02EB-Plateria general'),('106','03LD-Platos/vasos/cubiert desecha'),('107','00AP-Postres/mermelad/helados'),('108','00SD-Prod p higiene bucal'),('109','06SG-Productos contra el acne'),('110','07SB-Productos pedicos'),('111','05SG-Pruebas de embarazo'),('112','06VA-Puertas electricas/general')
+#                     ,('113','00PF-Pulpa de fruta'),('114','02AN-Pures'),('115','02AG-Quesos'),('116','01KB-Radio'),('117','00BA-Refrescos'),('118','00JF-Relojes/joyas'),('119','00OB-Restaurant/Gastron/Cnocturno'),('120','00RB-Ropa'),('121','03AN-Salsas'),('122','00FB-Seguros'),('123','05HB-Serv mensajeria/paqueteria'),('124','00FA-Serv. bancarios/financieros'),('125','02HB-Servicios de Salud'),('126','01SA-Shampoos/acondicionadores'),('127','03KB-Sist de television paga'),('128','00AD-Sopas'),('129','LC04-Suavizantes de ropa'),('130','03AG-Sustitutos de crema'),('131','00RA-Telas/hilos/acce p cost'),('132','00QA-Telecomunicaciones')
+#                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas humedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Lineas aereas'),('141','00OC-Turismo/viajes/Lineas aereas'),('142','0001-Uso Interno Espacio Garantizad')
+#                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promocion'),('145','02KB-Uso Interno Promocion canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoria Televisa', track_visibility=True)
+
+# 	nt_target_primario = fields.Char(string='Target Primario')
+# 	nt_target_secundario = fields.Char(string='Target Secundario')
+# 	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
+# 	nt_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+# 	nt_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
+# 	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
+# 	nt_especifico = fields.Text(string='Especificos')
+# 	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
+# 	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ')
+# 	nt_aaee_inversion = fields.Float(string='Monto Maximo inversión AAEE Networks Televisa (costo cliente)*')
+# 	nt_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
+# 	nt_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
+# 	nt_aaee_especificos1 = fields.Selection([('1','Bandamax'),('2','De Pelicula'),('3','De Pelicula HD'),('4','De Pelicula MPX'),('5','Distrito Comedia'),('6','Golden'),
+# 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
+# 											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Especificos')
+# 	nt_aaee_especificos2 = fields.Selection([('1','Bandamax'),('2','De Pelicula'),('3','De Pelicula HD'),('4','De Pelicula MPX'),('5','Distrito Comedia'),('6','Golden'),
+# 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
+# 											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Especificos')
+# 	nt_aaee_programas = fields.Char(string='Si conoces el(los) programa(s) indicar')
+# 	nt_aaee_deport = fields.Char(string='Deportivos')
+# 	nt_aaee_revista = fields.Char(string='De Revista')
+# 	nt_aaee_musicales = fields.Char(string='Musicales')
+# 	nt_aaee_paquete_evento = fields.Text(string='Señalar si se requiere paquete para evento especifico (Ej.: NFL, Champions League...)')
+# 	nt_aaee_observaciones = fields.Text(string='Observaciones o restricciones AAEE Networks Televisa: ')
+
+# 	# Otros Networks
+# 	ot_marca = fields.Char(string='Marca o Producto*')
+# 	ot_target_primario = fields.Char(string='Target Primario')
+# 	ot_target_secundario = fields.Char(string='Target Secundario')
+# 	ot_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo otros network*')
+# 	ot_periodo_campana = fields.Char(string='Preiodo de la Campaña*')
+# 	ot_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
+# 	ot_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
+# 	ot_especifico = fields.Text(string='Especificos')
+# 	ot_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
+# 	ot_observaciones = fields.Text(string='Observaciones o restricciones spoteo otros Networks: ')
+	
+# 	ot_aaee_inversion = fields.Float(string='Monto Maximo inversión AAEE Networks (costo cliente)*')
+# 	ot_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
+# 	ot_aaee_especificos = fields.Char(string='Especificos')
+# 	ot_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
+# 	ot_aaee_programa_especifico = fields.Text(string='Si conocen el(los) programa(s) indicar', track_visibility=True)
+# 	ot_aaee_paquete_evento = fields.Text(string='Señalar si se requiere paquete para evento especifico (Ej.: NFL, Champions League...)')
+# 	ot_aaee_observaciones = fields.Text(string='Observaciones o restricciones AAEE Networks: ')
+
+# 	# Revista
+# 	r_marca = fields.Char(string='Marca o Producto*')
+# 	r_target_interes = fields.Char(string='Target de Interés*')
+# 	r_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+# 	r_monto_inversion = fields.Float(string='Inversión revistas(Costo Cliente)*')
+# 	r_tamano_insercion = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
+# 	r_tipo_creatividad = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo (Creatividades)')
+# 	r_observaciones = fields.Text(string='Observaciones')
+# 	tabla_medios_revista = fields.One2many('odt.medios.revista','revista_id')
+
+# 	#Radio
+# 	rad_marca = fields.Char(string='Marca o Producto*')
+# 	rad_target_interes = fields.Char(string='Target de Interés*')
+# 	rad_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+# 	rad_monto_inversion = fields.Float(string='Inversión Radio (Costo Cliente)*')
+# 	rad_tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
+# 	rad_observaciones = fields.Text(string='Observaciones')	
+# 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
+
+# 	#ooh
+# 	oh_marca = fields.Char(string='Marca o Producto*')
+# 	oh_target_interes = fields.Char(string='Target de Interés*')
+# 	oh_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+# 	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)*')
+# 	oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
+# 										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
+# 						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Activadad')
+# 	oh_observaciones = fields.Text(string='Comentarios')
+# 	tabla_medios_ooh = fields.One2many('odt.medios.ooh','ooh_id')
+
+# 	#Prensa
+# 	p_marca = fields.Char(string='Marca o Producto*')
+# 	p_target_interes = fields.Char(string='Target de Interés*')
+# 	p_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+# 	p_monto_inversion = fields.Float(string='Inversión Prensa (Costo Cliente)*')
+# 	p_tamano = fields.Selection([('1','Plana'),('2','Robaplana'),('3','1/2 Plana Horizontal'),('4','1/2 Plana Vertical'),('5','1/4 Plana'),('6','1/8 Plana'),('7','Otro')],string='Tamaño*')
+# 	p_observaciones = fields.Text(string='Observaciones')		
+# 	tabla_medios_prensa = fields.One2many('odt.medios.prensa','prensa_id')
+
+# 	# Digital
+# 	d_marca = fields.Char(string='Marca o Producto*')
+# 	d_periodo_campana = fields.Char(string='Periodo de la camapaña*')
+# 	d_target_demo = fields.Char(string='Target Demográfico*')
+# 	d_target_perfil = fields.Char(string='Target perfil Psicográfico*')
+# 	d_objetivo_campana = fields.Text(string='Objetivo de la camapaña*')
+# 	d_option1 = fields.Boolean(string='Branding')
+# 	d_option2 = fields.Boolean(string='Registros')
+# 	d_option3 = fields.Boolean(string='Redes Sociales')
+# 	d_option4 = fields.Boolean(string='Búsqueda')
+# 	d_landing = fields.Char(string='Landing Page (Sólo si aplica)')
+# 	d_description_campana = fields.Text(string='Descrpición de la Campaña*')
+# 	d_requerirlos = fields.Text(string='Enlistar los sitios especificos en caso de requerirlos:')
+# 	d_folio_proyecto = fields.Char(string='Folio proyecto digital (si ya lo tiene)')
+# 	d_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costos Cliente)*')
+# 	d_monto_minimo = fields.Float(string='Monto Minimo Propuesta (Costos Cliente)*')
+
+# 	# Analisis
+# 	an_inversion = fields.Boolean(string='Inversión Publicitaria')
+# 	an_habitos = fields.Boolean(string='Hábitos')
+# 	an_audiencia = fields.Boolean(string='Audiencias')
+# 	an_otro = fields.Char(string='Otro: ')
+# 	an_marca = fields.Char(string='Marca o Producto*')
+# 	an_sector = fields.Char(string='Sector (NIELSEN/IBOPE)*')
+# 	an_categoria = fields.Char(string='Categoria (NIELSEN/IBOPE)*')
+# 	an_year_inmediato = fields.Boolean(string='Año Inmediato Anterior')
+# 	an_year_movil = fields.Boolean(string='Año Móvil')
+# 	an_periodo = fields.Char(string='Otro Periodo')
+# 	an_analisis = fields.Text(string='Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.')
+# 	an_year_inmediato1 = fields.Boolean(string='Año Inmediato Anterior')
+# 	an_year_movil1 = fields.Boolean(string='Año Móvil')
+# 	an_periodo1 = fields.Char(string='Otro Periodo')
+# 	an_target_interes = fields.Char(string='Target de interés*')
+# 	an_analisis1 = fields.Text(string='Objetivo del Análisis.')	
+# 	an_marca1 = fields.Char(string='Categoría o Marca/Producto de interés*')
+# 	an_target_interes1 = fields.Char(string='Target de interés*')
+# 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
+# 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisisá y/o requerimientos de informacion.')
 	# medios = fields.Monetary(string='Medios P. Autorizado')
 
 	
