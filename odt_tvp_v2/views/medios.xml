@@ -491,9 +491,11 @@
                               <span>Medios informará cuál es el carrier que opera en las(s) plaza(s) solicitada(s)</span>
                               <field name="sc_canales" />
                               <field name="sc_canales_conocen"/>
+                              <br/>
                               <div class="text-muted">
                                 La compra de spots en carriers es rotativa aleatoria por frania. No hay posibilidades de ordenar horario especifico.
                               </div>
+                              <br/>
                               <field name="sc_observaciones"/>
                             </group>
                           </group>
@@ -529,7 +531,7 @@
                               <field name="nt_aaee_canales"/>
                               <field name="nt_aaee_especificos1"/>
                               <field name="nt_aaee_especificos2"/>
-                              <h3>El tipo de acciones especiales que puedan hacerse dependen de la estructura y feed de cada canal y programa</h3>
+
                               <field name="nt_aaee_programas"/>
                               <h3>Acciones especiales standar (de catátologo) solicitado:</h3>
                               <field name="nt_aaee_deport"/>
@@ -561,7 +563,7 @@
                               <p>
                                 La variedad de acciones especiales en networks está acotada a las que pueden realizarse de acuerdo a la estructura y feed de los programas.
                                 La factibilidad de cualquier acción que se solicite tiene que verificarse con el proveedor.
-                                Deben tomarse en cuenta las fechas de grabación(Aproximadamente un mes antes de aire). Preguntar en medios.
+                                Deben tomarse en cuenta las fechas de grabación. Preguntar en medios.
                               </p>
                               <field name="ot_aaee_inversion"/>
                               <field name="ot_aaee_periodo_campana"/>
@@ -614,24 +616,23 @@
                               <field name="rad_target_interes"/>
                               <field name="rad_periodo_campana"/>
                               <field name="rad_monto_inversion"/>
-                              <field name="rad_tipo"/>
-                            </group>
-                            <group>
-                              <page name="cotizacion_interna_diseno" string="Cotizacion">
-                                  <field name="tabla_medios_radio" widget="one2many_list">
-                                    <tree editable="bottom">
-                                        <field name="plaza"/>
-                                        <field name="tipo"/>
-                                        <field name="duracionn"/>
-                                    </tree>
-                                  </field>
-                              </page> 
                             </group>
                             <group>
                               <field name="rad_observaciones"/>
                             </group>
-                          </group>
+                            <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                      <field name="tabla_medios_radio" widget="one2many_list">
+                                        <tree editable="bottom">
+                                            <field name="plaza"/>
+                                            <field name="tipo"/>
+                                            <field name="duracionn"/>
+                                        </tree>
+                                      </field>
+                            </page> 
+                            </group>
+
                         </page>
+
 
                         <page name="medios_prensa" string="Prensa" attrs="{'invisible': [('med_prensa','=',False)]}">
                           <group>
