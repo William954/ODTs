@@ -270,7 +270,7 @@
                             </group>
                             <group string="ODT Medios">
                               <field name="med_odt_fecha_entrega"/>
-                              <field name="med_clave_proyecto"/>
+                              <!--<field name="med_clave_proyecto"/>-->
                               <field name="med_tipo_trabajo"/>
                             </group>
                             <group>

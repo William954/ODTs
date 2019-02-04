@@ -348,8 +348,8 @@ class OdtMedios(models.Model):
 	_description = 'Ventana kanban para la estructura de medios'
 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
 
-	tipo_medios = fields.Selection([('1','Revisión de pauta'),('2','Análisis'),('3','Plan de Medios')],string='Tipo Medios', track_visibility=True)
 	presupuesto_cliente = fields.Float(string='Presupuesto del Cliente', track_visibility=True)
+	med_tipo_trabajo = fields.Selection([('1','Revisión de Pauta'),('2','Análisis'),('3','Plan de Medios')], string='Tipo de Trabajo Requerido', track_visibility=True)
 	# sección para odt medios
 	med_spot_tv_abierta = fields.Boolean(string='Spot TV Abierta TVSA', track_visibility=True)
 	med_aaee_tv = fields.Boolean(string='AAEE TV TVSA', track_visibility=True)
@@ -375,8 +375,7 @@ class OdtMedios(models.Model):
 
 	# odt medios
 	med_odt_fecha_entrega = fields.Datetime(string='Fecha de entrega solicitada', track_visibility=True)
-	med_clave_proyecto = fields.Char(string='Clave de Proyecto', track_visibility=True)
-	med_tipo_trabajo = fields.Selection([('1','Revisión de Pauta'),('2','Análisis'),('3','Plan de Medios')], string='Tipo de Trabajo Requerido', track_visibility=True)
+	#med_clave_proyecto = fields.Char(string='Clave de Proyecto', track_visibility=True)
 	# Plan de medios
 	med_objetivo_comunicacion = fields.Char(string='Objetivo de comunicación', track_visibility=True)
 	med_presupuesto_cliente = fields.Char(string='Presupuesto Global Cliente', track_visibility=True)
