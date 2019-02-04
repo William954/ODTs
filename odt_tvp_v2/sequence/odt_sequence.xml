@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_odt_btl" model="ir.sequence">
+            <field name="name">Area BTL/PDV</field>
+            <field name="code">odt.btlpdv</field>
+            <field name="prefix">BTL/PDV</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_contact" model="ir.sequence">
+            <field name="name">Area Contact Center</field>
+            <field name="code">odt.contactcenter</field>
+            <field name="prefix">Contact Center</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_diseno" model="ir.sequence">
+            <field name="name">Area Diseño</field>
+            <field name="code">odt.diseno</field>
+            <field name="prefix">Diseño</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_estrategia" model="ir.sequence">
+            <field name="name">Area Estrategia</field>
+            <field name="code">odt.estrategia</field>
+            <field name="prefix">Estrategia</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_gestoria" model="ir.sequence">
+            <field name="name">Area Gestoria</field>
+            <field name="code">odt.gestoria</field>
+            <field name="prefix">Gestoria</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_logistica" model="ir.sequence">
+            <field name="name">Area Logistica</field>
+            <field name="code">odt.logistica</field>
+            <field name="prefix">Logistica</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_digital" model="ir.sequence">
+            <field name="name">Area Marketing Digital</field>
+            <field name="code">odt.digital</field>
+            <field name="prefix">Digital</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_medios" model="ir.sequence">
+            <field name="name">Area Medios</field>
+            <field name="code">odt.medios</field>
+            <field name="prefix">Medios</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_odt_produccion" model="ir.sequence">
+            <field name="name">Area Produccion</field>
+            <field name="code">odt.produccion</field>
+            <field name="prefix">Produccion</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

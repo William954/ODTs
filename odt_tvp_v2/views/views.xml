@@ -1,0 +1,461 @@
+<odoo>
+  <data>
+
+      <!-- Campos nuevos en la interface de CRM -->
+        <record id="inherit_fields_form" model="ir.ui.view">
+          <field name="name">inherit.fields.form</field>
+          <field name="model">crm.lead</field>
+          <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+          <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+              <field name="marca" domain="[('partner_marca_id','=',partner_id)]"/>
+              <field name="target"/>
+              <field name="project"/>
+            </xpath>
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
+            </xpath>
+          </field>
+        </record>
+
+<!-- direccionamiento de botones -->
+
+        <record id="inherit_name_page" model="ir.ui.view">
+          <field name="name">inherit.name.page</field>
+          <field name="model">crm.lead</field>
+          <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+          <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]//page[1]" position="attributes">
+              <attribute name="string">Mecanica</attribute>
+            </xpath>
+          </field>
+        </record>
+
+        <record id="invisible_planned" model="ir.ui.view">
+          <field name="name">inherit.invisible.planned</field>
+          <field name="model">crm.lead</field>
+          <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+          <field name="arch" type="xml">
+            <xpath expr="//field[@name='planned_revenue']" position="attributes">
+              <attribute name="invisible">1</attribute>
+            </xpath>
+          </field>
+        </record>
+
+        <record id="action_odt_crm" model="ir.actions.act_window">
+            <field name="name">Selecciona la ODT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.odt.wizard1</field>
+            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('opportunity_id', '=', active_id)]</field>
+            <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id}</field>
+            <field name="target">new</field>
+        </record>
+
+<!-- Brief y Presupuestos Autorizados -->
+      <record id="inherit_page" model="ir.ui.view">
+        <field name="name">inherit.page</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+          <xpath expr="//form[1]/header[1]" position="inside">
+                <button name="%(action_odt_crm)d" string="Nueva ODT" type="action" class="oe_highlight" attrs="{'invisible': ['|', ('active','=',False)]}"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+            <page name="brief" string="Brief">
+              <group name="left">
+                          <group name="brief">
+                              <field name="product"/>
+                              <field name="slogan_marca"/>
+                              <field name="logo_marca"/>
+                          </group>
+                          <group name="reto_proyecto" string="Reto del Proyecto">
+                              <field name="rp_1" />
+                              <field name="rp_2" />
+                              <field name="rp_3" />
+                              <field name="rp_4" />
+                          </group>
+                          <group name="objetivo_negocio" string="Objetivo del Negocio">
+                              <field name="on_1" />
+                              <field name="on_2" />
+                              <field name="on_3" />
+                              <field name="on_4" />
+                          </group>
+                          <group name="objetivo_marca"  string="Objetivo de la Marca">
+                              <field name="ob_1" />
+                              <field name="ob_2" />
+                              <field name="ob_3" />
+                          </group>
+                          <group name="caracter_marca" string="Caracter de la Marca">
+                              <field name="cm_1" />
+                              <field name="cm_2" />
+                              <field name="cm_3" />
+                              <field name="cm_4" />
+                          </group>
+                      </group>
+                      <group name="right">
+                          <group name="competidores">
+                              <field name="qcs_1"/>
+                              <field name="qcs_2"/>
+                              <field name="qcs_3"/>
+                          </group>
+                          <group name="dialogo">
+                              <field name="vh_1"/>
+                              <field name="vh_2"/>
+                              <field name="vh_3"/>
+                          </group>
+                          <group name="comunicar">
+                              <field name="dc_1"/>
+                              <field name="dc_2"/>
+                              <field name="dc_3"/>
+                          </group>
+                          <group name="no_comunicar?">
+                              <field name="qc_1"/>
+                              <field name="qc_2"/>
+                          </group>  
+                          <group name="ccp">
+                            <field name="ccp_1"/>
+                            <field name="ccp_2"/>
+                          </group>
+                          <group name="quiz_11" string="¿CÓMO Y DÓNDEVAMOS A COMUNICAR EL PROYECTO?">
+                            <field name="cdp_1"/>
+                            <field name="cdp_2"/>
+                            <field name="cdp_3"/>
+                          </group>
+                          <group name="quiz_12">
+                             <field name="qz_12"/>
+                             <field name="qz_13"/>
+                             <field name="qz_14"/>
+                             <field name="qz_15"/>
+                             <field name="qz_16"/>
+                          </group>
+                  </group>
+            </page>
+            <page name="montos" string="Presupuesto Autorizado">
+              <group string="Presupuestos por areas">
+                <group>
+                    <field name="btl" />
+                    <field name="produccion" />
+                    <field name="diseño_creatividad" />
+                    <field name="gestoria_logistica" />
+                    <field name="call_center"/>
+                    <field name="digital"/>
+                    <field name="medios"/>
+                    <field name="logistica"/>
+                    <field name="estrategia"/>
+                </group>
+              </group>
+            </page>
+          </xpath>
+        </field>
+      </record>
+
+        <record id="action_marcas_company" model="ir.actions.act_window">
+              <field name="name">Marcas</field>
+              <field name="res_model">crm.marca</field>
+              <field name="view_mode">tree,form</field>
+              <field name="view_type">form</field>
+              <field name="domain">[('partner_marca_id', '=', active_id)]</field>
+              <field name="context">{'search_default_partner_marca_id': active_id, 'default_partner_marca_id': active_id}</field>
+        </record>
+
+        <record id="inherit_marca_partner" model="ir.ui.view">
+          <field name="name">inherit.marca.partner</field>
+          <field name="model">res.partner</field>
+          <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="arch" type="xml">
+          <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-list" type="action" name="%(action_marcas_company)d">
+                      <field name="marca_count" widget="statinfo" string="Marcas"/>
+               </button>
+          </xpath>
+          </field>
+        </record>
+
+        <!--  Definimos los eventos -->
+
+        <record id="btlpdv_action" model="ir.actions.act_window">
+           <field name="name">BTL/PDV</field>
+           <field name="res_model">odt.btlpdv</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,form,tree,pivot</field>
+        </record>
+
+        <record id="medios_action" model="ir.actions.act_window">
+           <field name="name">Medios</field>
+           <field name="res_model">odt.medios</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="produccion_action" model="ir.actions.act_window">
+           <field name="name">Produccion</field>
+           <field name="res_model">odt.produccion</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="diseño_action" model="ir.actions.act_window">
+           <field name="name">Diseño</field>
+           <field name="res_model">odt.diseno</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="contact_center_action" model="ir.actions.act_window">
+           <field name="name">Contact Center</field>
+           <field name="res_model">odt.contactcenter</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="gestoria_action" model="ir.actions.act_window">
+           <field name="name">Gestoria</field>
+           <field name="res_model">odt.gestoria</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="marketing_action" model="ir.actions.act_window">
+           <field name="name">Marketing</field>
+           <field name="res_model">odt.digital</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="logistica_action" model="ir.actions.act_window">
+           <field name="name">Logistica</field>
+           <field name="res_model">odt.logistica</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <record id="estrategia_action" model="ir.actions.act_window">
+           <field name="name">Estrategia</field>
+           <field name="res_model">odt.estrategia</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">kanban,tree,form,pivot</field>
+        </record>
+
+        <!--  Definimos el menu se necesita el action para poder mostrarse en la tira del menu"-->
+        <menuitem id="odt_root" name="ODTS"/>
+        <menuitem id="odt_menu0" name="BTL/PDV" sequence="0" parent="odt_root" action="btlpdv_action"/>
+        <menuitem id="odt_menu1" name="Medios" sequence="1" parent="odt_root" action="medios_action"/>
+        <menuitem id="odt_menu2" name="Produccion" sequence="2" parent="odt_root" action="produccion_action"/>
+        <menuitem id="odt_menu3" name="Diseño" sequence="3" parent="odt_root" action="diseño_action"/>
+        <menuitem id="odt_menu4" name="Gestoria" sequence="4" parent="odt_root" action="gestoria_action"/>
+        <menuitem id="odt_menu5" name="Marketing" sequence="5" parent="odt_root" action="marketing_action"/>
+        <menuitem id="odt_menu7" name="Logistica" sequence="7" parent="odt_root" action="logistica_action"/>
+        <menuitem id="odt_menu8" name="Estrategia" sequence="8" parent="odt_root" action="estrategia_action"/>
+        <menuitem id="odt_menu9" name="Contact Center" sequence="9" parent="odt_root" action="contact_center_action"/>
+
+
+
+<!-- Vistas para botones de odts -->
+
+        <record id="action_btl_view" model="ir.actions.act_window">
+                  <field name="name">BTL/PDV</field>
+                  <field name="res_model">odt.btlpdv</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_medios_view" model="ir.actions.act_window">
+                  <field name="name">Medios</field>
+                  <field name="res_model">odt.medios</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_produccion_view" model="ir.actions.act_window">
+                  <field name="name">Produccion</field>
+                  <field name="res_model">odt.produccion</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_diseno_view" model="ir.actions.act_window">
+                  <field name="name">Diseño</field>
+                  <field name="res_model">odt.diseno</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_gestoria_view" model="ir.actions.act_window">
+                  <field name="name">Gestoria</field>
+                  <field name="res_model">odt.gestoria</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_digital_view" model="ir.actions.act_window">
+                  <field name="name">Marketing Digital</field>
+                  <field name="res_model">odt.digital</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_logistica_view" model="ir.actions.act_window">
+                  <field name="name">Logistica</field>
+                  <field name="res_model">odt.logistica</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_estrategia_view" model="ir.actions.act_window">
+                  <field name="name">Estrategia</field>
+                  <field name="res_model">odt.estrategia</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+        <record id="action_contact_view" model="ir.actions.act_window">
+                  <field name="name">Contact Center</field>
+                  <field name="res_model">odt.contactcenter</field>
+                  <field name="view_mode">kanban,tree,form,graph,pivot</field>
+                  <field name="domain">[('crm_odt_id', '=', active_id)]</field>
+                  <field name="context">{'search_default_crm_odt_id': active_id, 'default_crm_odt_id': active_id}</field>
+        </record>
+
+
+<!-- Boton stat info para ODT -->
+      
+      <record id="inherit_button_box" model="ir.ui.view">
+        <field name="name">inherit.button.box</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+          <xpath expr="//div[@class='oe_button_box']" position="inside">
+
+                <button id="button_1" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_btl_view)d">
+                      <field name="btl_count" widget="statinfo" string="BTL/PDV"/>
+               </button>
+
+                <button id="button_2" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_contact_view)d">
+                      <field name="contact_count" widget="statinfo" string="Contact Center"/>
+               </button>
+
+                <button id="button_3" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_diseno_view)d">
+                      <field name="diseno_count" widget="statinfo" string="Diseño"/>
+               </button>
+
+                <button id="button_4" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_estrategia_view)d">
+                      <field name="estrategia_count" widget="statinfo" string="Estrategia"/>
+               </button>
+
+                <button id="button_5" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_gestoria_view)d">
+                      <field name="gestoria_count" widget="statinfo" string="Gestoria"/>
+               </button>
+
+                <button id="button_6" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_logistica_view)d">
+                      <field name="logistica_count" widget="statinfo" string="Logistica"/>
+               </button>
+
+                <button id="button_7" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_digital_view)d">
+                      <field name="digital_count" widget="statinfo" string="Marketing Digital"/>
+               </button>
+
+                <button id="button_8" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_medios_view)d">
+                      <field name="medios_count" widget="statinfo" string="Medios"/>
+               </button>
+
+                <button id="button_9" class="oe_stat_button" icon="fa-list" type="action" t-attf-data-context="{'search_default_crm_odt_id': opportunity_id, 'default_crm_odt_id': opportunity_id  }" name="%(action_produccion_view)d">
+                      <field name="produccion_count" widget="statinfo" string="Produccion"/>
+               </button>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]//h2[1]" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+        </field>
+      </record>    
+
+
+    <!-- Campos para tipos de Gatos -->
+<!-- 
+      <record id="inherit_account_column" model="ir.ui.view">
+              <field name="name">inherit.account.column</field>
+              <field name="model">sale.order</field>
+              <field name="inherit_id" ref="sale.view_order_form"/>
+              <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='analytic_tag_ids']" position="after">
+                  <field name='tipo_gasto'/>
+                </xpath>
+              </field>
+      </record>
+ -->
+      <record id="inherit_page_finanza_project" model="ir.ui.view">
+              <field name="name">inherit.finanza.page</field>
+              <field name="model">project.project</field>
+              <field name="inherit_id" ref="project.edit_project"/>
+              <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]//notebook[1]" position="inside">
+                  <page name="finanzas" string="Control Presupuestal">
+                    <group>
+                      <group>
+<!--                         <field name='ref_project'/>
+                        <field name='fin_clave'/>
+                        <field name='dates'/> -->
+                        <field name='ref_customer'/>
+                      </group>
+                      <group>
+                        <field name='u_bruta_p'/>
+                        <field name='u_bruta_r'/>
+                        <field name='i_facturado'/>
+                        <field name="total_pagar" readonly="1"/>
+                      </group>
+                      <group string='Gasto Aprobado'>
+                          <field name='btl'/>
+                          <field name='produccion'/>
+                          <field name='diseño_creatividad'/>
+                          <field name='gestoria_logistica'/>
+                          <field name='call_center'/>
+                          <field name='digital'/>
+                          <field name='medios'/>
+                          <field name="logistica"/>
+                          <field name="estrategia"/>
+                      </group>
+                      <group name="ingresos">
+                            <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                <field name="tabla_gastos" widget="one2many_list">
+                                  <tree editable="bottom">
+                                      <field name="etiqueta_analitica" widget="many2many_tags"/>
+                                      <field name='fac_gastos'/>
+                                      <field name='disviacion'/>
+                                  </tree>
+                                </field>
+                                <group>
+                                </group>
+                            </page> 
+                      </group>
+                      </group>
+                  </page>                  
+                </xpath>
+              </field>
+      </record>
+
+
+      <record id="inherit_crossovered_budget" model="ir.ui.view">
+              <field name="name">inherit.crossovered.budget.column</field>
+              <field name="model">crossovered.budget</field>
+              <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+              <field name="arch" type="xml">
+                <xpath expr="//field[@name='crossovered_budget_line']/tree//field[@name='analytic_account_id']" position="after">
+                  <field name="detalle_pres"/>
+                  <field name="area"/>
+                  <field name="departamento" widget='many2many_tags'/>
+                </xpath>
+              </field>
+      </record>
+  </data>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="crm_selection_odt">
+            <field name="name">Selecciona la ODT</field>
+            <field name="priority">20</field>
+            <field name="model">crm.odt.wizard1</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Elige la Odt">
+                    <group>
+                        <group>
+                            <field name="areas"/>
+                            <field name="opportunity_id" invisible="1"/>
+                        </group>
+                        <footer>
+                                <button class="oe_highlight" name="create_odt" type="object" string="Crear"/>
+                                <button class="oe_highlight" name="cancel" special="cancel" string="Cancelar" />
+                        </footer> 
+                    </group>
+                </form>
+            </field>
+        </record>        
+    </data>
+</odoo>

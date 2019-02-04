@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="odt_group_category" model="ir.module.category">
+         <field name="name">ODTs</field>
+         <field name="sequence">50</field>
+    </record>
+
+    <record id="group_odt" model="res.groups">
+         <field name="name">ODT</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+    
+    <record id="group_btlpdv" model="res.groups">
+         <field name="name">BTL/PDV</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_produccion" model="res.groups">
+         <field name="name">Producción</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_diseno" model="res.groups">
+         <field name="name">Diseño</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_gestoria" model="res.groups">
+         <field name="name">Gestoria</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_contactcenter" model="res.groups">
+         <field name="name">Contact Center</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_digital" model="res.groups">
+         <field name="name">Marketing Digital</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_medios" model="res.groups">
+         <field name="name">Medios</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record>
+
+    <record id="group_logistica" model="res.groups">
+         <field name="name">Logistica</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record> 
+
+    <record id="group_estrategia" model="res.groups">
+         <field name="name">Estrategia</field>
+         <field name="category_id" ref="odt_group_category"/>
+    </record> 
+</odoo>

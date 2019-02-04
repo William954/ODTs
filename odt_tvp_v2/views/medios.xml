@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+    <data> 
+      <!-- Vista Kanban -->
+        <record id="kanban_medios" model="ir.ui.view">
+        <field name="model">odt.medios</field>
+        <field name="arch" type="xml">
+          <kanban default_group_by="stage_id" class="o_kanban_small_column" >
+                  <field name="stage_id"/>
+                  <field name="color"/>
+                  <field name="kanban_state"/>
+                  <field name="priority"/>
+                  <field name="user_id"/>
+                  <progressbar field="kanban_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}' help="This bar allows to filter the opportunities based on scheduled activities."/>
+                        <templates>
+                          <t t-name="kanban-box">
+                            <div t-attf-class="#{kanban_getcolor(record.color.raw_value)} oe_kanban_global_click">
+                              <div class="o_dropdown_kanban dropdown">
+                                  <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                      <span class="fa fa-ellipsis-v"/>
+                                  </a>
+                                  <div class="dropdown-menu" role="menu">
+                                      <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                      <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                      <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                  </div>
+                              </div>
+                              <div class="oe_kanban_content">
+                                   <div>
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong><br/>
+                                    <strong class="o_kanban_record_title"><field name="partner_id"/></strong><br/>
+                                    <strong class="o_kanban_record_title"><field name="crm_odt_id"/></strong> 
+                                   </div>
+                                    <div class="text-muted o_kanban_record_subtitle">
+                                        <t t-if="record.marca"><field name="marca"/></t>
+                                    </div>
+                                    <div>
+                                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="priority" widget="priority"/>
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" t-att-alt="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="oe_clear">
+                            </div>
+                            </div>
+                          </t>
+                        </templates>
+            </kanban>
+          </field>
+        </record>
+<!-- End Vista Kanban -->
+
+<!-- Formulario para vista kanban -->
+
+      <record id="form_medios_odt" model="ir.ui.view">
+            <field name="name">odt.medios.crm.lead.form</field>
+            <field name="model">odt.medios</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="ODT" class="o_opportunity_form">
+                  <header><field name="stage_id" widget="statusbar"
+                            options="{'clickable': '1', 'fold_field': 'fold'}"
+                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                            attrs="{'invisible': [('active', '=', False)]}"/></header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="e.g. Product Pricing"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" string="Cliente" domain="[('customer', '=', True)]"/>
+                                <field name="crm_odt_id" required="1"/>
+                                <field name="is_blacklisted" invisible="1"/>
+                                <field name="partner_is_blacklisted" invisible="1"/>
+                                <label for="email_from" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
+                                        aria-label="Blacklisted" attrs="{'invisible': ['|', ('is_blacklisted', '=', False), ('partner_address_email', '!=', False)]}" groups="base.group_user"></i>
+                                    <field name="email_from"
+                                       attrs="{'invisible': [('partner_address_email', '!=', False)]}"
+                                       string="Email"
+                                       widget="email"/>
+                                    <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
+                                        aria-label="Blacklisted" attrs="{'invisible': ['|', ('partner_is_blacklisted', '=', False), ('partner_address_email', '=', False)]}" groups="base.group_user"></i>
+                                    <field name="partner_address_email"
+                                       attrs="{'invisible': [('partner_address_email', '==', False)]}"
+                                       widget="email"
+                                       string="Email"/>
+                                </div>
+                                <field name="partner_address_phone"
+                                       attrs="{'invisible': [('partner_address_phone', '==', False)]}"
+                                       readonly="1"
+                                       widget="phone"
+                                       string="Phone"/>
+                                <field name="phone"
+                                       attrs="{'invisible': [('partner_address_phone', '!=', False)]}"
+                                       widget="phone"/>
+                            </group>
+
+                            <group>
+                                <field name="date_deadline"/>
+                            </group>
+
+                            <group>
+                                <field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'sales_team.group_sale_salesman_all_leads'], 'team_id': team_id}" domain="[('share', '=', False)]"/>
+                                <field name="team_id" widget="selection"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
+                                <field name="presupuesto_cliente"/>
+                            </group>
+                            <group>
+                                <field name="priority" widget="priority"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                                <field name="marca"/>                               
+                                <field name="target"/>
+                                <field name="project"/>
+                                <field name="med_spot_tv_abierta"/>
+                                <field name="med_aaee_tv"/>
+                                <field name="med_spoteo_carriers"/>
+                                <field name="med_net_televisa"/>
+                                <field name="med_otros_net"/>
+                                <field name="med_radio"/>
+                                <field name="med_revista"/>
+                                <field name="med_prensa"/>
+                                <field name="med_ooh"/>
+                                <field name="med_digital"/>
+                                <field name="med_analisis"/>
+                                <field name="lost_reason" invisible="1"/>
+                                <field name="date_conversion" invisible="1"/>
+                            </group>
+                        </group>
+
+
+                       <notebook colspan="4">
+                        <page string="Mecanica">
+                            <field name="description"/>
+                        </page>
+                        <page name="lead" string="Followup">
+                            <group>
+                                <group string="Initial Contact Information">
+                                    <field name="partner_name"/>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                    </div>
+                                </group>
+
+                                <group class="mt48">
+                                    <label for="contact_name"/>
+                                    <div class="o_row">
+                                        <field name="contact_name"/>
+                                        <field name="title" placeholder="Title" domain="[]" options='{"no_open": True}'/>
+                                    </div>
+                                    <field name="function"/>
+                                    <field name="mobile"/>
+                                </group>
+                                <group string="Marketing">
+                                    <field name="campaign_id" />
+                                    <field name="medium_id" />
+                                    <field name="source_id" />
+                                </group>
+                                <group string="Misc" name="Misc">
+                                    <field name="day_open" groups="base.group_no_one"/>
+                                    <field name="day_close" groups="base.group_no_one"/>
+                                    <field name="referred"/>
+                                    <field name="type" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="brief" string="Brief">
+                            <group name="left">
+                              <group name="brief">
+                                  <field name="product"/>
+                                  <field name="slogan_marca"/>
+                                  <field name="logo_marca"/>
+                              </group>
+                              <group name="reto_proyecto" string="Reto del Proyecto">
+                                  <field name="rp_1" />
+                                  <field name="rp_2" />
+                                  <field name="rp_3" />
+                                  <field name="rp_4" />
+                              </group>
+                              <group name="objetivo_negocio" string="Objetivo del Negocio">
+                                  <field name="on_1" />
+                                  <field name="on_2" />
+                                  <field name="on_3" />
+                                  <field name="on_4" />
+                              </group>
+                              <group name="objetivo_marca"  string="Objetivo de la Marca">
+                                  <field name="ob_1" />
+                                  <field name="ob_2" />
+                                  <field name="ob_3" />
+                              </group>
+                              <group name="caracter_marca" string="Caracter de la Marca">
+                                  <field name="cm_1" />
+                                  <field name="cm_2" />
+                                  <field name="cm_3" />
+                                  <field name="cm_4" />
+                              </group>
+                            </group>
+                            <group name="right">
+                                <group name="competidores">
+                                    <field name="qcs_1"/>
+                                    <field name="qcs_2"/>
+                                    <field name="qcs_3"/>
+                                </group>
+                                <group name="dialogo">
+                                    <field name="vh_1"/>
+                                    <field name="vh_2"/>
+                                    <field name="vh_3"/>
+                                </group>
+                                <group name="comunicar">
+                                    <field name="dc_1"/>
+                                    <field name="dc_2"/>
+                                    <field name="dc_3"/>
+                                </group>
+                                <group name="no_comunicar?">
+                                    <field name="qc_1"/>
+                                    <field name="qc_2"/>
+                                </group>  
+                                <group name="ccp">
+                                  <field name="ccp_1"/>
+                                  <field name="ccp_2"/>
+                                </group>
+                                <group name="quiz_11" string="¿CÓMO Y DÓNDEVAMOS A COMUNICAR EL PROYECTO?">
+                                  <field name="cdp_1"/>
+                                  <field name="cdp_2"/>
+                                  <field name="cdp_3"/>
+                                </group>
+                                <group name="quiz_12">
+                                   <field name="qz_12"/>
+                                   <field name="qz_13"/>
+                                   <field name="qz_14"/>
+                                   <field name="qz_15"/>
+                                   <field name="qz_16"/>
+                              </group>
+                            </group>
+                        </page>
+                       <!-- Page de Medios en ODT -->
+                        <page name="medios" string="Medios">
+                          <group>
+                            <group>
+                              <h4>Para uso Exclusivo de Medios</h4>
+                              <field name="med_folio"/>
+                              <field name="med_fecha_soli"/>
+                              <field name="med_hora_soli"  widget="float_time"/>
+                              <field name="med_fecha_entrega"/>
+                              <field name="med_fecha_real"/>
+                              <field name="med_elabora"/>
+                              <field name="med_nivel_complejidad"/>
+                            </group>
+                            <group string="ODT Medios">
+                              <field name="med_odt_fecha_entrega"/>
+                              <field name="med_clave_proyecto"/>
+                              <field name="med_tipo_trabajo"/>
+                            </group>
+                            <group>
+                              <field name="med_objetivo_comunicacion"/>
+                              <field name="med_periodo_camap"/>
+                              <field name="med_tipo_analisis"/>
+                              <field name="med_oberv_generales"/>
+                              <field name="med_solicita"/>
+                              <field name="med_getente"/>
+                              <field name="med_dirc_comercial"/>
+                              <field name="med_icepresidencia"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_tv_abierta" string="Spot TV Abierta TVSA" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
+                          <group string="Solicitud plan de Medios/ Televisa Spoteo TV Abierta Nacional y/o Local">
+                            <group>
+                              <field name="tvsa_tipo_camp"/>
+                              <field name="tvsa_otro"/>
+                              <field name="tvsa_catego_televisa"/>
+                              <field name="tvsa_nse"/>
+                            <h3>Grupos de Edad</h3>
+                              <field name="tvsa_grupo_edad_1"/>
+                              <field name="tvsa_grupo_edad_2"/>
+                              <field name="tvsa_grupo_edad_3"/>
+                              <field name="tvsa_grupo_edad_4"/>
+                              <field name="tvsa_grupo_edad_5"/>
+                              <field name="tvsa_grupo_edad_6"/>
+                              <field name="tvsa_grupo_edad_otro"/>
+                            <h3>Sexo</h3>
+                              <field name="tvsa_sexo_p"/>
+                              <field name="tvsa_sexo_m"/>
+                              <field name="tvsa_sexo_h"/>
+                            <h3>Rol Familiar</h3>
+                              <field name="tvsa_rol_family"/>
+                            <h3>Resp. Niños</h3>
+                              <field name="years_03"/>
+                              <field name="years_48"/>
+                              <field name="years_912"/>
+                              <field name="target_secundario"/>
+                            </group>
+                            <group>
+                            <h3>Abierta Nacional</h3>
+                              <field name="duracion_spot"/>
+                              <field name="opcion_compra"/>
+                              <field name="mixto_proporcion"/>
+                              <field name="target_compra_modulo"/>
+                              <field name="target_especial"/>
+                              <field name="cofepris"/>
+                              <field name="a_favor"/>
+                              <field name="kids_policy"/>
+                              <field name="sptv_periodo_camp1"/>
+                            <h3>Canales Módulos o Franjas siempore serán 2, 5 y3</h3>
+                              <field name="canal_1"/>
+                              <field name="canal_2"/>
+                              <field name="canal_3"/>
+                              <field name="tvsa_abierta"/>
+                            <h3>Tv Abierta Local</h3>
+                              <field name="tv_abierta_duracion_spot"/>
+                              <field name="canal_local"/>
+                              <field name="bloqueos"/>
+                              <field name="sptv_periodo_camp2"/>
+                              <field name="foro_tv"/>
+                              <field name="foro_tv_descrip"/>
+                              <field name="monto_inverison_tvabierta"/>
+                              <field name="tvsa_abierta_observaciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_aaeetv" string="AAEE TV TVSA" attrs="{'invisible': [('med_aaee_tv','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="aaee_categoria_televisa"/>
+                              <field name="target_primario"/>
+                              <field name="tarjet_secudario"/>
+                              <field name="box_bool"/>
+                              <field name="canal5_bool"/>
+                              <field name="canal9_bool"/>
+                              <field name="comedia_bool"/>
+                              <field name="revista_bool"/>
+                              <field name="deportivos_bool"/>
+                              <field name="foro_tv_bool"/>
+                              <field name="lucha_bool"/>
+                              <field name="noticiero_bool"/>
+                            </group>
+                            <group>
+                              <h3>TV Abierta Nacional</h3>
+                              <field name="aaeetv_periodo_camp"/>
+                              <field name="aaee_monto_maximo"/>
+                              <field name="aaee_monto_minimo"/>
+                              <h3>Canales Televisa</h3>
+                              <field name="aaeetv_2"/>
+                              <field name="aaeetv_5"/>
+                              <field name="aaeetv_9"/>
+                              <field name="aaeetv_foro_tv"/>
+                              <field name="conoce_programas"/>
+                            </group>
+                            <group string="Box" attrs="{'invisible': [('box_bool','=',False)]}">
+                              <field name="box_selection" />
+                              <field name="box_text"/>
+                            </group>
+                            <group string="Canal 5" attrs="{'invisible': [('canal5_bool','=',False)]}">
+                              <field name="canal5_selection"/>
+                              <field name="canal5_text"/>
+                            </group>
+                            <group string="Canal 0" attrs="{'invisible': [('canal9_bool','=',False)]}">
+                              <field name="canal9_selection"/>
+                              <field name="canal9_text"/>
+                            </group>
+                            <group string="Comedia" attrs="{'invisible': [('comedia_bool','=',False)]}">
+                              <field name="comedia_selection"/>
+                              <field name="comedia_text"/>
+                            </group>
+                            <group string="Revista" attrs="{'invisible': [('revista_bool','=',False)]}">
+                              <field name="revista_selection"/>
+                              <field name="revista_text"/>
+                            </group>
+                            <group string="Deportivos" attrs="{'invisible': [('deportivos_bool','=',False)]}">
+                              <field name="deportivos_selection"/>
+                              <field name="deportivo_text"/>
+                            </group>
+                            <group string="Foro TV" attrs="{'invisible': [('foro_tv_bool','=',False)]}">
+                              <field name="foro_tv_selection"/>
+                              <field name="foro_tv_text"/>
+                            </group>
+                            <group string="Lucha Libre AAA" attrs="{'invisible': [('lucha_bool','=',False)]}">
+                              <field name="lucha_libre_selection"/>
+                              <field name="lucha_text"/>
+                            </group>
+                            <group string="Noticieros" attrs="{'invisible': [('noticiero_bool','=',False)]}">
+                              <field name="noticieros_selection"/>
+                              <field name="noticiero_text"/>
+                            </group>
+                            <group>
+                              <h3>TV Abierta Local</h3>
+                              <field name="aaeetv_abierta_local_periodo_camp"/>
+                              <field name="aaeetv_abierta_monto_maximo"/>
+                              <field name="aaeetv_abierta_monto_maximo"/>
+                            </group>
+                              <group>
+                               <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                    <field name="tabla_plaza" widget="one2many_list">
+                                      <tree editable="bottom">
+                                          <field name="plaza"/>
+                                          <field name="tipo_accion"/>
+                                      </tree>
+                                    </field>
+                                </page> 
+                              </group>
+                             <field name="aaeee_observations" placeholder="Observaciones"/>
+                            </group>
+                        </page>
+
+                        <page name="medios_brief" string="Brief AAEE" attrs="{'invisible': [('med_aaee_tv','=',False)]}">
+                          <group>
+                            <group>
+                              <h3>Tipo de Soporte</h3>
+                              <field name="tv_abierta_bool"/>
+                              <field name="tv_local_bool"/>
+                              <field name="Network_bool"/>
+                            </group>
+                            <group>
+                              <field name="area_comercial_selection"/>
+                              <field name="braa_elabora"/>
+                              <field name="braa_fecha"/>
+                              <field name="braa_periodo"/>
+                              <field name="brief_presupuesto_minimo"/>
+                              <field name="brief_presupuesto_maximo"/>
+                            </group>
+                            <group>
+                              <field name="braa_nombre_proyecto"/>
+                              <field name="braa_descripcion_personalidad"/>
+                              <field name="braa_objetivo"/>
+                              <field name="braa_idea_comunicar"/>
+                              <field name="braa_ambiente_contexto"/>
+                              <field name="braa_talento_personaje"/>
+                              <field name="braa_propuesta_idea"/>
+                            </group>
+                            <group>
+                              <h3>Tipo de programa</h3>
+                              <field name="braa_opcion1"/>
+                              <field name="braa_opcion2"/>
+                              <field name="braa_opcion3"/>
+                              <field name="braa_opcion4"/>
+                              <field name="braa_opcion5"/>
+                              <field name="braa_opcion6"/>
+                              <field name="braa_opcion7"/>
+                              <field name="braa_opcion8"/>
+                              <field name="braa_opcion9"/>
+                              <field name="braa_opcion10"/>
+                              <field name="braa_programa_especifico"/>
+                              <field name="braa_acciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_carriers" string="Spoteo Carriers" attrs="{'invisible': [('med_spoteo_carriers','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="sc_marca_producto"/>
+                              <field name="sc_catego_televisa"/>
+                                <div class="text-muted">
+                                    Categoria (Solo en caso que se incluyan carriers de Televisa)<br/>
+                                    La categoria debe conincidir con la que el cliente ha dado de alta para su producto en Televisa.<br/>
+                                    en caso de ser producto nuevo, el cliete debe decidir la categoria.
+                                </div>
+                              <field name="sc_target_primario"/>
+                              <field name="sc_target_secundario"/>
+                                <div class="text-muted">
+                                    Nota: En caso de que el target elegido resulte menor al 3% del Universo total, la Dirección de Medios Hará una recomendación conforme a la politica de Tv Promo.
+                                </div>
+                            </group>
+                            <group string="Spoteo">
+                              <field name="sc_monto_inversion"/>
+                              <field name="sc_periodo_campana"/>
+                              <field name="sc_duracion"/>
+                              <span>Los carriers Satelitales van con cobertura nacional</span>
+                              <span>Carriers por cable, especificar plazas</span>
+                              <field name="sc_carriers"/>
+                              <span>Medios informará cuál es el carrier que opera en las(s) plaza(s) solicitada(s)</span>
+                              <field name="sc_canales" />
+                              <field name="sc_canales_conocen"/>
+                              <div class="text-muted">
+                                La compra de spots en carriers es rotativa aleatoria por frania. No hay posibilidades de ordenar horario especifico.
+                              </div>
+                              <field name="sc_observaciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_network" string="Network Televisa" attrs="{'invisible': [('med_net_televisa','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="nt_marca"/>
+                              <field name="nt_catego_televisa"/>
+                              <field name="nt_target_primario"/>
+                              <field name="nt_target_secundario"/>
+                            </group>
+                            <group string="Spoteo">
+                              <h3>Las networks Televisa Tienen Cobertura Nacional</h3>
+                              <field name="nt_monto_inversion"/>
+                              <field name="nt_periodo_campana"/>
+                              <field name="nt_duracion"/>
+                              <field name="nt_canales"/>
+                              <field name="nt_especifico"/>
+                              <h3>La compra de spots en networks es rotativa aleatoria por franja. El cargo por posición específica es de 30% sobre tarifa regular. Indicar si se requiere posición específica</h3>
+                              <field name="nt_posicion"/>
+                              <field name="nt_observaciones"/>
+                            </group>
+                            <group string="AA EE">
+                              <p>
+                                La variedad de acciones especiales en networks está acotada a las que pueden realizarse de acuerdo a la estructura y feed de los programas.
+                                La factibilidad de cualquier acción que se solicite tiene que verificarse con el proveedor.
+                                Deben tomarse en cuenta las fechas de grabación(Aproximadamente un mes antes de aire). Preguntar en medios.
+                              </p>
+                              <field name="nt_aaee_inversion"/>
+                              <field name="nt_aaee_periodo_campana"/>
+                              <field name="nt_aaee_canales"/>
+                              <field name="nt_aaee_especificos1"/>
+                              <field name="nt_aaee_especificos2"/>
+                              <h3>El tipo de acciones especiales que puedan hacerse dependen de la estructura y feed de cada canal y programa</h3>
+                              <field name="nt_aaee_programas"/>
+                              <h3>Acciones especiales standar (de catátologo) solicitado:</h3>
+                              <field name="nt_aaee_deport"/>
+                              <field name="nt_aaee_revista"/>
+                              <field name="nt_aaee_musicales"/>
+                              <field name="nt_aaee_paquete_evento"/>
+                              <field name="nt_aaee_observaciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_otro_net" string="Otros Networks" attrs="{'invisible': [('med_otros_net','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="ot_marca"/>
+                              <field name="ot_target_primario"/>
+                              <field name="ot_target_secundario"/>
+                            </group>
+                            <group string="Spoteo">
+                              <field name="ot_monto_inversion"/>
+                              <field name="ot_periodo_campana"/>
+                              <field name="ot_duracion"/>
+                              <field name="ot_canales"/>
+                              <field name="ot_especifico"/>
+                              <field name="ot_posicion"/>
+                              <field name="ot_observaciones"/>
+                            </group>
+                            <group string="AA EE">
+                              <p>
+                                La variedad de acciones especiales en networks está acotada a las que pueden realizarse de acuerdo a la estructura y feed de los programas.
+                                La factibilidad de cualquier acción que se solicite tiene que verificarse con el proveedor.
+                                Deben tomarse en cuenta las fechas de grabación(Aproximadamente un mes antes de aire). Preguntar en medios.
+                              </p>
+                              <field name="ot_aaee_inversion"/>
+                              <field name="ot_aaee_periodo_campana"/>
+                              <field name="ot_aaee_canales"/>
+                              <field name="ot_aaee_especificos"/>
+                              <h3>El tipo de acciones especiales que puedan hacerse dependen de la estructura y feed de cada canal y programa</h3>
+                              <field name="ot_aaee_programa_especifico"/>
+                              <field name="ot_aaee_paquete_evento"/>
+                              <field name="ot_aaee_observaciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_revista" string="Revista" attrs="{'invisible': [('med_revista','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="r_marca"/>
+                              <field name="r_target_interes"/>
+                              <field name="r_periodo_campana"/>
+                              <field name="r_monto_inversion"/>
+                              <field name="r_tamano_insercion"/>
+                              <field name="r_tipo_creatividad"/>
+                            </group>
+                          </group>
+                          <group>
+                              <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                  <field name="tabla_medios_revista" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="titulo"/>
+                                        <field name="tamano"/>
+                                        <field name="tipo" />
+                                    </tree>
+                                  </field>
+                              </page> 
+                          </group>
+                          <group>
+                            <p>
+                              Notas<br/>
+
+                              1.- Las especificaciones de fechas de portadad y fechas de cierre (contrataciónes y entrega de materiales) de cada revista, estarán a disposición de los interesados. Preguntar en Medios.<br/>
+                              2.- Se recomienda tomar en cuenta los tiempos para los cierres de cada publicación. En general, para publicaciones mensuales, 40 dias antes; publicaciones quincenales, 20 dias antes y para semanales, 10 dias antes de la fecha de portada. Favor de consultar cada caso especifico.<br/>
+                              3.- En caso de requerir más revistas, favor de abrir los espacios necesarios.
+                            </p><br/>
+                            <field name="r_observaciones"/>
+                          </group>
+                        </page>
+
+                        <page name="medios_radio" string="Radio" attrs="{'invisible': [('med_radio','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="rad_marca"/>
+                              <field name="rad_target_interes"/>
+                              <field name="rad_periodo_campana"/>
+                              <field name="rad_monto_inversion"/>
+                              <field name="rad_tipo"/>
+                            </group>
+                            <group>
+                              <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                  <field name="tabla_medios_radio" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="plaza"/>
+                                        <field name="tipo"/>
+                                        <field name="duracionn"/>
+                                    </tree>
+                                  </field>
+                              </page> 
+                            </group>
+                            <group>
+                              <field name="rad_observaciones"/>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_prensa" string="Prensa" attrs="{'invisible': [('med_prensa','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="p_marca"/>
+                              <field name="p_target_interes"/>
+                              <field name="p_periodo_campana"/>
+                              <field name="p_monto_inversion"/>
+                              <field name="p_tamano"/>
+                            </group>
+                            <group>
+                              <page name="cotizacion_interna_diseno" string="Cotizacion">
+                                  <field name="tabla_medios_prensa" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="plaza"/>
+                                        <field name="titulo"/>
+                                        <field name="tamano"/>
+                                        <field name="seccion"/>
+                                        <field name="fecha_publicacion"/>
+                                        <field name="posicion"/>
+                                        <field name="color"/>                                       
+                                    </tree>
+                                  </field>
+                              </page> 
+                              <field name="p_observaciones"/>                                       
+                            </group>
+                            <group>
+                              <p>
+                              NOTAS: <br/>
+                              1.  El cierre de inserción es tres días antes de la fecha de publicación. <br/>
+                              2.  Consultar con su ejecutivo de Medios las fechas de entrega de materiales de acuerdo a las políticas de cada medio.<br/>
+                              3.  En caso de requerir más plazas, favor de abrir los espacios necesarios.<br/>
+                              4.  Tiempos para esquelas, preguntar en Medios.<br/>
+                              </p>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_ooh" string="OOH" attrs="{'invisible': [('med_ooh','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="oh_marca"/>
+                              <field name="oh_target_interes"/>
+                              <field name="oh_periodo_campana"/>
+                              <field name="oh_monto_inversion"/>
+                              <field name="oh_tipo_actividad"/>
+                            </group>
+                          </group>
+                            <group>
+                              <page name="page_medios_ooh" string="Cotizacion">
+                                  <field name="tabla_medios_ooh" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="plaza"/>
+                                        <field name="tipo_exterior"/>
+                                        <field name="observaciones"/>   
+                                    </tree>
+                                  </field>
+                              </page> 
+                              <field name="oh_observaciones"/>                                       
+                            </group>
+                            <group>
+                              <p>
+                                1.  En general la gestión de contratación de los medios exteriores implica varios pasos que requieren tiempo de anticipación a la fecha de inicio de exhibición (quince días a un mes). Favor de consultar con Medios el tiempo específico de cada tipo de medio. <br/>
+                                2.  Tomar en cuenta que en Espectaculares, la contratación standard es por 3 meses (mínimo 1 mes, sujeto a negociación).<br/>
+                                3.  En vallas  y parabuses las contrataciones son por catorcenas previamente establecidas por el proveedor.<br/>
+                                4.  Otros soportes, consultar con Medios el periodo mínimo de exhibición.<br/>
+                                5.  En algunos tipos de outdoors la producción del arte se incluye.  Se indicará en el presupuesto.<br/>
+                                6.  En caso de requerir más plazas, favor de abrir los espacios necesarios.<br/>
+                              </p>
+                            </group>
+                        </page>
+
+                        <page name="medios_digital" string="Digital" attrs="{'invisible': [('med_digital','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="d_marca"/>
+                              <field name="d_periodo_campana"/>
+                              <field name="d_target_demo"/>
+                              <field name="d_target_perfil"/>
+                              <field name="d_objetivo_campana"/>
+                            </group>
+                            <group string="Finalidad*">
+                              <div class="text-muted">
+                                Puede señalar más de uno.
+                              </div>
+                              <field name="d_option1"/>
+                              <field name="d_option2"/>
+                              <field name="d_option3"/>
+                              <field name="d_option4"/>
+                              <field name="d_landing"/>
+                              <field name="d_description_campana"/>
+                              <field name="d_requerirlos"/>
+                            </group>
+                            <group>
+                              <field name="d_folio_proyecto"/>
+                              <field name="d_monto_maximo"/>
+                              <field name="d_monto_minimo"/>
+                              <p>
+                                Notas:<br/>
+                                1.- No se iniciará la planeación si no existe monto de inversión.
+                              </p>
+                            </group>
+                          </group>
+                        </page>
+
+                        <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False)]}">
+                          <group>
+                            <group>
+                              <field name="an_inversion"/>
+                              <field name="an_habitos"/>
+                              <field name="an_audiencia"/>
+                              <field name="an_otro"/>
+                            </group>
+                            <group>
+                              <field name="an_marca"/>
+                              <field name="an_sector"/>
+                              <field name="an_categoria"/>
+                            </group>
+                            <group string="Inversión Publicitaria (Competencia) IBOPE">
+                              <h3>Periodo*</h3>
+                              <field name="an_year_inmediato"/>
+                              <field name="an_year_movil"/>
+                              <field name="an_periodo"/>
+                              <field name="an_analisis"/>
+                            </group>
+                            <group string='Audiencias'>
+                              <h3>Periodo*</h3>
+                              <field name="an_year_inmediato1"/>
+                              <field name="an_year_movil1"/>
+                              <field name="an_periodo1"/>
+                              <field name="an_target_interes"/>
+                              <field name="an_analisis1"/>
+                            </group>
+                            <group string="Hábitos de consumo(BIMAS)">
+                              <field name="an_marca1"/>
+                              <field name="an_target_interes1"/>
+                              <field name="an_analisis2"/>
+                            </group>
+                            <group string="Odtro Analisis">
+                              <field name="an_tro_descripcion"/> 
+                            </group>
+                          </group>
+                        </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+
+                  </field>
+                </record>
+  
+
+<!-- Vista lista -->
+        <record id="odt_tree_medios_view" model="ir.ui.view">
+            <field name="name">odt.tree.view</field>
+            <field name="model">odt.medios</field>
+            <field name="arch" type="xml">
+                <tree string="ODTs">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="marca"/>
+                    <field name="crm_odt_id"/>
+                    <field name="stage_id"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Vista pivot -->        
+        <record id="odt_pivot_medios_view" model="ir.ui.view">
+            <field name="name">odt.view.pivot</field>
+            <field name="model">odt.medios</field>
+            <field name="arch" type="xml">
+                <pivot string="Pipeline Analysis">
+                    <field name="create_date" interval="month" type="row"/>
+                    <field name="stage_id" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="medios_search_view">
+            <field name="name">medios.search</field>
+            <field name="model">odt.medios</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="crm_odt_id"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="marca"/>
+                </search>
+            </field>
+        </record>
+
+
+
+  </data>
+</odoo>
