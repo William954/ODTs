@@ -125,19 +125,17 @@
                                 <field name="target"/>
                                 <field name="project"/>
 
-                                <div attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}">
-                                  <field name="med_spot_tv_abierta"/>
-                                  <field name="med_aaee_tv"/>
-                                  <field name="med_spoteo_carriers"/>
-                                  <field name="med_net_televisa"/>
-                                  <field name="med_otros_net"/>
-                                  <field name="med_radio"/>
-                                  <field name="med_revista"/>
-                                  <field name="med_prensa"/>
-                                  <field name="med_ooh"/>
-                                  <field name="med_digital"/>
-                                  <field name="med_analisis" attrs="{'invisible':[('tipo_medios','!=','2')]}"/>
-                                </div>
+                                  <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_net_televisa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_otros_net" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_radio" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_revista" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_prensa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_ooh" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3','2')]}"/>
 
                                 <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
