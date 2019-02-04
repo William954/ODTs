@@ -681,10 +681,10 @@ class OdtMedios(models.Model):
 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
 
 	#ooh
-	oh_marca = fields.Char(string='Marca o Producto*')
-	oh_target_interes = fields.Char(string='Target de Interés*')
-	oh_periodo_campana = fields.Char(string='Periodo de la campaña*')
-	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)*')
+	oh_marca = fields.Char(string='Marca o Producto')
+	oh_target_interes = fields.Char(string='Target de Interés')
+	oh_periodo_campana = fields.Char(string='Periodo de la campaña')
+	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)')
 	oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
 										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
 						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
