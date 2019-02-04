@@ -135,14 +135,12 @@
                                   <field name="med_prensa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_ooh" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3','2')]}"/>
-
+                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','2')]}"/>
                                 <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
                             </group>
                         </group>
-
-
                        <notebook colspan="4">
                         <page string="Mecanica">
                             <field name="description"/>
@@ -643,15 +641,15 @@
                               <field name="p_target_interes"/>
                               <field name="p_periodo_campana"/>
                               <field name="p_monto_inversion"/>
-                              <field name="p_tamano"/>
                             </group>
-                            <group>
+                          </group>
                               <page name="cotizacion_interna_diseno" string="Cotizacion">
                                   <field name="tabla_medios_prensa" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="plaza"/>
                                         <field name="titulo"/>
                                         <field name="tamano"/>
+                                        <field name="otro" attrs="{'readonly' : [('tamano','!=','7')]}"/>
                                         <field name="seccion"/>
                                         <field name="fecha_publicacion"/>
                                         <field name="posicion"/>
@@ -659,18 +657,15 @@
                                     </tree>
                                   </field>
                               </page> 
-                              <field name="p_observaciones"/>                                       
-                            </group>
-                            <group>
+                              <field name="p_observaciones" placeholder="Observaciones"/>
+                              <br/>
                               <p>
                               NOTAS: <br/>
                               1.  El cierre de inserción es tres días antes de la fecha de publicación. <br/>
                               2.  Consultar con su ejecutivo de Medios las fechas de entrega de materiales de acuerdo a las políticas de cada medio.<br/>
                               3.  En caso de requerir más plazas, favor de abrir los espacios necesarios.<br/>
                               4.  Tiempos para esquelas, preguntar en Medios.<br/>
-                              </p>
-                            </group>
-                          </group>
+                              </p>                                       
                         </page>
 
                         <page name="medios_ooh" string="OOH" attrs="{'invisible': [('med_ooh','=',False)]}">

@@ -426,7 +426,7 @@ class OdtMedios(models.Model):
 	years_912 = fields.Boolean(string='9 a 12 años', track_visibility=True)
 	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
 
-	duracion_spot = fields.Char(string='Duración Spot', track_visibility=True)
+	duracion_spot = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
 	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO'),('6','SPOTEO COMPRA LIBRE')],string='Opciones de Compra', track_visibility=True)
 	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar promoción', track_visibility=True)
 	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
@@ -586,15 +586,15 @@ class OdtMedios(models.Model):
                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
-	sc_target_primario = fields.Char(string='Target Primario')
-	sc_target_secundario = fields.Char(string='Target Secundario')
-	sc_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
-	sc_periodo_campana = fields.Char(string='Periodo de la Campaña*')
-	sc_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
-	sc_carriers = fields.Text(string='Carriers')
-	sc_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
-	sc_canales_conocen = fields.Text(string='Especifico si ya se conocen')
-	sc_observaciones = fields.Text(string='Observaciones o restricciones')
+	sc_target_primario = fields.Char(string='Target Primario', track_visibility=True)
+	sc_target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
+	sc_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)', track_visibility=True)
+	sc_periodo_campana = fields.Char(string='Periodo de la Campaña', track_visibility=True)
+	sc_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
+	sc_carriers = fields.Text(string='Carriers', track_visibility=True)
+	sc_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales', track_visibility=True)
+	sc_canales_conocen = fields.Text(string='Especifico si ya se conocen', track_visibility=True)
+	sc_observaciones = fields.Text(string='Observaciones o restricciones', track_visibility=True)
 
 	# network Televisa
 	nt_marca = fields.Char(string='Marca o Producto*')
@@ -616,24 +616,24 @@ class OdtMedios(models.Model):
                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
-	nt_target_primario = fields.Char(string='Target Primario')
-	nt_target_secundario = fields.Char(string='Target Secundario')
-	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)*')
-	nt_periodo_campana = fields.Char(string='Periodo de la Campaña*')
+	nt_target_primario = fields.Char(string='Target Primario', track_visibility=True)
+	nt_target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
+	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)', track_visibility=True)
+	nt_periodo_campana = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	nt_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
-	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
-	nt_especifico = fields.Text(string='Específicos')
-	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
-	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ')
-	nt_aaee_inversion = fields.Float(string='Monto Máximo inversión AAEE Networks Televisa (costo cliente)*')
-	nt_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
+	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales', track_visibility=True)
+	nt_especifico = fields.Text(string='Específicos', track_visibility=True)
+	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string='Posicion', track_visibility=True)
+	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ', track_visibility=True)
+	nt_aaee_inversion = fields.Float(string='Monto Máximo inversión AAEE Networks Televisa (costo cliente)', track_visibility=True)
+	nt_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	nt_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
 	nt_aaee_especificos1 = fields.Selection([('1','Bandamax'),('2','De Película'),('3','De Película HD'),('4','De Película MPX'),('5','Distrito Comedia'),('6','Golden'),
 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
 											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Específicos')
 	nt_aaee_especificos2 = fields.Selection([('1','Bandamax'),('2','De Película'),('3','De Película HD'),('4','De Película MPX'),('5','Distrito Comedia'),('6','Golden'),
 											 ('7','Golden Edge'),('8','Golden HD'),('9','Golden MPX'),('10','Golden Premier'),('11','Ritmoson'),('12','TDN'),('13','TDN Univisión'),
-											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Específicos')
+											 ('14','Telehit'),('15','Telehit HD'),('16','TIIN'),('17','Tlenovelas'),('18','Unicable')], string='Específicos', track_visibility=True)
 	nt_aaee_programas = fields.Char(string='Si conoces el(los) programa(s) indicar')
 	nt_aaee_deport = fields.Char(string='Deportivos')
 	nt_aaee_revista = fields.Char(string='De Revista')
@@ -666,8 +666,6 @@ class OdtMedios(models.Model):
 	r_target_interes = fields.Char(string='Target de Interés*')
 	r_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	r_monto_inversion = fields.Float(string='Inversión revistas(Costo Cliente)*')
-	r_tamano_insercion = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
-	r_tipo_creatividad = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo (Creatividades)')
 	r_observaciones = fields.Text(string='Observaciones')
 	tabla_medios_revista = fields.One2many('odt.medios.revista','revista_id')
 
@@ -696,7 +694,6 @@ class OdtMedios(models.Model):
 	p_target_interes = fields.Char(string='Target de Interés*')
 	p_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	p_monto_inversion = fields.Float(string='Inversión Prensa (Costo Cliente)*')
-	p_tamano = fields.Selection([('1','Plana'),('2','Robaplana'),('3','1/2 Plana Horizontal'),('4','1/2 Plana Vertical'),('5','1/4 Plana'),('6','1/8 Plana'),('7','Otro')],string='Tamaño*')
 	p_observaciones = fields.Text(string='Observaciones')		
 	tabla_medios_prensa = fields.One2many('odt.medios.prensa','prensa_id')
 
@@ -1797,7 +1794,6 @@ class CotizacionesProduccion(models.Model):
 	def _pago_recuperacion(self):
 		self.recuperacion = self.pago_terceros + self.costo_interno
 
-
 class CotizacionesEstategia(models.Model):
 	_name = 'odt.cotizacion.estrategia'
 		
@@ -1827,7 +1823,6 @@ class CotizacionesBTL(models.Model):
 	@api.depends('cantidad','dias','semanas','precio_unitario_btl','costo_proveedor_btl')
 	def _costo_provedor(self):
 		self.costo_proveedor_btl = (self.cantidad * self.dias * self.semanas) * self.precio_unitario_btl
-
 
 class CotizacionesContactcenter1(models.Model):
 	_name = 'odt.cotizacion.contact1'
@@ -1893,13 +1888,15 @@ class TablaPrensa(models.Model):
 	prensa_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
 	titulo = fields.Char(string='Título')
-	tamano = fields.Char(string='Tamaño')
+	tamano = fields.Selection([('1','Plana'),('2','Robaplana'),('3','1/2 Plana Horizontal'),
+							   ('4','1/2 Plana Vertical'),('5','1/4 Plana'),('6','1/8 Plana'),('7','Otro')],string='Tamaño')
+	otro = fields.Char(string='Otros')
 	seccion = fields.Char(string='Sección')
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
 	posicion = fields.Char(string='Posición')
 	color = fields.Char(string='Color')
 
-class TablaPrensa(models.Model):
+class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
 
 	ooh_id = fields.Many2one('odt.medios')
@@ -1911,9 +1908,9 @@ class TablaRevista(models.Model):
 	_name = 'odt.medios.revista'
 
 	revista_id = fields.Many2one('odt.medios')
+	tamano = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
+	tipo = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo')
 	titulo = fields.Char(string='Título')
-	tamano = fields.Char(string='Tamaño')
-	tipo = fields.Char(string='Tipo')
 	observaciones = fields.Char(string='Observaciones')
 
 class TablaRadio(models.Model):
@@ -1922,7 +1919,7 @@ class TablaRadio(models.Model):
 	radio_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
 	tipo = fields.Char(string='Típo')
-	duracionn = fields.Char(string='Duración (spot)')
+	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
 
 class TablaPlaza(models.Model):
 	_name = 'odt.medios.plaza'
