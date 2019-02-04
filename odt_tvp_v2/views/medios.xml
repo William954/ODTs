@@ -333,6 +333,7 @@
                               <field name="foro_tv"/>
                               <field name="foro_tv_descrip"/>
                               <field name="monto_inverison_tvabierta"/>
+                              <field name="asignacion_a"/>
                               <field name="tvsa_abierta_observaciones"/>
                             </group>
                           </group>

@@ -449,7 +449,8 @@ class OdtMedios(models.Model):
 	sptv_periodo_camp2 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	foro_tv = fields.Boolean(string='Foro TV', track_visibility=True)
 	foro_tv_descrip = fields.Text(string='Box', track_visibility=True)
-	monto_inverison_tvabierta = fields.Float(string='Monto Máximo inversión TV Abierta Local (Costo Cliente)', track_visibility=True)
+	monto_inverison_tvabierta = fields.Float(string='Monto Máximo Inversión TV Abierta Local (Costo Cliente)', track_visibility=True)
+	asignacion_a = fields.Char(string='Asignado a', track_visibility=True)
 	tvsa_abierta_observaciones = fields.Text(string='Observaciones generales o condiciones especiales', track_visibility=True)
 
 	# AAEETV
