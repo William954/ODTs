@@ -116,6 +116,7 @@
                                 <field name="end_date"/>
                                 <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
                                 <field name="presupuesto_cliente"/>
+                                <field name="tipo_medios"  widget="radio" options="{'horizontal': true}"/>
                             </group>
                             <group>
                                 <field name="priority" widget="priority"/>
@@ -123,17 +124,21 @@
                                 <field name="marca"/>                               
                                 <field name="target"/>
                                 <field name="project"/>
-                                <field name="med_spot_tv_abierta"/>
-                                <field name="med_aaee_tv"/>
-                                <field name="med_spoteo_carriers"/>
-                                <field name="med_net_televisa"/>
-                                <field name="med_otros_net"/>
-                                <field name="med_radio"/>
-                                <field name="med_revista"/>
-                                <field name="med_prensa"/>
-                                <field name="med_ooh"/>
-                                <field name="med_digital"/>
-                                <field name="med_analisis"/>
+
+                                <div attrs="{'invisible':[('tipo_medios','!=','3')]}">
+                                  <field name="med_spot_tv_abierta"/>
+                                  <field name="med_aaee_tv"/>
+                                  <field name="med_spoteo_carriers"/>
+                                  <field name="med_net_televisa"/>
+                                  <field name="med_otros_net"/>
+                                  <field name="med_radio"/>
+                                  <field name="med_revista"/>
+                                  <field name="med_prensa"/>
+                                  <field name="med_ooh"/>
+                                  <field name="med_digital"/>
+                                  <field name="med_analisis" attrs="{'invisible':[('tipo_medios','!=','2')]}"/>
+                                </div>
+
                                 <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
                             </group>

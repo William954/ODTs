@@ -348,7 +348,7 @@ class OdtMedios(models.Model):
 	_description = 'Ventana kanban para la estructura de medios'
 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
 
-
+	tipo_medios = fields.Selection([('1','Revisión de pauta'),('2','Análisis'),('3','Plan de Medios')],string='Tipo Medios', track_visibility=True)
 	presupuesto_cliente = fields.Float(string='Presupuesto del Cliente', track_visibility=True)
 	# sección para odt medios
 	med_spot_tv_abierta = fields.Boolean(string='Spot TV Abierta TVSA', track_visibility=True)
