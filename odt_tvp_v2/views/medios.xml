@@ -116,7 +116,7 @@
                                 <field name="end_date"/>
                                 <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
                                 <field name="presupuesto_cliente"/>
-                                <field name="tipo_medios"  widget="radio" options="{'horizontal': true}"/>
+                                <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
                             </group>
                             <group>
                                 <field name="priority" widget="priority"/>
@@ -125,7 +125,7 @@
                                 <field name="target"/>
                                 <field name="project"/>
 
-                                <div attrs="{'invisible':[('tipo_medios','!=','3')]}">
+                                <div attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}">
                                   <field name="med_spot_tv_abierta"/>
                                   <field name="med_aaee_tv"/>
                                   <field name="med_spoteo_carriers"/>
@@ -241,7 +241,7 @@
                                   <field name="ccp_1"/>
                                   <field name="ccp_2"/>
                                 </group>
-                                <group name="quiz_11" string="¿CÓMO Y DÓNDEVAMOS A COMUNICAR EL PROYECTO?">
+                                <group name="quiz_11" string="¿CÓMO Y DÓNDE VAMOS A COMUNICAR EL PROYECTO?">
                                   <field name="cdp_1"/>
                                   <field name="cdp_2"/>
                                   <field name="cdp_3"/>
@@ -271,7 +271,6 @@
                             <group string="ODT Medios">
                               <field name="med_odt_fecha_entrega"/>
                               <!--<field name="med_clave_proyecto"/>-->
-                              <field name="med_tipo_trabajo"/>
                             </group>
                             <group>
                               <field name="med_objetivo_comunicacion"/>
