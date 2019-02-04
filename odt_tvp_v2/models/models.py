@@ -622,7 +622,7 @@ class OdtMedios(models.Model):
 	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)', track_visibility=True)
 	nt_periodo_campana = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	nt_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
-	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales', track_visibility=True)
+	nt_canales = fields.Many2many('canales.tags',string='Elección de Canales', track_visibility=True)
 	nt_especifico = fields.Text(string='Específicos', track_visibility=True)
 	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string='Posicion', track_visibility=True)
 	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ', track_visibility=True)
@@ -1140,6 +1140,13 @@ class OdtMedios(models.Model):
 		sequence = self.env['ir.sequence'].next_by_code('odt.medios')
 		vals['name'] = sequence or 'Nuevo'
 		return super(OdtMedios, self).create(vals)
+
+class CanalesTags(models.Model):
+	_name = 'canales.tags'
+
+	name = fields.Char(string='Nombre')
+		
+
 	
 class OdtContactcenter(models.Model):
 	_name = 'odt.contactcenter'
