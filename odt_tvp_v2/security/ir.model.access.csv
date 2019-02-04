@@ -4,7 +4,7 @@ access_crm_marca,crm.marca,model_crm_marca,group_odt,1,1,1,1
 access_project_gastos,project.gastos,model_project_gastos,group_odt,1,1,1,1
 access_odt_areas,odt.areas,model_odt_areas,group_odt,1,1,1,1
 access_odt_tags_depts,odt.tags.depts,model_odt_tags_depts,group_odt,1,1,1,1
-,,,,,,,
+access_canales_tags,canales.tags,model_canales_tags,group_odt,1,1,1,1
 access_odt_btlpdv,odt.btlpdv,model_odt_btlpdv,group_btlpdv,1,1,1,1
 access_odt_materiales,odt.materiales,model_odt_materiales,group_btlpdv,1,1,1,1
 access_odt_cotizacion,odt.cotizacion,model_odt_cotizacion,group_btlpdv,1,1,1,1
