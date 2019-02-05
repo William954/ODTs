@@ -28,6 +28,7 @@ class inheritCRM(models.Model):
 	medios = fields.Float(string='Medios',compute='_aprobado_medios', track_visibility=True)
 	logistica = fields.Float(string='Logistica', track_visibility=True)
 	estrategia = fields.Float(string='Estrategia', compute='_aprobado_estrategia',track_visibility=True)
+	otros_gastos = fields.Float(string='Otros',track_visibility=True)
 
 	btl_count = fields.Integer(string='lead',compute='_compute_btl_count')
 	contact_count = fields.Integer(string='lead',compute='_compute_contactcenter_count')
@@ -1977,6 +1978,8 @@ class TablaGastos(models.Model):
 	medios = fields.Float(related='ref_project.medios', string='Medios')
 	logistica = fields.Float(related='ref_project.logistica', string='Logistica')
 	estrategia = fields.Float(related='ref_project.estrategia', string='Estrategia')
+	otros_gastos = fields.Float(related='ref_project.otros_gastos',string='Otros')
+
 
 	@api.one
 	def get_sale_order_reference(self):

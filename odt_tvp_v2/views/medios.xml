@@ -124,7 +124,6 @@
                                 <field name="marca"/>                               
                                 <field name="target"/>
                                 <field name="project"/>
-
                                   <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
@@ -159,7 +158,6 @@
                                         <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
                                     </div>
                                 </group>
-
                                 <group class="mt48">
                                     <label for="contact_name"/>
                                     <div class="o_row">
@@ -280,7 +278,6 @@
                             </group>
                           </group>
                         </page>
-
                         <page name="medios_tv_abierta" string="Spot TV Abierta TVSA" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
                           <group string="Solicitud plan de Medios/ Televisa Spoteo TV Abierta Nacional y/o Local">
                             <group>
@@ -631,10 +628,7 @@
                                       </field>
                             </page> 
                             </group>
-
                         </page>
-
-
                         <page name="medios_prensa" string="Prensa" attrs="{'invisible': [('med_prensa','=',False)]}">
                           <group>
                             <group>

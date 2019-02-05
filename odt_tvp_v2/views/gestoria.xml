@@ -262,7 +262,7 @@
                                 <field name="description_by_premio"/>
                                 <field name="description_premio"/>
                                 <field name="valor_primio" widget="monetary"/>
-                                <field name="total_premios" required='1'/>
+                                <field name="total_premios" attrs="{'required' :[('promotion','=','1')]}"/>
                                 <field name="lugar_enterga_premio"/>
                                 <field name="dates_hrs_entrega"/>
 <!--                            <field name="responsable_promo"/>-->
