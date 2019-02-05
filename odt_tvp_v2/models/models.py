@@ -623,7 +623,7 @@ class OdtMedios(models.Model):
 	nt_monto_inversion = fields.Float(string='Monto Máximo inversión spoteo carriers (costo cliente)', track_visibility=True)
 	nt_periodo_campana = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	nt_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
-	nt_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales', track_visibility=True)
+	nt_canales = fields.Many2many('canales.tags',string='Elección de Canales', track_visibility=True)
 	nt_especifico = fields.Text(string='Específicos', track_visibility=True)
 	nt_posicion = fields.Selection([('1','SI'),('2','NO')], string='Posicion', track_visibility=True)
 	nt_observaciones = fields.Text(string='Observaciones o restricciones spoteo Networks Televisa: ', track_visibility=True)
@@ -651,13 +651,13 @@ class OdtMedios(models.Model):
 	ot_periodo_campana = fields.Char(string='Periodo de la Campaña*')
 	ot_duracion = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot*')
 	ot_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')], string='Elección de Canales*')
-	ot_especifico = fields.Text(string='Especificos')
-	ot_posicion = fields.Selection([('1','SI'),('2','NO')], string=' ')
+	ot_especifico = fields.Text(string='Canales especificos')
+	ot_posicion = fields.Selection([('1','SI'),('2','NO')], string='Posicion')
 	ot_observaciones = fields.Text(string='Observaciones o restricciones spoteo otros Networks: ')
 	
 	ot_aaee_inversion = fields.Float(string='Monto Máximo inversión AAEE Networks (costo cliente)*')
 	ot_aaee_periodo_campana = fields.Char(string='Periodo de la Campaña*')
-	ot_aaee_especificos = fields.Char(string='Especificos')
+	ot_aaee_especificos = fields.Char(string='Canales especificos')
 	ot_aaee_canales = fields.Selection([('1','Rank Rating'),('2','Afinidad Target')],string='Elección de Canales*')
 	ot_aaee_programa_especifico = fields.Text(string='Si conocen el(los) programa(s) indicar', track_visibility=True)
 	ot_aaee_paquete_evento = fields.Text(string='Señalar si se requiere paquete para evento especifico (Ej.: NFL, Champions League...)')
@@ -676,7 +676,6 @@ class OdtMedios(models.Model):
 	rad_target_interes = fields.Char(string='Target de Interés*')
 	rad_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	rad_monto_inversion = fields.Float(string='Inversión Radio (Costo Cliente)*')
-	rad_tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
 	rad_observaciones = fields.Text(string='Observaciones')	
 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
 
@@ -1142,6 +1141,13 @@ class OdtMedios(models.Model):
 		sequence = self.env['ir.sequence'].next_by_code('odt.medios')
 		vals['name'] = sequence or 'Nuevo'
 		return super(OdtMedios, self).create(vals)
+
+class CanalesTags(models.Model):
+	_name = 'canales.tags'
+
+	name = fields.Char(string='Nombre')
+		
+
 	
 class OdtContactcenter(models.Model):
 	_name = 'odt.contactcenter'
@@ -1920,7 +1926,7 @@ class TablaRadio(models.Model):
 
 	radio_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
-	tipo = fields.Char(string='Típo')
+	tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
 	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
 
 class TablaPlaza(models.Model):
