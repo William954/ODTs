@@ -29,6 +29,8 @@ access_odt_cotizacion_contact1,odt.cotizacion.contact1,model_odt_cotizacion_cont
 access_odt_cotizacion_contact2,odt.cotizacion.contact2,model_odt_cotizacion_contact2,group_contactcenter,1,1,1,1
 access_odt_cotizacion_contact3,odt.cotizacion.contact3,model_odt_cotizacion_contact3,group_contactcenter,1,1,1,1
 access_odt_cotizacion_contact4,odt.cotizacion.contact4,model_odt_cotizacion_contact4,group_contactcenter,1,1,1,1
+access_odt_cotizacion_contact5,odt.cotizacion.contact5,model_odt_cotizacion_contact5,group_contactcenter,1,1,1,1
+
 ,,,,,,,
 ,,,,,,,
 access_odt_digital,odt.digital,model_odt_digital,group_digital,1,1,1,1

@@ -241,7 +241,7 @@
         </record>
 
         <!--  Definimos el menu se necesita el action para poder mostrarse en la tira del menu"-->
-        <menuitem id="odt_root" name="ODTS"/>
+        <menuitem id="odt_root" name="ODTS" web_icon="odt_tvp_v2,static/quality_control.png"/>
         <menuitem id="odt_menu0" name="BTL/PDV" sequence="0" parent="odt_root" action="btlpdv_action"/>
         <menuitem id="odt_menu1" name="Medios" sequence="1" parent="odt_root" action="medios_action"/>
         <menuitem id="odt_menu2" name="Produccion" sequence="2" parent="odt_root" action="produccion_action"/>

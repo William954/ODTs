@@ -256,7 +256,7 @@ class CrmOdt(models.Model):
 	partner_is_blacklisted = fields.Boolean(related='crm_odt_id.partner_is_blacklisted',string='Partner is blacklisted', readonly=True)
 	is_blacklisted = fields.Boolean(related='crm_odt_id.is_blacklisted')
 	marca = fields.Many2one('crm.marca', related='crm_odt_id.marca',string='Marca')
-	target = fields.Char(string='Target')
+	target = fields.Char(related='crm_odt_id.target',string='Target')
 	start_date = fields.Date(related='crm_odt_id.start_date',string='Fecha de Arranque')
 	end_date = fields.Date(related='crm_odt_id.end_date',string='Fecha de Cierre')
 
@@ -1281,6 +1281,7 @@ class OdtContactcenter(models.Model):
 	tabla_cotizacion_contact2 = fields.One2many('odt.cotizacion.contact2','cotizacion_contact2_id')
 	tabla_cotizacion_contact3 = fields.One2many('odt.cotizacion.contact3','cotizacion_contact3_id')
 	tabla_cotizacion_contact4 = fields.One2many('odt.cotizacion.contact4','cotizacion_contact4_id')
+	tabla_cotizacion_contact5 = fields.One2many('odt.cotizacion.contact5','cotizacion_contact5_id')
 
 	
 	@api.model
@@ -1877,6 +1878,22 @@ class CotizacionesContactcenter4(models.Model):
 	costo_minuto_sugerido = fields.Float(string='Costo por minuto sugerido')
 	costo_minuto_vendido = fields.Float(string='Costo por minuto vendido')	
 
+class CotizacionesContactcenter5(models.Model):
+	_name = 'odt.cotizacion.contact5'
+
+	cotizacion_contact5_id = fields.Many2one('odt.contactcenter', ondelete='cascade')
+	num_estaciones = fields.Integer(string='Número de estaciones')
+	dias = fields.Char(string='Dias de la semana')
+	num_dias = fields.Integer(string='Número de Dias')
+	horas_x_dias = fields.Integer(string='Horas por dia')
+	tota_horas = fields.Integer(string='Total de horas')
+	tvp_costo_hora = fields.Float(string='Tvp costo por hora')
+	tvp_costo_total = fields.Float(string='Tvp costo total')
+	cliente_costo_hora = fields.Float(string='Cliente costo por hora')
+	cliente_costo_total = fields.Float(string='Cliente costo total')
+	autorizado_costo_cliente = fields.Float(string='Costo por hora aprobado')
+	autorizado_costo_total_cliente = fields.Float(string='Costo total aprobado')
+
 class CotizacionesDiseno(models.Model):
 	_name = 'odt.cotizacion.diseno'
 		
@@ -1890,6 +1907,24 @@ class CotizacionesDiseno(models.Model):
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion')
+
+
+	@api.one
+	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
+	def _costo_cliente(self):
+		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+
+
+	@api.one
+	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	def _pago_terceros(self):
+		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
+
+	@api.one
+	@api.depends('costo_interno','pago_terceros','recuperacion')
+	def _pago_recuperacion(self):
+		self.recuperacion = self.pago_terceros + self.costo_interno
 
 class TablaPrensa(models.Model):
 	_name = 'odt.medios.prensa'
