@@ -146,6 +146,7 @@
                     <field name="medios"/>
                     <field name="logistica"/>
                     <field name="estrategia"/>
+                    <field name="otros_gastos"/>
                 </group>
               </group>
             </page>
