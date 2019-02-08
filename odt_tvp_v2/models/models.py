@@ -1953,7 +1953,9 @@ class TablaRevista(models.Model):
 
 	revista_id = fields.Many2one('odt.medios')
 	tamano = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
+	otro = fields.Char(string='Otro Tamaño')
 	tipo = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo')
+	otro_tipo = fields.Char(string='Otro')	
 	titulo = fields.Char(string='Título')
 	observaciones = fields.Char(string='Observaciones')
 
@@ -1962,6 +1964,7 @@ class TablaRadio(models.Model):
 
 	radio_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
+	otro = fields.Char(string='Otro')
 	tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
 	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
 

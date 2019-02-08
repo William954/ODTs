@@ -590,7 +590,9 @@
                                     <tree editable="bottom">
                                         <field name="titulo"/>
                                         <field name="tamano"/>
+                                        <field name="otro" attrs="{'readonly' : [('tamano','!=','6')]}"/>
                                         <field name="tipo" />
+                                        <field name="otro_tipo" attrs="{'readonly' : [('tipo','!=','6')]}"/>
                                     </tree>
                                   </field>
                               </page> 
@@ -623,6 +625,7 @@
                                         <tree editable="bottom">
                                             <field name="plaza"/>
                                             <field name="tipo"/>
+                                            <field name="otro"  attrs="{'readonly' : [('tipo','!=','7')]}"/>
                                             <field name="duracionn"/>
                                         </tree>
                                       </field>
