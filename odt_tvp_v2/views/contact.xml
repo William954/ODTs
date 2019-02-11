@@ -389,7 +389,7 @@
                               </group>                              
                             </group>                            
                           </group>
-                              <page name="cotizacion1" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
+<!--                               <page name="cotizacion1" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
                                   <field name="tabla_cotizacion_contact1" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="tipo_llamada" />
@@ -398,7 +398,7 @@
                                         <field name="information"/>
                                     </tree>
                                     </field>
-                              </page>
+                              </page> -->
                               <br/>
                             <h3 style="text-align: center;">Costos mínimos obligados a cobrar</h3><br/>
                                <page name="cotizacion2" string="Cotizacion 2" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
@@ -430,7 +430,7 @@
                                     </tree>
                                     </field>
                               </page>
-                               <page name="cotizacion4" string="Cotizacion 4" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
+<!--                                <page name="cotizacion4" string="Cotizacion 4" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
                                   <field name="tabla_cotizacion_contact4" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="llamada_salida" />
@@ -439,7 +439,7 @@
                                         <field name="costo_minuto_vendido" />
                                     </tree>
                                     </field>
-                              </page>
+                              </page> -->
                                <page name="cotizacion5" string="Cotizacion 5">
                                   <field name="tabla_cotizacion_contact5" widget="one2many_list">
                                     <tree editable="bottom">
@@ -452,12 +452,13 @@
                                         <field name="tvp_costo_total"  widget="monetary"/>
                                         <field name="cliente_costo_hora"  widget="monetary"/>
                                         <field name="cliente_costo_total"  widget="monetary"/>
-                                        <field name="autorizado_costo_cliente"  widget="monetary"/>
-                                        <field name="autorizado_costo_total_cliente" widget="monetary"/>
+<!--                                         <field name="autorizado_costo_cliente"  widget="monetary"/>
+                                        <field name="autorizado_costo_total_cliente" widget="monetary"/> -->
                                     </tree>
                                   </field>
                               </page>
                               <group>
+                                  <field name="contact_center" widget="monetary"/>
                                   <field name="firma1_contact" widget="signature"/> 
                                   <field name="firma2_contact" widget="signature"/> 
                               </group>  
