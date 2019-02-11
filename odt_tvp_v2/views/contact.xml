@@ -416,7 +416,7 @@
                                     </field>
                               </page>
                               <br/>
-                               <page name="cotizacion3" string="Cotizacion 3" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
+<!--                                <page name="cotizacion3" string="Cotizacion 3" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
                                   <field name="tabla_cotizacion_contact3" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="numero_dictaminacion" />
@@ -429,7 +429,7 @@
                                         <field name="costo_total"/>
                                     </tree>
                                     </field>
-                              </page>
+                              </page> -->
 <!--                                <page name="cotizacion4" string="Cotizacion 4" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
                                   <field name="tabla_cotizacion_contact4" widget="one2many_list">
                                     <tree editable="bottom">
