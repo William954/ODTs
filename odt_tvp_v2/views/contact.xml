@@ -417,27 +417,6 @@
                               </page>
                               <br/>
 
-                             <!--campos de notas--> 
-                              <div class = "container">
-                                <page>
-                                  <h3 style="text-align: center;">Nota: Si una vez rebasado el monto máximo cotizado no se tienen dictaminados a todos los ganadores, se deberán volver a cotizar los intentos y dictaminaciones necesarias para obtener dicho total.</h3>
-                                  <br/> 
-                                    <group>
-                                    <group>
-                                      <p><strong>Costos Incluidos:</strong></p><br/>
-                                      <p>· Monitoreos de calidad</p><br/>
-                                      <p>· Reportes operativos tipo</p><br/>
-                                      <p>· Desarrollo de guiones</p><br/>
-                                      <p>· Grabación del 100% de las llamadas</p>
-                                    </group>
-                                    <group>
-                                      <p><strong>Costos No Incluidos:</strong></p><br/>
-                                      <p>· Reportes especiales (adicionales a los operativos tipo y/o fuera de vigencia)</p><br/>
-                                      <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
-                                    </group>
-                                  </group>
-                                </page>
-                              </div>
 <!--                                <page name="cotizacion3" string="Cotizacion 3" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
                                   <field name="tabla_cotizacion_contact3" widget="one2many_list">
                                     <tree editable="bottom">
@@ -478,6 +457,28 @@
                                         <field name="autorizado_costo_total_cliente" widget="monetary"/> -->
                                     </tree>
                                   </field>
+
+                             <!--campos de notas--> 
+                              <div class = "container">
+                                <page>
+                                  <h3 style="text-align: center;">Nota: Si una vez rebasado el monto máximo cotizado no se tienen dictaminados a todos los ganadores, se deberán volver a cotizar los intentos y dictaminaciones necesarias para obtener dicho total.</h3>
+                                  <br/> 
+                                    <group>
+                                    <group>
+                                      <p><strong>Costos Incluidos:</strong></p><br/>
+                                      <p>· Monitoreos de calidad</p><br/>
+                                      <p>· Reportes operativos tipo</p><br/>
+                                      <p>· Desarrollo de guiones</p><br/>
+                                      <p>· Grabación del 100% de las llamadas</p>
+                                    </group>
+                                    <group>
+                                      <p><strong>Costos No Incluidos:</strong></p><br/>
+                                      <p>· Reportes especiales (adicionales a los operativos tipo y/o fuera de vigencia)</p><br/>
+                                      <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
+                                    </group>
+                                  </group>
+                                </page>
+                              </div>
                               </page>
                               <group>
                                   <field name="contact_center" widget="monetary"/>
