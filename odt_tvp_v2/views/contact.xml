@@ -414,8 +414,35 @@
                                         <field name="costo_total"/>
                                     </tree>
                                     </field>
+							 <div class = "container">
+                                <page>
+                                  <h3 style="text-align: center;">Nota: Si una vez rebasado el monto máximo cotizado no se tienen dictaminados a todos los ganadores, se deberán volver a cotizar los intentos y dictaminaciones necesarias para obtener dicho total.</h3>
+                                  <br/> 
+                                    <group>
+                                    <group>
+                                      <p><strong>Costos Incluidos:</strong></p><br/>
+                                      <p>· Monitoreos de calidad</p><br/>
+                                      <p>· Reportes operativos tipo</p><br/>
+                                      <p>· Desarrollo de guiones</p><br/>
+                                      <p>· Grabación del 100% de las llamadas</p>
+                                    </group>
+                                    <group>
+                                      <p><strong>Costos No Incluidos:</strong></p><br/>
+                                      <p>· Reportes especiales (adicionales a los operativos tipo y/o fuera de vigencia)</p><br/>
+                                      <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
+                                    </group>
+                                  </group>
+                                  <group>
+                                     <p><strong>Especificaciones Generales:</strong></p><br/>
+                                      <p>· Todos los costos son más IVA</p><br/>
+                                      <p>· Todos los precios son en pesos mexicanos</p><br/>
+                                      <p>· Esta cotización es válida por 30 días</p><br/>
+                                  </group>
+                                </page>
+                              </div>   
+
                               </page>
-                              <br/>
+
 
 
 <!--                                <page name="cotizacion3" string="Cotizacion 3" attrs="{'invisible' : [('tipo_servicio1','!=','5'),('tipo_servicio2','!=','5'),('tipo_servicio3','!=','5'),('tipo_servicio4','!=','5'),('tipo_servicio5','!=','5'),('tipo_servicio6','!=','5'),('tipo_servicio7','!=','5'),('tipo_servicio8','!=','5')]}">
@@ -462,15 +489,16 @@
                              <!--campos de notas--> 
                               <div class = "container">
                                 <page>
-                                  <h3 style="text-align: center;">Nota: Si una vez rebasado el monto máximo cotizado no se tienen dictaminados a todos los ganadores, se deberán volver a cotizar los intentos y dictaminaciones necesarias para obtener dicho total.</h3>
-                                  <br/> 
+                            
                                     <group>
                                     <group>
                                       <p><strong>Costos Incluidos:</strong></p><br/>
-                                      <p>· Monitoreos de calidad</p><br/>
-                                      <p>· Reportes operativos tipo</p><br/>
-                                      <p>· Desarrollo de guiones</p><br/>
-                                      <p>· Grabación del 100% de las llamadas</p>
+                                      <p>· 01 800 personalizado.</p><br/>
+                                      <p>· Monitoreos de calidad.</p><br/>
+                                      <p>· Reportes operativos tipo.</p><br/>
+                                      <p>. Desarrollo de guiones.</p><br/>
+                                      <p>.Producción y montaje de Audios básicos (Bienvenida, Fuera de Horario y Espera).</p><br/>
+                                      <p>.Grabación del 100% de las llamadas.</p>
                                     </group>
                                     <group>
                                       <p><strong>Costos No Incluidos:</strong></p><br/>
@@ -478,8 +506,16 @@
                                       <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
                                     </group>
                                   </group>
+                                  <group>
+                                     <p><strong>Especificaciones Generales:</strong></p><br/>
+                                      <p>· Todos los costos son más IVA</p><br/>
+                                      <p>· Esta cotización es válida por 30 días</p><br/>
+                                      <p>.Una vez iniciado el proyecto no se podrán reducir el número de estaciones pactadas,así como la vigencia establecida, en caso contrario la respuesta será inmediata.</p>
+                                  </group>
                                 </page>
-                              </div>
+                            </div>
+               
+
                               </page>
                               <group>
                                   <field name="contact_center" widget="monetary"/>
