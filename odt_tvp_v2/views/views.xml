@@ -149,6 +149,17 @@
                     <field name="estrategia"/>
                     <field name="otros_gastos"/>
                 </group>
+                <group>
+                  <field name="btl_tercero"/>
+                  <field name="contact_tercero"/>
+                  <field name="produccion_tercero"/>
+                  <field name="diseno_tercero"/>
+                  <field name="estrategia_tercero"/>
+                  <field name="logistica_tercero"/>
+                  <field name="medios_tercero"/>
+                  <field name="gestoria_tercero"/>
+                  <field name="digital_tercero"/>
+                </group>
               </group>
             </page>
           </xpath>

@@ -30,6 +30,18 @@ class inheritCRM(models.Model):
 	estrategia = fields.Float(string='Estrategia', compute='_aprobado_estrategia',track_visibility=True)
 	otros_gastos = fields.Float(string='Otros',track_visibility=True)
 
+
+	btl_tercero = fields.Float(string="Gasto terceros BTL")
+	contact_tercero = fields.Float(string="Gasto terceros Contact Center")
+	produccion_tercero = fields.Float(string="Gasto terceros Producción")
+	diseno_tercero = fields.Float(string="Gasto terceros Diseño")
+	estrategia_tercero = fields.Float(string="Gasto terceros Estrategia")
+	logistica_tercero = fields.Float(string="Gasto terceros Logistica")
+	medios_tercero = fields.Float(string="Gasto terceros Medios")
+	gestoria_tercero = fields.Float(string="Gasto terceros Gestoria")
+	digital_tercero = fields.Float(string="Gasto terceros Digital")
+
+
 	btl_count = fields.Integer(string='lead',compute='_compute_btl_count')
 	contact_count = fields.Integer(string='lead',compute='_compute_contactcenter_count')
 	produccion_count = fields.Integer(string='lead',compute='_compute_produccion_count')
@@ -1615,6 +1627,18 @@ class TablaGastos(models.Model):
 	logistica = fields.Float(related='ref_project.logistica', string='Logistica')
 	estrategia = fields.Float(related='ref_project.estrategia', string='Estrategia')
 	otros_gastos = fields.Float(related='ref_project.otros_gastos',string='Otros')
+
+	# Campos de presupuesto autorizado a terceros
+
+	btl_tercero = fields.Float(related='ref_project.btl', string='BTL/PDV')
+	contact_tercero = fields.Float(related='ref_project.btl', string='Contact Center')
+	produccion_tercero = fields.Float(related='ref_project.btl', string='Produccion')
+	diseno_tercero = fields.Float(related='ref_project.btl', string='Diseño')
+	estrategia_tercero = fields.Float(related='ref_project.btl', string='Estrategia')
+	logistica_tercero = fields.Float(related='ref_project.btl', string='Logistica')
+	medios_tercero = fields.Float(related='ref_project.btl', string='Medios')
+	gestoria_tercero = fields.Float(related='ref_project.btl', string='Gestoria')
+	digital_tercero = fields.Float(related='ref_project.btl', string='Marketing Digital')
 
 
 	@api.one
