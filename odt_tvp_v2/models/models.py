@@ -1630,15 +1630,15 @@ class TablaGastos(models.Model):
 
 	# Campos de presupuesto autorizado a terceros
 
-	btl_tercero = fields.Float(related='ref_project.btl', string='BTL/PDV')
-	contact_tercero = fields.Float(related='ref_project.btl', string='Contact Center')
-	produccion_tercero = fields.Float(related='ref_project.btl', string='Produccion')
-	diseno_tercero = fields.Float(related='ref_project.btl', string='Diseño')
-	estrategia_tercero = fields.Float(related='ref_project.btl', string='Estrategia')
-	logistica_tercero = fields.Float(related='ref_project.btl', string='Logistica')
-	medios_tercero = fields.Float(related='ref_project.btl', string='Medios')
-	gestoria_tercero = fields.Float(related='ref_project.btl', string='Gestoria')
-	digital_tercero = fields.Float(related='ref_project.btl', string='Marketing Digital')
+	btl_tercero = fields.Float(related='ref_project.btl_tercero', string='BTL/PDV')
+	contact_tercero = fields.Float(related='ref_project.contact_tercero', string='Contact Center')
+	produccion_tercero = fields.Float(related='ref_project.produccion_tercero', string='Produccion')
+	diseno_tercero = fields.Float(related='ref_project.diseno_tercero', string='Diseño')
+	estrategia_tercero = fields.Float(related='ref_project.estrategia_tercero', string='Estrategia')
+	logistica_tercero = fields.Float(related='ref_project.logistica_tercero', string='Logistica')
+	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='Medios')
+	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='Gestoria')
+	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='Marketing Digital')
 
 
 	@api.one

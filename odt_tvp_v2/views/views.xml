@@ -416,9 +416,6 @@
                   <page name="finanzas" string="Control Presupuestal">
                     <group>
                       <group>
-<!--                         <field name='ref_project'/>
-                        <field name='fin_clave'/>
-                        <field name='dates'/> -->
                         <field name='ref_customer'/>
                       </group>
                       <group>
