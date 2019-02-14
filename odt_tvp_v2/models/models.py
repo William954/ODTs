@@ -26,7 +26,7 @@ class inheritCRM(models.Model):
 	call_center = fields.Float(string='Contact Center',compute='_aprobado_contact', track_visibility=True)
 	digital = fields.Float(string='Marketing Digital',compute='_aprobado_digital',track_visibility=True)
 	medios = fields.Float(string='Medios',compute='_aprobado_medios', track_visibility=True)
-	logistica = fields.Float(string='Logistica', track_visibility=True)
+	logistica = fields.Float(string='Logistica', track_visibility=True, compute="_aprobado_logistica")
 	estrategia = fields.Float(string='Estrategia', compute='_aprobado_estrategia',track_visibility=True)
 	otros_gastos = fields.Float(string='Otros',track_visibility=True)
 
@@ -137,8 +137,8 @@ class inheritCRM(models.Model):
 	@api.one
 	@api.depends('gestoria_logistica','name')
 	def _aprobado_gestoria(self):
-		btl_model = self.env['odt.gestoria']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
+		gestoria_model = self.env['odt.gestoria']
+		seach_presupuesto = gestoria_model.search([('crm_odt_id','=',self.name)])
 		self.gestoria_logistica = sum(seach_presupuesto.mapped('gestoria'))
 
 	@api.one
@@ -156,25 +156,19 @@ class inheritCRM(models.Model):
 		self.digital = sum(seach_presupuesto.mapped('digital'))
 
 	@api.one
-	@api.depends('medios','name')
-	def _aprobado_medios(self):
-		medios_model = self.env['odt.medios']
-		seach_presupuesto = medios_model.search([('crm_odt_id','=',self.name)])
-		self.medios = sum(seach_presupuesto.mapped('medios'))
-
-	@api.one
-	@api.depends('logistica','name')
-	def _aprobado_btl(self):
-		btl_model = self.env['odt.btlpdv']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
-		self.logistica = sum(seach_presupuesto.mapped('btl'))
-
-	@api.one
 	@api.depends('logistica','name')
 	def _aprobado_logistica(self):
 		logistica_model = self.env['odt.logistica']
 		seach_presupuesto = logistica_model.search([('crm_odt_id','=',self.name)])
 		self.logistica = sum(seach_presupuesto.mapped('logistica'))
+
+	@api.one
+	@api.depends('estrategia','name')
+	def _aprobado_estrategia(self):
+		estrategia_model = self.env['odt.estrategia']
+		seach_presupuesto = estrategia_model.search([('crm_odt_id','=',self.name)])
+		self.estrategia = sum(seach_presupuesto.mapped('estrategia'))
+
 
 	rp_1 = fields.Char(string='¿Para que estamos haciendo este proyecto y cual es el reto?', track_visibility=True)
 	rp_2 = fields.Char(string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?', track_visibility=True)
