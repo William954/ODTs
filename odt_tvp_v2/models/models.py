@@ -1681,7 +1681,7 @@ class TablaGastos(models.Model):
 	def _compute_saldo_autorizado(self):
 		if self.ref_project:
 			self.saldo_autorizado = (self.ref_project.btl + self.ref_project.produccion + self.ref_project.diseño_creatividad + self.ref_project.call_center + self.ref_project.digital + self.ref_project.medios + self.ref_project.logistica + self.ref_project.gestoria_logistica)
-			total_terceros = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero )
+			total_terceros = (self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero )
 			self.u_bruta_p = (self.total_pagar - (total_terceros + self.saldo_autorizado))
 
 	@api.one
