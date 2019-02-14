@@ -393,20 +393,6 @@
         </field>
       </record>    
 
-
-    <!-- Campos para tipos de Gatos -->
-<!-- 
-      <record id="inherit_account_column" model="ir.ui.view">
-              <field name="name">inherit.account.column</field>
-              <field name="model">sale.order</field>
-              <field name="inherit_id" ref="sale.view_order_form"/>
-              <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='analytic_tag_ids']" position="after">
-                  <field name='tipo_gasto'/>
-                </xpath>
-              </field>
-      </record>
- -->
       <record id="inherit_page_finanza_project" model="ir.ui.view">
               <field name="name">inherit.finanza.page</field>
               <field name="model">project.project</field>
@@ -434,8 +420,9 @@
                           <field name='medios'/>
                           <field name="logistica"/>
                           <field name="estrategia"/>
+                          <field name="otros_gastos"/>
                       </group>
-                      <group>
+                      <group string="Gastos 3ros Aprobados">
                         <field name="btl_tercero"/>
                         <field name="produccion_tercero"/>
                         <field name="diseno_tercero"/>

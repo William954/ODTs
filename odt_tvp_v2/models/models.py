@@ -1643,15 +1643,15 @@ class TablaGastos(models.Model):
 
 	# Campos de presupuesto autorizado a terceros
 
-	btl_tercero = fields.Float(related='ref_project.btl_tercero', string='BTL/PDV')
-	contact_tercero = fields.Float(related='ref_project.contact_tercero', string='Contact Center')
-	produccion_tercero = fields.Float(related='ref_project.produccion_tercero', string='Produccion')
-	diseno_tercero = fields.Float(related='ref_project.diseno_tercero', string='Diseño')
-	estrategia_tercero = fields.Float(related='ref_project.estrategia_tercero', string='Estrategia')
-	logistica_tercero = fields.Float(related='ref_project.logistica_tercero', string='Logistica')
-	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='Medios')
-	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='Gestoria')
-	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='Marketing Digital')
+	btl_tercero = fields.Float(related='ref_project.btl_tercero', string='G. 3ros BTL/PDV')
+	contact_tercero = fields.Float(related='ref_project.contact_tercero', string='G. 3ros Contact Center')
+	produccion_tercero = fields.Float(related='ref_project.produccion_tercero', string='G. 3ros Produccion')
+	diseno_tercero = fields.Float(related='ref_project.diseno_tercero', string='G. 3ros Diseño')
+	estrategia_tercero = fields.Float(related='ref_project.estrategia_tercero', string='G. 3ros Estrategia')
+	logistica_tercero = fields.Float(related='ref_project.logistica_tercero', string='G. 3ros Logistica')
+	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='G. 3ros Medios')
+	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='G. 3ros Gestoria')
+	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 
 
 	@api.one
@@ -1681,7 +1681,8 @@ class TablaGastos(models.Model):
 	def _compute_saldo_autorizado(self):
 		if self.ref_project:
 			self.saldo_autorizado = (self.ref_project.btl + self.ref_project.produccion + self.ref_project.diseño_creatividad + self.ref_project.call_center + self.ref_project.digital + self.ref_project.medios + self.ref_project.logistica + self.ref_project.gestoria_logistica)
-			self.u_bruta_p = (self.total_pagar - self.saldo_autorizado)
+			total_terceros = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero )
+			self.u_bruta_p = (self.total_pagar - (total_terceros + self.saldo_autorizado))
 
 	@api.one
 	@api.depends('i_facturado')
