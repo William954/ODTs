@@ -136,6 +136,7 @@
                                   <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                   <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','2')]}"/>
+                                  <field name="medios"/>
                                 <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
                             </group>

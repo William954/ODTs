@@ -284,6 +284,7 @@
                             <group>
                             <field name="firma1_logistica" widget="signature"/>
                             <field name="firma2_logistica" widget="signature"/>
+                            <field name="logistica"/>
                             </group> 
                             <group>
                                 <p style="text-align: justify;">

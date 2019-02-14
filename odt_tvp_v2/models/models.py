@@ -31,16 +31,17 @@ class inheritCRM(models.Model):
 	otros_gastos = fields.Float(string='Otros',track_visibility=True)
 
 
-	btl_tercero = fields.Float(string="Gasto terceros BTL")
-	contact_tercero = fields.Float(string="Gasto terceros Contact Center")
-	produccion_tercero = fields.Float(string="Gasto terceros Producción")
-	diseno_tercero = fields.Float(string="Gasto terceros Diseño")
-	estrategia_tercero = fields.Float(string="Gasto terceros Estrategia")
-	logistica_tercero = fields.Float(string="Gasto terceros Logistica")
-	medios_tercero = fields.Float(string="Gasto terceros Medios")
-	gestoria_tercero = fields.Float(string="Gasto terceros Gestoria")
-	digital_tercero = fields.Float(string="Gasto terceros Digital")
+	btl_tercero = fields.Float(string="G. 3ros BTL")
+	contact_tercero = fields.Float(string="G. 3ros Contact Center")
+	produccion_tercero = fields.Float(string="G. 3ros Producción")
+	diseno_tercero = fields.Float(string="G. 3ros Diseño")
+	estrategia_tercero = fields.Float(string="G. 3ros Estrategia")
+	logistica_tercero = fields.Float(string="G. 3ros Logistica")
+	medios_tercero = fields.Float(string="G. 3ros Medios")
+	gestoria_tercero = fields.Float(string="G. 3ros Gestoria")
+	digital_tercero = fields.Float(string="G. 3ros Digital")
 
+	# Contadores para los smartbuttons
 
 	btl_count = fields.Integer(string='lead',compute='_compute_btl_count')
 	contact_count = fields.Integer(string='lead',compute='_compute_contactcenter_count')
@@ -154,19 +155,26 @@ class inheritCRM(models.Model):
 		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
 		self.digital = sum(seach_presupuesto.mapped('digital'))
 
-	# @api.one
-	# @api.depends('logistica','name')
-	# def _aprobado_btl(self):
-	# 	btl_model = self.env['odt.btlpdv']
-	# 	seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
-	# 	self.logistica = sum(seach_presupuesto.mapped('btl'))
+	@api.one
+	@api.depends('medios','name')
+	def _aprobado_medios(self):
+		medios_model = self.env['odt.medios']
+		seach_presupuesto = medios_model.search([('crm_odt_id','=',self.name)])
+		self.medios = sum(seach_presupuesto.mapped('medios'))
 
 	@api.one
-	@api.depends('estrategia','name')
-	def _aprobado_estrategia(self):
-		btl_model = self.env['odt.estrategia']
+	@api.depends('logistica','name')
+	def _aprobado_btl(self):
+		btl_model = self.env['odt.btlpdv']
 		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
-		self.estrategia = sum(seach_presupuesto.mapped('estrategia'))
+		self.logistica = sum(seach_presupuesto.mapped('btl'))
+
+	@api.one
+	@api.depends('logistica','name')
+	def _aprobado_logistica(self):
+		logistica_model = self.env['odt.logistica']
+		seach_presupuesto = logistica_model.search([('crm_odt_id','=',self.name)])
+		self.logistica = sum(seach_presupuesto.mapped('logistica'))
 
 	rp_1 = fields.Char(string='¿Para que estamos haciendo este proyecto y cual es el reto?', track_visibility=True)
 	rp_2 = fields.Char(string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?', track_visibility=True)
@@ -750,7 +758,7 @@ class OdtMedios(models.Model):
 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
 
-	medios = fields.Monetary(string='Medios P. Autorizado')
+	medios = fields.Float(string='Medios P. Autorizado')
 
 	
 	@api.model
@@ -1256,6 +1264,7 @@ class OdtLogistica(models.Model):
 	total_terceros_logistica = fields.Float(string='Total Terceros',compute=_logistica_totales)
 	firma1_logistica = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_logistica = fields.Binary(string='Firma 2', track_visibility=True)
+	logistica = fields.Float(string='Logistica P. Autorizado', track_visibility=True)
 
 class OdtEstrategia(models.Model):
 	_name = 'odt.estrategia'
@@ -1402,12 +1411,10 @@ class CotizacionesProduccion(models.Model):
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
 
-
 	@api.one
 	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
 	def _pago_terceros(self):
 		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
-
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1422,11 +1429,26 @@ class CotizacionesEstategia(models.Model):
 	cantidad = fields.Integer(string='Cantidad')
 	dias = fields.Integer(string='Dias')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente')
+	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
 	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros')
+	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
 	costo_interno = fields.Float(string='*Costo Interno')
-	recuperacion = fields.Float(string='Costo minimo de recuperacion')
+	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+
+	@api.one
+	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
+	def _costo_cliente(self):
+		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+
+	@api.one
+	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	def _pago_terceros(self):
+		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
+	@api.one
+	@api.depends('costo_interno','pago_terceros','recuperacion')
+	def _pago_recuperacion(self):
+		self.recuperacion = self.pago_terceros + self.costo_interno
 
 class CotizacionesBTL(models.Model):
 	_name = 'odt.cotizacion'
@@ -1518,18 +1540,15 @@ class CotizacionesDiseno(models.Model):
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
 
-
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
 
-
 	@api.one
 	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
 	def _pago_terceros(self):
 		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
-
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
