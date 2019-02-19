@@ -1736,6 +1736,18 @@ class Gastos(models.Model):
 	medios = fields.Float(related='gastos_id.medios', string='Medios')
 	logistica = fields.Float(related='gastos_id.logistica', string='Logistica')
 	estrategia = fields.Float(related='gastos_id.estrategia', string='Estrategia')
+	otros_gastos = fields.Float(related='gastos_id.otros_gastos',string='Otros')
+
+
+	btl_tercero = fields.Float(related='gastos_id.btl_tercero', string='G. 3ros BTL/PDV')
+	contact_tercero = fields.Float(related='gastos_id.contact_tercero', string='G. 3ros Contact Center')
+	produccion_tercero = fields.Float(related='gastos_id.produccion_tercero', string='G. 3ros Produccion')
+	diseno_tercero = fields.Float(related='gastos_id.diseno_tercero', string='G. 3ros Diseño')
+	estrategia_tercero = fields.Float(related='gastos_id.estrategia_tercero', string='G. 3ros Estrategia')
+	logistica_tercero = fields.Float(related='gastos_id.logistica_tercero', string='G. 3ros Logistica')
+	medios_tercero = fields.Float(related='gastos_id.medios_tercero', string='G. 3ros Medios')
+	gestoria_tercero = fields.Float(related='gastos_id.gestoria_tercero', string='G. 3ros Gestoria')
+	digital_tercero = fields.Float(related='gastos_id.digital_tercero', string='G. 3ros M. Digital')
 
 
 	@api.one
@@ -1751,6 +1763,19 @@ class Gastos(models.Model):
 		analytic_tags_medios = self.env['account.analytic.tag'].search([('name','=','Medios')])
 		analytic_tags_logistica = self.env['account.analytic.tag'].search([('name','=','Logistica')])
 		analytic_tags_estrategia = self.env['account.analytic.tag'].search([('name','=','Estrategia')])
+		analytic_tags_otros_gastos = self.env['account.analytic.tag'].search([('name','=','Otros')])
+			
+			# Campos de presupuesto autorizado a terceros
+
+		analytic_tags_btl_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros BTL/PDV')])
+		analytic_tags_contact_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Contact Center')])
+		analytic_tags_produccion_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Produccion')])
+		analytic_tags_diseno_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Diseño')])
+		analytic_tags_estrategia_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Estrategia')])
+		analytic_tags_logistica_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Logistica')])
+		analytic_tags_medios_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Medios')])
+		analytic_tags_gestoria_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros Gestoria')])
+		analytic_tags_digital_tercero = self.env['account.analytic.tag'].search([('name','=','G. 3ros M. Digital')])
 		search_account = analytic_lines.search([('account_id','=',self.gastos_id.analytic_account_id.id),('tag_ids','in',self.etiqueta_analitica.id)])
 		self.fac_gastos = (-(sum(search_account.mapped('amount'))))
 
@@ -1780,3 +1805,36 @@ class Gastos(models.Model):
 
 		if self.etiqueta_analitica == analytic_tags_estrategia:
 			self.disviacion = self.estrategia - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_otros_gastos:
+			self.disviacion = self.otros_gastos - self.fac_gastos
+
+
+			# Campos de presupuesto autorizado a terceros
+
+		if self.etiqueta_analitica == analytic_tags_btl_tercero:
+			self.disviacion = self.analytic_tags_btl_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_contact_tercero:
+			self.disviacion = self.analytic_tags_contact_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_produccion_tercero:
+			self.disviacion = self.analytic_tags_produccion_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_diseno_tercero:
+			self.disviacion = self.analytic_tags_diseno_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_estrategia_tercero:
+			self.disviacion = self.analytic_tags_estrategia_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_logistica_tercero:
+			self.disviacion = self.analytic_tags_logistica_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_medios_tercero:
+			self.disviacion = self.analytic_tags_medios_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_gestoria_tercero:
+			self.disviacion = self.analytic_tags_gestoria_tercero - self.fac_gastos
+
+		if self.etiqueta_analitica == analytic_tags_digital_tercero:
+			self.disviacion = self.analytic_tags_digital_tercero - self.fac_gastos
