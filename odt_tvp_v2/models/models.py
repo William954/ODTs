@@ -423,7 +423,10 @@ class OdtMedios(models.Model):
                     ,('133','00QB-Telefonia Celular'),('134','00CD-Telemercadeo'),('135','04CA-Tienda disco/cassette/video'),('136','01CA-Tiendas de autoservicio'),('137','03SA-Tintes p cabello'),('138','03SC-Toallas húmedas'),('139','08SG-Tratam p adelgazar'),('140','00OC-Turismo/viajes/Líneas aéreas'),('141','00OC-Turismo/viajes/Líneas aéreas'),('142','0001-Uso Interno Espacio Garantizad')
                     ,('143','00PT-Uso Interno Patrocinio'),('144','0003-Uso Interno Promoción'),('145','02KB-Uso Interno Promoción canal tv'),('146','00EB-Utensilios de cocina'),('147','08VA-Ventanas/vidrios/closets'),('148','09SB-Vigor sexual'),('149','09SG-Vitamina/complemen aliment'),('150','04AG-Yoghurts')], string='Categoría Televisa', track_visibility=True)
 
-	tvsa_nse = fields.Selection([('1','ABC+ Alto + Medio alto'),('2','C Medio'),('3','D+ Medio Bajo'),('4','DE Bajo')], string="NSE", track_visibility=True)
+	tvsa_nse_1 = fields.Boolean(string='ABC+ Alto + Medio alto',track_visibility=True)
+	tvsa_nse_2 = fields.Boolean(string='C Medio',track_visibility=True)
+	tvsa_nse_3 = fields.Boolean(string='D+ Medio Bajo',track_visibility=True)
+	tvsa_nse_4 = fields.Boolean(string='DE Bajo',track_visibility=True)
 
 	tvsa_grupo_edad_1 = fields.Boolean(string='4 - 12', track_visibility=True)
 	tvsa_grupo_edad_2 = fields.Boolean(string='13 - 18', track_visibility=True)
@@ -441,7 +444,13 @@ class OdtMedios(models.Model):
 	years_912 = fields.Boolean(string='9 a 12 años', track_visibility=True)
 	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
 
-	duracion_spot = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
+	duracion_spot_1 = fields.Boolean(string='10', track_visibility=True)
+	duracion_spot_2 = fields.Boolean(string='20"', track_visibility=True)
+	duracion_spot_3 = fields.Boolean(string='30"', track_visibility=True)
+	duracion_spot_4 = fields.Boolean(string='40"', track_visibility=True)
+	duracion_spot_5 = fields.Boolean(string='50"', track_visibility=True)
+	duracion_spot_6 = fields.Boolean(string='60"', track_visibility=True)
+
 	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO')],string='Opciones de Compra', track_visibility=True)
 	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar proporción', track_visibility=True)
 	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
@@ -457,13 +466,19 @@ class OdtMedios(models.Model):
 	canal_2 =  fields.Boolean(string='5', track_visibility=True)
 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
 	tvsa_abierta = fields.Integer(string='Monto Máximo Inversión TV Abierta Nacional (Costo Cliente)', track_visibility=True)
-	tv_abierta_duracion_spot = fields.Char(string='Duración del Spot', track_visibility=True)
+	
+	duracion_spot_7 = fields.Boolean(string='10', track_visibility=True)
+	duracion_spot_8 = fields.Boolean(string='20"', track_visibility=True)
+	duracion_spot_9 = fields.Boolean(string='30"', track_visibility=True)
+	duracion_spot_10 = fields.Boolean(string='40"', track_visibility=True)
+	duracion_spot_11 = fields.Boolean(string='50"', track_visibility=True)
+	duracion_spot_12 = fields.Boolean(string='60"', track_visibility=True)
 
 	canal_local = fields.Boolean(string='Canal Local', track_visibility=True)
 	bloqueos = fields.Boolean(string='Bloqueos', track_visibility=True)
 	sptv_periodo_camp2 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
 	foro_tv = fields.Boolean(string='Foro TV', track_visibility=True)
-	foro_tv_descrip = fields.Text(string='Box', track_visibility=True)
+	foro_tv_descrip = fields.Text(string='Descripción', track_visibility=True)
 	monto_inverison_tvabierta = fields.Float(string='Monto Máximo Inversión TV Abierta Local (Costo Cliente)', track_visibility=True)
 	asignacion_a = fields.Char(string='Asignado a', track_visibility=True)
 	tvsa_abierta_observaciones = fields.Text(string='Observaciones generales o condiciones especiales', track_visibility=True)
@@ -699,10 +714,10 @@ class OdtMedios(models.Model):
 	oh_target_interes = fields.Char(string='Target de Interés')
 	oh_periodo_campana = fields.Char(string='Periodo de la campaña')
 	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)')
-	oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
-										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
-						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
-	oh_observaciones = fields.Text(string='Comentarios')
+	# oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
+	# 									  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
+	# 					 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
+	# oh_observaciones = fields.Text(string='Comentarios')
 	tabla_medios_ooh = fields.One2many('odt.medios.ooh','ooh_id')
 
 	#Prensa
@@ -737,7 +752,10 @@ class OdtMedios(models.Model):
 	an_otro = fields.Char(string='Otro: ')
 	an_marca = fields.Char(string='Marca o Producto*')
 	an_sector = fields.Char(string='Sector (NIELSEN/IBOPE)*')
-	an_categoria = fields.Char(string='Categoria (NIELSEN/IBOPE)*')
+
+	an_categoria = fields.Selection([('',''),('',''),('',''),('','')],string='Categoria (NIELSEN/IBOPE)*')
+	an_cat_otros = fields.Text(string="Otra categoria")
+
 	an_year_inmediato = fields.Boolean(string='Año Inmediato Anterior')
 	an_year_movil = fields.Boolean(string='Año Móvil')
 	an_periodo = fields.Char(string='Otro Periodo')
@@ -1568,7 +1586,9 @@ class TablaOoh(models.Model):
 
 	ooh_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza*')
-	tipo_exterior = fields.Char(string='Típo de exterior*')
+	tipo_exterior = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
+										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
+						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
 	observaciones = fields.Char(string='Observaciones')
 
 class TablaRevista(models.Model):
@@ -1578,7 +1598,8 @@ class TablaRevista(models.Model):
 	tamano = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
 	otro = fields.Char(string='Otro Tamaño')
 	tipo = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo')
-	otro_tipo = fields.Char(string='Otro')	
+	otro_tipo = fields.Char(string='Otro')
+	color = fields.Selection([('1','B/N'),('2','Color')])	
 	titulo = fields.Char(string='Título')
 	observaciones = fields.Char(string='Observaciones')
 

@@ -9,7 +9,8 @@
                   <field name="stage_id"/>
                   <field name="color"/>
                   <field name="kanban_state"/>
-                  <field name="priority"/>
+                  <!-- <field name="priority"/> -->
+                  <field name="med_odt_fecha_entrega"/>
                   <field name="user_id"/>
                   <progressbar field="kanban_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}' help="This bar allows to filter the opportunities based on scheduled activities."/>
                         <templates>
@@ -116,7 +117,11 @@
                                 <field name="end_date"/>
                                 <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
                                 <field name="presupuesto_cliente"/>
+                                <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
+                                <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
+                                  <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
+                                </div>
                             </group>
                             <group>
                                 <field name="priority" widget="priority"/>
@@ -124,25 +129,24 @@
                                 <field name="marca"/>                               
                                 <field name="target"/>
                                 <field name="project"/>
-                                  <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_net_televisa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_otros_net" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_radio" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_revista" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_prensa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_ooh" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                  <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','2')]}"/>
-                                  <field name="medios"/>
-                                <field name="lost_reason" invisible="1"/>
+                                <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_net_televisa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_otros_net" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_radio" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_revista" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_prensa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_ooh" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+<!--                                   <field name="med_analisis" />
+ -->                                <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
                             </group>
                         </group>
                        <notebook colspan="4">
-                        <page string="Mecanica">
+                        <!-- <page string="Mecanica">
                             <field name="description"/>
                         </page>
                         <page name="lead" string="Followup">
@@ -249,33 +253,32 @@
                                    <field name="qz_16"/>
                               </group>
                             </group>
-                        </page>
+                        </page> -->
                        <!-- Page de Medios en ODT -->
                         <page name="medios" string="Medios">
                           <group>
                             <group>
                               <h4>Para uso Exclusivo de Medios</h4>
-                              <field name="med_folio"/>
-                              <field name="med_fecha_soli"/>
-                              <field name="med_hora_soli"  widget="float_time"/>
+<!--                               <field name="med_folio"/>
+                              <field name="med_fecha_soli"/> -->
+                              <!-- <field name="med_hora_soli"  widget="float_time"/> -->
                               <field name="med_fecha_entrega"/>
                               <field name="med_fecha_real"/>
-                              <field name="med_elabora"/>
+                              <!-- <field name="med_elabora"/> -->
                               <field name="med_nivel_complejidad"/>
                             </group>
-                            <group string="ODT Medios">
-                              <field name="med_odt_fecha_entrega"/>
-                              <!--<field name="med_clave_proyecto"/>-->
-                            </group>
-                            <group>
+<!--                             <group string="ODT Medios">
+ -->                              <!--<field name="med_clave_proyecto"/>-->
+<!--                             </group>
+ -->                        <group>
                               <field name="med_objetivo_comunicacion"/>
                               <field name="med_periodo_camap"/>
                               <field name="med_tipo_analisis"/>
                               <field name="med_oberv_generales"/>
-                              <field name="med_solicita"/>
+<!--                               <field name="med_solicita"/>
                               <field name="med_getente"/>
                               <field name="med_dirc_comercial"/>
-                              <field name="med_icepresidencia"/>
+                              <field name="med_icepresidencia"/> -->
                             </group>
                           </group>
                         </page>
@@ -285,7 +288,11 @@
                               <field name="tvsa_tipo_camp"/>
                               <field name="tvsa_otro"/>
                               <field name="tvsa_catego_televisa"/>
-                              <field name="tvsa_nse"/>
+                            <h3>Creacion de Target Primario</h3>
+                              <field name="tvsa_nse_1"/>
+                              <field name="tvsa_nse_2"/>
+                              <field name="tvsa_nse_3"/>
+                              <field name="tvsa_nse_4"/>
                             <h3>Grupos de Edad</h3>
                               <field name="tvsa_grupo_edad_1"/>
                               <field name="tvsa_grupo_edad_2"/>
@@ -300,16 +307,27 @@
                               <field name="tvsa_sexo_h"/>
                             <h3>Rol Familiar</h3>
                               <field name="tvsa_rol_family"/>
+                              <h5>(No es indispenzable)</h5>
                             <h3>Resp. Niños</h3>
                               <field name="years_03"/>
                               <field name="years_48"/>
                               <field name="years_912"/>
+                            <h3>Target Secundario</h3>
                               <field name="target_secundario"/>
+                            <h5>(No es indispenzable)</h5>                           
                             </group>
                             <group>
-                            <h3>Abierta Nacional</h3>
-                              <field name="duracion_spot"/>
+                            <h3>Tv Abierta Nacional</h3>
+                            <h5>Duracion Spot</h5>
+                              <field name="duracion_spot_1"/>
+                              <field name="duracion_spot_1"/>
+                              <field name="duracion_spot_2"/>
+                              <field name="duracion_spot_3"/>
+                              <field name="duracion_spot_4"/>
+                              <field name="duracion_spot_5"/>
+                              <field name="duracion_spot_6"/>
                               <field name="opcion_compra"/>
+                              <h3 >Canales Módulos o Franjas siempre serán 2, 5 y 9</h3>
                               <field name="mixto_proporcion"/>
                               <field name="target_compra_modulo"/>
                               <field name="target_especial"/>
@@ -317,21 +335,27 @@
                               <field name="a_favor"/>
                               <field name="kids_policy"/>
                               <field name="sptv_periodo_camp1"/>
-                              <field name="cpr_modulos"/> 
-                              <h3 attrs="{'invisible':[('cpr_modulos','!=','1')]}">Canales Módulos o Franjas siempre serán 2, 5 y 9</h3>
-                                <field name="canal_1" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
-                                <field name="canal_2" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
-                                <field name="canal_3" attrs="{'invisible':[('cpr_modulos','!=','1')]}"/>
+                              <!-- <field name="cpr_modulos"/> --> 
+                                <field name="canal_1" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
+                                <field name="canal_2" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
+                                <field name="canal_3" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
                                 <field name="tvsa_abierta"/>
+                                <br/>
                             <h3>Tv Abierta Local</h3>
-                              <field name="tv_abierta_duracion_spot"/>
+                                <br/>
+                              <field name="duracion_spot_7"/>
+                              <field name="duracion_spot_8"/>
+                              <field name="duracion_spot_9"/>
+                              <field name="duracion_spot_10"/>
+                              <field name="duracion_spot_11"/>
+                              <field name="duracion_spot_12"/>
                               <field name="canal_local"/>
                               <field name="bloqueos"/>
                               <field name="sptv_periodo_camp2"/>
                               <field name="foro_tv"/>
-                              <field name="foro_tv_descrip"/>
+                              <field name="foro_tv_descrip" attrs="{'invisible': [('foro_tv','=',False)]}"/>
                               <field name="monto_inverison_tvabierta"/>
-                              <field name="asignacion_a"/>
+                              <!-- <field name="asignacion_a"/> -->
                               <field name="tvsa_abierta_observaciones"/>
                             </group>
                           </group>
@@ -339,6 +363,18 @@
 
                         <page name="medios_aaeetv" string="AAEE TV TVSA" attrs="{'invisible': [('med_aaee_tv','=',False)]}">
                           <group>
+                            <group>
+                              <h3>TV Abierta Nacional</h3>
+                              <field name="aaeetv_periodo_camp"/>
+                              <field name="aaee_monto_maximo"/>
+                              <field name="aaee_monto_minimo"/>
+                              <h3>Canales Televisa</h3>
+                              <field name="aaeetv_2"/>
+                              <field name="aaeetv_5"/>
+                              <field name="aaeetv_9"/>
+                              <field name="aaeetv_foro_tv"/>
+                              <field name="conoce_programas"/>
+                            </group>
                             <group>
                               <field name="aaee_categoria_televisa"/>
                               <field name="target_primario"/>
@@ -353,18 +389,7 @@
                               <field name="lucha_bool"/>
                               <field name="noticiero_bool"/>
                             </group>
-                            <group>
-                              <h3>TV Abierta Nacional</h3>
-                              <field name="aaeetv_periodo_camp"/>
-                              <field name="aaee_monto_maximo"/>
-                              <field name="aaee_monto_minimo"/>
-                              <h3>Canales Televisa</h3>
-                              <field name="aaeetv_2"/>
-                              <field name="aaeetv_5"/>
-                              <field name="aaeetv_9"/>
-                              <field name="aaeetv_foro_tv"/>
-                              <field name="conoce_programas"/>
-                            </group>
+                            
                             <group string="Box" attrs="{'invisible': [('box_bool','=',False)]}">
                               <field name="box_selection" />
                               <field name="box_text"/>
@@ -373,7 +398,7 @@
                               <field name="canal5_selection"/>
                               <field name="canal5_text"/>
                             </group>
-                            <group string="Canal 0" attrs="{'invisible': [('canal9_bool','=',False)]}">
+                            <group string="Canal 9" attrs="{'invisible': [('canal9_bool','=',False)]}">
                               <field name="canal9_selection"/>
                               <field name="canal9_text"/>
                             </group>
@@ -594,6 +619,7 @@
                                         <field name="otro" attrs="{'readonly' : [('tamano','!=','6')]}"/>
                                         <field name="tipo" />
                                         <field name="otro_tipo" attrs="{'readonly' : [('tipo','!=','6')]}"/>
+                                        <field name="color"/>
                                     </tree>
                                   </field>
                               </page> 
@@ -723,7 +749,7 @@
                               <field name="d_requerirlos"/>
                             </group>
                             <group>
-                              <field name="d_folio_proyecto"/>
+                              <!-- <field name="d_folio_proyecto"/> -->
                               <field name="d_monto_maximo"/>
                               <field name="d_monto_minimo"/>
                               <p>
@@ -734,7 +760,7 @@
                           </group>
                         </page>
 
-                        <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False)]}">
+                        <page name="medios_analisis" string="Analisis" attrs="{'|','invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
                           <group>
                             <group>
                               <field name="an_inversion"/>
@@ -744,8 +770,9 @@
                             </group>
                             <group>
                               <field name="an_marca"/>
-                              <field name="an_sector"/>
-                              <field name="an_categoria"/>
+                              <!-- <field name="an_sector"/> -->
+                              <field name="an_categoria" attrs="{invisible': [('med_analisis','=',False)]}"/>
+                              <field name="an_cat_otros"/>
                             </group>
                             <group string="Inversión Publicitaria (Competencia) IBOPE">
                               <h3>Periodo*</h3>
@@ -762,12 +789,12 @@
                               <field name="an_target_interes"/>
                               <field name="an_analisis1"/>
                             </group>
-                            <group string="Hábitos de consumo(BIMAS)">
+                            <group string="Hábitos de consumo (BIMSA)">
                               <field name="an_marca1"/>
                               <field name="an_target_interes1"/>
                               <field name="an_analisis2"/>
                             </group>
-                            <group string="Odtro Analisis">
+                            <group string="Otro Analisis">
                               <field name="an_tro_descripcion"/> 
                             </group>
                           </group>
