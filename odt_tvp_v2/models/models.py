@@ -1309,7 +1309,7 @@ class OdtEstrategia(models.Model):
 	total_interno_estrategia = fields.Float(string='Total Interno',compute=_estrategia_totales)
 	total_recuperacion_estrategia = fields.Float(string='Total Recuperacion',compute=_estrategia_totales)
 
-# tablas one2many
+# Tablas one2many
 
 class MaterialesBTL(models.Model):
 	_name = 'odt.materiales'

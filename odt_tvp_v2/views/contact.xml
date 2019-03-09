@@ -415,12 +415,33 @@
                                       <p>· Reportes operativos tipo</p><br/>
                                       <p>· Desarrollo de guiones</p><br/>
                                       <p>· Grabación del 100% de las llamadas</p>
+
                                     </group>
                                     <group>
                                       <p><strong>Costos No Incluidos:</strong></p><br/>
                                       <p>· Reportes especiales (adicionales a los operativos tipo y/o fuera de vigencia)</p><br/>
                                       <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
                                     </group>
+                                  <table border="1">
+                                        <tr text-align="center">
+                                          <td bgcolor="#EBF1DE">Llamadas de salida</td>
+                                          <td bgcolor="#FDEADA">Costo por minuto TVP</td>
+                                          <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
+                                          <td>Costo por minuto vendido</td>
+                                        </tr>
+                                        <tr text-align="center">
+                                          <td>Llamada local y Larga distancia nacional</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                        </tr>
+                                        <tr text-align="center">
+                                          <td>Celular local y Celular nacional</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                        </tr>
+                                      </table>
                                   </group>
                                   <group>
                                      <p><strong>Especificaciones Generales:</strong></p><br/>
@@ -451,7 +472,6 @@
                              <!--campos de notas--> 
                               <div class = "container">
                                 <page>
-                            
                                     <group>
                                     <group>
                                       <p><strong>Costos Incluidos:</strong></p><br/>
@@ -466,7 +486,55 @@
                                       <p><strong>Costos No Incluidos:</strong></p><br/>
                                       <p>· Reportes especiales (adicionales a los operativos tipo y/o fuera de vigencia)</p><br/>
                                       <p>· La telefonía se factura por separado de acuerdo a los reportes de llamadas y con base en los siguientes cuadros:</p>
+
                                     </group>
+                                    <br/>
+                                    <br/>
+
+                                    <table border="1" align="center">
+                                      <tr >
+                                        <td rowspan="3" bgcolor="#EBF1DE">Llamadas de entrada al 01 800</td>
+                                        <td bgcolor="#EBF1DE">Proveniente de:</td>
+                                        <td bgcolor="#FDEADA">Costo por minuto TVP</td>
+                                        <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
+                                        <td >Costo por minuto vendido</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Teléfonos fijos o celulares</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Casetas telefónicas</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                        <td>$0.00</td>
+                                      </tr>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                      <table border="1" align="center">
+                                        <tr text-align="center">
+                                          <td bgcolor="#EBF1DE">Llamadas de salida</td>
+                                          <td bgcolor="#FDEADA">Costo por minuto TVP</td>
+                                          <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
+                                          <td >Costo por minuto vendido</td>
+                                        </tr>
+                                        <tr text-align="center">
+                                          <td>Llamada local y Larga distancia nacional</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                        </tr>
+                                        <tr text-align="center">
+                                          <td>Celular local y Celular nacional</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                          <td>$0.00</td>
+                                        </tr>
+                                      </table>
+
                                   </group>
                                   <group>
                                      <p><strong>Especificaciones Generales:</strong></p><br/>
@@ -476,8 +544,6 @@
                                   </group>
                                 </page>
                             </div>
-               
-
                               </page>
                               <group>
                                   <field name="contact_center" widget="monetary"/>
