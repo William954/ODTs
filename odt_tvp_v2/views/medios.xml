@@ -336,9 +336,9 @@
                               <field name="kids_policy"/>
                               <field name="sptv_periodo_camp1"/>
                               <!-- <field name="cpr_modulos"/> --> 
-                                <field name="canal_1" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
-                                <field name="canal_2" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
-                                <field name="canal_3" attrs="{'|','invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
+                                <field name="canal_1" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
+                                <field name="canal_2" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
+                                <field name="canal_3" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
                                 <field name="tvsa_abierta"/>
                                 <br/>
                             <h3>Tv Abierta Local</h3>
@@ -700,7 +700,6 @@
                               <field name="oh_target_interes"/>
                               <field name="oh_periodo_campana"/>
                               <field name="oh_monto_inversion"/>
-                              <field name="oh_tipo_actividad"/>
                             </group>
                           </group>
                             <group>
@@ -713,7 +712,6 @@
                                     </tree>
                                   </field>
                               </page> 
-                              <field name="oh_observaciones"/>                                       
                             </group>
                             <group>
                               <p>
@@ -760,7 +758,7 @@
                           </group>
                         </page>
 
-                        <page name="medios_analisis" string="Analisis" attrs="{'|','invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
+                        <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
                           <group>
                             <group>
                               <field name="an_inversion"/>
@@ -771,7 +769,7 @@
                             <group>
                               <field name="an_marca"/>
                               <!-- <field name="an_sector"/> -->
-                              <field name="an_categoria" attrs="{invisible': [('med_analisis','=',False)]}"/>
+                              <field name="an_categoria" attrs="{'invisible': [('med_analisis','=',False)]}"/>
                               <field name="an_cat_otros"/>
                             </group>
                             <group string="Inversión Publicitaria (Competencia) IBOPE">
