@@ -169,43 +169,55 @@ class inheritCRM(models.Model):
 		seach_presupuesto = estrategia_model.search([('crm_odt_id','=',self.name)])
 		self.estrategia = sum(seach_presupuesto.mapped('estrategia'))
 
+	 	
+	brief_qtion1 = fields.Text(string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(string="Comentarios adicionales. ", track_visibility=True)
 
-	rp_1 = fields.Char(string='¿Para que estamos haciendo este proyecto y cual es el reto?', track_visibility=True)
-	rp_2 = fields.Char(string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?', track_visibility=True)
-	rp_3 = fields.Char(string='¿Que buscamos lograr?', track_visibility=True)
-	rp_4 = fields.Char(string='¿Cual es el problema a resolver?', track_visibility=True)
-	on_1 = fields.Char(string='¿Crecimiento?', track_visibility=True)
-	on_2 = fields.Char(string='¿Mayor margen de utilidad?', track_visibility=True)
-	on_3 = fields.Char(string='¿Posicionamiento de un nuevo producto o servicio?', track_visibility=True)
-	on_4 = fields.Char(string='¿Hacer frente a la competencia?', track_visibility=True)
-	ob_1 = fields.Char(string='¿Conocimiento?', track_visibility=True)
-	ob_2 = fields.Char(string='¿Posicionamiento?', track_visibility=True)
-	ob_3 = fields.Char(string='¿Diferenciacion?', track_visibility=True)
-	cm_1 = fields.Char(string='¿Como se define y posiciona la marca en cuanto a si misma?', track_visibility=True)
-	cm_2 = fields.Char(string='¿Que linea de comunicación esta implementando la marca actualmente?', track_visibility=True)
-	cm_3 = fields.Char(string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?', track_visibility=True)
-	cm_4 = fields.Char(string='¿Que tono se debe adoptar?', track_visibility=True)
-	qcs_1 = fields.Char(string='¿Quiénes son los competidores?', track_visibility=True)
-	qcs_2 = fields.Char(string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?', track_visibility=True)
-	qcs_3 = fields.Char(string='¿Qué piensan y sienten los consumidores acerca de la competencia?', track_visibility=True)
-	vh_1 = fields.Char(string='¿NSE, TARGET?', track_visibility=True)
-	vh_2 = fields.Char(string='¿Cuál es el comportamiengo habitual?', track_visibility=True)
-	vh_3 = fields.Char(string='¿Qué piensan y sienten acerca de la marca?', track_visibility=True)
-	dc_1 = fields.Char(string='7. ¿QUÉ DEBEMOS COMUNICAR?', track_visibility=True)
-	dc_2 = fields.Char(string='¿Qué queremos que piensen y sientan de la marca?', track_visibility=True)
-	dc_3 = fields.Char(string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?', track_visibility=True)
-	qc_1 = fields.Char(string='8. ¿QUÉ NO QUEREMOS COMUNICAR?', track_visibility=True)
-	qc_2 = fields.Char(string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?', track_visibility=True)
-	ccp_1 = fields.Char(string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?', track_visibility=True)
-	ccp_2 = fields.Char(string='¿Qué resultados obtuvieron?', track_visibility=True)
-	cdp_1 = fields.Char(string='¿Qué medios se utilizarán para la implementación?', track_visibility=True)
-	cdp_2 = fields.Char(string='¿Qué medios se utilizarán para la difusión?', track_visibility=True)
-	cdp_3 = fields.Char(string='¿Qué medios se utilizarán para la participación?', track_visibility=True)
-	qz_12 = fields.Char(string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)', track_visibility=True)
-	qz_13 = fields.Char(string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc', track_visibility=True)
-	qz_14 = fields.Char(string='¿HAY UN ESTIMADO DE PRESUPUESTO?', track_visibility=True)
-	qz_15 = fields.Char(string='¿CUÁLES SON LOS ENTREGABLES?', track_visibility=True)
-	qz_16 = fields.Char(string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?', track_visibility=True)
+	# rp_1 = fields.Char(string='¿Para que estamos haciendo este proyecto y cual es el reto?', track_visibility=True)
+	# rp_2 = fields.Char(string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?', track_visibility=True)
+	# rp_3 = fields.Char(string='¿Que buscamos lograr?', track_visibility=True)
+	# rp_4 = fields.Char(string='¿Cual es el problema a resolver?', track_visibility=True)
+	# on_1 = fields.Char(string='¿Crecimiento?', track_visibility=True)
+	# on_2 = fields.Char(string='¿Mayor margen de utilidad?', track_visibility=True)
+	# on_3 = fields.Char(string='¿Posicionamiento de un nuevo producto o servicio?', track_visibility=True)
+	# on_4 = fields.Char(string='¿Hacer frente a la competencia?', track_visibility=True)
+	# ob_1 = fields.Char(string='¿Conocimiento?', track_visibility=True)
+	# ob_2 = fields.Char(string='¿Posicionamiento?', track_visibility=True)
+	# ob_3 = fields.Char(string='¿Diferenciacion?', track_visibility=True)
+	# cm_1 = fields.Char(string='¿Como se define y posiciona la marca en cuanto a si misma?', track_visibility=True)
+	# cm_2 = fields.Char(string='¿Que linea de comunicación esta implementando la marca actualmente?', track_visibility=True)
+	# cm_3 = fields.Char(string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?', track_visibility=True)
+	# cm_4 = fields.Char(string='¿Que tono se debe adoptar?', track_visibility=True)
+	# qcs_1 = fields.Char(string='¿Quiénes son los competidores?', track_visibility=True)
+	# qcs_2 = fields.Char(string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?', track_visibility=True)
+	# qcs_3 = fields.Char(string='¿Qué piensan y sienten los consumidores acerca de la competencia?', track_visibility=True)
+	# vh_1 = fields.Char(string='¿NSE, TARGET?', track_visibility=True)
+	# vh_2 = fields.Char(string='¿Cuál es el comportamiengo habitual?', track_visibility=True)
+	# vh_3 = fields.Char(string='¿Qué piensan y sienten acerca de la marca?', track_visibility=True)
+	# dc_1 = fields.Char(string='7. ¿QUÉ DEBEMOS COMUNICAR?', track_visibility=True)
+	# dc_2 = fields.Char(string='¿Qué queremos que piensen y sientan de la marca?', track_visibility=True)
+	# dc_3 = fields.Char(string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?', track_visibility=True)
+	# qc_1 = fields.Char(string='8. ¿QUÉ NO QUEREMOS COMUNICAR?', track_visibility=True)
+	# qc_2 = fields.Char(string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?', track_visibility=True)
+	# ccp_1 = fields.Char(string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?', track_visibility=True)
+	# ccp_2 = fields.Char(string='¿Qué resultados obtuvieron?', track_visibility=True)
+	# cdp_1 = fields.Char(string='¿Qué medios se utilizarán para la implementación?', track_visibility=True)
+	# cdp_2 = fields.Char(string='¿Qué medios se utilizarán para la difusión?', track_visibility=True)
+	# cdp_3 = fields.Char(string='¿Qué medios se utilizarán para la participación?', track_visibility=True)
+	# qz_12 = fields.Char(string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)', track_visibility=True)
+	# qz_13 = fields.Char(string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc', track_visibility=True)
+	# qz_14 = fields.Char(string='¿HAY UN ESTIMADO DE PRESUPUESTO?', track_visibility=True)
+	# qz_15 = fields.Char(string='¿CUÁLES SON LOS ENTREGABLES?', track_visibility=True)
+	# qz_16 = fields.Char(string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?', track_visibility=True)
 		
 class CrmOdt(models.Model):
 	_name = 'crm.odt'
@@ -273,52 +285,56 @@ class CrmOdt(models.Model):
 	target = fields.Char(related='crm_odt_id.target',string='Target')
 	start_date = fields.Date(related='crm_odt_id.start_date',string='Fecha de Arranque')
 	end_date = fields.Date(related='crm_odt_id.end_date',string='Fecha de Cierre')
-
-	# BRIEF
-	rp_1 = fields.Char(related='crm_odt_id.rp_1',string='¿Para que estamos haciendo este proyecto y cual es el reto?')
-	rp_2 = fields.Char(related='crm_odt_id.rp_2',string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?')
-	rp_3 = fields.Char(related='crm_odt_id.rp_3',string='¿Que buscamos lograr?')
-	rp_4 = fields.Char(related='crm_odt_id.rp_4',string='¿Cual es el problema a resolver?')
-	on_1 = fields.Char(related='crm_odt_id.on_1',string='¿Crecimiento?')
-	on_2 = fields.Char(related='crm_odt_id.on_2',string='¿Mayor margen de utilidad?')
-	on_3 = fields.Char(related='crm_odt_id.on_3',string='¿Posicionamiento de un nuevo producto o servicio?')
-	on_4 = fields.Char(related='crm_odt_id.on_4',string='¿Hacer frente a la competencia?')
-	ob_1 = fields.Char(related='crm_odt_id.ob_1',string='¿Conocimiento?')
-	ob_2 = fields.Char(related='crm_odt_id.ob_2',string='¿Posicionamiento?')
-	ob_3 = fields.Char(related='crm_odt_id.ob_3',string='¿Diferenciacion?')
-	cm_1 = fields.Char(related='crm_odt_id.cm_1',string='¿Como se define y posiciona la marca en cuanto a si misma?')
-	cm_2 = fields.Char(related='crm_odt_id.cm_2',string='¿Que linea de comunicación esta implementando la marca actualmente?')
-	cm_3 = fields.Char(related='crm_odt_id.cm_3',string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?')
-	cm_4 = fields.Char(related='crm_odt_id.cm_4',string='¿Que tono se debe adoptar?')
-	qcs_1 = fields.Char(related='crm_odt_id.qcs_1',string='¿Quiénes son los competidores?')
-	qcs_2 = fields.Char(related='crm_odt_id.qcs_2',string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?')
-	qcs_3 = fields.Char(related='crm_odt_id.qcs_3',string='¿Qué piensan y sienten los consumidores acerca de la competencia?')
-	vh_1 = fields.Char(related='crm_odt_id.vh_1',string='¿NSE, TARGET?')
-	vh_2 = fields.Char(related='crm_odt_id.vh_2',string='¿Cuál es el comportamiengo habitual?')
-	vh_3 = fields.Char(related='crm_odt_id.vh_3',string='¿Qué piensan y sienten acerca de la marca?')
-	dc_1 = fields.Char(related='crm_odt_id.dc_1',string='7. ¿QUÉ DEBEMOS COMUNICAR?')
-	dc_2 = fields.Char(related='crm_odt_id.dc_2',string='¿Qué queremos que piensen y sientan de la marca?')
-	dc_3 = fields.Char(related='crm_odt_id.dc_3',string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?')
-	qc_1 = fields.Char(related='crm_odt_id.qc_1',string='8. ¿QUÉ NO QUEREMOS COMUNICAR?')
-	qc_2 = fields.Char(related='crm_odt_id.qc_2',string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?')
-	ccp_1 = fields.Char(related='crm_odt_id.ccp_1',string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?')
-	ccp_2 = fields.Char(related='crm_odt_id.ccp_2',string='¿Qué resultados obtuvieron?')
-	cdp_1 = fields.Char(related='crm_odt_id.cdp_1',string='¿Qué medios se utilizarán para la implementación?')
-	cdp_2 = fields.Char(related='crm_odt_id.cdp_2',string='¿Qué medios se utilizarán para la difusión?')
-	cdp_3 = fields.Char(related='crm_odt_id.cdp_3',string='¿Qué medios se utilizarán para la participación?')
-	qz_12 = fields.Char(related='crm_odt_id.qz_12',string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)')
-	qz_13 = fields.Char(related='crm_odt_id.qz_13',string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc')
-	qz_14 = fields.Char(related='crm_odt_id.qz_14',string='¿HAY UN ESTIMADO DE PRESUPUESTO?')
-	qz_15 = fields.Char(related='crm_odt_id.qz_15',string='¿CUÁLES SON LOS ENTREGABLES?')
-	qz_16 = fields.Char(related='crm_odt_id.qz_16',string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?')
-	product = fields.Char(related='crm_odt_id.product',string='Producto', track_visibility=True)
-	project = fields.Many2one('project.project',related='crm_odt_id.project',string='Proyecto', track_visibility=True)
-	analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave')
-	slogan_marca = fields.Char(related='crm_odt_id.slogan_marca',string='Eslogan', track_visibility=True)
-	logo_marca = fields.Binary(related='crm_odt_id.logo_marca',string='Logo', track_visibility=True)
 	personal = fields.Char(string='Personal', track_visibility=True)
 	propiedad = fields.Char(string='PROPIEDAD:', track_visibility=True)
 	descrption = fields.Text(string='Descrpicion', track_visibility=True)
+
+	# BRIEF
+	# rp_1 = fields.Char(related='crm_odt_id.rp_1',string='¿Para que estamos haciendo este proyecto y cual es el reto?')
+	# rp_2 = fields.Char(related='crm_odt_id.rp_2',string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?')
+	# rp_3 = fields.Char(related='crm_odt_id.rp_3',string='¿Que buscamos lograr?')
+	# rp_4 = fields.Char(related='crm_odt_id.rp_4',string='¿Cual es el problema a resolver?')
+	# on_1 = fields.Char(related='crm_odt_id.on_1',string='¿Crecimiento?')
+	# on_2 = fields.Char(related='crm_odt_id.on_2',string='¿Mayor margen de utilidad?')
+	# on_3 = fields.Char(related='crm_odt_id.on_3',string='¿Posicionamiento de un nuevo producto o servicio?')
+	# on_4 = fields.Char(related='crm_odt_id.on_4',string='¿Hacer frente a la competencia?')
+	# ob_1 = fields.Char(related='crm_odt_id.ob_1',string='¿Conocimiento?')
+	# ob_2 = fields.Char(related='crm_odt_id.ob_2',string='¿Posicionamiento?')
+	# ob_3 = fields.Char(related='crm_odt_id.ob_3',string='¿Diferenciacion?')
+	# cm_1 = fields.Char(related='crm_odt_id.cm_1',string='¿Como se define y posiciona la marca en cuanto a si misma?')
+	# cm_2 = fields.Char(related='crm_odt_id.cm_2',string='¿Que linea de comunicación esta implementando la marca actualmente?')
+	# cm_3 = fields.Char(related='crm_odt_id.cm_3',string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?')
+	# cm_4 = fields.Char(related='crm_odt_id.cm_4',string='¿Que tono se debe adoptar?')
+	# qcs_1 = fields.Char(related='crm_odt_id.qcs_1',string='¿Quiénes son los competidores?')
+	# qcs_2 = fields.Char(related='crm_odt_id.qcs_2',string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?')
+	# qcs_3 = fields.Char(related='crm_odt_id.qcs_3',string='¿Qué piensan y sienten los consumidores acerca de la competencia?')
+	# vh_1 = fields.Char(related='crm_odt_id.vh_1',string='¿NSE, TARGET?')
+	# vh_2 = fields.Char(related='crm_odt_id.vh_2',string='¿Cuál es el comportamiengo habitual?')
+	# vh_3 = fields.Char(related='crm_odt_id.vh_3',string='¿Qué piensan y sienten acerca de la marca?')
+	# dc_1 = fields.Char(related='crm_odt_id.dc_1',string='7. ¿QUÉ DEBEMOS COMUNICAR?')
+	# dc_2 = fields.Char(related='crm_odt_id.dc_2',string='¿Qué queremos que piensen y sientan de la marca?')
+	# dc_3 = fields.Char(related='crm_odt_id.dc_3',string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?')
+	# qc_1 = fields.Char(related='crm_odt_id.qc_1',string='8. ¿QUÉ NO QUEREMOS COMUNICAR?')
+	# qc_2 = fields.Char(related='crm_odt_id.qc_2',string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?')
+	# ccp_1 = fields.Char(related='crm_odt_id.ccp_1',string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?')
+	# ccp_2 = fields.Char(related='crm_odt_id.ccp_2',string='¿Qué resultados obtuvieron?')
+	# cdp_1 = fields.Char(related='crm_odt_id.cdp_1',string='¿Qué medios se utilizarán para la implementación?')
+	# cdp_2 = fields.Char(related='crm_odt_id.cdp_2',string='¿Qué medios se utilizarán para la difusión?')
+	# cdp_3 = fields.Char(related='crm_odt_id.cdp_3',string='¿Qué medios se utilizarán para la participación?')
+	# qz_12 = fields.Char(related='crm_odt_id.qz_12',string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)')
+	# qz_13 = fields.Char(related='crm_odt_id.qz_13',string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc')
+	# qz_14 = fields.Char(related='crm_odt_id.qz_14',string='¿HAY UN ESTIMADO DE PRESUPUESTO?')
+	# qz_15 = fields.Char(related='crm_odt_id.qz_15',string='¿CUÁLES SON LOS ENTREGABLES?')
+	# qz_16 = fields.Char(related='crm_odt_id.qz_16',string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?')
+	# product = fields.Char(related='crm_odt_id.product',string='Producto', track_visibility=True)
+	# project = fields.Many2one('project.project',related='crm_odt_id.project',string='Proyecto', track_visibility=True)
+	# analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave')
+	# slogan_marca = fields.Char(related='crm_odt_id.slogan_marca',string='Eslogan', track_visibility=True)
+	# logo_marca = fields.Binary(related='crm_odt_id.logo_marca',string='Logo', track_visibility=True)
+
+
+
+
 
 
 	@api.model
@@ -813,6 +829,19 @@ class OdtContactcenter(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
 
 
+	# Brief
+	brief_qtion1 = fields.Text(related='crm_odt_id.brief_qtion1',string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(related='crm_odt_id.brief_qtion2',string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(related='crm_odt_id.brief_qtion3',string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(related='crm_odt_id.brief_qtion4',string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(related='crm_odt_id.brief_qtion5',string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(related='crm_odt_id.brief_qtion6',string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(related='crm_odt_id.brief_qtion7',string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(related='crm_odt_id.brief_qtion8',string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(related='crm_odt_id.brief_qtion9',string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
+
 	# Contact Center
 	cc_telefono = fields.Boolean(string='Teléfono', track_visibility=True)
 	cc_whats = fields.Boolean(string='WhatsApp', track_visibility=True)
@@ -956,7 +985,20 @@ class OdtBtlpdv(models.Model):
 	def _btl_totales(self):
 		self.total_precio_unitario_btl = sum(line.precio_unitario_btl for line in self.tabla_cotizacion_btl)
 		self.total_costo_proveedor_btl = sum(line.costo_proveedor_btl for line in self.tabla_cotizacion_btl)
-	
+
+	# Brief
+	brief_qtion1 = fields.Text(related='crm_odt_id.brief_qtion1',string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(related='crm_odt_id.brief_qtion2',string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(related='crm_odt_id.brief_qtion3',string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(related='crm_odt_id.brief_qtion4',string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(related='crm_odt_id.brief_qtion5',string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(related='crm_odt_id.brief_qtion6',string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(related='crm_odt_id.brief_qtion7',string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(related='crm_odt_id.brief_qtion8',string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(related='crm_odt_id.brief_qtion9',string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
+
 	# BTL/PDV
 	activation = fields.Boolean(string='Activación', track_visibility=True)
 	mystery_shopper = fields.Boolean(string='Mystery Shopper', track_visibility=True)
@@ -1016,6 +1058,35 @@ class OdtDiseno(models.Model):
 		self.total_terceros_diseno = sum(line.pago_terceros for line in self.tabla_cotizacion_diseno)
 		self.total_interno_diseno = sum(line.costo_interno for line in self.tabla_cotizacion_diseno)
 		self.total_recuperacion_diseno = sum(line.recuperacion for line in self.tabla_cotizacion_diseno)
+
+
+	@api.onchange('crm_odt_id')
+	def _onchange_brief(self):
+		if self.crm_odt_id:
+			self.brief_qtion1 = self.crm_odt_id.brief_qtion1
+			self.brief_qtion2 = self.crm_odt_id.brief_qtion2
+			self.brief_qtion3 = self.crm_odt_id.brief_qtion3
+			self.brief_qtion4 = self.crm_odt_id.brief_qtion4
+			self.brief_qtion5 = self.crm_odt_id.brief_qtion5
+			self.brief_qtion6 = self.crm_odt_id.brief_qtion6
+			self.brief_qtion7 = self.crm_odt_id.brief_qtion7
+			self.brief_qtion8 = self.crm_odt_id.brief_qtion8
+			self.brief_qtion9 = self.crm_odt_id.brief_qtion9
+			self.brief_qtion10 = self.crm_odt_id.brief_qtion10
+			self.brief_qtion11 = self.crm_odt_id.brief_qtion11
+
+	# Brief
+	brief_qtion1 = fields.Text(string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(string="Comentarios adicionales. ", track_visibility=True)
 
 	# Diseño 
 	d_presentacion = fields.Boolean(string='Presentación', track_visibility=True)
@@ -1141,6 +1212,35 @@ class OdtProduccion(models.Model):
 		self.total_interno_produ = sum(line.costo_interno for line in self.tabla_cotizacion_produccion)
 		self.total_recuperacion_produ = sum(line.recuperacion for line in self.tabla_cotizacion_produccion)
 
+
+	@api.onchange('crm_odt_id')
+	def _onchange_brief(self):
+		if self.crm_odt_id:
+			self.brief_qtion1 = self.crm_odt_id.brief_qtion1
+			self.brief_qtion2 = self.crm_odt_id.brief_qtion2
+			self.brief_qtion3 = self.crm_odt_id.brief_qtion3
+			self.brief_qtion4 = self.crm_odt_id.brief_qtion4
+			self.brief_qtion5 = self.crm_odt_id.brief_qtion5
+			self.brief_qtion6 = self.crm_odt_id.brief_qtion6
+			self.brief_qtion7 = self.crm_odt_id.brief_qtion7
+			self.brief_qtion8 = self.crm_odt_id.brief_qtion8
+			self.brief_qtion9 = self.crm_odt_id.brief_qtion9
+			self.brief_qtion10 = self.crm_odt_id.brief_qtion10
+			self.brief_qtion11 = self.crm_odt_id.brief_qtion11
+
+	# Brief
+	brief_qtion1 = fields.Text(string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(string="Comentarios adicionales. ", track_visibility=True)
+
 	# Produccion
 	p_spot_radio = fields.Boolean(string='Spot Radio', track_visibility=True)
 	p_spot_tv = fields.Boolean(string='Spot TV (Live Action)', track_visibility=True)
@@ -1194,6 +1294,19 @@ class OdtMarketingDigital(models.Model):
 		self.total_recuperacion_digital= sum(line.recuperacion for line in self.tabla_cotizacion_digital)
 		self.total_costo_cliente_digital = sum(line.costo_cliente for line in self.tabla_cotizacion_digital)
 		self.total_monto_venta_digital = sum(line.monto_venta for line in self.tabla_cotizacion_digital)
+
+	# Brief
+	brief_qtion1 = fields.Text(related='crm_odt_id.brief_qtion1',string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(related='crm_odt_id.brief_qtion2',string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(related='crm_odt_id.brief_qtion3',string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(related='crm_odt_id.brief_qtion4',string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(related='crm_odt_id.brief_qtion5',string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(related='crm_odt_id.brief_qtion6',string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(related='crm_odt_id.brief_qtion7',string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(related='crm_odt_id.brief_qtion8',string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(related='crm_odt_id.brief_qtion9',string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
 
 	# 	 Marketing Digital
 	dg_web = fields.Boolean(string='Pagina web / micrositio', track_visibility=True)
@@ -1281,6 +1394,19 @@ class OdtLogistica(models.Model):
 		self.total_venta_cliente_logistica = sum(line.costo_venta_cliente for line in self.tabla_cotizacion_logistica)
 		self.total_terceros_logistica = sum(line.pago_terceros for line in self.tabla_cotizacion_logistica)
 
+	# Brief
+	brief_qtion1 = fields.Text(related='crm_odt_id.brief_qtion1',string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(related='crm_odt_id.brief_qtion2',string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(related='crm_odt_id.brief_qtion3',string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(related='crm_odt_id.brief_qtion4',string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(related='crm_odt_id.brief_qtion5',string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(related='crm_odt_id.brief_qtion6',string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(related='crm_odt_id.brief_qtion7',string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(related='crm_odt_id.brief_qtion8',string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(related='crm_odt_id.brief_qtion9',string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
+
 	#Logistica
 	wiz_oport_id = fields.Many2one('crm.lead', 'Opportunity')
 	tipo_promo = fields.Selection([('1','SEGOB'),('2','PROFECTO'),('3','RTC')], string='Tipo de promoción', track_visibility=True)
@@ -1320,6 +1446,34 @@ class OdtEstrategia(models.Model):
 		self.total_terceros_estrategia = sum(line.pago_terceros for line in self.tabla_cotizacion_estrategia)
 		self.total_interno_estrategia = sum(line.costo_interno for line in self.tabla_cotizacion_estrategia)
 		self.total_recuperacion_estrategia = sum(line.recuperacion for line in self.tabla_cotizacion_estrategia)
+
+	@api.onchange('crm_odt_id')
+	def _onchange_brief(self):
+		if self.crm_odt_id:
+			self.brief_qtion1 = self.crm_odt_id.brief_qtion1
+			self.brief_qtion2 = self.crm_odt_id.brief_qtion2
+			self.brief_qtion3 = self.crm_odt_id.brief_qtion3
+			self.brief_qtion4 = self.crm_odt_id.brief_qtion4
+			self.brief_qtion5 = self.crm_odt_id.brief_qtion5
+			self.brief_qtion6 = self.crm_odt_id.brief_qtion6
+			self.brief_qtion7 = self.crm_odt_id.brief_qtion7
+			self.brief_qtion8 = self.crm_odt_id.brief_qtion8
+			self.brief_qtion9 = self.crm_odt_id.brief_qtion9
+			self.brief_qtion10 = self.crm_odt_id.brief_qtion10
+			self.brief_qtion11 = self.crm_odt_id.brief_qtion11
+
+	# Brief
+	brief_qtion1 = fields.Text(string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
+	brief_qtion2 = fields.Text(string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)
+	brief_qtion3 = fields.Text(string="Comunicación. ¿Cómo comunica actualmente la marca?", track_visibility=True)
+	brief_qtion4 = fields.Text(string="Objetivos generales. ¿Qué es lo que busca la marca?", track_visibility=True)
+	brief_qtion5 = fields.Text(string="Competencia. ¿Cuál es su competencia directa e indirecta?", track_visibility=True)
+	brief_qtion6 = fields.Text(string="Target. Descripción del segmento al que va dirigido el producto o servicio.", track_visibility=True)
+	brief_qtion7 = fields.Text(string="Restricciones (don´ts) ¿Qué es lo que no se puede hacer con la marca?", track_visibility=True)
+	brief_qtion8 = fields.Float(string="Presupuesto. ", track_visibility=True)
+	brief_qtion9 = fields.Text(string="Material de apoyo o Brief de marca. (Campo para que adjunten archivos que les envía el cliente)", track_visibility=True)
+	brief_qtion10 = fields.Text(string="Fecha de presentación.", track_visibility=True)
+	brief_qtion11 = fields.Text(string="Comentarios adicionales. ", track_visibility=True)
 
 	#Estrategia
 	e_conc_promo = fields.Boolean(string='Concepto Promocional', track_visibility=True)

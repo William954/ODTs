@@ -170,74 +170,22 @@
                                 </group>
                             </group>
                         </page>
-                        <page name="brief" string="Brief">
-                            <group name="left">
-                              <group name="brief">
-                                  <field name="product"/>
-                                  <field name="slogan_marca"/>
-                                  <field name="logo_marca"/>
+                         <page name="brief" string="Brief">
+                          <group name="left">
+                                      <group string="Brief General">
+                                          <field name="brief_qtion1"/>
+                                          <field name="brief_qtion2"/>
+                                          <field name="brief_qtion3"/>
+                                          <field name="brief_qtion4"/>
+                                          <field name="brief_qtion5"/>
+                                          <field name="brief_qtion6"/>
+                                          <field name="brief_qtion7"/>
+                                          <field name="brief_qtion8" widget="monetary"/>
+                                          <field name="brief_qtion9"/>
+                                          <field name="brief_qtion10"/>
+                                          <field name="brief_qtion11"/>
+                                      </group>
                               </group>
-                              <group name="reto_proyecto" string="Reto del Proyecto">
-                                  <field name="rp_1" />
-                                  <field name="rp_2" />
-                                  <field name="rp_3" />
-                                  <field name="rp_4" />
-                              </group>
-                              <group name="objetivo_negocio" string="Objetivo del Negocio">
-                                  <field name="on_1" />
-                                  <field name="on_2" />
-                                  <field name="on_3" />
-                                  <field name="on_4" />
-                              </group>
-                              <group name="objetivo_marca"  string="Objetivo de la Marca">
-                                  <field name="ob_1" />
-                                  <field name="ob_2" />
-                                  <field name="ob_3" />
-                              </group>
-                              <group name="caracter_marca" string="Caracter de la Marca">
-                                  <field name="cm_1" />
-                                  <field name="cm_2" />
-                                  <field name="cm_3" />
-                                  <field name="cm_4" />
-                              </group>
-                            </group>
-                            <group name="right">
-                                <group name="competidores">
-                                    <field name="qcs_1"/>
-                                    <field name="qcs_2"/>
-                                    <field name="qcs_3"/>
-                                </group>
-                                <group name="dialogo">
-                                    <field name="vh_1"/>
-                                    <field name="vh_2"/>
-                                    <field name="vh_3"/>
-                                </group>
-                                <group name="comunicar">
-                                    <field name="dc_1"/>
-                                    <field name="dc_2"/>
-                                    <field name="dc_3"/>
-                                </group>
-                                <group name="no_comunicar?">
-                                    <field name="qc_1"/>
-                                    <field name="qc_2"/>
-                                </group>  
-                                <group name="ccp">
-                                  <field name="ccp_1"/>
-                                  <field name="ccp_2"/>
-                                </group>
-                                <group name="quiz_11" string="¿CÓMO Y DÓNDEVAMOS A COMUNICAR EL PROYECTO?">
-                                  <field name="cdp_1"/>
-                                  <field name="cdp_2"/>
-                                  <field name="cdp_3"/>
-                                </group>
-                                <group name="quiz_12">
-                                   <field name="qz_12"/>
-                                   <field name="qz_13"/>
-                                   <field name="qz_14"/>
-                                   <field name="qz_15"/>
-                                   <field name="qz_16"/>
-                              </group>
-                            </group>
                         </page>
 
      <!-- Page de Marketing Digital en ODT -->
