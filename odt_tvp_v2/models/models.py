@@ -1604,7 +1604,7 @@ class CotizacionesProduccion(models.Model):
 	cotizacion_produccion_id = fields.Many2one('odt.produccion',ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
 	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
 	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
