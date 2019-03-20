@@ -1281,6 +1281,7 @@ class OdtProduccion(models.Model):
 	p_otro_text = fields.Text(string='Otros', track_visibility=True)
 	p_duracion = fields.Char(string='Duración', track_visibility=True)
 	descripcion = fields.Text(string='Descripción', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	tipo_trabajo = fields.Selection([('1','Proyecto Cobrado'),('2','Proyecto Bonificado'),('3','Proyecto a Cotizar')], track_visibility=True)
 	firma1_prod = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_prod = fields.Binary(string='Firma 2', track_visibility=True)
@@ -1611,6 +1612,13 @@ class CotizacionesProduccion(models.Model):
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(string="%", default='1')
+	
+
+	@api.onchange('cotizacion_produccion_id')
+	def _onchange_porcent(self)
+		if self.cotizacion_produccion_id:
+			self.porcent = self.cotizacion_produccion_id.porcent
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
@@ -1639,11 +1647,11 @@ class CotizacionesEstategia(models.Model):
 	cotizacion_estrat_id = fields.Many2one('odt.estrategia', ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
 
@@ -1651,11 +1659,17 @@ class CotizacionesEstategia(models.Model):
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+	#
+	# @api.one
+	# @api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	# def _pago_terceros(self):
+	# 	self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
 
 	@api.one
-	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
-	def _pago_terceros(self):
-		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+	@api.depends('precio_uni_gtvp','precio_uni_cliente')
+	def _costo_gtvp(self):
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * .3)
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1744,11 +1758,11 @@ class CotizacionesDiseno(models.Model):
 	cotizacion_diseno_id = fields.Many2one('odt.diseno', ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
 
@@ -1756,11 +1770,17 @@ class CotizacionesDiseno(models.Model):
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+	#
+	# @api.one
+	# @api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	# def _pago_terceros(self):
+	# 	self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
 
 	@api.one
-	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
-	def _pago_terceros(self):
-		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+	@api.depends('precio_uni_gtvp','precio_uni_cliente')
+	def _costo_gtvp(self):
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * .3)
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
