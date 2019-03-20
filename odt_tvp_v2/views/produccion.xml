@@ -215,6 +215,7 @@
                                <field name="p_edicion_audio"/>
                                <field name="p_gif"/>
                                <field name="p_ftp"/>
+                               <field name="p_adapt_material"/>
                                <field name="p_otros"/>
                                <field name="p_otro_text" attrs="{'invisible': ('p_otros','=',False)}"/>  
                               </group>  
@@ -243,8 +244,8 @@
                                       <field name="concepto"/>
                                       <field name="cantidad"/>
                                       <field name="dias" />
-                                      <field name="precio_uni_cliente" widget="monetary"/>
                                       <field name="costo_cliente" widget="monetary" />
+                                      <field name="precio_uni_cliente" widget="monetary"/>
                                       <field name="precio_uni_gtvp" widget="monetary" />
                                       <field name="pago_terceros" widget="monetary"/>
                                       <field name="costo_interno" widget="monetary"/>
