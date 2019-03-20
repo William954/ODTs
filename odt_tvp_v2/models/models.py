@@ -1100,6 +1100,7 @@ class OdtDiseno(models.Model):
 	d_otro = fields.Boolean(string='Otros', track_visibility=True)
 	d_otro_desc = fields.Text(string='Especificar', track_visibility=True)
 	dc_especificacion = fields.Text(string='Comentarios y especificaciones', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	firma1_design = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_design = fields.Binary(string='Firma 2', track_visibility=True)
 	diseño_creatividad = fields.Float(string='Diseño P. Autorizado', track_visibility=True)
@@ -1513,6 +1514,7 @@ class OdtEstrategia(models.Model):
 	e_otro_text = fields.Text(string='Especificar', track_visibility=True)
 	e_more_details = fields.Text(string='Mas Detalles', track_visibility=True)
 	estrategia = fields.Float(string='Estrategia P. Autorizado', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	firma1_estrategia = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_estrategia = fields.Binary(string='Firma 2', track_visibility=True)
 	tabla_cotizacion_estrategia = fields.One2many('odt.cotizacion.estrategia','cotizacion_estrat_id')	
@@ -1612,13 +1614,9 @@ class CotizacionesProduccion(models.Model):
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
-	porcent = fields.Integer(string="%", default='1')
+	porcent = fields.Integer(related='cotizacion_produccion_id.porcent',string="%")
 
 
-	@api.onchange('cotizacion_produccion_id')
-	def _onchange_porcent(self)
-		if self.cotizacion_produccion_id:
-			self.porcent = self.cotizacion_produccion_id.porcent
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
@@ -1654,6 +1652,7 @@ class CotizacionesEstategia(models.Model):
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_estrat_id.porcent',string="%")
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
@@ -1765,6 +1764,7 @@ class CotizacionesDiseno(models.Model):
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_diseno_id.porcent',string="%")
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
