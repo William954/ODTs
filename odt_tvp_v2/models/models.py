@@ -1613,7 +1613,7 @@ class CotizacionesProduccion(models.Model):
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
 	porcent = fields.Integer(string="%", default='1')
-	
+
 
 	@api.onchange('cotizacion_produccion_id')
 	def _onchange_porcent(self)
@@ -1634,7 +1634,7 @@ class CotizacionesProduccion(models.Model):
 	@api.one
 	@api.depends('precio_uni_gtvp','precio_uni_cliente')
 	def _costo_gtvp(self):
-		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * .3)
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1669,7 +1669,7 @@ class CotizacionesEstategia(models.Model):
 	@api.one
 	@api.depends('precio_uni_gtvp','precio_uni_cliente')
 	def _costo_gtvp(self):
-		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * .3)
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1780,7 +1780,7 @@ class CotizacionesDiseno(models.Model):
 	@api.one
 	@api.depends('precio_uni_gtvp','precio_uni_cliente')
 	def _costo_gtvp(self):
-		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * .3)
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
