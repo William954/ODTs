@@ -214,8 +214,6 @@
                                         <field name="tipo_material"/>
                                         <field name="medidas"/>
                                         <field name="formatos"/>
-                                        <field name="porcent"/>
-
                                     </tree>
                                     </field>
                               </page>                               
