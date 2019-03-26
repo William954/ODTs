@@ -1599,24 +1599,28 @@ class CotizacionesDigital(models.Model):
 	def _costo_interno(self):
 		self.costo_interno = (self.costo_hora * self.horas )
 
+
 class CotizacionesProduccion(models.Model):
 	_name = 'odt.cotizacion.produccion'
 		
 	cotizacion_produccion_id = fields.Many2one('odt.produccion',ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_produccion_id.porcent',string="%")
 
-	# @api.one
-	# @api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
-	# def _costo_cliente(self):
-	# 	self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+
+
+	@api.one
+	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
+	def _costo_cliente(self):
+		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
 	#
 	# @api.one
 	# @api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
@@ -1627,7 +1631,7 @@ class CotizacionesProduccion(models.Model):
 	@api.one
 	@api.depends('precio_uni_gtvp','precio_uni_cliente')
 	def _costo_gtvp(self):
-		self.precio_uni_gtvp = (self.precio_uni_cliente(.3))
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
