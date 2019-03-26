@@ -7,6 +7,7 @@ from datetime import datetime, date, time
 
 class inheritCRM(models.Model):
 	"""docstring for crmlead"""
+	
 	_inherit = 'crm.lead'
 
 	marca = fields.Many2one('crm.marca', string='Marca', track_visibility=True)
