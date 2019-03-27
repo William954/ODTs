@@ -217,12 +217,13 @@
                                <field name="p_ftp"/>
                                <field name="p_adapt_material"/>
                                <field name="p_otros"/>
-                               <field name="p_otro_text" attrs="{'invisible': ('p_otros','=',False)}"/>  
+                               <field name="p_otro_text" attrs="{'invisible': [('p_otros','=',False)]}"/>  
                               </group>  
                               <group>
                                 <field name="p_duracion"/>
                                 <field name="tipo_trabajo"/>
                                 <field name="descripcion"/>
+                                <field name="porcent"/>
                               </group>
                               <br/>
                                   <page name="mat_elabor" string="Material a Elaborar">

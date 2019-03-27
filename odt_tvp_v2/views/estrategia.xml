@@ -212,6 +212,8 @@
                               <field name="e_otros"/>
                               <field name="e_otro_text" attrs="{'invisible': [('e_otros','=',False)]}"/> 
                               <field name="e_more_details"/>
+                              <field name="porcent"/>
+
                             </group>
                           </group>
                           <page name="cotizacion_interna_estrategia" string="Cotizacion">
@@ -219,7 +221,7 @@
                                           <tree editable="bottom">
                                               <field name="concepto"/>
                                               <field name="cantidad"/>
-                                              <field name="dias" />
+                                              <!-- <field name="dias" /> -->
                                               <field name="precio_uni_cliente" widget="monetary"/>
                                               <field name="costo_cliente" widget="monetary" />
                                               <field name="precio_uni_gtvp" widget="monetary" />

@@ -203,6 +203,7 @@
                             <group>
                               <field name="d_adaptacion_ooh"/>
                               <field name="d_logotipo"/>
+                              <field name="porcent"/>
                               <field name="d_otro"/>
                               <field name="d_otro_desc" attrs="{'invisible': [('d_otro','=',False)]}"/>
                             </group>

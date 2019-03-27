@@ -7,7 +7,6 @@ from datetime import datetime, date, time
 
 class inheritCRM(models.Model):
 	"""docstring for crmlead"""
-	
 	_inherit = 'crm.lead'
 
 	marca = fields.Many2one('crm.marca', string='Marca', track_visibility=True)
@@ -291,42 +290,42 @@ class CrmOdt(models.Model):
 	descrption = fields.Text(string='Descrpicion', track_visibility=True)
 
 	# BRIEF
-	# rp_1 = fields.Char(related='crm_odt_id.rp_1',string='¿Para que estamos haciendo este proyecto y cual es el reto?')
-	# rp_2 = fields.Char(related='crm_odt_id.rp_2',string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?')
-	# rp_3 = fields.Char(related='crm_odt_id.rp_3',string='¿Que buscamos lograr?')
-	# rp_4 = fields.Char(related='crm_odt_id.rp_4',string='¿Cual es el problema a resolver?')
-	# on_1 = fields.Char(related='crm_odt_id.on_1',string='¿Crecimiento?')
-	# on_2 = fields.Char(related='crm_odt_id.on_2',string='¿Mayor margen de utilidad?')
-	# on_3 = fields.Char(related='crm_odt_id.on_3',string='¿Posicionamiento de un nuevo producto o servicio?')
-	# on_4 = fields.Char(related='crm_odt_id.on_4',string='¿Hacer frente a la competencia?')
-	# ob_1 = fields.Char(related='crm_odt_id.ob_1',string='¿Conocimiento?')
-	# ob_2 = fields.Char(related='crm_odt_id.ob_2',string='¿Posicionamiento?')
-	# ob_3 = fields.Char(related='crm_odt_id.ob_3',string='¿Diferenciacion?')
-	# cm_1 = fields.Char(related='crm_odt_id.cm_1',string='¿Como se define y posiciona la marca en cuanto a si misma?')
-	# cm_2 = fields.Char(related='crm_odt_id.cm_2',string='¿Que linea de comunicación esta implementando la marca actualmente?')
-	# cm_3 = fields.Char(related='crm_odt_id.cm_3',string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?')
-	# cm_4 = fields.Char(related='crm_odt_id.cm_4',string='¿Que tono se debe adoptar?')
-	# qcs_1 = fields.Char(related='crm_odt_id.qcs_1',string='¿Quiénes son los competidores?')
-	# qcs_2 = fields.Char(related='crm_odt_id.qcs_2',string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?')
-	# qcs_3 = fields.Char(related='crm_odt_id.qcs_3',string='¿Qué piensan y sienten los consumidores acerca de la competencia?')
-	# vh_1 = fields.Char(related='crm_odt_id.vh_1',string='¿NSE, TARGET?')
-	# vh_2 = fields.Char(related='crm_odt_id.vh_2',string='¿Cuál es el comportamiengo habitual?')
-	# vh_3 = fields.Char(related='crm_odt_id.vh_3',string='¿Qué piensan y sienten acerca de la marca?')
-	# dc_1 = fields.Char(related='crm_odt_id.dc_1',string='7. ¿QUÉ DEBEMOS COMUNICAR?')
-	# dc_2 = fields.Char(related='crm_odt_id.dc_2',string='¿Qué queremos que piensen y sientan de la marca?')
-	# dc_3 = fields.Char(related='crm_odt_id.dc_3',string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?')
-	# qc_1 = fields.Char(related='crm_odt_id.qc_1',string='8. ¿QUÉ NO QUEREMOS COMUNICAR?')
-	# qc_2 = fields.Char(related='crm_odt_id.qc_2',string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?')
-	# ccp_1 = fields.Char(related='crm_odt_id.ccp_1',string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?')
-	# ccp_2 = fields.Char(related='crm_odt_id.ccp_2',string='¿Qué resultados obtuvieron?')
-	# cdp_1 = fields.Char(related='crm_odt_id.cdp_1',string='¿Qué medios se utilizarán para la implementación?')
-	# cdp_2 = fields.Char(related='crm_odt_id.cdp_2',string='¿Qué medios se utilizarán para la difusión?')
-	# cdp_3 = fields.Char(related='crm_odt_id.cdp_3',string='¿Qué medios se utilizarán para la participación?')
-	# qz_12 = fields.Char(related='crm_odt_id.qz_12',string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)')
-	# qz_13 = fields.Char(related='crm_odt_id.qz_13',string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc')
-	# qz_14 = fields.Char(related='crm_odt_id.qz_14',string='¿HAY UN ESTIMADO DE PRESUPUESTO?')
-	# qz_15 = fields.Char(related='crm_odt_id.qz_15',string='¿CUÁLES SON LOS ENTREGABLES?')
-	# qz_16 = fields.Char(related='crm_odt_id.qz_16',string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?')
+	rp_1 = fields.Char(related='crm_odt_id.rp_1',string='¿Para que estamos haciendo este proyecto y cual es el reto?')
+	rp_2 = fields.Char(related='crm_odt_id.rp_2',string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?')
+	rp_3 = fields.Char(related='crm_odt_id.rp_3',string='¿Que buscamos lograr?')
+	rp_4 = fields.Char(related='crm_odt_id.rp_4',string='¿Cual es el problema a resolver?')
+	on_1 = fields.Char(related='crm_odt_id.on_1',string='¿Crecimiento?')
+	on_2 = fields.Char(related='crm_odt_id.on_2',string='¿Mayor margen de utilidad?')
+	on_3 = fields.Char(related='crm_odt_id.on_3',string='¿Posicionamiento de un nuevo producto o servicio?')
+	on_4 = fields.Char(related='crm_odt_id.on_4',string='¿Hacer frente a la competencia?')
+	ob_1 = fields.Char(related='crm_odt_id.ob_1',string='¿Conocimiento?')
+	ob_2 = fields.Char(related='crm_odt_id.ob_2',string='¿Posicionamiento?')
+	ob_3 = fields.Char(related='crm_odt_id.ob_3',string='¿Diferenciacion?')
+	cm_1 = fields.Char(related='crm_odt_id.cm_1',string='¿Como se define y posiciona la marca en cuanto a si misma?')
+	cm_2 = fields.Char(related='crm_odt_id.cm_2',string='¿Que linea de comunicación esta implementando la marca actualmente?')
+	cm_3 = fields.Char(related='crm_odt_id.cm_3',string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?')
+	cm_4 = fields.Char(related='crm_odt_id.cm_4',string='¿Que tono se debe adoptar?')
+	qcs_1 = fields.Char(related='crm_odt_id.qcs_1',string='¿Quiénes son los competidores?')
+	qcs_2 = fields.Char(related='crm_odt_id.qcs_2',string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?')
+	qcs_3 = fields.Char(related='crm_odt_id.qcs_3',string='¿Qué piensan y sienten los consumidores acerca de la competencia?')
+	vh_1 = fields.Char(related='crm_odt_id.vh_1',string='¿NSE, TARGET?')
+	vh_2 = fields.Char(related='crm_odt_id.vh_2',string='¿Cuál es el comportamiengo habitual?')
+	vh_3 = fields.Char(related='crm_odt_id.vh_3',string='¿Qué piensan y sienten acerca de la marca?')
+	dc_1 = fields.Char(related='crm_odt_id.dc_1',string='7. ¿QUÉ DEBEMOS COMUNICAR?')
+	dc_2 = fields.Char(related='crm_odt_id.dc_2',string='¿Qué queremos que piensen y sientan de la marca?')
+	dc_3 = fields.Char(related='crm_odt_id.dc_3',string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?')
+	qc_1 = fields.Char(related='crm_odt_id.qc_1',string='8. ¿QUÉ NO QUEREMOS COMUNICAR?')
+	qc_2 = fields.Char(related='crm_odt_id.qc_2',string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?')
+	ccp_1 = fields.Char(related='crm_odt_id.ccp_1',string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?')
+	ccp_2 = fields.Char(related='crm_odt_id.ccp_2',string='¿Qué resultados obtuvieron?')
+	cdp_1 = fields.Char(related='crm_odt_id.cdp_1',string='¿Qué medios se utilizarán para la implementación?')
+	cdp_2 = fields.Char(related='crm_odt_id.cdp_2',string='¿Qué medios se utilizarán para la difusión?')
+	cdp_3 = fields.Char(related='crm_odt_id.cdp_3',string='¿Qué medios se utilizarán para la participación?')
+	qz_12 = fields.Char(related='crm_odt_id.qz_12',string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)')
+	qz_13 = fields.Char(related='crm_odt_id.qz_13',string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc')
+	qz_14 = fields.Char(related='crm_odt_id.qz_14',string='¿HAY UN ESTIMADO DE PRESUPUESTO?')
+	qz_15 = fields.Char(related='crm_odt_id.qz_15',string='¿CUÁLES SON LOS ENTREGABLES?')
+	qz_16 = fields.Char(related='crm_odt_id.qz_16',string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?')
 	product = fields.Char(related='crm_odt_id.product',string='Producto', track_visibility=True)
 	project = fields.Many2one('project.project',related='crm_odt_id.project',string='Proyecto', track_visibility=True)
 	analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave')
@@ -1101,6 +1100,7 @@ class OdtDiseno(models.Model):
 	d_otro = fields.Boolean(string='Otros', track_visibility=True)
 	d_otro_desc = fields.Text(string='Especificar', track_visibility=True)
 	dc_especificacion = fields.Text(string='Comentarios y especificaciones', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	firma1_design = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_design = fields.Binary(string='Firma 2', track_visibility=True)
 	diseño_creatividad = fields.Float(string='Diseño P. Autorizado', track_visibility=True)
@@ -1144,42 +1144,7 @@ class OdtGestoria(models.Model):
 	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
 	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
 
-	rp_1 = fields.Char(string='¿Para que estamos haciendo este proyecto y cual es el reto?', track_visibility=True)
-	rp_2 = fields.Char(string='¿Que queremos que se sepa y sienta la gente sobre el proeycto?', track_visibility=True)
-	rp_3 = fields.Char(string='¿Que buscamos lograr?', track_visibility=True)
-	rp_4 = fields.Char(string='¿Cual es el problema a resolver?', track_visibility=True)
-	on_1 = fields.Char(string='¿Crecimiento?', track_visibility=True)
-	on_2 = fields.Char(string='¿Mayor margen de utilidad?', track_visibility=True)
-	on_3 = fields.Char(string='¿Posicionamiento de un nuevo producto o servicio?', track_visibility=True)
-	on_4 = fields.Char(string='¿Hacer frente a la competencia?', track_visibility=True)
-	ob_1 = fields.Char(string='¿Conocimiento?', track_visibility=True)
-	ob_2 = fields.Char(string='¿Posicionamiento?', track_visibility=True)
-	ob_3 = fields.Char(string='¿Diferenciacion?', track_visibility=True)
-	cm_1 = fields.Char(string='¿Como se define y posiciona la marca en cuanto a si misma?', track_visibility=True)
-	cm_2 = fields.Char(string='¿Que linea de comunicación esta implementando la marca actualmente?', track_visibility=True)
-	cm_3 = fields.Char(string='¿Descripcion de la marca (Joven, solida, dinamica, innovadora, flexible, segura, institucional, preocupada por el consumidor)?', track_visibility=True)
-	cm_4 = fields.Char(string='¿Que tono se debe adoptar?', track_visibility=True)
-	qcs_1 = fields.Char(string='¿Quiénes son los competidores?', track_visibility=True)
-	qcs_2 = fields.Char(string='¿En qué se diferencia la marca ante la competencia (beneficios al consumidor)?', track_visibility=True)
-	qcs_3 = fields.Char(string='¿Qué piensan y sienten los consumidores acerca de la competencia?', track_visibility=True)
-	vh_1 = fields.Char(string='¿NSE, TARGET?', track_visibility=True)
-	vh_2 = fields.Char(string='¿Cuál es el comportamiengo habitual?', track_visibility=True)
-	vh_3 = fields.Char(string='¿Qué piensan y sienten acerca de la marca?', track_visibility=True)
-	dc_1 = fields.Char(string='7. ¿QUÉ DEBEMOS COMUNICAR?', track_visibility=True)
-	dc_2 = fields.Char(string='¿Qué queremos que piensen y sientan de la marca?', track_visibility=True)
-	dc_3 = fields.Char(string='¿Qué queremos que se sepa y sienta la gente sobre esta comunicación?', track_visibility=True)
-	qc_1 = fields.Char(string='8. ¿QUÉ NO QUEREMOS COMUNICAR?', track_visibility=True)
-	qc_2 = fields.Char(string='9. ¿CÓMO SE COMPORTA EL CONSUMIDOR RESPECTO AL PRODUCTO O SERVICIO ACTUALMENTE (CONDUCTAS Y CARENCIAS)?', track_visibility=True)
-	ccp_1 = fields.Char(string='10. ¿QUÉ OTRAS PROMOCIONES HA TENIDO LA MARCA?', track_visibility=True)
-	ccp_2 = fields.Char(string='¿Qué resultados obtuvieron?', track_visibility=True)
-	cdp_1 = fields.Char(string='¿Qué medios se utilizarán para la implementación?', track_visibility=True)
-	cdp_2 = fields.Char(string='¿Qué medios se utilizarán para la difusión?', track_visibility=True)
-	cdp_3 = fields.Char(string='¿Qué medios se utilizarán para la participación?', track_visibility=True)
-	qz_12 = fields.Char(string='¿CUÁL ES EL MARCO LEGAL?(RTC, SEGOB, PROFECO, MICROSITIOS Y PROMOWEB)', track_visibility=True)
-	qz_13 = fields.Char(string='¿HAY REQUERIMIENTO ADICIONALES? /n Medios de datos y consideraciones creativas, mandatorios con respecto al uso de la marca, aspectos legales, manejo de los modulos,etc', track_visibility=True)
-	qz_14 = fields.Char(string='¿HAY UN ESTIMADO DE PRESUPUESTO?', track_visibility=True)
-	qz_15 = fields.Char(string='¿CUÁLES SON LOS ENTREGABLES?', track_visibility=True)
-	qz_16 = fields.Char(string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?', track_visibility=True)
+
 
 	# 	 Gestoria
 	gl_date_sorteo = fields.Text(string='Fecha del Sorteo', track_visibility=True)
@@ -1317,6 +1282,7 @@ class OdtProduccion(models.Model):
 	p_otro_text = fields.Text(string='Otros', track_visibility=True)
 	p_duracion = fields.Char(string='Duración', track_visibility=True)
 	descripcion = fields.Text(string='Descripción', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	tipo_trabajo = fields.Selection([('1','Proyecto Cobrado'),('2','Proyecto Bonificado'),('3','Proyecto a Cotizar')], track_visibility=True)
 	firma1_prod = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_prod = fields.Binary(string='Firma 2', track_visibility=True)
@@ -1548,6 +1514,7 @@ class OdtEstrategia(models.Model):
 	e_otro_text = fields.Text(string='Especificar', track_visibility=True)
 	e_more_details = fields.Text(string='Mas Detalles', track_visibility=True)
 	estrategia = fields.Float(string='Estrategia P. Autorizado', track_visibility=True)
+	porcent = fields.Integer(string="%", default='30')
 	firma1_estrategia = fields.Binary(string='Firma 1', track_visibility=True)
 	firma2_estrategia = fields.Binary(string='Firma 2', track_visibility=True)
 	tabla_cotizacion_estrategia = fields.One2many('odt.cotizacion.estrategia','cotizacion_estrat_id')	
@@ -1634,7 +1601,6 @@ class CotizacionesDigital(models.Model):
 	def _costo_interno(self):
 		self.costo_interno = (self.costo_hora * self.horas )
 
-
 class CotizacionesProduccion(models.Model):
 	_name = 'odt.cotizacion.produccion'
 		
@@ -1644,10 +1610,11 @@ class CotizacionesProduccion(models.Model):
 	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
 	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_produccion_id.porcent',string="%")
 
 
 
@@ -1662,10 +1629,10 @@ class CotizacionesProduccion(models.Model):
 	# 	self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
 
 
-	# @api.one
-	# @api.depends('precio_uni_gtvp','precio_uni_cliente')
-	# def _costo_gtvp(self):
-	# 	self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
+	@api.one
+	@api.depends('precio_uni_gtvp','precio_uni_cliente')
+	def _costo_gtvp(self):
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1678,23 +1645,30 @@ class CotizacionesEstategia(models.Model):
 	cotizacion_estrat_id = fields.Many2one('odt.estrategia', ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_estrat_id.porcent',string="%")
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+	#
+	# @api.one
+	# @api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	# def _pago_terceros(self):
+	# 	self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
 
 	@api.one
-	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
-	def _pago_terceros(self):
-		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+	@api.depends('precio_uni_gtvp','precio_uni_cliente')
+	def _costo_gtvp(self):
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
@@ -1783,23 +1757,30 @@ class CotizacionesDiseno(models.Model):
 	cotizacion_diseno_id = fields.Many2one('odt.diseno', ondelete='cascade')
 	concepto = fields.Char(string='Concepto')
 	cantidad = fields.Integer(string='Cantidad')
-	dias = fields.Integer(string='Dias')
+	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente', compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP')
-	pago_terceros = fields.Float(string='*Pago a Terceros', compute="_pago_terceros")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
 	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	porcent = fields.Integer(related='cotizacion_diseno_id.porcent',string="%")
 
 	@api.one
 	@api.depends('cantidad','dias','costo_cliente','precio_uni_cliente')
 	def _costo_cliente(self):
 		self.costo_cliente = self.precio_uni_cliente * self.cantidad * self.dias
+	#
+	# @api.one
+	# @api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
+	# def _pago_terceros(self):
+	# 	self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+
 
 	@api.one
-	@api.depends('cantidad','dias','pago_terceros','precio_uni_gtvp')
-	def _pago_terceros(self):
-		self.pago_terceros = self.precio_uni_gtvp  * self.cantidad * self.dias
+	@api.depends('precio_uni_gtvp','precio_uni_cliente')
+	def _costo_gtvp(self):
+		self.precio_uni_gtvp = self.precio_uni_cliente - (self.precio_uni_cliente * (self.porcent / 100))
 
 	@api.one
 	@api.depends('costo_interno','pago_terceros','recuperacion')
