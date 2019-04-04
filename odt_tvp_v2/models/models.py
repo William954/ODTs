@@ -1647,11 +1647,11 @@ class CotizacionesEstategia(models.Model):
 	cantidad = fields.Integer(string='Cantidad')
 	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente",store=True)
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp",store=True)
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
-	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion",store=True)
 	porcent = fields.Integer(related='cotizacion_estrat_id.porcent',string="%")
 
 	@api.one
@@ -1684,7 +1684,7 @@ class CotizacionesBTL(models.Model):
 	dias = fields.Integer(string='Dias')
 	semanas = fields.Integer(string='Semanas')
 	precio_unitario_btl = fields.Float(string='Precio Unitario')
-	costo_proveedor_btl = fields.Float(string='Costo Proveedor', compute="_costo_provedor")
+	costo_proveedor_btl = fields.Float(string='Costo Proveedor', compute="_costo_provedor",store=True)
 
 	@api.one
 	@api.depends('cantidad','dias','semanas','precio_unitario_btl','costo_proveedor_btl')
@@ -1759,11 +1759,11 @@ class CotizacionesDiseno(models.Model):
 	cantidad = fields.Integer(string='Cantidad')
 	dias = fields.Integer(string='Dias', default='1')
 	precio_uni_cliente = fields.Float(string='Precio Unitario Cliente')
-	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente")
-	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp")
+	costo_cliente = fields.Float(string='*Costo Cliente',compute="_costo_cliente",store=True)
+	precio_uni_gtvp = fields.Float(string='Precio unitario GTVP', compute="_costo_gtvp",store=True)
 	pago_terceros = fields.Float(string='*Pago a Terceros')
 	costo_interno = fields.Float(string='*Costo Interno')
-	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion")
+	recuperacion = fields.Float(string='Costo minimo de recuperacion', compute="_pago_recuperacion",store=True)
 	porcent = fields.Integer(related='cotizacion_diseno_id.porcent',string="%")
 
 	@api.one
