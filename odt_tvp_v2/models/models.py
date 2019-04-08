@@ -845,16 +845,17 @@ class OdtContactcenter(models.Model):
 	# Contact Center
 	cc_telefono = fields.Boolean(string='Teléfono', track_visibility=True)
 	cc_whats = fields.Boolean(string='WhatsApp', track_visibility=True)
-	cc_email = fields.Boolean(string='E-mail - Twitter', track_visibility=True)
+	cc_email = fields.Boolean(string='E-mail', track_visibility=True)
 	cc_twitter = fields.Boolean(string='Twitter', track_visibility=True)
 	cc_face = fields.Boolean(string='Facebook', track_visibility=True)
-	cc_chat = fields.Boolean(string='Chat - Escritorio', track_visibility=True)
+	cc_chat = fields.Boolean(string='Chat ', track_visibility=True)
 	cc_escritorio = fields.Boolean(string='Escritorio', track_visibility=True)
 	cc_otro = fields.Boolean(string='Otro', track_visibility=True)
 	cc_especificar = fields.Text(string='Especificar', track_visibility=True)
 
 	tipo_servicio1 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
+	station_number1 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	dictaminacion1 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
 	lunes1 = fields.Boolean(string='Lunes', track_visibility=True)
 	martes1 = fields.Boolean(string='Martes', track_visibility=True)
@@ -869,6 +870,7 @@ class OdtContactcenter(models.Model):
 
 	tipo_servicio2 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
+	station_number2 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	dictaminacion2 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
 	lunes2 = fields.Boolean(string='Lunes', track_visibility=True)
 	martes2 = fields.Boolean(string='Martes', track_visibility=True)
@@ -882,6 +884,7 @@ class OdtContactcenter(models.Model):
 	atencionend2= fields.Float(string='Hora Término', track_visibility=True)
 	tipo_servicio3 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
+	station_number3 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	dictaminacion3 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
 	lunes3= fields.Boolean(string='Lunes', track_visibility=True)
 	martes3= fields.Boolean(string='Martes', track_visibility=True)
@@ -896,6 +899,7 @@ class OdtContactcenter(models.Model):
 	tipo_servicio4 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
 	dictaminacion4 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
+	station_number4 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	lunes4= fields.Boolean(string='Lunes', track_visibility=True)
 	martes4= fields.Boolean(string='Martes', track_visibility=True)
 	miercoles4= fields.Boolean(string='Miércoles', track_visibility=True)
@@ -908,6 +912,7 @@ class OdtContactcenter(models.Model):
 	atencionend4= fields.Float(string='Hora Término', track_visibility=True)
 	tipo_servicio5 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
+	station_number5 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	dictaminacion5 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
 	lunes5= fields.Boolean(string='Lunes', track_visibility=True)
 	martes5= fields.Boolean(string='Martes', track_visibility=True)
@@ -921,6 +926,7 @@ class OdtContactcenter(models.Model):
 	atencionend5= fields.Float(string='Hora Término', track_visibility=True)
 	tipo_servicio6 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
+	station_number6 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	dictaminacion6 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
 	lunes6= fields.Boolean(string='Lunes', track_visibility=True)
 	martes6= fields.Boolean(string='Martes', track_visibility=True)
@@ -936,6 +942,7 @@ class OdtContactcenter(models.Model):
 	tipo_servicio7 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
 	dictaminacion7 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
+	station_number7 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	lunes7= fields.Boolean(string='Lunes', track_visibility=True)
 	martes7= fields.Boolean(string='Martes', track_visibility=True)
 	miercoles7= fields.Boolean(string='Miércoles', track_visibility=True)
@@ -950,6 +957,7 @@ class OdtContactcenter(models.Model):
 	tipo_servicio8 = fields.Selection([('1','Atención'),('2','Registro'),('3','Atención y Registro'),
 									   ('4','Validación de Documentos'),('5','Dictaminación'),('6','Otro')], string='Tipo de Servicio', track_visibility=True)
 	dictaminacion8 = fields.Integer(string='Numero de Dictaminación', track_visibility=True)
+	station_number8 = fields.Integer(string="Numero de Estaciones", track_visibility=True)
 	lunes8 = fields.Boolean(string='Lunes', track_visibility=True)
 	martes8 = fields.Boolean(string='Martes', track_visibility=True)
 	miercoles8 = fields.Boolean(string='Miércoles', track_visibility=True)
