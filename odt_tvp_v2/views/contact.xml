@@ -191,7 +191,7 @@
                           <group>  
                             <group string="Plataforma de Servicio">
                               <field name="cc_telefono"/>
-                              <field name="cc_whats"/>                                
+                              <field name="cc_whats"/>
                               <field name="cc_email"/>
                               <field name="cc_twitter"/>
                               <field name="cc_face"/>
@@ -256,16 +256,16 @@
                               <field name="tipo_servicio4"/>
                               <field name="dictaminacion4" attrs="{'invisible':[('tipo_servicio4','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio4','=','5')]}">
-                                <field name="lunes4"/> 
-                                <field name="martes4"/> 
-                                <field name="miercoles4"/> 
-                                <field name="jueves4"/> 
-                                <field name="viernes4"/> 
-                                <field name="sabado4"/> 
-                                <field name="domingo4"/> 
-                                <field name="festivos4"/> 
-                                <field name="atencionstart4" widget="float_time"/> 
-                                <field name="atencionend4" widget="float_time"/> 
+                                <field name="lunes4"/>
+                                <field name="martes4"/>
+                                <field name="miercoles4"/>
+                                <field name="jueves4"/>
+                                <field name="viernes4"/>
+                                <field name="sabado4"/>
+                                <field name="domingo4"/>
+                                <field name="festivos4"/>
+                                <field name="atencionstart4" widget="float_time"/>
+                                <field name="atencionend4" widget="float_time"/>
                               </group>
                             </group>
 
@@ -307,17 +307,17 @@
                               <field name="tipo_servicio7"/>
                               <field name="dictaminacion7" attrs="{'invisible':[('tipo_servicio7','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio7','=','5')]}">
-                                <field name="lunes7"/> 
-                                <field name="martes7"/> 
-                                <field name="miercoles7"/> 
-                                <field name="jueves7"/> 
-                                <field name="viernes7"/> 
-                                <field name="sabado7"/> 
-                                <field name="domingo7"/> 
-                                <field name="festivos7"/> 
-                                <field name="atencionstart7" widget="float_time"/> 
-                                <field name="atencionend7" widget="float_time"/> 
-                              </group>                              
+                                <field name="lunes7"/>
+                                <field name="martes7"/>
+                                <field name="miercoles7"/>
+                                <field name="jueves7"/>
+                                <field name="viernes7"/>
+                                <field name="sabado7"/>
+                                <field name="domingo7"/>
+                                <field name="festivos7"/>
+                                <field name="atencionstart7" widget="float_time"/>
+                                <field name="atencionend7" widget="float_time"/>
+                              </group>
                             </group>
 
                             <group string="Otro" attrs="{'invisible': [('cc_otro','=',False)]}">
@@ -445,18 +445,18 @@
                                         <td bgcolor="#EBF1DE">Proveniente de:</td>
                                         <td bgcolor="#FDEADA">Costo por minuto TVP</td>
                                         <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
-                                        <td >Costo por minuto vendido</td>
+                                        <td bgcolor="#C0C0C0">Costo por minuto vendido</td>
                                       </tr>
                                       <tr>
                                         <td>Teléfonos fijos o celulares</td>
-                                        <td>$0.00</td>
-                                        <td>$0.00</td>
+                                        <td>$0.70</td>
+                                        <td>$1.00</td>
                                         <td>$0.00</td>
                                       </tr>
                                       <tr>
                                         <td>Casetas telefónicas</td>
-                                        <td>$0.00</td>
-                                        <td>$0.00</td>
+                                        <td>$1.40</td>
+                                        <td>$2.00</td>
                                         <td>$0.00</td>
                                       </tr>
                                     </table>
@@ -467,18 +467,18 @@
                                           <td bgcolor="#EBF1DE">Llamadas de salida</td>
                                           <td bgcolor="#FDEADA">Costo por minuto TVP</td>
                                           <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
-                                          <td >Costo por minuto vendido</td>
+                                          <td bgcolor="#C0C0C0">Costo por minuto vendido</td>
                                         </tr>
                                         <tr text-align="center">
                                           <td>Llamada local y Larga distancia nacional</td>
-                                          <td>$0.00</td>
-                                          <td>$0.00</td>
+                                          <td>$0.90</td>
+                                          <td>$1.30</td>
                                           <td>$0.00</td>
                                         </tr>
                                         <tr text-align="center">
                                           <td>Celular local y Celular nacional</td>
-                                          <td>$0.00</td>
-                                          <td>$0.00</td>
+                                          <td>$1.40</td>
+                                          <td>$2.00</td>
                                           <td>$0.00</td>
                                         </tr>
                                       </table>

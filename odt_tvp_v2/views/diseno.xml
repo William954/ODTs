@@ -246,6 +246,7 @@
                                 </page>
                             </group> 
                             <group>
+                              <field name="observation_design"/>
                               <field name="diseño_creatividad"/>
                               <field name="firma1_design" widget="signature"/>
                               <field name="firma2_design" widget="signature"/>

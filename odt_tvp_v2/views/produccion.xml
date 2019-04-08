@@ -256,7 +256,7 @@
                                 <group>
                                   <group class="oe_subtotal_footer oe_right" name="totales">
                                     <field name="total_cliente_produ" class="oe_subtotal_footer_separator" readonly="1"/>
-                                    <field name="total_gtvo_produ" class="oe_subtotal_footer_separator" readonly="1"/>
+                                    <!--<field name="total_gtvo_produ" class="oe_subtotal_footer_separator" readonly="1"/>-->
                                     <field name="total_terceros_produ" class="oe_subtotal_footer_separator" readonly="1"/>
                                     <field name="total_interno_produ" class="oe_subtotal_footer_separator" readonly="1"/>
                                     <field name="total_recuperacion_produ" class="oe_subtotal_footer_separator" readonly="1"/>
