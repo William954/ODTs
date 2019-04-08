@@ -207,9 +207,9 @@
                                 <field name="p_edicion_video"/>
                               </group>
                               <group>
-                               <field name="p_post_video"/>
-                               <field name="p_cortinilla"/>
-                               <field name="p_reel"/>
+                               <!--<field name="p_post_video"/>-->
+                               <!--<field name="p_cortinilla"/>-->
+                               <!--<field name="p_reel"/>-->
                                <field name="p_render"/>
                                <field name="p_locucion"/>
                                <field name="p_edicion_audio"/>
