@@ -233,7 +233,7 @@
                                         <group>
                                           <group class="oe_subtotal_footer oe_right" name="totales">
                                             <field name="total_cliente_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>
-                                            <field name="total_gtvo_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>
+                                            <!--<field name="total_gtvo_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>-->
                                             <field name="total_terceros_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>
                                             <field name="total_interno_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>
                                             <field name="total_recuperacion_estrategia" class="oe_subtotal_footer_separator" readonly="1"/>
