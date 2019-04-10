@@ -202,8 +202,8 @@
                             </group>
 
                             <group string="Teléfono" attrs="{'invisible': [('cc_telefono','=',False)]}">
-                              <field name="tipo_servicio1"/>
-                              <field name="station_number1"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio1"/>
+                              <span>Numero de Estacion</span><field name="station_number1"/>
                               <field name="dictaminacion1" attrs="{'invisible':[('tipo_servicio1','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio1','=','5')]}">
                                 <field name="lunes1"/> 
@@ -220,8 +220,8 @@
                             </group>
 
                             <group string="WhatsApp" attrs="{'invisible': [('cc_whats','=',False)]}">
-                              <field name="tipo_servicio2"/>
-                              <field name="station_number2"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio2"/>
+                              <span>Numero de Estacion</span><field name="station_number2"/>
                               <field name="dictaminacion2" attrs="{'invisible':[('tipo_servicio2','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio2','=','5')]}">
                                 <field name="lunes2"/> 
@@ -238,8 +238,8 @@
                             </group>
 
                             <group string="E-mail" attrs="{'invisible': [('cc_email','=',False)]}">
-                              <field name="tipo_servicio3"/>
-                              <field name="station_number3"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio3"/>
+                              <span>Numero de Estacion</span><field name="station_number3"/>
                               <field name="dictaminacion3" attrs="{'invisible':[('tipo_servicio3','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio3','=','5')]}">
                                 <field name="lunes3"/> 
@@ -256,8 +256,8 @@
                             </group>
 
                             <group string="Twitter" attrs="{'invisible': [('cc_twitter','=',False)]}">
-                              <field name="tipo_servicio4"/>
-                              <field name="station_number4"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio4"/>
+                              <span>Numero de Estacion</span><field name="station_number4"/>
                               <field name="dictaminacion4" attrs="{'invisible':[('tipo_servicio4','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio4','=','5')]}">
                                 <field name="lunes4"/>
@@ -274,8 +274,8 @@
                             </group>
 
                             <group string="Facebook" attrs="{'invisible': [('cc_face','=',False)]}">
-                              <field name="tipo_servicio5"/>
-                              <field name="station_number5"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio5"/>
+                              <span>Numero de Estacion</span><field name="station_number5"/>
                               <field name="dictaminacion5" attrs="{'invisible':[('tipo_servicio5','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio5','=','5')]}">
                                 <field name="lunes5"/> 
@@ -292,8 +292,8 @@
                             </group>
 
                             <group string="Chat" attrs="{'invisible': [('cc_chat','=',False)]}">
-                              <field name="tipo_servicio6"/>
-                              <field name="station_number6"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio6"/>
+                              <span>Numero de Estacion</span><field name="station_number6"/>
                               <field name="dictaminacion6" attrs="{'invisible':[('tipo_servicio6','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio6','=','5')]}">
                                 <field name="lunes6"/> 
@@ -310,8 +310,8 @@
                             </group>
 
                             <group string="Escritorio" attrs="{'invisible': [('cc_escritorio','=',False)]}">
-                              <field name="tipo_servicio7"/>
-                              <field name="station_number7"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio7"/>
+                              <span>Numero de Estacion</span><field name="station_number7"/>
                               <field name="dictaminacion7" attrs="{'invisible':[('tipo_servicio7','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio7','=','5')]}">
                                 <field name="lunes7"/>
@@ -328,8 +328,8 @@
                             </group>
 
                             <group string="Otro" attrs="{'invisible': [('cc_otro','=',False)]}">
-                              <field name="tipo_servicio8"/>
-                              <field name="station_number8"/>
+                              <span>Tipo de servicio</span><field name="tipo_servicio8"/>
+                              <span>Numero de Estacion</span><field name="station_number8"/>
                               <field name="dictaminacion8" attrs="{'invisible':[('tipo_servicio8','!=','5')]}"/>
                               <group attrs="{'invisible':[('tipo_servicio8','=','5')]}">
                                 <field name="lunes8"/> 
