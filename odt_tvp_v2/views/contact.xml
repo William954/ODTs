@@ -453,19 +453,16 @@
                                         <td bgcolor="#EBF1DE">Proveniente de:</td>
                                         <td bgcolor="#FDEADA">Costo por minuto TVP</td>
                                         <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
-                                        <td bgcolor="#C0C0C0">Costo por minuto vendido</td>
                                       </tr>
                                       <tr>
                                         <td>Teléfonos fijos o celulares</td>
                                         <td>$0.70</td>
                                         <td>$1.00</td>
-                                        <td>$0.00</td>
                                       </tr>
                                       <tr>
                                         <td>Casetas telefónicas</td>
                                         <td>$1.40</td>
                                         <td>$2.00</td>
-                                        <td>$0.00</td>
                                       </tr>
                                     </table>
                                     <br/>
@@ -475,19 +472,16 @@
                                           <td bgcolor="#EBF1DE">Llamadas de salida</td>
                                           <td bgcolor="#FDEADA">Costo por minuto TVP</td>
                                           <td bgcolor="#CCC1DA">Costo por minuto sugerido</td>
-                                          <td bgcolor="#C0C0C0">Costo por minuto vendido</td>
                                         </tr>
                                         <tr text-align="center">
                                           <td>Llamada local y Larga distancia nacional</td>
                                           <td>$0.90</td>
                                           <td>$1.30</td>
-                                          <td>$0.00</td>
                                         </tr>
                                         <tr text-align="center">
                                           <td>Celular local y Celular nacional</td>
                                           <td>$1.40</td>
                                           <td>$2.00</td>
-                                          <td>$0.00</td>
                                         </tr>
                                       </table>
 
