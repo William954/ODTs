@@ -2063,28 +2063,28 @@ class Gastos(models.Model):
 			# Campos de presupuesto autorizado a terceros
 
 		if self.etiqueta_analitica == analytic_tags_btl_tercero:
-			self.disviacion = self.analytic_tags_btl_tercero - self.fac_gastos
+			self.disviacion = self.btl_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_contact_tercero:
-			self.disviacion = self.analytic_tags_contact_tercero - self.fac_gastos
+			self.disviacion = self.contact_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_produccion_tercero:
-			self.disviacion = self.analytic_tags_produccion_tercero - self.fac_gastos
+			self.disviacion = self.produccion_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_diseno_tercero:
-			self.disviacion = self.analytic_tags_diseno_tercero - self.fac_gastos
+			self.disviacion = self.diseno_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_estrategia_tercero:
-			self.disviacion = self.analytic_tags_estrategia_tercero - self.fac_gastos
+			self.disviacion = self.estrategia_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_logistica_tercero:
-			self.disviacion = self.analytic_tags_logistica_tercero - self.fac_gastos
+			self.disviacion = self.logistica_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_medios_tercero:
-			self.disviacion = self.analytic_tags_medios_tercero - self.fac_gastos
+			self.disviacion = self.medios_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_gestoria_tercero:
-			self.disviacion = self.analytic_tags_gestoria_tercero - self.fac_gastos
+			self.disviacion = self.gestoria_tercero - self.fac_gastos
 
 		if self.etiqueta_analitica == analytic_tags_digital_tercero:
-			self.disviacion = self.analytic_tags_digital_tercero - self.fac_gastos
+			self.disviacion = self.digital_tercero - self.fac_gastos
