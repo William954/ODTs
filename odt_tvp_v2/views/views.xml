@@ -107,6 +107,8 @@
                   <field name="medios_tercero"/>
                   <field name="gestoria_tercero"/>
                   <field name="digital_tercero"/>
+                  <field name="awards"/>
+                  <field name="taxes"/>
                 </group>
               </group>
             </page>
