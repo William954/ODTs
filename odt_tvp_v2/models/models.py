@@ -116,22 +116,22 @@ class inheritCRM(models.Model):
 	@api.one
 	@api.depends('produccion','name')
 	def _aprobado_produccion(self):
-		btl_model = self.env['odt.produccion']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
+		produccion_model = self.env['odt.produccion']
+		seach_presupuesto = produccion_model.search([('crm_odt_id','=',self.name)])
 		self.produccion = sum(seach_presupuesto.mapped('produccion'))
 
 	@api.one
 	@api.depends('medios','name')
 	def _aprobado_medios(self):
-		btl_model = self.env['odt.medios']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
-		self.medios = sum(seach_presupuesto.mapped('presupuesto_cliente'))
+		medios_model = self.env['odt.medios']
+		seach_presupuesto = medios_model.search([('crm_odt_id','=',self.name)])
+		self.medios = sum(seach_presupuesto.mapped('medios'))
 
 	@api.one
 	@api.depends('diseño_creatividad','name')
 	def _aprobado_diseno(self):
-		btl_model = self.env['odt.diseno']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
+		diseno_model = self.env['odt.diseno']
+		seach_presupuesto = diseno_model.search([('crm_odt_id','=',self.name)])
 		self.diseño_creatividad = sum(seach_presupuesto.mapped('diseño_creatividad'))
 
 	@api.one
@@ -144,8 +144,8 @@ class inheritCRM(models.Model):
 	@api.one
 	@api.depends('call_center','name')
 	def _aprobado_contact(self):
-		btl_model = self.env['odt.contactcenter']
-		seach_presupuesto = btl_model.search([('crm_odt_id','=',self.name)])
+		contact_model = self.env['odt.contactcenter']
+		seach_presupuesto = contact_model.search([('crm_odt_id','=',self.name)])
 		self.call_center = sum(seach_presupuesto.mapped('contact_center'))
 
 	@api.one
@@ -1954,15 +1954,12 @@ class TagsPresupuesto(models.Model):
 	name = fields.Char(string='Departamento')
 
 class ControlPresupuestal(models.Model):
-	"""docstring for Gastos"""
 	_name = 'project.gastos'
-
 
 	gastos_id = fields.Many2one('project.project')
 	fac_gastos = fields.Float(string='Gastos Facturados',compute='_sutotal_btl')
 	disviacion = fields.Float(string='Desviacion',compute='_sutotal_btl')
 	etiqueta_analitica = fields.Many2many('account.analytic.tag', string='Etiqueta')
-
 	btl = fields.Float(related='gastos_id.btl', string='BTL/PDV')
 	produccion = fields.Float(related='gastos_id.produccion', tring='Produccion')
 	diseño_creatividad = fields.Float(related='gastos_id.diseño_creatividad', string='Diseño')
@@ -1973,7 +1970,6 @@ class ControlPresupuestal(models.Model):
 	logistica = fields.Float(related='gastos_id.logistica', string='Logistica')
 	estrategia = fields.Float(related='gastos_id.estrategia', string='Estrategia')
 	otros_gastos = fields.Float(related='gastos_id.otros_gastos',string='Otros')
-	total_areas = fields.Float(string='Total de areas', compute='_total_areas')
 	btl_tercero = fields.Float(related='gastos_id.btl_tercero', string='G. 3ros BTL/PDV')
 	contact_tercero = fields.Float(related='gastos_id.contact_tercero', string='G. 3ros Contact Center')
 	produccion_tercero = fields.Float(related='gastos_id.produccion_tercero', string='G. 3ros Produccion')
@@ -1983,9 +1979,10 @@ class ControlPresupuestal(models.Model):
 	medios_tercero = fields.Float(related='gastos_id.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='gastos_id.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='gastos_id.digital_tercero', string='G. 3ros M. Digital')
-	total_tercero = fields.Float(string='Totales', compute='_total_tercero')
 	awards = fields.Integer(related='gastos_id.awards', string="Premios")
 	taxes = fields.Float(related='gastos_id.taxes', string="Impuestos")
+	total_areas = fields.Float(string='Total de areas', compute='_total_areas')
+	total_tercero = fields.Float(string='Totales', compute='_total_tercero')
 
 	@api.one
 	def _total_tercero(self):
