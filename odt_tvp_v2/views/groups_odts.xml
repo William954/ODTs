@@ -9,7 +9,7 @@
          <field name="name">ODT</field>
          <field name="category_id" ref="odt_group_category"/>
     </record>
-    
+
     <record id="group_btlpdv" model="res.groups">
          <field name="name">BTL/PDV</field>
          <field name="category_id" ref="odt_group_category"/>
@@ -53,5 +53,5 @@
     <record id="group_estrategia" model="res.groups">
          <field name="name">Estrategia</field>
          <field name="category_id" ref="odt_group_category"/>
-    </record> 
+    </record>
 </odoo>

@@ -29,8 +29,6 @@ class inheritCRM(models.Model):
 	logistica = fields.Float(string='Logistica', track_visibility=True, compute="_aprobado_logistica")
 	estrategia = fields.Float(string='Estrategia', compute='_aprobado_estrategia',track_visibility=True)
 	otros_gastos = fields.Float(string='Otros',track_visibility=True)
-
-
 	btl_tercero = fields.Float(string="G. 3ros BTL")
 	contact_tercero = fields.Float(string="G. 3ros Contact Center")
 	produccion_tercero = fields.Float(string="G. 3ros Producción")
@@ -40,6 +38,8 @@ class inheritCRM(models.Model):
 	medios_tercero = fields.Float(string="G. 3ros Medios")
 	gestoria_tercero = fields.Float(string="G. 3ros Gestoria")
 	digital_tercero = fields.Float(string="G. 3ros Digital")
+	awards = fields.Integer(string="Premios")
+	taxes = fields.Float(string="Impuestos")
 
 	# Contadores para los smartbuttons
 
@@ -234,8 +234,6 @@ class CrmOdt(models.Model):
 		team = self.env['crm.team'].sudo()._get_default_team_id(user_id=self.env.uid)
 		return self._stage_find(team_id=team.id, domain=[('fold', '=', False)]).id
 
-
-
 	project_name = fields.Char(string='Nombre del proyecto')
 	crm_odt_id = fields.Many2one('crm.lead', 'Oportunidad')
 	name = fields.Char(string='Nombre', default=lambda *a: 'Nuevo', readonly=True)
@@ -331,11 +329,6 @@ class CrmOdt(models.Model):
 	analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave')
 	slogan_marca = fields.Char(related='crm_odt_id.slogan_marca',string='Eslogan', track_visibility=True)
 	logo_marca = fields.Binary(related='crm_odt_id.logo_marca',string='Logo', track_visibility=True)
-
-
-
-
-
 
 	@api.model
 	def _read_group_stage_ids(self, stages, domain, order):
@@ -1153,8 +1146,6 @@ class OdtGestoria(models.Model):
 	brief_qtion10 = fields.Text(related='crm_odt_id.brief_qtion10',string="Fecha de presentación.", track_visibility=True)
 	brief_qtion11 = fields.Text(related='crm_odt_id.brief_qtion11',string="Comentarios adicionales. ", track_visibility=True)
 
-
-
 	# 	 Gestoria
 	gl_date_sorteo = fields.Text(string='Fecha del Sorteo', track_visibility=True)
 	site_sorteo = fields.Text(string='Lugar del Sorteo', track_visibility=True)
@@ -1903,7 +1894,6 @@ class TablaGastos(models.Model):
 	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 
-
 	@api.one
 	def get_sale_order_reference(self):
 		for rec in self:
@@ -1915,8 +1905,6 @@ class TablaGastos(models.Model):
 		for rec in self:
 			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
 			rec.total_pagar = float(res.amount_untaxed)
-
-
 
 # planificado es total a cobrar -los gastos autorizados
 	@api.one
@@ -1940,7 +1928,6 @@ class TablaGastos(models.Model):
 		sale_model = self.env['sale.order']
 		seach_amount_invoiced = sale_model.search([('invoice_status','=','invoiced'),('analytic_account_id','=',self.analytic_account_id.id)])
 		self.i_facturado = sum(seach_amount_invoiced.mapped('amount_untaxed'))
-
 
 class ColumnasSaleOrder(models.Model):
 	_inherit = 'sale.order.line'
@@ -1966,8 +1953,7 @@ class TagsPresupuesto(models.Model):
 
 	name = fields.Char(string='Departamento')
 
-
-class Gastos(models.Model):
+class ControlPresupuestal(models.Model):
 	"""docstring for Gastos"""
 	_name = 'project.gastos'
 
@@ -1987,8 +1973,7 @@ class Gastos(models.Model):
 	logistica = fields.Float(related='gastos_id.logistica', string='Logistica')
 	estrategia = fields.Float(related='gastos_id.estrategia', string='Estrategia')
 	otros_gastos = fields.Float(related='gastos_id.otros_gastos',string='Otros')
-
-
+	total_areas = fields.Float(string='Total de areas', compute='_total_areas')
 	btl_tercero = fields.Float(related='gastos_id.btl_tercero', string='G. 3ros BTL/PDV')
 	contact_tercero = fields.Float(related='gastos_id.contact_tercero', string='G. 3ros Contact Center')
 	produccion_tercero = fields.Float(related='gastos_id.produccion_tercero', string='G. 3ros Produccion')
@@ -1998,8 +1983,17 @@ class Gastos(models.Model):
 	medios_tercero = fields.Float(related='gastos_id.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='gastos_id.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='gastos_id.digital_tercero', string='G. 3ros M. Digital')
+	total_tercero = fields.Float(string='Totales', compute='_total_tercero')
+	awards = fields.Integer(related='gastos_id.awards', string="Premios")
+	taxes = fields.Float(related='gastos_id.taxes', string="Impuestos")
 
+	@api.one
+	def _total_tercero(self):
+		self.total_tercero = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero)
 
+	@api.one
+	def _total_areas(self):
+		self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia + self.otros_gastos )
 	@api.one
 	@api.depends('etiqueta_analitica','fac_gastos','disviacion')
 	def _sutotal_btl(self):
