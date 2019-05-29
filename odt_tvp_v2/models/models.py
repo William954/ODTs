@@ -1893,6 +1893,18 @@ class TablaGastos(models.Model):
 	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
+	awards = fields.Integer(related='ref_project.awards',string="Premios")
+	taxes = fields.Float(related='ref_project.taxes',string="Impuestos")
+	total_areas = fields.Float(string='Total de areas', compute='_total_areas')
+	total_tercero = fields.Float(string='Totales', compute='_total_tercero')
+
+	@api.one
+	def _total_tercero(self):
+		self.total_tercero = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero)
+
+	@api.one
+	def _total_areas(self):
+		self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia + self.otros_gastos)
 
 	@api.one
 	def get_sale_order_reference(self):
@@ -1979,18 +1991,9 @@ class ControlPresupuestal(models.Model):
 	medios_tercero = fields.Float(related='gastos_id.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='gastos_id.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='gastos_id.digital_tercero', string='G. 3ros M. Digital')
-	awards = fields.Integer(related='gastos_id.awards', string="Premios")
-	taxes = fields.Float(related='gastos_id.taxes', string="Impuestos")
-	total_areas = fields.Float(string='Total de areas', compute='_total_areas')
-	total_tercero = fields.Float(string='Totales', compute='_total_tercero')
+	awards = fields.Integer(related='gastos_id.awards',string="Premios")
+	taxes = fields.Float(related='gastos_id.taxes',string="Impuestos")
 
-	@api.one
-	def _total_tercero(self):
-		self.total_tercero = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero)
-
-	@api.one
-	def _total_areas(self):
-		self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia + self.otros_gastos )
 	@api.one
 	@api.depends('etiqueta_analitica','fac_gastos','disviacion')
 	def _sutotal_btl(self):
