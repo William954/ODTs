@@ -1900,7 +1900,7 @@ class TablaGastos(models.Model):
 
 	@api.one
 	def _total_tercero(self):
-		self.total_tercero = (self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero)
+		self.total_tercero = (self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero)
 
 	@api.one
 	def _total_areas(self):
@@ -1930,7 +1930,7 @@ class TablaGastos(models.Model):
 	@api.depends('ref_project','saldo_autorizado','u_bruta_p')
 	def _compute_saldo_autorizado(self):
 		if self.ref_project:
-			self.saldo_autorizado = (self.ref_project.btl + self.ref_project.produccion + self.ref_project.diseño_creatividad + self.ref_project.call_center + self.ref_project.digital + self.ref_project.medios + self.ref_project.logistica + self.ref_project.gestoria_logistica)
+			self.saldo_autorizado = (self.awards + self.taxes + self.ref_project.btl + self.ref_project.produccion + self.ref_project.diseño_creatividad + self.ref_project.call_center + self.ref_project.digital + self.ref_project.medios + self.ref_project.logistica + self.ref_project.gestoria_logistica)
 			total_terceros = (self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero )
 			self.u_bruta_p = (self.total_pagar - (total_terceros + self.saldo_autorizado))
 

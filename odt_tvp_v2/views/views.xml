@@ -383,16 +383,11 @@
                         <field name="medios_tercero"/>
                         <field name="logistica_tercero"/>
                         <field name="estrategia_tercero"/>
-                        <field name="total_tercero"/>
                         <field name="awards"/>
                         <field name="taxes"/>
+                        <field name="total_tercero"/>
+
                       </group>
-
-
-
-
-
-
                       <group name="ingresos">
                             <page name="cotizacion_interna_diseno" string="Cotizacion">
                                 <field name="tabla_gastos" widget="one2many_list">

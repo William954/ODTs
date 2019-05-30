@@ -20,7 +20,8 @@
             'sale_management',
             'account',
             'account_accountant',
-            'account_budget'
+            'account_budget',
+            'timesheet_grid'
             ],
     'data': [
         'views/btlpdv.xml',
