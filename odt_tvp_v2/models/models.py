@@ -1924,8 +1924,7 @@ class TablaGastos(models.Model):
 			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
 			if res != False:
 				rec.ref_project = res.opportunity_id.id
-			else
-				raise UserError(_('Porfavor revisa que todos los proyectos provengan de una venta'))
+
 
 	@api.one
 	def get_sale_order_total(self):
