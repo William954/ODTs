@@ -1868,7 +1868,7 @@ class TablaGastos(models.Model):
 	ref_customer = fields.Many2one(related='partner_id', string='Cliente')
 	total_pagar = fields.Float(string='Ingreso Planificado', compute='get_sale_order_total')
 	saldo_autorizado = fields.Float(string='saldo autorizado', compute='_compute_saldo_autorizado')
-	i_facturado = fields.Float(string='Ingreso Real Facturado', compute='_compute_facturado')
+	i_facturado = fields.Float(string='Ingreso real Facturado', compute='_compute_facturado')
 	planned_cost = fields.Float(string='Costo Planificado', compute='_planned_cost', store=True)
 
 	# Campos de presupuesto autorizado
@@ -1902,11 +1902,6 @@ class TablaGastos(models.Model):
 
 
 	@api.one
-	@api.depends('total_areas', 'total_tercero')
-	def _palnned_cost(self):
-		self.planned_cost =  self.total_areas + self.total_tercero
-
-	@api.one
 	def _total_tercero(self):
 		self.total_tercero = (self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos)
 
@@ -1922,9 +1917,7 @@ class TablaGastos(models.Model):
 	def get_sale_order_reference(self):
 		for rec in self:
 			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
-			if res != False:
-				rec.ref_project = res.opportunity_id.id
-
+			rec.ref_project = res.opportunity_id.id
 
 	@api.one
 	def get_sale_order_total(self):
@@ -1954,6 +1947,11 @@ class TablaGastos(models.Model):
 		sale_model = self.env['sale.order']
 		seach_amount_invoiced = sale_model.search([('invoice_status','=','invoiced'),('analytic_account_id','=',self.analytic_account_id.id)])
 		self.i_facturado = sum(seach_amount_invoiced.mapped('amount_untaxed'))
+
+	@api.one
+	@api.depends('total_areas', 'total_tercero')
+	def _palnned_cost(self):
+		self.planned_cost =  self.total_areas + self.total_tercero
 
 class ColumnasSaleOrder(models.Model):
 	_inherit = 'sale.order.line'
