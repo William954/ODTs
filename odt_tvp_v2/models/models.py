@@ -1868,8 +1868,9 @@ class TablaGastos(models.Model):
 	ref_customer = fields.Many2one(related='partner_id', string='Cliente')
 	total_pagar = fields.Float(string='Ingreso Planificado', compute='get_sale_order_total')
 	saldo_autorizado = fields.Float(string='saldo autorizado', compute='_compute_saldo_autorizado')
-	i_facturado = fields.Float(string='Ingreso real Facturado', compute='_compute_facturado')
-	planned_cost = fields.Float(string='Costo Planificado', compute='_planned_cost', store=True)
+	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
+	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_suma_totales')
+
 
 	# Campos de presupuesto autorizado
 	btl = fields.Float(related='ref_project.btl', string='BTL/PDV')
@@ -1898,8 +1899,6 @@ class TablaGastos(models.Model):
 	taxes = fields.Float(related='ref_project.taxes',string="Impuestos")
 	total_areas = fields.Float(string='Sub total áreas', compute='_total_areas', store=True)
 	total_tercero = fields.Float(string='Subtotal terceros', compute='_total_tercero', store=True)
-	total_expenses_approved = fields.Float(string='Total Gastos Autorizados', compute='_suma_totales')
-
 
 	@api.one
 	def _total_tercero(self):
@@ -1947,11 +1946,6 @@ class TablaGastos(models.Model):
 		sale_model = self.env['sale.order']
 		seach_amount_invoiced = sale_model.search([('invoice_status','=','invoiced'),('analytic_account_id','=',self.analytic_account_id.id)])
 		self.i_facturado = sum(seach_amount_invoiced.mapped('amount_untaxed'))
-
-	@api.one
-	@api.depends('total_areas', 'total_tercero')
-	def _palnned_cost(self):
-		self.planned_cost =  self.total_areas + self.total_tercero
 
 class ColumnasSaleOrder(models.Model):
 	_inherit = 'sale.order.line'

@@ -353,7 +353,7 @@
                     <group>
                       <group string="Planeado">
                         <field name="total_pagar"/>
-                        <field name="planned_cost"/>
+                        <field name="total_expenses_approved"/>
                         <field name='u_bruta_p'/>
                       </group>
                       <group string="Real">
