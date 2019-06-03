@@ -1902,7 +1902,7 @@ class TablaGastos(models.Model):
 
 	@api.one
 	def _total_tercero(self):
-		self.total_tercero = (self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos)
+		self.total_tercero = self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos
 
 	@api.one
 	def _total_areas(self):
