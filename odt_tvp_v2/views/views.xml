@@ -351,16 +351,17 @@
                 <xpath expr="//form[1]/sheet[1]//notebook[1]" position="inside">
                   <page name="finanzas" string="Control Presupuestal">
                     <group>
-                      <group>
-                        <field name='ref_customer'/>
-                      </group>
-                      <group>
+                      <group string="Planeado">
+                        <field name="total_pagar"/>
+                        <field name="planned_cost"/>
                         <field name='u_bruta_p'/>
+                      </group>
+                      <group string="Real">
                         <field name='u_bruta_r'/>
                         <field name='i_facturado'/>
                         <field name="total_pagar" readonly="1"/>
                       </group>
-                      <group string='Gasto Aprobado'>
+                      <group string='Costo Aprobado'>
                           <field name='btl'/>
                           <field name='produccion'/>
                           <field name='diseño_creatividad'/>
@@ -370,10 +371,9 @@
                           <field name='medios'/>
                           <field name="logistica"/>
                           <field name="estrategia"/>
-                          <field name="otros_gastos"/>
                           <field name="total_areas"/>
                       </group>
-                      <group string="Gastos 3ros Aprobados">
+                      <group string="Costos 3ros Aprobados">
                         <field name="btl_tercero"/>
                         <field name="produccion_tercero"/>
                         <field name="diseno_tercero"/>
@@ -385,7 +385,9 @@
                         <field name="estrategia_tercero"/>
                         <field name="awards"/>
                         <field name="taxes"/>
+                        <field name="otros_gastos"/>
                         <field name="total_tercero"/>
+                        <field name="total_expenses_approved"/>
 
                       </group>
                       <group name="ingresos">
