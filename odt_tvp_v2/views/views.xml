@@ -372,7 +372,7 @@
                           <field name='medios'/>
                           <field name="logistica"/>
                           <field name="estrategia"/>
-                          <field name="total_areas"/>
+                          <!--<field name="total_areas"/>-->
                       </group>
                       <group string="Costos 3ros Aprobados">
                         <field name="btl_tercero"/>
@@ -387,7 +387,7 @@
                         <field name="awards"/>
                         <field name="taxes"/>
                         <field name="otros_gastos"/>
-                        <field name="total_tercero"/>
+                        <!--<field name="total_tercero"/>-->
                         <field name="total_expenses_approved"/>
 
                       </group>
