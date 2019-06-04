@@ -1859,16 +1859,17 @@ class Marca(models.Model):
 class TablaGastos(models.Model):
 	_inherit = 'project.project'
 
-	tabla_gastos = fields.One2many('project.gastos','gastos_id')
-	ref_project = fields.Many2one('crm.lead',string='Proyecto', compute='get_sale_order_reference')
+	tabla_gastos = fields.One2many('project.gastos', 'gastos_id')
+	ref_project = fields.Many2one('crm.lead', string='Proyecto', compute='get_sale_order_reference')
 	fin_clave = fields.Char(string='CLAVE')
 	u_bruta_p = fields.Float(string='Utilidad Bruta Planificada', compute='_compute_saldo_autorizado')
 	u_bruta_r = fields.Float(string='Utilidad Bruta Real', compute='_compute_bruta_real')
 	dates = fields.Date(related='ref_project.date_deadline', string='Fecha')
 	ref_customer = fields.Many2one(related='partner_id', string='Cliente')
 	total_pagar = fields.Float(string='Ingreso Planificado', compute='get_sale_order_total')
-	saldo_autorizado = fields.Float(string='saldo autorizado', compute='_compute_saldo_autorizado')
+	saldo_autorizado = fields.Float(string='Saldo autorizado', compute='_compute_saldo_autorizado')
 	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
+
 	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_suma_totales')
 
 
@@ -1883,9 +1884,6 @@ class TablaGastos(models.Model):
 	logistica = fields.Float(related='ref_project.logistica', string='Logistica')
 	estrategia = fields.Float(related='ref_project.estrategia', string='Estrategia')
 	otros_gastos = fields.Float(related='ref_project.otros_gastos',string='Otros')
-
-	# Campos de presupuesto autorizado a terceros
-
 	btl_tercero = fields.Float(related='ref_project.btl_tercero', string='G. 3ros BTL/PDV')
 	contact_tercero = fields.Float(related='ref_project.contact_tercero', string='G. 3ros Contact Center')
 	produccion_tercero = fields.Float(related='ref_project.produccion_tercero', string='G. 3ros Produccion')
@@ -1895,22 +1893,22 @@ class TablaGastos(models.Model):
 	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
-	awards = fields.Integer(related='ref_project.awards',string="Premios")
-	taxes = fields.Float(related='ref_project.taxes',string="Impuestos")
-	total_areas = fields.Float(string='Sub total áreas', compute='_total_areas', store=True)
-	total_tercero = fields.Float(string='Subtotal terceros', compute='_total_tercero', store=True)
-
-	@api.one
-	def _total_tercero(self):
-		self.total_tercero = self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos
-
-	@api.one
-	def _total_areas(self):
-		self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
-	@api.one
-	@api.depends('total_areas', 'total_tercero')
-	def _suma_totales(self):
-		self.total_expenses_approved = self.total_areas + self.total_tercero
+	awards = fields.Integer(related='ref_project.awards', string="Premios")
+	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
+	# total_areas = fields.Float(string='Sub total áreas', compute='_total_areas', store=True)
+	# total_tercero = fields.Float(string='Subtotal terceros', compute='_total_tercero', store=True)
+	#
+	# @api.one
+	# def _total_tercero(self):
+	# 	self.total_tercero = self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos
+	#
+	# @api.one
+	# def _total_areas(self):
+	# 	self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
+	# @api.one
+	# @api.depends('total_areas', 'total_tercero')
+	# def _suma_totales(self):
+	# 	self.total_expenses_approved = self.total_areas + self.total_tercero
 
 	@api.one
 	def get_sale_order_reference(self):
