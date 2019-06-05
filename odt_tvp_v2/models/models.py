@@ -1907,9 +1907,9 @@ class TablaGastos(models.Model):
 		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
 
 	@api.one
-	@api.depends('total_areas', 'total_tercero')
+	@api.depends('sub_total_tercero', 'sub_total_areas')
 	def _sum_sub_totales(self):
-		self.total_expenses_approved = self.total_areas + self.total_tercero
+		self.total_expenses_approved = self.sub_total_tercero + self.sub_total_areas
 
 	@api.one
 	def get_sale_order_reference(self):
