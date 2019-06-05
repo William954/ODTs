@@ -353,8 +353,8 @@
                     <group>
                       <group string="Planeado">
                         <field name="ref_customer" invisible="1"/>
-                        <!--<field name="total_pagar"/>-->
-                        <!--<field name="total_expenses_approved"/>-->
+                        <field name="total_pagar"/>
+                        <field name="total_expenses_approved"/>
                         <field name='u_bruta_p'/>
                       </group>
                       <group string="Real">

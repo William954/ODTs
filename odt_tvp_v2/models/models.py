@@ -1869,8 +1869,7 @@ class TablaGastos(models.Model):
 	total_pagar = fields.Float(string='Ingreso Planificado', compute='get_sale_order_total')
 	saldo_autorizado = fields.Float(string='Saldo autorizado', compute='_compute_saldo_autorizado')
 	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
-
-	# total_expenses_approved = fields.Float(string='Costo Planeado', compute='_suma_totales')
+	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_sum_sub_totales')
 
 	# Campos de presupuesto autorizado
 	btl = fields.Float(related='ref_project.btl', string='BTL/PDV')
@@ -1895,7 +1894,7 @@ class TablaGastos(models.Model):
 	awards = fields.Integer(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
 	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sub_total_areas')
-	sub_total_tercero = fields.Float(string='Subtotal terceros', compute='_sub_total_tercero')
+	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sub_total_tercero')
 
 	@api.one
 	@api.depends('sub_total_tercero')
@@ -1907,13 +1906,10 @@ class TablaGastos(models.Model):
 	def _sub_total_areas(self):
 		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
 
-
-
-
-	# @api.one
-	# @api.depends('total_areas', 'total_tercero')
-	# def _suma_totales(self):
-	# 	self.total_expenses_approved = self.total_areas + self.total_tercero
+	@api.one
+	@api.depends('total_areas', 'total_tercero')
+	def _sum_sub_totales(self):
+		self.total_expenses_approved = self.total_areas + self.total_tercero
 
 	@api.one
 	def get_sale_order_reference(self):
