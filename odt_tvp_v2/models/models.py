@@ -1895,16 +1895,16 @@ class TablaGastos(models.Model):
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 	awards = fields.Integer(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
-	# total_areas = fields.Float(string='Sub total áreas', compute='_total_areas', store=True)
-	# total_tercero = fields.Float(string='Subtotal terceros', compute='_total_tercero', store=True)
-	#
-	# @api.one
-	# def _total_tercero(self):
-	# 	self.total_tercero = self.awards + self.taxes + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self.logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.otros_gastos
-	#
-	# @api.one
-	# def _total_areas(self):
-	# 	self.total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
+	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sub_total_areas', store=True)
+	sub_total_tercero = fields.Float(string='Subtotal terceros', compute='_sub_total_tercero', store=True)
+
+	@api.one
+	def _sub_total_tercero(self):
+		self.sub_total_tercero = self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self. logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.awards + self.taxes
+	@api.one
+	def _sub_total_areas(self):
+		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
+
 	# @api.one
 	# @api.depends('total_areas', 'total_tercero')
 	# def _suma_totales(self):
