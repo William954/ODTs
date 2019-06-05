@@ -1899,9 +1899,12 @@ class TablaGastos(models.Model):
 	sub_total_tercero = fields.Float(string='Subtotal terceros', compute='_sub_total_tercero', store=True)
 
 	@api.one
+	@api.depends('sub_total_tercero')
 	def _sub_total_tercero(self):
 		self.sub_total_tercero = self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self. logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.awards + self.taxes
+
 	@api.one
+	@api.depends('sub_total_areas')
 	def _sub_total_areas(self):
 		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
 
