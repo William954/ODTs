@@ -1898,16 +1898,6 @@ class TablaGastos(models.Model):
 	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sub_total_areas', store=True)
 	sub_total_tercero = fields.Float(string='Subtotal terceros', compute='_sub_total_tercero', store=True)
 
-	@api.one
-	@api.depends('sub_total_tercero')
-	def _sub_total_tercero(self):
-		self.sub_total_tercero = self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self. logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.awards + self.taxes
-
-	@api.one
-	@api.depends('sub_total_areas')
-	def _sub_total_areas(self):
-		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
-
 	# @api.one
 	# @api.depends('total_areas', 'total_tercero')
 	# def _suma_totales(self):
@@ -1947,6 +1937,19 @@ class TablaGastos(models.Model):
 		sale_model = self.env['sale.order']
 		seach_amount_invoiced = sale_model.search([('invoice_status','=','invoiced'),('analytic_account_id','=',self.analytic_account_id.id)])
 		self.i_facturado = sum(seach_amount_invoiced.mapped('amount_untaxed'))
+
+
+	@api.one
+	@api.depends('sub_total_tercero')
+	def _sub_total_tercero(self):
+		self.sub_total_tercero = (self.otros_gastos + self.btl_tercero + self.contact_tercero + self.produccion_tercero + self.diseno_tercero + self.estrategia_tercero + self. logistica_tercero + self.medios_tercero + self.gestoria_tercero + self.digital_tercero + self.awards + self.taxes)
+
+	@api.one
+	@api.depends('sub_total_areas')
+	def _sub_total_areas(self):
+		self.sub_total_areas = (self.btl + self.produccion + self.diseño_creatividad + self.gestoria_logistica + self.call_center + self.digital + self.medios + self.logistica + self.estrategia)
+
+
 
 class ColumnasSaleOrder(models.Model):
 	_inherit = 'sale.order.line'
