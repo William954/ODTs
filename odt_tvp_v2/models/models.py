@@ -1870,7 +1870,7 @@ class TablaGastos(models.Model):
 	saldo_autorizado = fields.Float(string='Saldo autorizado', compute='_compute_saldo_autorizado')
 	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
 
-	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_suma_totales')
+	# total_expenses_approved = fields.Float(string='Costo Planeado', compute='_suma_totales')
 
 
 	# Campos de presupuesto autorizado
