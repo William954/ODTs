@@ -1,4 +1,4 @@
-medio# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from odoo import api, _, tools, fields, models, exceptions,  SUPERUSER_ID
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
@@ -802,7 +802,7 @@ class OdtMedios(models.Model):
 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
 
-	medios = fields.Float(string='Presupuesto global del cliente')
+	medios = fields.Float(string='Medios P. Autorizado')
 
 	
 	@api.model
