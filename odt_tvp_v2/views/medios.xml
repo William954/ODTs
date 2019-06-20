@@ -115,10 +115,12 @@
                                 <field name="team_id" widget="selection"/>
                                 <field name="start_date"/>
                                 <field name="end_date"/>
+                                <field name="med_fecha_entrega"/>
                                 <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
-                                <field name="presupuesto_cliente"/>
+                                <field name="presupuesto_cliente" invisible="1"/>
                                 <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
+                                <field name="notast"/>
                                 <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
                                   <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
                                 </div>
@@ -139,7 +141,7 @@
                                 <field name="med_prensa" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_ooh" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_digital" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
-                                <field name="med_analisis" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
+                                <field name="med_analisis"  invisible="1" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
 <!--                                   <field name="med_analisis" />
  -->                                <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
@@ -155,7 +157,6 @@
 <!--                               <field name="med_folio"/>
                               <field name="med_fecha_soli"/> -->
                               <!-- <field name="med_hora_soli"  widget="float_time"/> -->
-                              <field name="med_fecha_entrega"/>
                               <field name="med_fecha_real"/>
                               <!-- <field name="med_elabora"/> -->
                               <field name="med_nivel_complejidad"/>
