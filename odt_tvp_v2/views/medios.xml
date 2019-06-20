@@ -124,7 +124,7 @@
                                 </div>
                             </group>
                             <group>
-                                <field name="priority" widget="priority"/>
+                                <field name="priority" widget="priority"/ invisible="1">
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
                                 <field name="marca"/>                               
                                 <field name="target"/>
