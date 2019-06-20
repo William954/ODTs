@@ -120,7 +120,6 @@
                                 <!--field name="presupuesto_cliente"/-->
                                 <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
-                                <field name="nota"/>
                                 <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
                                   <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
                                 </div>

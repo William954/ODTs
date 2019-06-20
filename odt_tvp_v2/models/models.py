@@ -803,7 +803,6 @@ class OdtMedios(models.Model):
 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
 
 	medios = fields.Float(string='Presupuesto global del cliente')
-	nota = fields.Char(string="Nota:")
 
 	
 	@api.model
