@@ -1803,7 +1803,6 @@ class TablaPrensa(models.Model):
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
 	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
 	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
-	tipo_revist = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
 
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
@@ -1826,6 +1825,7 @@ class TablaRevista(models.Model):
 	color = fields.Selection([('1','B/N'),('2','Color')])	
 	titulo = fields.Char(string='Título')
 	observaciones = fields.Char(string='Observaciones')
+	tipo_revist = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
 
 class TablaRadio(models.Model):
 	_name = 'odt.medios.radio'
