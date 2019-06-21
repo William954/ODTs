@@ -655,11 +655,12 @@
                         <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
                           <group>
                             <group>
-                              <field name="tip_analisis"/>
-                              <field name="an_inversion" attrs="{'invisible': [('tip_analisis','=',False)]}"/>
-                              <field name="an_habitos"   attrs="{'invisible': [('tip_analisis','=',False)]}"/>
-                              <field name="an_audiencia" attrs="{'invisible': [('tip_analisis','=',False)]}"/>
-                              <field name="an_otro"      attrs="{'invisible': [('tip_analisis','=',False)]}"/>
+                              <p>Tipo de Analisis</p>
+                              <field name="tip_analisis" invisible="1"/>
+                              <field name="an_inversion"/>
+                              <field name="an_habitos"/>
+                              <field name="an_audiencia"/>
+                              <field name="an_otro"/>
                             </group>
                             <group>
                               <field name="an_marca"/>

@@ -1800,8 +1800,8 @@ class TablaPrensa(models.Model):
 	otro = fields.Char(string='Otros')
 	seccion = fields.Char(string='Sección')
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
-	posicion = fields.Char(string='Posición')
-	color = fields.Char(string='Color')
+	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
+	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
 
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
