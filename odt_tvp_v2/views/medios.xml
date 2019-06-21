@@ -655,25 +655,26 @@
                         <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
                           <group>
                             <group>
-                              <field name="an_inversion"/>
-                              <field name="an_habitos"/>
-                              <field name="an_audiencia"/>
-                              <field name="an_otro"/>
+                              <field name="tip_analisis"/>
+                              <field name="an_inversion" attrs="{'invisible': [('tip_analisis','=',True)]}"/>
+                              <field name="an_habitos"   attrs="{'invisible': [('tip_analisis','=',True)]}"/>
+                              <field name="an_audiencia" attrs="{'invisible': [('tip_analisis','=',True)]}"/>
+                              <field name="an_otro"      attrs="{'invisible': [('tip_analisis','=',True)]}"/>
                             </group>
                             <group>
                               <field name="an_marca"/>
                               <!-- <field name="an_sector"/> -->
                               <field name="an_categoria" attrs="{'invisible': [('med_analisis','=',False)]}"/>
-                              <field name="an_cat_otros"/>
+                              <field name="an_cat_otros" invisible="1"/>
                             </group>
-                            <group string="Inversión Publicitaria (Competencia) IBOPE">
+                            <group string="Inversión Publicitaria (Competencia) IBOPE" attrs="{'invisible': [('an_inversion','=',True)]}">
                               <h3>Periodo*</h3>
                               <field name="an_year_inmediato"/>
                               <field name="an_year_movil"/>
                               <field name="an_periodo"/>
                               <field name="an_analisis"/>
                             </group>
-                            <group string='Audiencias'>
+                            <group string='Audiencias' attrs="{'invisible': [('an_audiencia','=',True)]}">
                               <h3>Periodo*</h3>
                               <field name="an_year_inmediato1"/>
                               <field name="an_year_movil1"/>
@@ -681,12 +682,12 @@
                               <field name="an_target_interes"/>
                               <field name="an_analisis1"/>
                             </group>
-                            <group string="Hábitos de consumo (BIMSA)">
+                            <group string="Hábitos de consumo (BIMSA)" attrs="{'invisible': [('an_habitos','=',True)]}">
                               <field name="an_marca1"/>
                               <field name="an_target_interes1"/>
                               <field name="an_analisis2"/>
                             </group>
-                            <group string="Otro Analisis">
+                            <group string="Otro Analisis" attrs="{'invisible': [('an_otro','=',True)]}">
                               <field name="an_tro_descripcion"/> 
                             </group>
                           </group>

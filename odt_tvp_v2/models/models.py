@@ -755,11 +755,12 @@ class OdtMedios(models.Model):
 	d_monto_minimo = fields.Float(string='Monto Mínimo Propuesta (Costos Cliente)*')
 
 	# Análisis
+	tip_analisis = fields.Boolean(string="Tipo de Analisis")
 	an_inversion = fields.Boolean(string='Inversión Publicitaria')
 	an_habitos = fields.Boolean(string='Hábitos')
 	an_audiencia = fields.Boolean(string='Audiencias')
-	an_otro = fields.Char(string='Otro: ')
-	an_marca = fields.Char(string='Marca o Producto*')
+	an_otro = fields.Boolean(string='Otro')
+	an_marca = fields.Char(string='Categoria*')
 	an_sector = fields.Char(string='Sector (NIELSEN/IBOPE)*')
 
 	an_categoria = fields.Selection([('1','ACCESORIOS PARA RADIO'),('2','ACCESORIOS VIDEO TV'),('3','ACCESORIOS Y CONVERSIONES'),('4','ACCESORIOS Y MUEBLES PARA BEBE'),('5','ACEITES COMESTIBLES/ANTIADHERENTES'),('6','ACEITES Y LUBRICANTES'),('7','ADITIVOS'),('8','AFORES'),('9','AGENCIAS ADUANALES'),('10','AGENCIAS DE VIAJES/PROMOCIONES TURS'),('11','AGENDAS/ORGANIZADORES ELECTRONICOS'),('12','AGUA PURIFICADA'),('13','AIRE ACONDICIONADO DOMESTICO'),('14','AIRE ACONDICIONADO/CALEFACTORES'),('15','ALARMAS/SISTEMAS DE SEGURIDAD'),('16','ALBUMES')
