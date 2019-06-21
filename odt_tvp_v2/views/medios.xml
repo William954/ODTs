@@ -509,10 +509,10 @@
                                   <field name="tabla_medios_revista" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="titulo"/>
-                                        <field name="tipo_revi"/>
-                                        <field name="tamano" attrs="{'readonly' :[('tipo_revi','!=','1')]}"/>
+                                        <field name="tipo_revist"/>
+                                        <field name="tamano" attrs="{'readonly' :[('tipo_revist','!=','1')]}"/>
                                         <field name="otro" attrs="{'readonly' : [('tamano','!=','6')]}"/>
-                                        <field name="tipo" attrs="{'readonly' : [('tipo_revi','!=','2')]}"/>
+                                        <field name="tipo" attrs="{'readonly' : [('tipo_revist','!=','2')]}"/>
                                         <field name="otro_tipo" attrs="{'readonly' : [('tipo','!=','6')]}"/>
                                         <field name="color" invisible="1"/>
                                     </tree>
