@@ -509,11 +509,12 @@
                                   <field name="tabla_medios_revista" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="titulo"/>
-                                        <field name="tamano"/>
+                                        <field name="tipo_revi"/>
+                                        <field name="tamano" attrs="{'readonly' :[('tipo_revi','!=','1')]}"/>
                                         <field name="otro" attrs="{'readonly' : [('tamano','!=','6')]}"/>
-                                        <field name="tipo" />
+                                        <field name="tipo" attrs="{'readonly' : [('tipo_revi','!=','2')]}"/>
                                         <field name="otro_tipo" attrs="{'readonly' : [('tipo','!=','6')]}"/>
-                                        <field name="color"/>
+                                        <field name="color" invisible="1"/>
                                     </tree>
                                   </field>
                               </page> 
@@ -644,7 +645,7 @@
                               <!-- <field name="d_folio_proyecto"/> -->
                               <field name="d_monto_maximo"/>
                               <field name="d_monto_minimo"/>
-                              <p>
+                              <p invisible="1">
                                 Notas:<br/>
                                 1.- No se iniciará la planeación si no existe monto de inversión.
                               </p>

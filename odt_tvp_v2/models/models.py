@@ -1795,6 +1795,7 @@ class TablaPrensa(models.Model):
 	prensa_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
 	titulo = fields.Char(string='Título')
+
 	tamano = fields.Selection([('1','Plana'),('2','Robaplana'),('3','1/2 Plana Horizontal'),
 							   ('4','1/2 Plana Vertical'),('5','1/4 Plana'),('6','1/8 Plana'),('7','Otro')],string='Tamaño')
 	otro = fields.Char(string='Otros')
@@ -1802,6 +1803,7 @@ class TablaPrensa(models.Model):
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
 	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
 	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
+	tipo_revi = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
 
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
@@ -1819,7 +1821,7 @@ class TablaRevista(models.Model):
 	revista_id = fields.Many2one('odt.medios')
 	tamano = fields.Selection([('1','Página'),('2','Página impar'),('3','Spread'),('4','Cuarta de forros'),('5','Tercera de forros'),('6','Otro')],string='Tamaño de Inserción Regular')
 	otro = fields.Char(string='Otro Tamaño')
-	tipo = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo')
+	tipo = fields.Selection([('1','Publireportaje'),('2','Gatefold'),('3','Encarte'),('4','Suajes'),('5','Fajilla'),('6','Otro')],string='Tipo de Creatividades')
 	otro_tipo = fields.Char(string='Otro')
 	color = fields.Selection([('1','B/N'),('2','Color')])	
 	titulo = fields.Char(string='Título')
