@@ -603,7 +603,7 @@
                                     <tree editable="bottom">
                                         <field name="plaza"/>
                                         <!--field name="tipo_exterior"/-->
-                                        <field name="tipo_actividad"  widget="many2many_tags" options="{'no_create_edit': True}" />
+                                        <field name="tipo_actividad"  widget="many2many_tags" options="{'no_create_edit': True}"/>
                                         <field name="observaciones"/>   
                                     </tree>
                                   </field>

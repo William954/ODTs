@@ -1803,10 +1803,11 @@ class TablaPrensa(models.Model):
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
 	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
 	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
-class Tipo_actividadtarget(object):
-	name = 'odts.targettipo'
 
-	name_t= fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
+class Tipo_actividadtarget(object):
+	_name = 'odts.targettipo'
+
+	name = fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
 										  ('Metro','Metro'),('Mexibus','Mexibus'),('Mupis','Mupis'),('Camiones Urbanos','Camiones Urbanos'),('Camiones escolares','Camiones escolares'),('Taxis','Taxis'),('Aeropuerto','Aeropuerto'),('Pantallas en interiores','Pantallas en interiores'),
 						 				  ('Plazas Comerciales','Plazas Comerciales'),('Bajo Puentes','Bajo Puentes'),('Otros','Otros')],string='Tipo de Actividad')
 
