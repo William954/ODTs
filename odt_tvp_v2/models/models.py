@@ -1,4 +1,4 @@
-edit# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from odoo import api, _, tools, fields, models, exceptions,  SUPERUSER_ID
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
