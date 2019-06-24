@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+edit# -*- coding: utf-8 -*-
 
 from odoo import api, _, tools, fields, models, exceptions,  SUPERUSER_ID
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
@@ -1825,7 +1825,7 @@ class TablaRevista(models.Model):
 	color = fields.Selection([('1','B/N'),('2','Color')])	
 	titulo = fields.Char(string='Título')
 	observaciones = fields.Char(string='Observaciones')
-	tipo_revist = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
+	tipo_revista = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
 
 class TablaRadio(models.Model):
 	_name = 'odt.medios.radio'
