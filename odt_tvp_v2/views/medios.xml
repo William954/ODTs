@@ -602,7 +602,7 @@
                                   <field name="tabla_medios_ooh" widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="plaza"/>
-                                        <field name="tipo_exterior"/>
+                                        <field name="tipo_act" widget="many2many_tags" options="{'no_create_edit': True}"/>
                                         <!--field name="tipo_actividad"  widget="many2many_tags" options="{'no_create_edit': True}"/-->
                                         <field name="observaciones"/>   
                                     </tree>

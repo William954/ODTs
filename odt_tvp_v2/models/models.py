@@ -1804,23 +1804,24 @@ class TablaPrensa(models.Model):
 	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
 	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
 
-#class Tipo_actividadtarget(object):
-#	_name = 'odts.targettipo'
-
-#	name = fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
-#										  ('Metro','Metro'),('Mexibus','Mexibus'),('Mupis','Mupis'),('Camiones Urbanos','Camiones Urbanos'),('Camiones escolares','Camiones escolares'),('Taxis','Taxis'),('Aeropuerto','Aeropuerto'),('Pantallas en interiores','Pantallas en interiores'),
-#						 				  ('Plazas Comerciales','Plazas Comerciales'),('Bajo Puentes','Bajo Puentes'),('Otros','Otros')],string='Tipo de Actividad')
+class tipotarget(models.Model):
+	_name = 'tipo.tar'
+	
+	name = fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
+									('Metro','Metro'),('Mexibus','Mexibus'),('Mupis','Mupis'),('Camiones Urbanos','Camiones Urbanos'),('Camiones escolares','Camiones escolares'),('Taxis','Taxis'),('Aeropuerto','Aeropuerto'),('Pantallas en interiores','Pantallas en interiores'),
+					 				('Plazas Comerciales','Plazas Comerciales'),('Bajo Puentes','Bajo Puentes'),('Otros','Otros')],string='Tipo de Actividad')
 
 
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
 
+	tipo_act = fields.Many2many('tipo.tar', string="Tipo de actividad")
+
 	ooh_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza*')
-	tipo_exterior = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
-										  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
-						 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
-	#tipo_actividad = fields.Many2many('odts.targettipo',string="Tipo de actividad")
+	#tipo_exterior = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
+	#									  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
+	#					 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
 	observaciones = fields.Char(string='Observaciones')
 
 class TablaRevista(models.Model):
