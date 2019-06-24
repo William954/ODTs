@@ -1805,7 +1805,7 @@ class TablaPrensa(models.Model):
 	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
 
 class tipotarget(models.Model):
-	_name = 'tipo.tar'
+	_name = 'tipo.targeta.odts'
 	
 	name = fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
 									('Metro','Metro'),('Mexibus','Mexibus'),('Mupis','Mupis'),('Camiones Urbanos','Camiones Urbanos'),('Camiones escolares','Camiones escolares'),('Taxis','Taxis'),('Aeropuerto','Aeropuerto'),('Pantallas en interiores','Pantallas en interiores'),
@@ -1815,7 +1815,7 @@ class tipotarget(models.Model):
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
 
-	tipo_act = fields.Many2many('tipo.tar', string="Tipo de actividad")
+	tipo_act = fields.Many2many('tipo.targeta.odts', string="Tipo de actividad")
 
 	ooh_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza*')
