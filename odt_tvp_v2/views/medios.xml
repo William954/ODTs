@@ -506,7 +506,7 @@
                           </group>
                           <group>
                               <page name="cotizacion_interna_diseno" string="Cotizacion">
-                                  <field name="tabla_medios_revista"  >
+                                  <field name="tabla_medios_revista"  widget="one2many_list">
                                     <tree editable="bottom">
                                         <field name="titulo"/>
                                         <field name="tipo_revista"/>
