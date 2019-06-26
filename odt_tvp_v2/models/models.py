@@ -1946,7 +1946,7 @@ class TablaGastos(models.Model):
 	@api.one
 	def get_account_analityc(self):
 		for rec in self:
-			res = rec.env['account.analytic.account'].search([('project_ids', '=', self.analytic_account_id.id)], limit=1)
+			res = rec.env['account.analytic.account'].search([('project_ids.id', '=', self.analytic_account_id.id)], limit=1)
 			rec.debit = float(res.debit)
 			rec.credit = float(res.credit)
 			rec.balance = float(res.balance)
