@@ -361,6 +361,9 @@
                         <field name='u_bruta_r'/>
                         <field name='i_facturado'/>
                         <field name="total_pagar" readonly="1"/>
+                        <field name="debit"/>
+                        <field name="credit"/>
+                        <field name="balance"/>
                       </group>
                       <group string='Costo Aprobado'>
                           <field name='btl'/>
