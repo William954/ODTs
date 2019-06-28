@@ -358,9 +358,9 @@
                         <field name='u_bruta_p'/>
                       </group>
                       <group string="Real">
-                        <field name='u_bruta_r'/>
-                        <field name='i_facturado'/>
-                        <field name="total_pagar" readonly="1"/>
+                        <field name='u_bruta_r' invisible="1"/>
+                        <field name='i_facturado' invisible="1"/>
+                        <field name="total_pagar" readonly="1" invisible="1"/>
                         <field name="debit"/>
                         <field name="credit"/>
                         <field name="balance"/>
