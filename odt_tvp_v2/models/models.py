@@ -1887,9 +1887,9 @@ class TablaGastos(models.Model):
 
 	#Test Control presupuestal
 
-	debit = fields.Float(string="Gasto Real",compute="get_account_analityc")
-	credit = fields.Float(string="Gasto Facturado",compute="get_account_analityc")
-	balance = fields.Float(string="Unidad Bruta Real",compute="get_account_analityc")
+	debit = fields.Float(string="Costo Facturado",compute="get_account_analityc")
+	credit = fields.Float(string="Ingreso Facturado",compute="get_account_analityc")
+	balance = fields.Float(string="Utilidad Bruta",compute="get_account_analityc")
 
 	# Campos de presupuesto autorizado
 	btl = fields.Float(related='ref_project.btl', string='BTL/PDV')
