@@ -1885,6 +1885,12 @@ class TablaGastos(models.Model):
 	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
 	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_sum_sub_totales')
 
+	#Test Control presupuestal
+
+	debit = fields.Float(string="Costo Facturado",compute="get_account_analityc")
+	credit = fields.Float(string="Ingreso Facturado",compute="get_account_analityc")
+	balance = fields.Float(string="Utilidad Bruta",compute="get_account_analityc")
+
 	# Campos de presupuesto autorizado
 	btl = fields.Float(related='ref_project.btl', string='BTL/PDV')
 	produccion = fields.Float(related='ref_project.produccion', tring='Produccion')
@@ -1936,6 +1942,14 @@ class TablaGastos(models.Model):
 		for rec in self:
 			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
 			rec.total_pagar = float(res.amount_untaxed)
+
+	@api.one
+	def get_account_analityc(self):
+		for rec in self:
+			res = rec.env['account.analytic.account'].search([('id','=',self.analytic_account_id.id)], limit=1)
+			rec.debit = float(res.debit)
+			rec.credit = float(res.credit)
+			rec.balance = float(res.balance)
 
 # planificado es total a cobrar -los gastos autorizados
 	@api.one
