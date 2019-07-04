@@ -1913,8 +1913,8 @@ class TablaGastos(models.Model):
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 	awards = fields.Integer(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
-	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sub_total_areas',store=True)
-	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sub_total_tercero',store=True)
+	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sub_total_areas')
+	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sub_total_tercero')
 
 	@api.one
 	@api.depends('sub_total_tercero')
@@ -1929,7 +1929,7 @@ class TablaGastos(models.Model):
 	@api.one
 	@api.depends('sub_total_tercero', 'sub_total_areas')
 	def _sum_sub_totales(self):
-		self.total_expenses_approved = self.sub_total_tercero + self.sub_total_areas
+		self.total_expenses_approved = _sub_total_tercero() + _sub_total_areas()
 
 	@api.one
 	def get_sale_order_reference(self):
