@@ -38,7 +38,7 @@ class inheritCRM(models.Model):
 	medios_tercero = fields.Float(string="G. 3ros Medios")
 	gestoria_tercero = fields.Float(string="G. 3ros Gestoria")
 	digital_tercero = fields.Float(string="G. 3ros Digital")
-	awards = fields.Integer(string="Premios")
+	awards = fields.Float(string="Premios")
 	taxes = fields.Float(string="Impuestos")
 
 	# Contadores para los smartbuttons
@@ -1911,7 +1911,7 @@ class TablaGastos(models.Model):
 	medios_tercero = fields.Float(related='ref_project.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='ref_project.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
-	awards = fields.Integer(related='ref_project.awards', string="Premios")
+	awards = fields.Float(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
 	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sumas_totales_presupuestos')
 	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sumas_totales_presupuestos')
@@ -2018,7 +2018,7 @@ class ControlPresupuestal(models.Model):
 	medios_tercero = fields.Float(related='gastos_id.medios_tercero', string='G. 3ros Medios')
 	gestoria_tercero = fields.Float(related='gastos_id.gestoria_tercero', string='G. 3ros Gestoria')
 	digital_tercero = fields.Float(related='gastos_id.digital_tercero', string='G. 3ros M. Digital')
-	awards = fields.Integer(related='gastos_id.awards',string="Premios")
+	awards = fields.Float(related='gastos_id.awards',string="Premios")
 	taxes = fields.Float(related='gastos_id.taxes',string="Impuestos")
 
 	@api.one
