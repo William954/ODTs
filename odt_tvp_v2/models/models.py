@@ -18,7 +18,6 @@ class inheritCRM(models.Model):
 	logo_marca = fields.Binary(string='Logo', track_visibility=True)
 	start_date = fields.Date(string='Fecha de Arranque', track_visibility=True)
 	end_date = fields.Date(string='Fecha de Cierre', track_visibility=True)
-	sale_amount = fields.Float(string='Total Vendido', compute="_related_amount_total", sotre=True) #Se agrega campo para el related del total presupuestado
 
 
 	btl = fields.Float(string='BTL/PDV',compute='_aprobado_btl', track_visibility=True)
@@ -54,12 +53,6 @@ class inheritCRM(models.Model):
 	medios_count = fields.Integer(string='lead',compute='_compute_medios_count')
 	gestoria_count = fields.Integer(string='lead',compute='_compute_gestoria_count')
 	digital_count = fields.Integer(string='lead',compute='_compute_digital_count')
-
-	@api.one
-	@api.depends('sale_amount_total')
-	def _related_amount_total(self):
-		self.sale_amount = self.sale_amount_total
-
 
 	@api.one
 	def _compute_btl_count(self):
@@ -1938,10 +1931,11 @@ class TablaGastos(models.Model):
 			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
 			rec.ref_project = res.opportunity_id.id
 
+
 	@api.one
 	def get_sale_order_total(self):
 		for rec in self:
-			res = rec.env['sale.order'].search([('id', '=', self.sale_order_id.id)], limit=1)
+			res = rec.env['sale.order'].search([('ref_project', '=', self.opportunity_id.id)], limit=1)
 			rec.total_pagar = float(res.amount_untaxed)
 
 	@api.one
