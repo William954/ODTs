@@ -18,7 +18,7 @@ class inheritCRM(models.Model):
 	logo_marca = fields.Binary(string='Logo', track_visibility=True)
 	start_date = fields.Date(string='Fecha de Arranque', track_visibility=True)
 	end_date = fields.Date(string='Fecha de Cierre', track_visibility=True)
-	sale_amount = fields.Float(string='Total Vendido') #Se agrega campo para el related del total presupuestado
+	sale_amount = fields.Float(string='Total Vendido', compute="_related_amount_total", sotre=True) #Se agrega campo para el related del total presupuestado
 
 
 	btl = fields.Float(string='BTL/PDV',compute='_aprobado_btl', track_visibility=True)
@@ -55,8 +55,9 @@ class inheritCRM(models.Model):
 	gestoria_count = fields.Integer(string='lead',compute='_compute_gestoria_count')
 	digital_count = fields.Integer(string='lead',compute='_compute_digital_count')
 
-	@api.onchange('sale_amount_total')
-	def _onchange_related_amount_total(self):
+	@api.one
+	@api.depends('sale_amount_total')
+	def _related_amount_total(self):
 		self.sale_amount = self.sale_amount_total
 
 
