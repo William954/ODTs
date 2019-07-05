@@ -1913,6 +1913,7 @@ class TablaGastos(models.Model):
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 	awards = fields.Float(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
+	amount_total = fields.Float(related="ref_project.sale_amount_total", string="Sale Amount Total")
 	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sumas_totales_presupuestos')
 	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sumas_totales_presupuestos')
 

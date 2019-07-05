@@ -361,6 +361,7 @@
                         <field name="debit"/>
                         <field name="credit"/>
                         <field name="balance"/>
+                        <field name="amount_total"/>
                       </group>
                       <group string='Costo Aprobado'>
                           <field name='btl'/>
