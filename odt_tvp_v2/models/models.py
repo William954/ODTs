@@ -1881,7 +1881,7 @@ class TablaGastos(models.Model):
 	u_bruta_r = fields.Float(string='Utilidad Bruta Real', compute='_compute_bruta_real')
 	dates = fields.Date(related='ref_project.date_deadline', string='Fecha')
 	ref_customer = fields.Many2one(related='partner_id', string='Cliente')
-	total_pagar = fields.Float(string='Ingreso Planificado', compute='get_sale_order_total')
+	total_pagar = fields.Float(related='ref_project.planned_revenue',string='Ingreso Planificado')
 	saldo_autorizado = fields.Float(string='Saldo autorizado', compute='_compute_saldo_autorizado')
 	i_facturado = fields.Float(string='Ingreso Facturado', compute='_compute_facturado')
 	total_expenses_approved = fields.Float(string='Costo Planeado', compute='_sumas_totales_presupuestos')
@@ -1932,11 +1932,11 @@ class TablaGastos(models.Model):
 			rec.ref_project = res.opportunity_id.id
 
 
-	@api.one
-	def get_sale_order_total(self):
-		for rec in self:
-			res = rec.env['sale.order'].search([('opportunity_id', '=', self.ref_project.id)], limit=1)
-			rec.total_pagar = float(res.amount_untaxed)
+	# @api.one
+	# def get_sale_order_total(self):
+	# 	for rec in self:
+	# 		res = rec.env['sale.order'].search([('opportunity_id', '=', self.ref_project.id)], limit=1)
+	# 		rec.total_pagar = float(res.amount_untaxed)
 
 	@api.one
 	def get_account_analityc(self):
