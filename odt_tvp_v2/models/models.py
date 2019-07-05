@@ -55,8 +55,8 @@ class inheritCRM(models.Model):
 	gestoria_count = fields.Integer(string='lead',compute='_compute_gestoria_count')
 	digital_count = fields.Integer(string='lead',compute='_compute_digital_count')
 
-	@api.depends('sale_amount_total')
-	def _related_amount_total(self):
+	@api.onchange('sale_amount_total')
+	def _onchange_related_amount_total(self):
 		self.sale_amount = self.sale_amount_total
 
 
