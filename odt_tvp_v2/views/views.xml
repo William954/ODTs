@@ -11,7 +11,6 @@
               <field name="marca" domain="[('partner_marca_id','=',partner_id)]"/>
               <field name="target"/>
               <field name="project"/>
-              <field name="sale_amount"/>
             </xpath>
             <xpath expr="//field[@name='team_id']" position="after">
                 <field name="start_date"/>
