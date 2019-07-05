@@ -1935,7 +1935,7 @@ class TablaGastos(models.Model):
 	@api.one
 	def get_sale_order_total(self):
 		for rec in self:
-			res = rec.env['sale.order'].search([('ref_project', '=', self.opportunity_id.id)], limit=1)
+			res = rec.env['sale.order'].search([('opportunity_id', '=', self.ref_project.id)], limit=1)
 			rec.total_pagar = float(res.amount_untaxed)
 
 	@api.one
