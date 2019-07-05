@@ -18,6 +18,8 @@ class inheritCRM(models.Model):
 	logo_marca = fields.Binary(string='Logo', track_visibility=True)
 	start_date = fields.Date(string='Fecha de Arranque', track_visibility=True)
 	end_date = fields.Date(string='Fecha de Cierre', track_visibility=True)
+	sale_amount = fields.Float(related='sale_amount_total', string='Total Vendido') #Se agrega campo para el related del total presupuestado
+
 
 	btl = fields.Float(string='BTL/PDV',compute='_aprobado_btl', track_visibility=True)
 	produccion = fields.Float(string='Producción',compute='_aprobado_produccion', track_visibility=True)
@@ -1913,7 +1915,6 @@ class TablaGastos(models.Model):
 	digital_tercero = fields.Float(related='ref_project.digital_tercero', string='G. 3ros M. Digital')
 	awards = fields.Float(related='ref_project.awards', string="Premios")
 	taxes = fields.Float(related='ref_project.taxes', string="Impuestos")
-	amount_total = fields.Float(related="ref_project.sale_amount_total", string="Sale Amount Total")
 	sub_total_areas = fields.Float(string='Sub total áreas', compute='_sumas_totales_presupuestos')
 	sub_total_tercero = fields.Float(string='Sub total terceros', compute='_sumas_totales_presupuestos')
 

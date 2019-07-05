@@ -11,6 +11,7 @@
               <field name="marca" domain="[('partner_marca_id','=',partner_id)]"/>
               <field name="target"/>
               <field name="project"/>
+              <field name="sale_amount"/>
             </xpath>
             <xpath expr="//field[@name='team_id']" position="after">
                 <field name="start_date"/>
@@ -361,7 +362,6 @@
                         <field name="debit"/>
                         <field name="credit"/>
                         <field name="balance"/>
-                        <field name="amount_total"/>
                       </group>
                       <group string='Costo Aprobado'>
                           <field name='btl'/>
