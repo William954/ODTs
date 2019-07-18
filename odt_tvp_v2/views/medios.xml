@@ -110,11 +110,7 @@
                                 <field name="phone"
                                        attrs="{'invisible': [('partner_address_phone', '!=', False)]}"
                                        widget="phone"/> -->
-                            </group>
-<!--                             <group>
-                            </group> -->
-
-                            <group>
+                                <br/>
 
                                 <field name="med_fecha_entrega"/>
                                 <field name="presupuesto_cliente" invisible="1"/>
@@ -124,6 +120,18 @@
                                 <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
                                   <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
                                 </div><br/>
+
+                            </group>
+                            <group>
+                                <field name="med_objetivo_comunicacion"/>
+                                <field name="med_periodo_camap"/>
+                                <field name="priority" widget="priority" invisible="1"/>
+                                <field name="target" invisible="1"/>
+                                <field name="project" invisible="1"/>
+                            </group>
+
+                            <group>
+
                                 <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
@@ -140,13 +148,7 @@
                                 <field name="date_conversion" invisible="1"/>
 
                             </group>
-                            <group>
-                                <field name="med_objetivo_comunicacion"/>
-                                <field name="med_periodo_camap"/>
-                                <field name="priority" widget="priority" invisible="1"/>
-                                <field name="target" invisible="1"/>
-                                <field name="project" invisible="1"/>
-                            </group>
+
                         </group>
                        <notebook colspan="4">
 
