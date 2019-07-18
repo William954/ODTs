@@ -1082,6 +1082,80 @@ class OdtDiseno(models.Model):
 			self.brief_qtion10 = self.crm_odt_id.brief_qtion10
 			self.brief_qtion11 = self.crm_odt_id.brief_qtion11
 
+	@api.onchange('d_presentacion')
+	def _onchange_d_presentacion(self):
+		if self.d_presentacion == True:
+			self.cont_presentacion = 1
+		else:
+			self.cont_presentacion = 0
+
+	@api.onchange('d_template')
+	def _onchange_d_template(self):
+		if self.d_template == True:
+			self.cont_template = 1
+		else:
+			self.cont_template = 0
+
+	@api.onchange('d_master_graph')
+	def _onchange_d_master_graph(self):
+		if self.d_master_graph == True:
+			self.cont_graph = 1
+		else:
+			self.cont_graph = 0
+
+	@api.onchange('d_adaptacion_pop')
+	def _onchange_d_adaptacion_pop(self):
+		if self.d_adaptacion_pop == True:
+			self.cont_pop = 1
+		else:
+			self.cont_pop = 0
+
+	@api.onchange('d_adaptacion_ooh')
+	def _onchange_d_adaptacion_ooh(self):
+		if self.d_adaptacion_ooh == True:
+			self.cont_ohoo = 1
+		else:
+			self.cont_ohoo = 0
+
+	@api.onchange('d_logotipo')
+	def _onchange_d_logotipo(self):
+		if self.d_logotipo == True:
+			self.cont_logotipo = 1
+		else:
+			self.cont_logotipo = 0
+
+	@api.onchange('d_visualizacion')
+	def _onchange_d_visualizacion(self):
+		if self.d_visualizacion == True:
+			self.cont_visualizacion = 1
+		else:
+			self.cont_visualizacion = 0
+
+	@api.onchange('d_adaptacion_digital')
+	def _onchange_d_adaptacion_digital(self):
+		if self.d_adaptacion_digital == True:
+			self.cont_digital = 1
+		else:
+			self.cont_digital = 0
+
+	@api.onchange('d_otro')
+	def _onchange_d_otro(self):
+		if self.d_otro == True:
+			self.cont_otro = 1
+		else:
+			self.cont_otro = 0
+
+	# Para controlar Servicios solicitados
+	cont_presentacion = fields.Float(string="Contador Presentacion")
+	cont_template = fields.Float(string="Contador Template")
+	cont_graph = fields.Float(string="Contador Graphic")
+	cont_pop = fields.Float(string="Contador POP")
+	cont_ohoo = fields.Float(string="Contador Ohoo")
+	cont_logotipo = fields.Float(string="Contador Logotipo")
+	cont_visualizacion = fields.Float(string="Contador Visualizacion")
+	cont_digital = fields.Float(string="Contador Digital")
+	cont_otro = fields.Float(string="Contador Otro")
+	
 	# Brief
 	brief_qtion1 = fields.Text(string="Descripción. Datos relevantes sobre el producto o servicio.", track_visibility=True)
 	brief_qtion2 = fields.Text(string="Antecedentes. ¿Qué ha hecho la marca recientemente?", track_visibility=True)

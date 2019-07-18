@@ -205,6 +205,15 @@
                               <field name="d_logotipo"/>
                               <field name="porcent"/>
                               <field name="d_otro"/>
+                              <field name="cont_presentacion" invisible="1"/>
+                              <field name="cont_template" invisible="1"/>
+                              <field name="cont_graph" invisible="1"/>
+                              <field name="cont_pop" invisible="1"/>
+                              <field name="cont_ohoo" invisible="1"/>
+                              <field name="cont_logotipo" invisible="1"/>
+                              <field name="cont_visualizacion" invisible="1"/>
+                              <field name="cont_digital" invisible="1"/>
+                              <field name="cont_otro" invisible="1"/>
                               <field name="d_otro_desc" attrs="{'invisible': [('d_otro','=',False)]}"/>
                             </group>
                               <h3>Material a elaborar</h3><br/>
