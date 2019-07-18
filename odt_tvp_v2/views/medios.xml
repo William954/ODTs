@@ -116,7 +116,7 @@
                                 <field name="presupuesto_cliente" invisible="1"/>
                                 <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
-                                <field name="notast" attrs="{'invisible':[('med_tipo_trabajo','!=',True)]}"/>
+                                <field name="notast"/>
                                 <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
                                   <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
                                 </div><br/>
@@ -677,6 +677,7 @@
                               <field name="an_year_inmediato"/>
                               <field name="an_year_movil"/>
                               <field name="an_periodo"/>
+                              <label>'Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.</label>
                               <field name="an_analisis"/>
                             </group>
                             <group string='Audiencias' attrs="{'invisible': [('an_audiencia','=',False)]}">

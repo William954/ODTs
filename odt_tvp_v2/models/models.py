@@ -756,7 +756,7 @@ class OdtMedios(models.Model):
 	# Análisis
 	tip_analisis = fields.Boolean(string="Tipo de Analisis")
 	an_inversion = fields.Boolean(string='Inversión Publicitaria')
-	an_habitos = fields.Boolean(string='Hábitos')
+	an_habitos = fields.Boolean(string='Hábitos de consumo')
 	an_audiencia = fields.Boolean(string='Audiencias')
 	an_otro = fields.Boolean(string='Otro')
 	an_marca = fields.Char(string='Categoria')
