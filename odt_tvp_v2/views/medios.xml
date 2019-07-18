@@ -79,23 +79,29 @@
                             <group>
                                 <field name="partner_id" string="Cliente" domain="[('customer', '=', True)]"/>
                                 <field name="crm_odt_id" required="1"/>
+                                <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
+                                <field name="marca"/>                               
+                                <field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'sales_team.group_sale_salesman_all_leads'], 'team_id': team_id}" domain="[('share', '=', False)]"/>
+                                <field name="team_id" widget="selection"/>
                                 <field name="is_blacklisted" invisible="1"/>
                                 <field name="partner_is_blacklisted" invisible="1"/>
-                                <label for="email_from" class="oe_inline"/>
-                                <div class="o_row o_row_readonly">
-                                    <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
-                                        aria-label="Blacklisted" attrs="{'invisible': ['|', ('is_blacklisted', '=', False), ('partner_address_email', '!=', False)]}" groups="base.group_user"></i>
-                                    <field name="email_from"
-                                       attrs="{'invisible': [('partner_address_email', '!=', False)]}"
-                                       string="Email"
-                                       widget="email"/>
-                                    <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
-                                        aria-label="Blacklisted" attrs="{'invisible': ['|', ('partner_is_blacklisted', '=', False), ('partner_address_email', '=', False)]}" groups="base.group_user"></i>
-                                    <field name="partner_address_email"
-                                       attrs="{'invisible': [('partner_address_email', '==', False)]}"
-                                       widget="email"
-                                       string="Email"/>
-                                </div>
+<!--                                 <label for="email_from" class="oe_inline"/>
+
+                                  <div class="o_row o_row_readonly">
+                                      <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
+                                          aria-label="Blacklisted" attrs="{'invisible': ['|', ('is_blacklisted', '=', False), ('partner_address_email', '!=', False)]}" groups="base.group_user"></i>
+                                      <field name="email_from"
+                                         attrs="{'invisible': [('partner_address_email', '!=', False)]}"
+                                         string="Email"
+                                         widget="email"/>
+                                      <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing"
+                                          aria-label="Blacklisted" attrs="{'invisible': ['|', ('partner_is_blacklisted', '=', False), ('partner_address_email', '=', False)]}" groups="base.group_user"></i>
+                                      <field name="partner_address_email"
+                                         attrs="{'invisible': [('partner_address_email', '==', False)]}"
+                                         widget="email"
+                                         string="Email"/>
+                                  </div>
+
                                 <field name="partner_address_phone"
                                        attrs="{'invisible': [('partner_address_phone', '==', False)]}"
                                        readonly="1"
@@ -103,34 +109,21 @@
                                        string="Phone"/>
                                 <field name="phone"
                                        attrs="{'invisible': [('partner_address_phone', '!=', False)]}"
-                                       widget="phone"/>
+                                       widget="phone"/> -->
                             </group>
+<!--                             <group>
+                            </group> -->
 
                             <group>
-                                <field name="date_deadline"/>
-                            </group>
 
-                            <group>
-                                <field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'sales_team.group_sale_salesman_all_leads'], 'team_id': team_id}" domain="[('share', '=', False)]"/>
-                                <field name="team_id" widget="selection"/>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
                                 <field name="med_fecha_entrega"/>
-                                <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
                                 <field name="presupuesto_cliente" invisible="1"/>
                                 <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
-                                <field name="notast" attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}"/>
+                                <field name="notast" attrs="{'invisible':[('med_tipo_trabajo','!=',True)]}"/>
                                 <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
                                   <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
-                                </div>
-                            </group>
-                            <group>
-                                <field name="priority" widget="priority" invisible="1"/>
-                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
-                                <field name="marca"/>                               
-                                <field name="target" invisible="1"/>
-                                <field name="project" invisible="1"/>
+                                </div><br/>
                                 <field name="med_spot_tv_abierta" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_aaee_tv" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
                                 <field name="med_spoteo_carriers" attrs="{'invisible':[('med_tipo_trabajo','!=','3')]}"/>
@@ -145,6 +138,14 @@
 <!--                                   <field name="med_analisis" />
  -->                                <field name="lost_reason" invisible="1"/>
                                 <field name="date_conversion" invisible="1"/>
+
+                            </group>
+                            <group>
+                                <field name="med_objetivo_comunicacion"/>
+                                <field name="med_periodo_camap"/>
+                                <field name="priority" widget="priority" invisible="1"/>
+                                <field name="target" invisible="1"/>
+                                <field name="project" invisible="1"/>
                             </group>
                         </group>
                        <notebook colspan="4">
@@ -165,10 +166,9 @@
  -->                              <!--<field name="med_clave_proyecto"/>-->
 <!--                             </group>
  -->                        <group>
-                              <field name="med_objetivo_comunicacion"/>
-                              <field name="med_periodo_camap"/>
-                              <field name="med_tipo_analisis"/>
-                              <field name="med_oberv_generales"/>
+
+<!--                               <field name="med_tipo_analisis"/>
+                              <field name="med_oberv_generales"/> -->
 <!--                               <field name="med_solicita"/>
                               <field name="med_getente"/>
                               <field name="med_dirc_comercial"/>

@@ -18,8 +18,6 @@ class inheritCRM(models.Model):
 	logo_marca = fields.Binary(string='Logo', track_visibility=True)
 	start_date = fields.Date(string='Fecha de Arranque', track_visibility=True)
 	end_date = fields.Date(string='Fecha de Cierre', track_visibility=True)
-
-
 	btl = fields.Float(string='BTL/PDV',compute='_aprobado_btl', track_visibility=True)
 	produccion = fields.Float(string='Producción',compute='_aprobado_produccion', track_visibility=True)
 	diseño_creatividad = fields.Float(string='Diseño',compute='_aprobado_diseno', track_visibility=True)
@@ -327,7 +325,7 @@ class CrmOdt(models.Model):
 	qz_16 = fields.Char(related='crm_odt_id.qz_16',string='¿SE TRABAJARA EN CONJUNCO CON ALGUNA AGENCIA DE LA MARCA?')
 	product = fields.Char(related='crm_odt_id.product',string='Producto', track_visibility=True)
 	project = fields.Many2one('project.project',related='crm_odt_id.project',string='Proyecto', track_visibility=True)
-	analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave')
+	analitica = fields.Many2one('account.analytic.account',related='crm_odt_id.analitica',string='Clave del proyecto')
 	slogan_marca = fields.Char(related='crm_odt_id.slogan_marca',string='Eslogan', track_visibility=True)
 	logo_marca = fields.Binary(related='crm_odt_id.logo_marca',string='Logo', track_visibility=True)
 
@@ -393,7 +391,7 @@ class OdtMedios(models.Model):
 	med_folio = fields.Char(string='Folio', track_visibility=True)
 	med_fecha_soli = fields.Datetime(string='Fecha de solicitud', track_visibility=True)
 	med_hora_soli = fields.Datetime(string='Hora de Solicitud', track_visibility=True)
-	med_fecha_entrega = fields.Datetime(string='Fecha Estimada de Entrega', track_visibility=True)
+	med_fecha_entrega = fields.Datetime(string='Fecha Solicitada de Entrega', track_visibility=True)
 	med_fecha_real = fields.Datetime(string='Fecha Real de Entrega', track_visibility=True)
 	med_elabora = fields.Char(string='Elaborará este Plan', track_visibility=True)
 	med_nivel_complejidad = fields.Char(string='Nivel de complejidad', track_visibility=True)
@@ -804,8 +802,8 @@ class OdtMedios(models.Model):
 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
 
-	medios = fields.Float(string='Presupuesto global del cliente')
-	notast = fields.Char(string="Nota")
+	medios = fields.Float(string='Presupuesto de esta solicitud')
+	notast = fields.Char(string="Observaciones")
 
 	
 	@api.model
@@ -823,6 +821,11 @@ class OdtContactcenter(models.Model):
 	_name = 'odt.contactcenter'
 	_description = 'Ventana kanban para la estructura de Contact Center'
 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
+
+
+
+	# #New fields 18/07/2019
+	# delivery_date = fields.Datetime(string="Fecha de Entrega")
 
 
 	# Brief
