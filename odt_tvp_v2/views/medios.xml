@@ -677,7 +677,7 @@
                               <field name="an_year_inmediato"/>
                               <field name="an_year_movil"/>
                               <field name="an_periodo"/>
-                              <label>'Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.</label>
+                              <h3>'Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.</h3>
                               <field name="an_analisis"/>
                             </group>
                             <group string='Audiencias' attrs="{'invisible': [('an_audiencia','=',False)]}">
