@@ -667,13 +667,30 @@
                               <field name="an_otro"/>
                             </group>
                             <group>
+                              <p>
+                                HÁBITOS DE CONSUMO
+                                Análisis derivados del Estudio General de Medios EGM de IPSOS BIMSA
+                                (cruce de variables de hábitos de consumo de productos y consumo de Medios)
+
+                                Objetivo del análisis ¿Qué tipo de información desea conocer?
+                                Guía de temas: 
+                                Identificación de uso habitual de Medios por consumidores de determinada categoría de productos (de acuerdo a la catalogación de IPSOS).
+                                Composición demográfica de consumidor de determinada categoría de productos.
+                                Perfil psicográfico de consumidores por categorías.
+                                Share of mind marcas de cada categoría (con el límite muestral del estudio).
+                                Determinación de los medios a los que están expuestos los consumidores en determinado período, tanto penetración, como medio que influye en la decisión de compra.
+                                Lugar de compra, ciclo de compra, etc.
+                                Rankeos de medios por target y/o tipo de producto.
+                                Cruce de variables otras de medios (ejemplo viajes vs tarjeta de crédito).
+
+                              </p>
                               <field name="an_marca"/>
                               <!-- <field name="an_sector"/> -->
                               <field name="an_categoria" attrs="{'invisible': [('med_analisis','=',False)]}"/>
                               <field name="an_cat_otros" invisible="1"/>
                             </group>
                             <group string="Inversión Publicitaria (Competencia) IBOPE" attrs="{'invisible': [('an_inversion','=',False)]}">
-                              <h3>Periodo*</h3>
+                              <h3>Periodo</h3>
                               <field name="an_year_inmediato"/>
                               <field name="an_year_movil"/>
                               <field name="an_periodo"/>
@@ -681,7 +698,7 @@
                               <field name="an_analisis"/>
                             </group>
                             <group string='Audiencias' attrs="{'invisible': [('an_audiencia','=',False)]}">
-                              <h3>Periodo*</h3>
+                              <h3>Periodo</h3>
                               <field name="an_year_inmediato1"/>
                               <field name="an_year_movil1"/>
                               <field name="an_periodo1"/>
