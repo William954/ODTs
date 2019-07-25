@@ -716,9 +716,10 @@
                               <h3>Periodo</h3>
                               <field name="an_year_inmediato1"/>
                               <field name="an_year_movil1"/>
-                              <field name="an_periodo1"/>
+                              <field name="an_periodo1" attrs="{'invisible': [('periodos_audiencias','!=','3')]}"/>
                               <field name="an_target_interes"/>
                               <field name="an_analisis1"/>
+                              <field name="periodos_audiencias" widget="radio"/>
                             </group>
                             <group string="Hábitos de consumo (BIMSA)" attrs="{'invisible': [('an_habitos','=',False)]}">
                               <field name="an_marca1"/>

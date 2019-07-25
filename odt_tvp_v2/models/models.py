@@ -804,6 +804,7 @@ class OdtMedios(models.Model):
 
 	medios = fields.Float(string='Presupuesto de esta solicitud')
 	notast = fields.Char(string="Observaciones")
+	periodos_audiencias = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')]string="Periodos de Audiencias")
 
 	
 	@api.model
@@ -821,8 +822,6 @@ class OdtContactcenter(models.Model):
 	_name = 'odt.contactcenter'
 	_description = 'Ventana kanban para la estructura de Contact Center'
 	_inherit = ['mail.thread', 'mail.activity.mixin','crm.odt']
-
-
 
 	# #New fields 18/07/2019
 	# delivery_date = fields.Datetime(string="Fecha de Entrega")
