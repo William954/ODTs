@@ -112,7 +112,6 @@
                                        widget="phone"/> -->
                                 <br/>
 
-                                <field name="med_fecha_entrega"/>
                                 <field name="presupuesto_cliente" invisible="1"/>
                                 <field name="medios"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
@@ -160,7 +159,10 @@
 <!--                               <field name="med_folio"/>
                               <field name="med_fecha_soli"/> -->
                               <!-- <field name="med_hora_soli"  widget="float_time"/> -->
+
                               <field name="med_fecha_real"/>
+                              <field name="med_fecha_entrega"/>
+
                               <!-- <field name="med_elabora"/> -->
                               <field name="med_nivel_complejidad"/>
                             </group>
@@ -666,8 +668,8 @@
                               <field name="an_audiencia"/>
                               <field name="an_otro"/>
                             </group>
-                            <group>
-                              <p style="font-size: 9px;">
+                            <group column="2" style="left:20px" attrs="{'invisible': [('an_habitos','!=',True)]}">
+                              <p style="font-size: 9px; text-align: justify;">
                                 HÁBITOS DE CONSUMO<br/>
 
                                 Análisis derivados del Estudio General de Medios EGM de IPSOS BIMSA

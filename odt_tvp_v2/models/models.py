@@ -392,7 +392,7 @@ class OdtMedios(models.Model):
 	med_fecha_soli = fields.Datetime(string='Fecha de solicitud', track_visibility=True)
 	med_hora_soli = fields.Datetime(string='Hora de Solicitud', track_visibility=True)
 	med_fecha_entrega = fields.Datetime(string='Fecha Solicitada de Entrega', track_visibility=True)
-	med_fecha_real = fields.Datetime(string='Fecha Real de Entrega', track_visibility=True)
+	med_fecha_real = fields.Date(string='Fecha estimada de entrega', track_visibility=True)
 	med_elabora = fields.Char(string='Elaborará este Plan', track_visibility=True)
 	med_nivel_complejidad = fields.Char(string='Nivel de complejidad', track_visibility=True)
 
