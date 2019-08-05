@@ -51,4 +51,5 @@ access_odt_estrategia,odt.estrategia,model_odt_estrategia,group_estrategia,1,1,1
 access_odt_cotizacion_estrategia,odt.cotizacion.estrategia,model_odt_cotizacion_estrategia,group_estrategia,1,1,1,1
 
 access_tipo_targeta_odts,tipo.targeta.odts,model_tipo_targeta_odts,group_medios,1,1,1,1
+access_tipo_radio_medios,tipo.radio.medios,model_tipo_radio_medios,group_medios,1,1,1,1
 

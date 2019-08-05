@@ -391,8 +391,9 @@ class OdtMedios(models.Model):
 	med_folio = fields.Char(string='Folio', track_visibility=True)
 	med_fecha_soli = fields.Datetime(string='Fecha de solicitud', track_visibility=True)
 	med_hora_soli = fields.Datetime(string='Hora de Solicitud', track_visibility=True)
-	med_fecha_entrega = fields.Datetime(string='Fecha Solicitada de Entrega', track_visibility=True)
-	med_fecha_real = fields.Date(string='Fecha estimada de entrega', track_visibility=True)
+	med_fecha_entrega = fields.Datetime(string='Fecha solicitada de entrega', track_visibility=True)
+	med_fecha_estimada_enterga = fields.Date(string='Fecha estimada de entrega', track_visibility=True)
+	med_fecha_real = fields.Date(string='Fecha real de entrega', track_visibility=True)
 	med_elabora = fields.Char(string='Elaborará este Plan', track_visibility=True)
 	med_nivel_complejidad = fields.Char(string='Nivel de complejidad', track_visibility=True)
 
@@ -452,7 +453,7 @@ class OdtMedios(models.Model):
 	years_912 = fields.Boolean(string='9 a 12 años', track_visibility=True)
 	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
 
-	duracion_spot_1 = fields.Boolean(string='10', track_visibility=True)
+	duracion_spot_1 = fields.Boolean(string='10"', track_visibility=True)
 	duracion_spot_2 = fields.Boolean(string='20"', track_visibility=True)
 	duracion_spot_3 = fields.Boolean(string='30"', track_visibility=True)
 	duracion_spot_4 = fields.Boolean(string='40"', track_visibility=True)
@@ -475,7 +476,7 @@ class OdtMedios(models.Model):
 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
 	tvsa_abierta = fields.Integer(string='Monto Máximo Inversión TV Abierta Nacional (Costo Cliente)', track_visibility=True)
 	
-	duracion_spot_7 = fields.Boolean(string='10', track_visibility=True)
+	duracion_spot_7 = fields.Boolean(string='10"', track_visibility=True)
 	duracion_spot_8 = fields.Boolean(string='20"', track_visibility=True)
 	duracion_spot_9 = fields.Boolean(string='30"', track_visibility=True)
 	duracion_spot_10 = fields.Boolean(string='40"', track_visibility=True)
@@ -712,7 +713,7 @@ class OdtMedios(models.Model):
 	#Radio
 	rad_marca = fields.Char(string='Marca o Producto*')
 	rad_target_interes = fields.Char(string='Target de Interés*')
-	rad_periodo_campana = fields.Char(string='Periodo de la campaña*')
+	rad_periodo_campana = fields.Char(string='Periodo de transmisión*')
 	rad_monto_inversion = fields.Float(string='Inversión Radio (Costo Cliente)*')
 	rad_observaciones = fields.Text(string='Observaciones')	
 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
@@ -720,6 +721,7 @@ class OdtMedios(models.Model):
 	#ooh
 	oh_marca = fields.Char(string='Marca o Producto')
 	oh_target_interes = fields.Char(string='Target de Interés')
+	oh_zona_interes = fields.Char(string='Zona de interés')
 	oh_periodo_campana = fields.Char(string='Periodo de la campaña')
 	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)')
 	# oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
@@ -727,6 +729,30 @@ class OdtMedios(models.Model):
 	# 					 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
 	# oh_observaciones = fields.Text(string='Comentarios')
 	tabla_medios_ooh = fields.One2many('odt.medios.ooh','ooh_id')
+
+	#Lista de Tipos de Actividades
+
+	Espectaculaes = fields.Boolean(string='Espectaculaes')
+	Pantallas = fields.Boolean(string='Pantallas')
+	Muros = fields.Boolean(string='Muros')
+	Vallas = fields.Boolean(string='Vallas')
+	Parabuses = fields.Boolean(string='Parabuses')
+	Puentes = fields.Boolean(string='Puentes peatonales')
+	Tren = fields.Boolean(string='Tren ligero')
+	Metrobús = fields.Boolean(string='Metrobús')
+	Metro = fields.Boolean(string='Metro')
+	Mexibus = fields.Boolean(string='Mexibus')
+	Mupis = fields.Boolean(string='Mupis')
+	Camiones = fields.Boolean(string='Camiones Urbanos')
+	escolares = fields.Boolean(string='Camiones escolares')
+	Taxis = fields.Boolean(string='Taxis')
+	Aeropuerto = fields.Boolean(string='Aeropuerto')
+	interiores = fields.Boolean(string='Pantallas en Interiores')
+	Plazas = fields.Boolean(string='Plazas Comerciales')
+	Bajo = fields.Boolean(string='Bajo Puentes')
+	Otros = fields.Boolean(string='Otros')
+
+
 
 	#Prensa
 	p_marca = fields.Char(string='Marca o Producto*')
@@ -751,7 +777,7 @@ class OdtMedios(models.Model):
 	d_requerirlos = fields.Text(string='Enlistar los sitios específicos en caso de requerirlos:')
 	d_folio_proyecto = fields.Char(string='Folio proyecto digital (si ya lo tiene)')
 	d_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costos Cliente)*')
-	d_monto_minimo = fields.Float(string='Monto Mínimo Propuesta (Costos Cliente)*')
+	d_monto_minimo = fields.Float(string='Monto')
 
 	# Análisis
 	tip_analisis = fields.Boolean(string="Tipo de Analisis")
@@ -802,9 +828,9 @@ class OdtMedios(models.Model):
 	an_analisis2 = fields.Text(string='Objetivo del Análisis. (¿Qué se desea conocer?)')
 	an_tro_descripcion = fields.Text(string='Describir el tipo de análisis y/o requerimientos de información.')
 
-	medios = fields.Float(string='Presupuesto de esta solicitud')
+	medios = fields.Float(string='Presupuesto de esta solicitud (costo cliente)')
 	notast = fields.Char(string="Observaciones")
-	periodos_audiencias = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')]string="Periodos de Audiencias")
+	periodos_audiencias = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')],string="Periodos de Audiencias")
 
 	
 	@api.model
@@ -1884,16 +1910,13 @@ class TablaPrensa(models.Model):
 class tipotarget(models.Model):
 	_name = 'tipo.targeta.odts'
 	
-	name = fields.Selection([('Espectaculaes','Espectaculaes'),('Pantallas','Pantallas'),('Muros','Muros'),('Vallas','Vallas'),('Parabuses','Parabuses'),('Puentes peatonales','Puentes peatonales'),('Tren ligero','Tren ligero'),('Metrobús','Metrobús'),
-									('Metro','Metro'),('Mexibus','Mexibus'),('Mupis','Mupis'),('Camiones Urbanos','Camiones Urbanos'),('Camiones escolares','Camiones escolares'),('Taxis','Taxis'),('Aeropuerto','Aeropuerto'),('Pantallas en interiores','Pantallas en interiores'),
-					 				('Plazas Comerciales','Plazas Comerciales'),('Bajo Puentes','Bajo Puentes'),('Otros','Otros')],string='Tipo de Actividad')
+	name = fields.Char(string="Tipo de activdad")
 
 
 class TablaOoh(models.Model):
 	_name = 'odt.medios.ooh'
 
 	tipo_act = fields.Many2many('tipo.targeta.odts', string="Tipo de actividad")
-
 	ooh_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza*')
 	#tipo_exterior = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
@@ -1914,14 +1937,21 @@ class TablaRevista(models.Model):
 	observaciones = fields.Char(string='Observaciones')
 	tipo_revista = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
 
+class TipoRadio(models.Model):
+	_name = 'tipo.radio.medios'
+
+	name = fields.Char(string='Nombre del tipo de actividad')
+
+
 class TablaRadio(models.Model):
 	_name = 'odt.medios.radio'
 
 	radio_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
 	otro = fields.Char(string='Otro')
-	tipo = fields.Selection([('1','Spoteo'),('2','Manción 1'),('3','Cápsula 1'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
-	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración de spot', track_visibility=True)
+	tipo = fields.Many2many('tipo.radio.medios', string='Tipo')
+	# tipo = fields.Selection([('1','Spoteo'),('2','Mención'),('3','Cápsula'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
+	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración', track_visibility=True)
 
 class TablaPlaza(models.Model):
 	_name = 'odt.medios.plaza'
@@ -1929,6 +1959,8 @@ class TablaPlaza(models.Model):
 	plazas_id = fields.Many2one('odt.medios',ondelete='cascade')
 	plaza = fields.Char(string='Plaza(s)')
 	tipo_accion = fields.Char(string='Tipo de Acción')
+
+
 
 class inheritContacts(models.Model):
 	_inherit = 'res.partner'

@@ -19,7 +19,7 @@
             </xpath>
           </field>
         </record>
-        
+
 
 <!-- direccionamiento de botones -->
 
@@ -138,6 +138,7 @@
           </field>
         </record>
 
+
         <!--  Definimos los eventos -->
 
         <record id="btlpdv_action" model="ir.actions.act_window">
@@ -203,6 +204,23 @@
            <field name="view_mode">kanban,tree,form,pivot</field>
         </record>
 
+
+        <record id="actividad_ooh_action" model="ir.actions.act_window">
+           <field name="name">Tipo Actividad OOH</field>
+           <field name="res_model">tipo.targeta.odts</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="actividad_radio_action" model="ir.actions.act_window">
+           <field name="name">Tipo Actividad Radio</field>
+           <field name="res_model">tipo.radio.medios</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+        </record>
+
+
+
         <!--  Definimos el menu se necesita el action para poder mostrarse en la tira del menu"-->
         <menuitem id="odt_root" name="ODTS" web_icon="odt_tvp_v2,static/quality_control.png"/>
         <menuitem id="odt_menu0" name="BTL/PDV" sequence="0" parent="odt_root" action="btlpdv_action"/>
@@ -214,6 +232,10 @@
         <menuitem id="odt_menu7" name="Logistica" sequence="7" parent="odt_root" action="logistica_action"/>
         <menuitem id="odt_menu8" name="Estrategia" sequence="8" parent="odt_root" action="estrategia_action"/>
         <menuitem id="odt_menu9" name="Contact Center" sequence="9" parent="odt_root" action="contact_center_action"/>
+
+      <menuitem id="odt_menu10" name="Configuracion" sequence="10" parent="odt_root"/>
+            <menuitem id="sub_menu1" name="Tipo actividad OOH" sequence="11" parent="odt_menu10" action="actividad_ooh_action"/>
+            <menuitem id="sub_menu2" name="Tipo actividad Radio" sequence="12" parent="odt_menu10" action="actividad_radio_action"/>
 
 
 
@@ -293,7 +315,7 @@
 
 
 <!-- Boton stat info para ODT -->
-      
+
       <record id="inherit_button_box" model="ir.ui.view">
         <field name="name">inherit.button.box</field>
         <field name="model">crm.lead</field>
@@ -341,7 +363,7 @@
             <attribute name="invisible">1</attribute>
           </xpath>
         </field>
-      </record>    
+      </record>
 
       <record id="inherit_page_finanza_project" model="ir.ui.view">
               <field name="name">inherit.finanza.page</field>
@@ -405,10 +427,10 @@
                                 </field>
                                 <group>
                                 </group>
-                            </page> 
+                            </page>
                       </group>
                       </group>
-                  </page>                  
+                  </page>
                 </xpath>
               </field>
       </record>
