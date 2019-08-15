@@ -241,7 +241,7 @@ class CrmOdt(models.Model):
 		domain="['|', ('team_id', '=', False), ('team_id', '=', team_id)]",
 		group_expand='_read_group_stage_ids', default=lambda self: self._default_stage_id())
 	team_id = fields.Many2one('crm.team',related='crm_odt_id.team_id', string='Sales Team', oldname='section_id', default=lambda self: self.env['crm.team'].sudo()._get_default_team_id(user_id=self.env.uid),
-		index=True, track_visibility='onchange', help='When sending mails, the default email address is taken from the Sales Team.')
+		index=True, track_visibility='onchange', help='When sending mails, the default email address is taken from the Sales Team.', store=True)
 	kanban_state = fields.Selection([('normal','In Progress'),('blocked','Blocked'),('done','Ready for next Stage')], 'Kanban State', default='normal')
 	user_id = fields.Many2one('res.users', related='crm_odt_id.user_id',string='Salesperson', index=True, track_visibility='onchange', default=lambda self: self.env.user)
 	partner_id = fields.Many2one('res.partner',related='crm_odt_id.partner_id', string='Customer', track_visibility='onchange', track_sequence=1, index=True,
@@ -706,7 +706,7 @@ class OdtMedios(models.Model):
 	r_marca = fields.Char(string='Marca o Producto*')
 	r_target_interes = fields.Char(string='Target de Interés*')
 	r_periodo_campana = fields.Char(string='Periodo de la campaña*')
-	r_monto_inversion = fields.Float(string='Inversión revistas(Costo Cliente)*')
+	r_monto_inversion = fields.Float(string='Inversión revistas')
 	r_observaciones = fields.Text(string='Observaciones')
 	tabla_medios_revista = fields.One2many('odt.medios.revista','revista_id')
 
@@ -714,7 +714,7 @@ class OdtMedios(models.Model):
 	rad_marca = fields.Char(string='Marca o Producto*')
 	rad_target_interes = fields.Char(string='Target de Interés*')
 	rad_periodo_campana = fields.Char(string='Periodo de transmisión*')
-	rad_monto_inversion = fields.Float(string='Inversión Radio (Costo Cliente)*')
+	rad_monto_inversion = fields.Float(string='Inversión Radio')
 	rad_observaciones = fields.Text(string='Observaciones')	
 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
 
@@ -723,7 +723,7 @@ class OdtMedios(models.Model):
 	oh_target_interes = fields.Char(string='Target de Interés')
 	oh_zona_interes = fields.Char(string='Zona de interés')
 	oh_periodo_campana = fields.Char(string='Periodo de la campaña')
-	oh_monto_inversion = fields.Float(string='Inversión OOH (Costo Cliente)')
+	oh_monto_inversion = fields.Float(string='Inversión OOH')
 	# oh_tipo_actividad = fields.Selection([('1','Espectaculaes'),('2','Pantallas'),('3','Muros'),('4','Vallas'),('5','Parabuses'),('6','Puentes peatonales'),('7','Tren ligero'),('8','Metrobús'),
 	# 									  ('9','Metro'),('10','Mexibus'),('11','Mupis'),('12','Camiones Urbanos'),('13','Camiones escolares'),('14','Taxis'),('15','Aeropuerto'),('16','Pantallas en interiores'),
 	# 					 				  ('17','Plazas Comerciales'),('18','Bajo Puentes'),('19','Otros')],string='Tipo de Actividad')
@@ -732,33 +732,13 @@ class OdtMedios(models.Model):
 
 	#Lista de Tipos de Actividades
 
-	Espectaculaes = fields.Boolean(string='Espectaculaes')
-	Pantallas = fields.Boolean(string='Pantallas')
-	Muros = fields.Boolean(string='Muros')
-	Vallas = fields.Boolean(string='Vallas')
-	Parabuses = fields.Boolean(string='Parabuses')
-	Puentes = fields.Boolean(string='Puentes peatonales')
-	Tren = fields.Boolean(string='Tren ligero')
-	Metrobús = fields.Boolean(string='Metrobús')
-	Metro = fields.Boolean(string='Metro')
-	Mexibus = fields.Boolean(string='Mexibus')
-	Mupis = fields.Boolean(string='Mupis')
-	Camiones = fields.Boolean(string='Camiones Urbanos')
-	escolares = fields.Boolean(string='Camiones escolares')
-	Taxis = fields.Boolean(string='Taxis')
-	Aeropuerto = fields.Boolean(string='Aeropuerto')
-	interiores = fields.Boolean(string='Pantallas en Interiores')
-	Plazas = fields.Boolean(string='Plazas Comerciales')
-	Bajo = fields.Boolean(string='Bajo Puentes')
-	Otros = fields.Boolean(string='Otros')
-
 
 
 	#Prensa
 	p_marca = fields.Char(string='Marca o Producto*')
 	p_target_interes = fields.Char(string='Target de Interés*')
 	p_periodo_campana = fields.Char(string='Periodo de la campaña*')
-	p_monto_inversion = fields.Float(string='Inversión Prensa (Costo Cliente)*')
+	p_monto_inversion = fields.Float(string='Inversión Prensa')
 	p_observaciones = fields.Text(string='Observaciones')		
 	tabla_medios_prensa = fields.One2many('odt.medios.prensa','prensa_id')
 
@@ -777,7 +757,7 @@ class OdtMedios(models.Model):
 	d_requerirlos = fields.Text(string='Enlistar los sitios específicos en caso de requerirlos:')
 	d_folio_proyecto = fields.Char(string='Folio proyecto digital (si ya lo tiene)')
 	d_monto_maximo = fields.Float(string='Monto Máximo Propuesta (Costos Cliente)*')
-	d_monto_minimo = fields.Float(string='Monto')
+	d_monto_minimo = fields.Float(string='Inversión Digital')
 
 	# Análisis
 	tip_analisis = fields.Boolean(string="Tipo de Analisis")
@@ -810,14 +790,14 @@ class OdtMedios(models.Model):
 									 ,('305','SANDALIAS/PANTUNFLAS'),('306','SAZONADORES/CONDIMENTOS'),('307','SECADORAS/REMODELADORES CAB'),('308','SEGUROS Y FIANZAS'),('309','SERVICIO DE MANTENIMIENTO/REPARACION EN GENERAL'),('310','SERVICIO DE MENSAJERIA PAQUETERIA'),('311','SERVICIOS DE DESCARGA CELULAR'),('312','SERVICIOS DE TELEFONIA'),('313','SERVICIOS DE TELEFONIA CELULAR'),('314','SERVICIOS PRIVADOS DE SALUD'),('315','SHAMPOOS /ACONDICIONADORES'),('316','SISTEMAS DE COMUNIC/CONMUTADOR/FAX'),('317','SOFTWARE/PAQUETERIA'),('318','SOPAS CONDENSADAS'),('319','SOPAS INSTANTANEAS'),('320','SUEROS')
 									 ,('321','SUPOSITORIOS'),('322','SUSTITUTOS DE CREMA'),('323','TABLETS'),('324','TALCOS DESODORANTES'),('325','TARJETAS DE CREDITO/DEBITO/CAJEROS'),('326','TEATROS/OBRAS TEATRO'),('327','TELEVISION POR SUSCRIPCION'),('328','TEQUILAS'),('329','TES INSTANTANEOS'),('330','TIENDA DE MATERIALES P/CONSTRUCCION/FERRETERIAS'),('331','TIENDAS DE AUTOSERVICIO'),('332','TIENDAS DE DISCOS Y CASSETTES'),('333','TIENDAS DEPARTAMENTALES'),('334','TINACOS'),('335','TINTES PARA EL CABELLO'),('336','TOALLAS PAPEL DESECHABLES')
 									 ,('337','TORTILLAS/TOSTADAS'),('338','TRANSFERENCIA DE FONDOS'),('339','TRANSPORTE MARITIMO'),('340','TRANSPORTE TERRESTRE'),('341','TRATAMIENTOS PARA EL CABELLO'),('342','TUBERIAS/CONEXIONES DE COBRE'),('343','UNGUENTOS DESCONGESTIONANTES'),('344','UNGUENTOS SOLUCIONES MEDICINA'),('345','UNIFORMES ESCOLARES / LABORALES'),('346','UNIVERSIDAD/TECNOLOGICOS'),('347','VEHICULOS DE CARGA'),('348','VEHICULOS DE PASAJEROS'),('349','VELAS'),('350','VELOCIPEDOS/TRICICLOS/CARROS DE PEDALES'),('351','VENTA/RENTA DE FRANQUICIAS'),('352','VENTAS POR TELEVISION/TELEFONO')
-									 ,('353','VIDRIOS PARA VENTANAS'),('354','VINOS DE MESA'),('355','VITAMINAS COMPLEMENTOS ALIMENTICIOS'),('356','VODKAS'),('357','WHISKIES'),('358','YOGHURTS'),('359','VIDEOCASSETTES GRABADOS')],string='Categoria (NIELSEN/IBOPE)*')
-
+									 ,('353','VIDRIOS PARA VENTANAS'),('354','VINOS DE MESA'),('355','VITAMINAS COMPLEMENTOS ALIMENTICIOS'),('356','VODKAS'),('357','WHISKIES'),('358','YOGHURTS'),('359','VIDEOCASSETTES GRABADOS')],string='Categoria')
 	an_cat_otros = fields.Text(string="Otra categoria")
 
 	an_year_inmediato = fields.Boolean(string='Año Inmediato Anterior')
 	an_year_movil = fields.Boolean(string='Año Móvil')
 	an_periodo = fields.Char(string='Otro Periodo')
-	an_analisis = fields.Text(string='Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.')
+	an_analisis = fields.Text(string='Objetivo del Análisis')
+	an_en_caso = fields.Text(string='En caso de requerir comparativo de marcas especificas, señalarlo.')
 	an_year_inmediato1 = fields.Boolean(string='Año Inmediato Anterior')
 	an_year_movil1 = fields.Boolean(string='Año Móvil')
 	an_periodo1 = fields.Char(string='Otro Periodo')
@@ -831,7 +811,7 @@ class OdtMedios(models.Model):
 	medios = fields.Float(string='Presupuesto de esta solicitud (costo cliente)')
 	notast = fields.Char(string="Observaciones")
 	periodos_audiencias = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')],string="Periodos de Audiencias")
-
+	periodos_publicitaria = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')],string="Periodos de Publicitaria")
 	
 	@api.model
 	def create(self,vals):
@@ -1905,7 +1885,7 @@ class TablaPrensa(models.Model):
 	seccion = fields.Char(string='Sección')
 	fecha_publicacion = fields.Date(string='Fecha de Publicación')
 	posicion = fields.Selection([('1','Par'),('2','Impar'),('3','Indistinta')], string='Posición')
-	color = fields.Selection([('1','Blaco y Negro'),('2','Color')], string='Color')
+	color = fields.Selection([('1','Blanco y Negro'),('2','Color')], string='Color')
 
 class tipotarget(models.Model):
 	_name = 'tipo.targeta.odts'
@@ -1935,7 +1915,7 @@ class TablaRevista(models.Model):
 	color = fields.Selection([('1','B/N'),('2','Color')])	
 	titulo = fields.Char(string='Título')
 	observaciones = fields.Char(string='Observaciones')
-	tipo_revista = fields.Selection([('1','Inserciòn Regular'),('2','Creatividades')],string="Tipo")
+	tipo_revista = fields.Selection([('1','Inserción Regular'),('2','Creatividades')],string="Tipo")
 
 class TipoRadio(models.Model):
 	_name = 'tipo.radio.medios'
@@ -1948,9 +1928,8 @@ class TablaRadio(models.Model):
 
 	radio_id = fields.Many2one('odt.medios')
 	plaza = fields.Char(string='Plaza')
-	otro = fields.Char(string='Otro')
 	tipo = fields.Many2many('tipo.radio.medios', string='Tipo')
-	# tipo = fields.Selection([('1','Spoteo'),('2','Mención'),('3','Cápsula'),('4','Patrocinio'),('5','Enlaces'),('6','Entrevista'),('7','Otro')],string='Tipo*')
+	otro = fields.Char(string='Observaciones')
 	duracionn = fields.Selection([('1','10"'),('2','20"'),('3','30"'),('4','40"'),('5','50"'),('6','60"')], string='Duración', track_visibility=True)
 
 class TablaPlaza(models.Model):

@@ -83,6 +83,7 @@
                                 <field name="analitica" domain="[('partner_id','=',partner_id)]"/>
                                 <field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'sales_team.group_sale_salesman_all_leads'], 'team_id': team_id}" domain="[('share', '=', False)]"/>
                                 <field name="team_id" widget="selection"/>
+                                <field name="med_fecha_entrega"/>
                                 <field name="is_blacklisted" invisible="1"/>
                                 <field name="partner_is_blacklisted" invisible="1"/>
 <!--                                 <label for="email_from" class="oe_inline"/>
@@ -116,9 +117,6 @@
                                 <field name="medios" required="1"/>
                                 <field name="med_tipo_trabajo"  widget="radio" options="{'horizontal': true}"/>
                                 <field name="notast"/>
-                                <div attrs="{'invisible':[('med_tipo_trabajo','!=','1')]}">
-                                  <p>Nota: Por favor adjute la pauta en el area de mensajeria.</p>
-                                </div><br/>
 
                             </group>
                             <group>
@@ -168,7 +166,6 @@
                               <field name="med_fecha_soli"/> -->
                               <!-- <field name="med_hora_soli"  widget="float_time"/> -->
                               <field name="med_fecha_estimada_enterga"/>
-                              <field name="med_fecha_entrega"/>
                               <field name="med_fecha_real"/>
                               <!-- <field name="med_elabora"/> -->
                               <field name="med_nivel_complejidad"/>
@@ -530,15 +527,12 @@
                                   </field>
                               </page> 
                           </group>
+                           <field name="r_observaciones"/>
                           <group>
-                            <p>
-                              Notas<br/>
-
-                              1.- Las especificaciones de fechas de portadad y fechas de cierre (contrataciónes y entrega de materiales) de cada revista, estarán a disposición de los interesados. Preguntar en Medios.<br/>
-                              2.- Se recomienda tomar en cuenta los tiempos para los cierres de cada publicación. En general, para publicaciones mensuales, 40 dias antes; publicaciones quincenales, 20 dias antes y para semanales, 10 dias antes de la fecha de portada. Favor de consultar cada caso especifico.<br/>
-                              3.- En caso de requerir más revistas, favor de abrir los espacios necesarios.
+                            <p>Notas<br/>
+                            1.- Las especificaciones de fechas de portada y fechas de cierre (contrataciones y entrega de materiales) de cada revista, estarán a disposición de los interesados. Preguntar en Medios.<br/>
+                            2.- Se recomienda tomar en cuenta los tiempos para los cierres de cada publicación. En general, para publicaciones mensuales, 40 días antes; publicaciones quincenales, 20 días antes y para semanales, 10 días antes de la fecha de portada. Favor de consultar cada caso específico.<br/>
                             </p><br/>
-                            <field name="r_observaciones"/>
                           </group>
                         </page>
 
@@ -553,17 +547,33 @@
                             <group>
                               <field name="rad_observaciones"/>
                             </group>
+                                <group>
+                                    <group>
+                                        <p>
+                                            Spoteo<br/>
+                                            Mención<br/>
+                                            Cápsula<br/>
+                                        </p>
+                                    </group>
+                                    <group>
+                                        <p>
+                                            Enlaces<br/>
+                                            Entrevistas<br/>
+                                            Otro<br/>
+                                        </p>
+                                    </group>
+                                </group>
+                            </group>
                             <page name="cotizacion_interna_diseno" string="Cotizacion">
                                       <field name="tabla_medios_radio" widget="one2many_list">
                                         <tree editable="bottom">
                                             <field name="plaza"/>
                                             <field name="tipo" widget="many2many_tags"/>
-                                            <field name="otro"  attrs="{'readonly' : [('tipo','!=','7')]}"/>
                                             <field name="duracionn"/>
+                                            <field name="otro" />
                                         </tree>
                                       </field>
-                            </page> 
-                            </group>
+                            </page>
                         </page>
                         <page name="medios_prensa" string="Prensa" attrs="{'invisible': [('med_prensa','=',False)]}">
                           <group>
@@ -592,10 +602,10 @@
                               <br/>
                               <p>
                               NOTAS: <br/>
-                              1.  El cierre de inserción es tres días antes de la fecha de publicación. <br/>
-                              2.  Consultar con su ejecutivo de Medios las fechas de entrega de materiales de acuerdo a las políticas de cada medio.<br/>
-                              3.  En caso de requerir más plazas, favor de abrir los espacios necesarios.<br/>
-                              4.  Tiempos para esquelas, preguntar en Medios.<br/>
+                                    1. El cierre de inserción es tres días antes de la fecha de publicación. <br/>
+                                    2. Consultar con su ejecutivo de Medios las fechas de entrega de materiales de acuerdo a las políticas de cada medio.<br/>
+                                    3. Tiempos para esquelas, preguntar en Medios.<br/>
+
                               </p>                                       
                         </page>
 
@@ -609,37 +619,44 @@
                               <field name="oh_monto_inversion"/>
                             </group>
                           </group>
-                            <group colspan="4">
+                            <group>
                                 <group>
                                     <group>
-                                        <field name="Espectaculaes"/>
-                                        <field name="Pantallas"/>
-                                        <field name="Muros"/>
-                                        <field name="Vallas"/>
-                                        <field name="Parabuses"/>
-
+                                        <p>
+                                            Espectaculares<br/>
+                                            Pantallas<br/>
+                                            Muros<br/>
+                                            Vallas<br/>
+                                            Parabuses<br/>
+                                        </p>
                                     </group>
                                     <group>
-                                        <field name="Puentes"/>
-                                        <field name="Tren"/>
-                                        <field name="Metrobús"/>
-                                        <field name="Metro"/>
-                                        <field name="Mexibus"/>
+                                        <p>
+                                            Puentes<br/>
+                                            Tren<br/>
+                                            Metrobús<br/>
+                                            Metro<br/>
+                                            Mexibus<br/>
+                                        </p>
                                     </group>
                                 </group>
                                 <group>
                                    <group>
-                                        <field name="Mupis"/>
-                                        <field name="Camiones"/>
-                                        <field name="escolares"/>
-                                        <field name="Taxis"/>
-                                        <field name="Aeropuerto"/>
+                                       <p>
+                                            Mupis<br/>
+                                            Camiones<br/>
+                                            escolares<br/>
+                                            Taxis<br/>
+                                            Aeropuerto<br/>
+                                       </p>
                                     </group>
                                     <group>
-                                        <field name="interiores"/>
-                                        <field name="Plazas"/>
-                                        <field name="Bajo"/>
-                                        <field name="Otros"/>
+                                        <p>
+                                            interiores<br/>
+                                            Plazas<br/>
+                                            Bajo<br/>
+                                            Otros<br/>
+                                        </p>
                                     </group>
                                 </group>
                             </group>
@@ -657,12 +674,11 @@
                             </group>
                             <group>
                               <p>
-                                1.  En general la gestión de contratación de los medios exteriores implica varios pasos que requieren tiempo de anticipación a la fecha de inicio de exhibición (quince días a un mes). Favor de consultar con Medios el tiempo específico de cada tipo de medio. <br/>
-                                2.  Tomar en cuenta que en Espectaculares, la contratación standard es por 3 meses (mínimo 1 mes, sujeto a negociación).<br/>
-                                3.  En vallas  y parabuses las contrataciones son por catorcenas previamente establecidas por el proveedor.<br/>
-                                4.  Otros soportes, consultar con Medios el periodo mínimo de exhibición.<br/>
-                                5.  En algunos tipos de outdoors la producción del arte se incluye.  Se indicará en el presupuesto.<br/>
-                                6.  En caso de requerir más plazas, favor de abrir los espacios necesarios.<br/>
+                                    1. En general la gestión de contratación de los medios exteriores implica varios pasos que requieren tiempo de anticipación a la fecha de inicio de exhibición (quince días a un mes). Favor de consultar con Medios el tiempo específico de cada tipo de medio. <br/>
+                                    2. Tomar en cuenta que en Espectaculares, la contratación standard es por 3 meses (mínimo 1 mes, sujeto a negociación).<br/>
+                                    3. En vallas y parabuses las contrataciones son por catorcenas previamente establecidas por el proveedor.<br/>
+                                    4. Otros soportes, consultar con Medios el periodo mínimo de exhibición.<br/>
+                                    5. En algunos tipos de outdoors la producción del arte se incluye. Se indicará en el presupuesto.
                               </p>
                             </group>
                         </page>
@@ -716,29 +732,36 @@
                                 HÁBITOS DE CONSUMO<br/>
 
                                 Análisis derivados del Estudio General de Medios EGM de IPSOS BIMSA
-                                (cruce de variables de hábitos de consumo de productos y consumo de Medios)
+                                (cruce de variables de hábitos de consumo de productos y consumo de medios)
                                 <br/>
 
                                 Objetivo del análisis ¿Qué tipo de información desea conocer?
-                                Guía de temas:<br/>
+                                  <br/>
+                                  <br/>
+                                  <b><u>Guía de temas:</u></b>
+                                  <br/>
                               <ul>
                                 <li>
-                                  Identificación de uso habitual de Medios por consumidores de determinada categoría de productos (de acuerdo a la catalogación de IPSOS).
+                                  Identificación de uso habitual de medios por consumidores de determinada categoría de productos (de acuerdo a la catalogación de IPSOS).
                                 </li>
                                 <li>
                                   Composición demográfica de consumidor de determinada categoría de productos.
                                 </li>
                                 <li>
                                   Perfil psicográfico de consumidores por categorías.
-                                  Share of mind marcas de cada categoría (con el límite muestral del estudio).
+                                  Share of Mind marcas de cada categoría (con el límite muestral del estudio).
                                 </li>
                                 <li>
                                   Determinación de los medios a los que están expuestos los consumidores en determinado período, tanto penetración, como medio que influye en la decisión de compra.
                                 </li>
                                 <li>
                                   Lugar de compra, ciclo de compra, etc.
-                                  Rankeos de medios por target y/o tipo de producto.
-                                  Cruce de variables otras de medios (ejemplo viajes vs tarjeta de crédito).
+                                </li>
+                                <li>
+                                   Rankeos de medios por target y/o tipo de producto.
+                                </li>
+                                <li>
+                                    Cruce de variables otras de medios (ejemplo viajes vs tarjeta de crédito).
                                 </li>
                               </ul>
                               </p>
@@ -748,21 +771,24 @@
 <!--                              <field name="an_cat_otros" invisible="1"/>-->
                             </group>
                             <group string="Inversión Publicitaria (Competencia) IBOPE" attrs="{'invisible': [('an_inversion','=',False)]}">
-                              <h3>Periodo</h3>
-                              <field name="an_year_inmediato"/>
-                              <field name="an_year_movil"/>
-                              <field name="an_periodo"/>
-                              <h3>'Objetivo del Análisis. En caso de requerir comparativo de marcas especificas, señalarlo.</h3>
                               <field name="an_analisis"/>
+                              <field name="an_categoria"/>
+                              <field name="an_en_caso"/>
+                              <h3>Periodo</h3>
+                              <!--<field name="an_year_inmediato"/>-->
+                              <!--<field name="an_year_movil"/>-->
+                              <field name="periodos_publicitaria" widget="radio" />
+                              <field name="an_periodo" attrs="{'invisible': [('periodos_publicitaria','!=','3')], 'required': [('periodos_publicitaria','=','3')]}"/>
+
+
                             </group>
                             <group string='Audiencias' attrs="{'invisible': [('an_audiencia','=',False)]}">
-                              <h3>Periodo</h3>
-                              <field name="an_year_inmediato1"/>
-                              <field name="an_year_movil1"/>
-                              <field name="an_periodo1" attrs="{'invisible': [('periodos_audiencias','!=','3')]}"/>
+                              <!--<field name="an_year_inmediato1"/>-->
+                              <!--<field name="an_year_movil1"/>-->
                               <field name="an_target_interes"/>
                               <field name="an_analisis1"/>
-                              <field name="periodos_audiencias" widget="radio" required="1"/>
+                              <field name="periodos_audiencias" widget="radio" />
+                              <field name="an_periodo1" attrs="{'invisible': [('periodos_audiencias','!=','3')]}"/>
                             </group>
                             <group string="Hábitos de consumo (BIMSA)" attrs="{'invisible': [('an_habitos','=',False)]}">
                               <field name="an_marca1"/>
