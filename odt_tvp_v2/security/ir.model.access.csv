@@ -43,6 +43,8 @@ access_odt_medios_revista,odt.medios.revista,model_odt_medios_revista,group_medi
 access_odt_medios_radio,odt.medios.radio,model_odt_medios_radio,group_medios,1,1,1,1
 access_odt_medios_plaza,odt.medios.plaza,model_odt_medios_plaza,group_medios,1,1,1,1
 access_odt_medios_prensa,odt.medios.prensa,model_odt_medios_prensa,group_medios,1,1,1,1
+access_odt_plaza_medios,odt.plaza.medios,model_odt_plaza_medios,group_medios,1,1,1,1
+access_odt_forotv_medios,odt.forotv.medios,model_odt_forotv_medios,group_medios,1,1,1,1
 ,,,,,,,
 access_odt_logistica,odt.logistica,model_odt_logistica,group_logistica,1,1,1,1
 access_odt_cotizacion_logistica,odt.cotizacion.logistica,model_odt_cotizacion_logistica,group_logistica,1,1,1,1

@@ -184,83 +184,121 @@
                             </group>
                           </group>
                         </page>
-                        <page name="medios_tv_abierta" string="Spot TV Abierta TVSA" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
-                          <group string="Televisa Spoteo TV Abierta Nacional y/o Local">
+
+                        <page name="medios_ibope" string="Formación de Target IBOPE" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
                             <group>
-                              <field name="tvsa_tipo_camp"/>
-                              <field name="tvsa_otro"/>
-                              <field name="tvsa_catego_televisa"/>
                             <h3>Target de planeación</h3>
                               <field name="tvsa_nse_1"/>
                               <field name="tvsa_nse_2"/>
                               <field name="tvsa_nse_3"/>
                               <field name="tvsa_nse_4"/>
                             <h3>Grupos de Edad</h3>
-                              <field name="tvsa_grupo_edad_1"/>
-                              <field name="tvsa_grupo_edad_2"/>
-                              <field name="tvsa_grupo_edad_3"/>
-                              <field name="tvsa_grupo_edad_4"/>
-                              <field name="tvsa_grupo_edad_5"/>
-                              <field name="tvsa_grupo_edad_6"/>
-                              <field name="tvsa_grupo_edad_otro"/>
-                            <h3>Sexo</h3>
-                              <field name="tvsa_sexo_p"/>
-                              <field name="tvsa_sexo_m"/>
-                              <field name="tvsa_sexo_h"/>
-                            <h3>Rol Familiar</h3>
+                              <field name="tvsa_grupo_edad_1" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_2" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_3" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_4" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_5" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_6" attrs="{'readonly': [('tvsa_grupo_edad_otro','!=',False)]}"/>
+                              <field name="tvsa_grupo_edad_otro" attrs="{'invisible': ['|','|','|','|','|','|',('tvsa_grupo_edad_1','=',True),('tvsa_grupo_edad_2','=',True),('tvsa_grupo_edad_3','=',True),('tvsa_grupo_edad_4','=',True),('tvsa_grupo_edad_5','=',True),('tvsa_grupo_edad_6','=',True)]}" />
+                              <field name="tvsa_sexo"/>
                               <field name="tvsa_rol_family"/>
-                              <h5>(No es indispenzable)</h5>
-                            <h3>Resp. Niños</h3>
-                              <field name="years_03"/>
-                              <field name="years_48"/>
-                              <field name="years_912"/>
-                            <h3>Target Secundario</h3>
-                              <field name="target_secundario"/>
-                            <h5>(No es indispenzable)</h5>                           
+
+                            <h3 attrs="{'invisible': [('tvsa_rol_family','!=','3')]}">Resp. Niños</h3>
+                              <field name="years_03" attrs="{'invisible': [('tvsa_rol_family','!=','3')]}"/>
+                              <field name="years_48" attrs="{'invisible': [('tvsa_rol_family','!=','3')]}"/>
+                              <field name="years_912" attrs="{'invisible': [('tvsa_rol_family','!=','3')]}"/>
+
+                              <!--<field name="target_secundario"/>-->
+                              <!---->
+                            <!--</group>-->
+                            <!--<group>-->
+
                             </group>
+                        </page>
+
+
+                        <page name="medios_tv_abierta" string="Televisa Spoteo TV Abierta Nacional" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
+                          <group string="Televisa Spoteo TV Abierta Nacional">
+                              <field name="tvsa_abierta"/>
+                              <field name="sptv_periodo_camp2"/>
+                              <field name="tvsa_catego_televisa"/>
+                              <h5>Duracion Spot</h5>
+                          </group>
+                              <group colspan="2">
+                                  <group>
+                                      <field name="duracion_spot_1"/>
+                                      <field name="duracion_spot_2"/>
+                                      <field name="duracion_spot_3"/>
+                                  </group>
+                                  <group>
+                                      <field name="duracion_spot_4"/>
+                                      <field name="duracion_spot_6"/>
+                                      <field name="duracion_spot_otro"/>
+                                  </group>
+                              </group>
                             <group>
-                            <h3>Tv Abierta Nacional</h3>
-                            <h5>Duracion Spot</h5>
-                              <field name="duracion_spot_1"/>
-                              <field name="duracion_spot_2"/>
-                              <field name="duracion_spot_3"/>
-                              <field name="duracion_spot_4"/>
-                              <field name="duracion_spot_5"/>
-                              <field name="duracion_spot_6"/>
+                               <h3>Target de planeación</h3>
+                              <field name="target_planed_primary"/>
+                              <field name="target_planed_second"/>
+                              <field name="rotation_indication"/>
                               <field name="opcion_compra"/>
-                              <h3 >Canales Módulos o Franjas siempre serán 2, 5 y 9</h3>
-                              <field name="mixto_proporcion"/>
-                              <field name="target_compra_modulo"/>
-                              <field name="target_especial"/>
-                               <h3>Regulación</h3>
+                              <field name="target_compra_modulo" attrs="{'invisible': [('opcion_compra','!=','1'),('opcion_compra','!=','2'),('opcion_compra','!=','3')]}"/>
+                              <field name="target_especial" attrs="{'invisible': [('opcion_compra','!=','1'),('opcion_compra','!=','2'),('opcion_compra','!=','3')]}"/>
+                              <field name="mixto_proporcion" attrs="{'invisible': [('opcion_compra','!=','3')]}"/>
+                                <h6  attrs="{'invisible': [('opcion_compra','!=','1'),('opcion_compra','!=','2'),('opcion_compra','!=','3')]}">Canales Módulos o Franjas siempre serán 2, 5 y 9</h6>
+                              <field name="condiciones_especiales"/>
+                                <h3>Regulación</h3>
                               <field name="cofepris"/>
-                              <field name="a_favor"/>
-                              <field name="kids_policy"/>
-                              <field name="sptv_periodo_camp1"/>
-                              <!-- <field name="cpr_modulos"/> --> 
+                              <!--<field name="a_favor"/>-->
+                              <!--<field name="kids_policy"/>-->
+                              <!--<field name="sptv_periodo_camp1"/>-->
+                              <!-- <field name="cpr_modulos"/> -->
                                 <field name="canal_1" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
                                 <field name="canal_2" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
                                 <field name="canal_3" attrs="{'invisible':[('opcion_compra','!=','4'),('opcion_compra','!=','5')]}"/>
-                                <field name="tvsa_abierta"/>
                                 <br/>
-                            <h3>Tv Abierta Local</h3>
-                                <br/>
-                              <field name="duracion_spot_7"/>
-                              <field name="duracion_spot_8"/>
-                              <field name="duracion_spot_9"/>
-                              <field name="duracion_spot_10"/>
-                              <field name="duracion_spot_11"/>
-                              <field name="duracion_spot_12"/>
-                              <field name="canal_local"/>
-                              <field name="bloqueos"/>
-                              <field name="sptv_periodo_camp2"/>
+                            </group>
+                        </page>
+
+
+                        <page name="medios_local_televisa" string="TV Abierta Local Televisa" attrs="{'invisible': [('med_spot_tv_abierta','=',False)]}">
+                            <group>
+                            <field name="tvsa_local"/>
+                            <field name="period_campania_tvab"/>
                               <field name="foro_tv"/>
                               <field name="foro_tv_descrip" attrs="{'invisible': [('foro_tv','=',False)]}"/>
                               <field name="monto_inverison_tvabierta"/>
                               <!-- <field name="asignacion_a"/> -->
-                              <field name="tvsa_abierta_observaciones"/>
                             </group>
-                          </group>
+                                <page name="Tabla plazas" string="Plazas">
+                                    <field name="tabla_plaza_medios" widget="one2many_list">
+                                      <tree editable="bottom">
+                                          <field name="name"/>
+                                          <field name="tipo_actividad"/>
+                                          <field name="duracion" attrs="{'readonly': [('tipo_actividad','!=','1')]}"/>
+                                          <field name="especificacion" attrs="{'readonly': [('tipo_actividad','!=','3')]}"/>
+                                      </tree>
+                                    </field>
+                                </page>
+                            <br/>
+                                <page name="Tabla Foro TV" string="Foro TV">
+                                    <field name="tabla_forotv_medios" widget="one2many_list">
+                                      <tree editable="bottom">
+                                          <field name="name"/>
+                                          <field name="tipo_actividad"/>
+                                          <field name="duracion" attrs="{'readonly': [('tipo_actividad','!=','1')]}"/>
+                                          <field name="especificacion" attrs="{'readonly': [('tipo_actividad','!=','3')]}"/>
+                                      </tree>
+                                    </field>
+                                </page>
+                            <br/>
+                             <field name="tvsa_abierta_observaciones" placeholder="Observaciones"/>
+                            <group>
+                            <p>
+                                NOTA:<br/>
+                                1. La duración de los bloqueos es de 20”. No disponible en IV Q.
+                            </p>
+                            </group>
                         </page>
 
                         <page name="medios_aaeetv" string="AAEE TV TVSA" attrs="{'invisible': [('med_aaee_tv','=',False)]}">
@@ -527,7 +565,7 @@
                                   </field>
                               </page> 
                           </group>
-                           <field name="r_observaciones"/>
+                           <field name="r_observaciones" placeholder="Observaciones"/>
                           <group>
                             <p>Notas<br/>
                             1.- Las especificaciones de fechas de portada y fechas de cierre (contrataciones y entrega de materiales) de cada revista, estarán a disposición de los interesados. Preguntar en Medios.<br/>
@@ -545,7 +583,6 @@
                               <field name="rad_monto_inversion"/>
                             </group>
                             <group>
-                              <field name="rad_observaciones"/>
                             </group>
                                 <group>
                                     <group>
@@ -574,7 +611,9 @@
                                         </tree>
                                       </field>
                             </page>
+                             <field name="rad_observaciones" placeholder="Observaciones"/>
                         </page>
+
                         <page name="medios_prensa" string="Prensa" attrs="{'invisible': [('med_prensa','=',False)]}">
                           <group>
                             <group>
@@ -632,8 +671,8 @@
                                     </group>
                                     <group>
                                         <p>
-                                            Puentes<br/>
-                                            Tren<br/>
+                                            Puentes peatonales<br/>
+                                            Tren ligero<br/>
                                             Metrobús<br/>
                                             Metro<br/>
                                             Mexibus<br/>
@@ -644,17 +683,17 @@
                                    <group>
                                        <p>
                                             Mupis<br/>
-                                            Camiones<br/>
-                                            escolares<br/>
+                                            Camiones Urbanos<br/>
+                                            Camiones Escolares<br/>
                                             Taxis<br/>
                                             Aeropuerto<br/>
                                        </p>
                                     </group>
                                     <group>
                                         <p>
-                                            interiores<br/>
-                                            Plazas<br/>
-                                            Bajo<br/>
+                                            Pantallas en Interiores<br/>
+                                            Plazas comerciales<br/>
+                                            Bajo Puentes<br/>
                                             Otros<br/>
                                         </p>
                                     </group>
@@ -672,6 +711,7 @@
                                   </field>
                               </page> 
                             </group>
+                            <field name="observacion_prensa" placeholder="Obervaciones"/>
                             <group>
                               <p>
                                     1. En general la gestión de contratación de los medios exteriores implica varios pasos que requieren tiempo de anticipación a la fecha de inicio de exhibición (quince días a un mes). Favor de consultar con Medios el tiempo específico de cada tipo de medio. <br/>
@@ -717,10 +757,10 @@
                           </group>
                         </page>
 
-                        <page name="medios_analisis" string="Analisis" attrs="{'invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
+                        <page name="medios_analisis" string="Análisis" attrs="{'invisible': [('med_analisis','=',False),('med_tipo_trabajo','!=','2')]}">
                           <group>
                             <group>
-                              <h3>Tipo de Analisis</h3>
+                              <h3>Tipo de Análisis</h3>
                               <field name="tip_analisis" invisible="1"/>
                               <field name="an_inversion"/>
                               <field name="an_habitos"/>
@@ -749,10 +789,12 @@
                                 </li>
                                 <li>
                                   Perfil psicográfico de consumidores por categorías.
+                                </li>
+                                <li>
                                   Share of Mind marcas de cada categoría (con el límite muestral del estudio).
                                 </li>
                                 <li>
-                                  Determinación de los medios a los que están expuestos los consumidores en determinado período, tanto penetración, como medio que influye en la decisión de compra.
+                                  Determinación de los medios a los que están expuestos los consumidores en determinado período tanto penetración, como medio que influye en la decisión de compra.
                                 </li>
                                 <li>
                                   Lugar de compra, ciclo de compra, etc.
@@ -788,7 +830,7 @@
                               <field name="an_target_interes"/>
                               <field name="an_analisis1"/>
                               <field name="periodos_audiencias" widget="radio" />
-                              <field name="an_periodo1" attrs="{'invisible': [('periodos_audiencias','!=','3')]}"/>
+                              <field name="an_periodo1" placeholder="Otro periodo" attrs="{'invisible': [('periodos_audiencias','!=','3')], 'required': [('periodos_audiencias','=','3')]}"/>
                             </group>
                             <group string="Hábitos de consumo (BIMSA)" attrs="{'invisible': [('an_habitos','=',False)]}">
                               <field name="an_marca1"/>

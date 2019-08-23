@@ -375,7 +375,7 @@ class OdtMedios(models.Model):
 	med_tipo_trabajo = fields.Selection([('1','Revisión de Pauta'),('2','Análisis'),('3','Plan de Medios')], string='Tipo de Trabajo Requerido', track_visibility=True)
 	# sección para odt medios
 	med_spot_tv_abierta = fields.Boolean(string='Spot TV Abierta TVSA', track_visibility=True)
-	med_aaee_tv = fields.Boolean(string='AAEE TV TVSA', track_visibility=True)
+	med_aaee_tv = fields.Boolean(string='AAEE TV Abierta TVSA', track_visibility=True)
 	med_brief_aaee = fields.Boolean(string='Brief AAEE', track_visibility=True)
 	med_spoteo_carriers = fields.Boolean(string='Spoteo Carriers', track_visibility=True)
 	med_net_televisa = fields.Boolean(string='Networks Televisa', track_visibility=True)
@@ -444,29 +444,35 @@ class OdtMedios(models.Model):
 	tvsa_grupo_edad_5 = fields.Boolean(string='45 - 54', track_visibility=True)
 	tvsa_grupo_edad_6 = fields.Boolean(string='55+', track_visibility=True)
 	tvsa_grupo_edad_otro = fields.Char(string='Otro', track_visibility=True)
-	tvsa_sexo_p = fields.Boolean(string='Personas', track_visibility=True)
-	tvsa_sexo_m = fields.Boolean(string='Mujeres', track_visibility=True)
-	tvsa_sexo_h = fields.Boolean(string='Hombres', track_visibility=True)
-	tvsa_rol_family = fields.Selection([('1','Jefes de Familia'),('2','Amas de Casa'),('3','Responsables de niños')],string='Rol Familiar', track_visibility=True)
+	# tvsa_sexo_p = fields.Boolean(string='Personas', track_visibility=True)
+	# tvsa_sexo_m = fields.Boolean(string='Mujeres', track_visibility=True)
+	# tvsa_sexo_h = fields.Boolean(string='Hombres', track_visibility=True)
+	tvsa_sexo = fields.Selection([('1','Personas'),('2','Mujeres'),('3','Hombres')],string='Sexo', track_visibility=True)
+	tvsa_rol_family = fields.Selection([('1','Jefes de Familia'),('2','Amas de Casa'),('3','Responsables de niños')],string='Rol Familiar (No indispensable)', track_visibility=True)
 	years_03 = fields.Boolean(string='0 a 3 años', track_visibility=True)
 	years_48 = fields.Boolean(string='4 a 8 años', track_visibility=True)
 	years_912 = fields.Boolean(string='9 a 12 años', track_visibility=True)
-	target_secundario = fields.Char(string='Target Secundario', track_visibility=True)
+	target_secundario = fields.Char(string='Target Secundario (No es indispensable)', track_visibility=True)
 
 	duracion_spot_1 = fields.Boolean(string='10"', track_visibility=True)
 	duracion_spot_2 = fields.Boolean(string='20"', track_visibility=True)
 	duracion_spot_3 = fields.Boolean(string='30"', track_visibility=True)
 	duracion_spot_4 = fields.Boolean(string='40"', track_visibility=True)
-	duracion_spot_5 = fields.Boolean(string='50"', track_visibility=True)
 	duracion_spot_6 = fields.Boolean(string='60"', track_visibility=True)
+	duracion_spot_otro = fields.Text(string='Otro', track_visibility=True)
 
-	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO')],string='Opciones de Compra', track_visibility=True)
+
+	opcion_compra = fields.Selection([('1','CPR MODULOS'),('2','CPR FRANJAS'),('3','MIXTO MÓDULO Y FRANJA'),('4','CPR POR PROGRAMA'),('5','SPOTEO')],string='Negociación del cliente', track_visibility=True)
 	mixto_proporcion = fields.Char(string='En caso de ser Mixto especificar proporción', track_visibility=True)
-	target_compra_modulo = fields.Char(string='Target de compra Módulos o Franja', track_visibility=True)
+	target_compra_modulo = fields.Selection([('1','Niños 4-12'),('2','Jóvenes 13-18'),('3','Individuos 19+'),('4','Hombres 19+'),('5','Mujeres 19+'),('6','Amas'),('7','Personas 19-54 S/DE'),('8','Hombres 19-54 S/DE'),('9','Mujeres 19-54 S/DE')],string='Target de compra Módulos o Franja', track_visibility=True)
 	target_especial = fields.Char(string='En caso de ser Target de compra Especial, Especificar', track_visibility=True)
+	target_planed_primary = fields.Char(string="Target de planeación primario")
+	target_planed_second = fields.Char(string="Target de planeación secundario")
+	condiciones_especiales = fields.Char(string="Condiciones especiales")
+	rotation_indication = fields.Char(string="Indicación de rotación")
 
 	#regulación
-	cofepris = fields.Selection([('1','SI'),('2','NO')],string='COFEPRIS', track_visibility=True)
+	cofepris = fields.Selection([('1','A favor de lo mejor'),('2','Kids policy')],string='COFEPRIS', track_visibility=True)
 	a_favor = fields.Selection([('1','SI'),('2','NO')],string='A favor de lo mejor', track_visibility=True)
 	kids_policy = fields.Selection([('1','SI'),('2','NO')],string='Kids Policy', track_visibility=True)
 	sptv_periodo_camp1 = fields.Char(string='Periodo de la Campaña', track_visibility=True)
@@ -474,7 +480,9 @@ class OdtMedios(models.Model):
 	canal_1 = fields.Boolean(string='2', track_visibility=True)
 	canal_2 =  fields.Boolean(string='5', track_visibility=True)
 	canal_3 =  fields.Boolean(string='9', track_visibility=True)
-	tvsa_abierta = fields.Integer(string='Monto Máximo Inversión TV Abierta Nacional (Costo Cliente)', track_visibility=True)
+	tvsa_abierta = fields.Integer(string='Inversión', track_visibility=True)
+	tvsa_local = fields.Integer(string="Inversión", track_visibility=True)
+	period_campania_tvab = fields.Char(string="Periodo de la campaña", track_visibility=True)
 	
 	duracion_spot_7 = fields.Boolean(string='10"', track_visibility=True)
 	duracion_spot_8 = fields.Boolean(string='20"', track_visibility=True)
@@ -707,7 +715,7 @@ class OdtMedios(models.Model):
 	r_target_interes = fields.Char(string='Target de Interés*')
 	r_periodo_campana = fields.Char(string='Periodo de la campaña*')
 	r_monto_inversion = fields.Float(string='Inversión revistas')
-	r_observaciones = fields.Text(string='Observaciones')
+	r_observaciones = fields.Text(string=' ')
 	tabla_medios_revista = fields.One2many('odt.medios.revista','revista_id')
 
 	#Radio
@@ -715,7 +723,7 @@ class OdtMedios(models.Model):
 	rad_target_interes = fields.Char(string='Target de Interés*')
 	rad_periodo_campana = fields.Char(string='Periodo de transmisión*')
 	rad_monto_inversion = fields.Float(string='Inversión Radio')
-	rad_observaciones = fields.Text(string='Observaciones')	
+	rad_observaciones = fields.Text(string=' ')
 	tabla_medios_radio = fields.One2many('odt.medios.radio','radio_id')
 
 	#ooh
@@ -760,7 +768,7 @@ class OdtMedios(models.Model):
 	d_monto_minimo = fields.Float(string='Inversión Digital')
 
 	# Análisis
-	tip_analisis = fields.Boolean(string="Tipo de Analisis")
+	tip_analisis = fields.Boolean(string="Tipo de Análisis")
 	an_inversion = fields.Boolean(string='Inversión Publicitaria')
 	an_habitos = fields.Boolean(string='Hábitos de consumo')
 	an_audiencia = fields.Boolean(string='Audiencias')
@@ -800,7 +808,7 @@ class OdtMedios(models.Model):
 	an_en_caso = fields.Text(string='En caso de requerir comparativo de marcas especificas, señalarlo.')
 	an_year_inmediato1 = fields.Boolean(string='Año Inmediato Anterior')
 	an_year_movil1 = fields.Boolean(string='Año Móvil')
-	an_periodo1 = fields.Char(string='Otro Periodo')
+	an_periodo1 = fields.Char(string=' ')
 	an_target_interes = fields.Char(string='Target de interés*')
 	an_analisis1 = fields.Text(string='Objetivo del Análisis.')	
 	an_marca1 = fields.Char(string='Categoría o Marca/Producto de interés*')
@@ -812,7 +820,10 @@ class OdtMedios(models.Model):
 	notast = fields.Char(string="Observaciones")
 	periodos_audiencias = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')],string="Periodos de Audiencias")
 	periodos_publicitaria = fields.Selection([('1','Año Inmediato Anterior'),('2','Año Móvil'),('3','Otro Periodo')],string="Periodos de Publicitaria")
-	
+	observacion_prensa = fields.Text(string=" ")
+	tabla_plaza_medios = fields.One2many('odt.plaza.medios','id_medios')
+	tabla_forotv_medios = fields.One2many('odt.forotv.medios', 'id_medios')
+
 	@api.model
 	def create(self,vals):
 		sequence = self.env['ir.sequence'].next_by_code('odt.medios')
@@ -987,6 +998,7 @@ class OdtContactcenter(models.Model):
 		sequence = self.env['ir.sequence'].next_by_code('odt.contactcenter')
 		vals['name'] = sequence or 'Nuevo'
 		return super(OdtContactcenter, self).create(vals)
+
 
 class OdtBtlpdv(models.Model):
 	_name = 'odt.btlpdv'
@@ -1610,6 +1622,23 @@ class OdtEstrategia(models.Model):
 	total_recuperacion_estrategia = fields.Float(string='Total Recuperacion',compute=_estrategia_totales)
 
 # Tablas one2many
+class TablaTVabierta(models.Model):
+	_name = 'odt.plaza.medios'
+
+	id_medios = fields.Many2one("odt.medios", ondelete='cascade')
+	name = fields.Char(string='Plaza')
+	tipo_actividad = fields.Selection([('1','Spoteo'),('2','Bloqueo'),('3','Acciones especiales')],string='Tipo de Actividad')
+	duracion = fields.Char(string='Duración')
+	especificacion = fields.Char(string='Especificar AAEE')
+
+class TablaTVabierta2(models.Model):
+	_name = 'odt.forotv.medios'
+
+	id_medios = fields.Many2one("odt.medios", ondelete='cascade')
+	name = fields.Char(string='Plaza', default='Foro TV')
+	tipo_actividad = fields.Selection([('1','Spoteo'),('2','Acciones especiales')],string='Tipo de Actividad')
+	duracion = fields.Char(string='Duración')
+	especificacion = fields.Char(string='Especificar AAEE')
 
 class MaterialesBTL(models.Model):
 	_name = 'odt.materiales'
